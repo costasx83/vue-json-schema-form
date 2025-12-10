@@ -63,7 +63,7 @@ export default {
                             required: !([].concat(schema.items.type).includes('null')),
                             uiSchema: {
                                 ...uiSchema.items,
-                                ...tempUiSchema, // 处理过 $index 的标识
+                                ...tempUiSchema, // Processed $index identifier
                             },
                             errorSchema: errorSchema.items,
                             curNodePath: computedCurPath(curNodePath, index)

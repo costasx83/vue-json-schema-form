@@ -7,7 +7,7 @@ import baseData from './index';
 export default {
     viewSchema: {
         ...baseData.viewSchema,
-        title: 'DateTime范围(字符串)',
+        title: 'DateTime Range (string)',
         items: {
             type: 'string'
         }

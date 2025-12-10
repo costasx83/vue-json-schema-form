@@ -1,25 +1,25 @@
 <template>
     <div v-loading="loading">
         <EditorHeader default-active="4">
-            <el-button @click="handleImportSchema">导入Schema</el-button>
+            <el-button @click="handleImportSchema">Import Schema</el-button>
             <el-button
                 plain
                 @click="handleToDemo"
             >
-                Playground中验证
+                Validate in Playground
             </el-button>
             <el-button
                 type="primary"
                 plain
                 @click="handlePreview"
             >
-                预览展示
+                Preview
             </el-button>
             <el-button
                 type="primary"
                 @click="handleExportSchema"
             >
-                导出Schema
+                Export Schema
             </el-button>
         </EditorHeader>
 
@@ -35,7 +35,7 @@
                         <EditorToolBar
                             :drag-group="dragOptions.group"
                             :config-tools="configTools"
-                            @onFilter="$message.error('该组件添加数目已达上限！')"
+                            @onFilter="$message.error('The maximum number of this component has been reached!')"
                         >
                         </EditorToolBar>
                     </div>
@@ -88,14 +88,14 @@
                         v-if="componentList.length === 0"
                         :class="$style.tipBox"
                     >
-                        <p>拖拽左侧栏的组件进行添加</p>
+                        <p>Drag components from the left sidebar to add</p>
                     </div>
                 </div>
                 <div :class="$style.rightForm">
                     <el-tabs v-model="activeName">
                         <el-tab-pane
                             v-if="curEditorItem"
-                            label="组件配置"
+                            label="Component Config"
                             name="compConfig"
                         >
                             <VueJsonFrom
@@ -113,7 +113,7 @@
                             </VueJsonFrom>
                         </el-tab-pane>
                         <el-tab-pane
-                            label="表单配置"
+                            label="Form Config"
                             name="formConfig"
                         >
                             <VueJsonFrom
@@ -180,7 +180,7 @@ export default {
             loading: false,
             configTools,
             rootFormData: {},
-            curEditorItem: null, // 选中的formItem
+            curEditorItem: null, // Selected formItem
             componentList: [],
             FormConfSchema,
             formConfig: {},
@@ -232,8 +232,8 @@ export default {
             const defaultConfig = {
                 formFooter: {
                     show: true,
-                    okBtn: '保存',
-                    cancelBtn: '取消'
+                    okBtn: 'Save',
+                    cancelBtn: 'Cancel'
                 },
                 formProps: {
                     inline: false,
@@ -243,7 +243,7 @@ export default {
                 }
             };
 
-            // 不做深度
+            // No deep filtering
             const filter = (obj, defaultObj) => Object.keys(obj).reduce((pre, cur) => {
                 if (!(obj[cur] === defaultObj[cur])) {
                     pre[cur] = obj[cur];
@@ -263,7 +263,7 @@ export default {
             const instance = componentWithDialog({
                 VueComponent: VueJsonFrom,
                 dialogProps: {
-                    title: '预览展示',
+                    title: 'Preview',
                     width: '1000px'
                 },
                 componentProps: {
@@ -288,14 +288,14 @@ export default {
             const instance = componentWithDialog({
                 VueComponent: ImportSchemaView,
                 dialogProps: {
-                    title: '导入Schema',
+                    title: 'Import Schema',
                     width: '1000px'
                 },
                 componentListeners: {
                     onImport: (code) => {
                         try {
                             const data = jsonSchema2ComponentList(code, this.configTools);
-                            if (!data) return this.$message.warning('请先输入导入Schema');
+                            if (!data) return this.$message.warning('Please enter the schema to import first');
 
                             const { errorNode, componentList, formConfig } = data;
                             this.componentList = componentList;
@@ -304,10 +304,10 @@ export default {
 
                             instance.close();
 
-                            // 存在导入失败的部分节点
+                            // Some nodes failed to import
                             if (errorNode.length > 0 && Array.isArray(errorNode)) {
                                 return this.$msgbox({
-                                    title: '如下节点导入失败，请检查数据',
+                                    title: 'The following nodes failed to import, please check the data',
                                     message: this.$createElement(
                                         'div', {
                                             style: {
@@ -321,7 +321,7 @@ export default {
 
                             return undefined;
                         } catch (e) {
-                            this.$alert(e.message, '导入失败，详细查看控制台');
+                            this.$alert(e.message, 'Import failed, see console for details');
                             throw e;
                         }
                     }
@@ -332,7 +332,7 @@ export default {
             componentWithDialog({
                 VueComponent: ExportSchemaView,
                 dialogProps: {
-                    title: '导出Schema',
+                    title: 'Export Schema',
                     width: '1000px'
                 },
                 componentProps: {
@@ -378,7 +378,7 @@ export default {
         --right-form-width: 380px;
         --drag-area-width: auto;
     }
-    /*预览模式 同步样式重置*/
+    /*Preview mode - reset sync styles*/
     .container {
         position: relative;
         box-sizing: border-box;

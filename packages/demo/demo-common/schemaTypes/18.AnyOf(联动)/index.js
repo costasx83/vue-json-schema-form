@@ -10,28 +10,28 @@ export default {
         ],
         properties: {
             age: {
-                title: '测试基础类型 anyOf',
+                title: 'Test basic type anyOf',
                 anyOf: [
                     {
-                        title: '测试基础类型 anyOf 5的倍数',
+                        title: 'Test basic type anyOf - Multiples of 5',
                         type: 'integer',
                         multipleOf: 5
                     },
                     {
-                        title: '测试基础类型 anyOf 3的倍数',
+                        title: 'Test basic type anyOf - Multiples of 3',
                         type: 'integer',
                         multipleOf: 3
                     }
                 ],
                 anyOfSelect: {
                     'ui:widget': 'RadioWidget',
-                    'ui:title': '选择选项',
+                    'ui:title': 'Select option',
                     'ui:options': {
                     }
                 }
             },
             test: {
-                title: '测试 const anyOf',
+                title: 'Test const anyOf',
                 type: 'string',
                 anyOf: [
                     {
@@ -45,7 +45,7 @@ export default {
                 ]
             },
             items: {
-                title: '测试OneOf Array Items',
+                title: 'Test OneOf Array Items',
                 type: 'array',
                 items: {
                     type: 'object',
@@ -70,7 +70,7 @@ export default {
         },
         anyOfSelect: {
             'ui:widget': 'RadioWidget',
-            'ui:title': '测试 anyOf object',
+            'ui:title': 'Test anyOf object',
             'ui:options': {
                 style: {
                     // width: '300px',

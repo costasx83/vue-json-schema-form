@@ -40,7 +40,7 @@ export default {
                     return `<span class="${className}">${match}</span>`;
                 });
             } catch (e) {
-                return '<span style="padding: 20px 0;">解析失败</span>';
+                return '<span style="padding: 20px 0;">Parse failed</span>';
             }
         }
     }

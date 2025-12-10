@@ -5,30 +5,30 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '单选类型',
+    title: 'Single Select',
     type: 'string'
 };
 
 const selectOptionsSchema = {
     enum: {
-        title: '配置选项值',
+        title: 'Option Values',
         type: 'array',
         minItems: 1,
         'ui:showIndexNumber': true,
         default: ['1', '2', '3'],
         items: {
-            title: '选项值',
+            title: 'Option Value',
             type: 'string'
         }
     },
     enumNames: {
-        title: '配置选项名称',
+        title: 'Option Names',
         type: 'array',
         minItems: 1,
         'ui:showIndexNumber': true,
-        default: ['一', '二', '三'],
+        default: ['One', 'Two', 'Three'],
         items: {
-            title: '选项名称',
+            title: 'Option Name',
             type: 'string'
         }
     }
@@ -43,7 +43,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 schemaOptions: {

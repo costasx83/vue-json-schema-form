@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/5/13 9:06 下午.
+ * Created by Liu.Jun on 2020/5/13 9:06 PM.
  */
 
 const files = require.context('.', true, /\.js$/);

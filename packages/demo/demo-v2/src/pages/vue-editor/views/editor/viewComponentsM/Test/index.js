@@ -7,5 +7,5 @@ import View from './View';
 
 export default {
     View,
-    Form, // 自定义Form
+    Form, // Custom Form
 };

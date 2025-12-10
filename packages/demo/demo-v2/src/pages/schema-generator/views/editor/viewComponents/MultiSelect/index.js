@@ -6,7 +6,7 @@ import genSchema from '../genSchema.js';
 import { selectOptionsSchema } from '../SingleSelect';
 
 const viewSchema = {
-    // title: '多选类型',
+    // title: 'Multi-select Type',
     type: 'array',
     uniqueItems: true,
     items: {
@@ -19,7 +19,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 schemaOptions: {

@@ -1,4 +1,4 @@
-/* element plus 重置样式*/
+/* Element Plus reset styles*/
 .genFromComponent {
     &.ant-form-vertical {
         .ant-form-item-label {
@@ -34,7 +34,7 @@
     }
 
 
-    /* validateWidget 单独的校验不属于输入框的*/
+    /* validateWidget separate validation not belonging to input field*/
     .validateWidget>.ant-form-item{
         margin-bottom: 0 !important;
         padding: 0 !important;

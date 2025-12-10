@@ -3,16 +3,16 @@
         ref="form"
         :model="formData"
     >
-        <el-form-item label="请配置标题">
+        <el-form-item label="Please configure title">
             <el-input v-model="formData.txt"></el-input>
         </el-form-item>
         <el-form-item style="text-align: right;">
-            <el-button @click="$emit('on-cancel')">取消</el-button>
+            <el-button @click="$emit('on-cancel')">Cancel</el-button>
             <el-button
                 type="primary"
                 @click="onSubmit"
             >
-                保存
+                Save
             </el-button>
         </el-form-item>
     </el-form>
@@ -29,7 +29,7 @@ export default {
     },
     data() {
         return {
-            // 简单copy数据
+            // Simple copy data
             formData: this.$props.value ? JSON.parse(JSON.stringify(this.$props.value)) : {}
         };
     },

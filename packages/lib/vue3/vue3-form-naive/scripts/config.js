@@ -21,8 +21,8 @@ module.exports = {
     extractcss: false,
     output: {
         path: resolve('dist/'),
-        file: 'vue3-form-naive', // 导出文件名，自动拼接 format
-        name: 'vue3FormNaive', // umd 注册的全局变量名称
+        file: 'vue3-form-naive', // Export filename, auto-append format
+        name: 'vue3FormNaive', // UMD registered global variable name
         format: ['esm', 'umd']
     }
 };

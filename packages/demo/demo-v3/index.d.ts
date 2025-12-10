@@ -1,2 +1,2 @@
-// 屏蔽掉 vue css module中 $style 未定义提示
+// Block $style undefined prompt in vue css module
 declare const $style: { [index: string]: string };

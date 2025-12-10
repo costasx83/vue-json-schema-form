@@ -24,7 +24,7 @@ const globalOptions = {
         form: defineComponent({
             inheritAttrs: false,
             setup(props, { attrs, slots }) {
-                // 处理 labelPosition 参数和layout之间转换
+                // Handle conversion between labelPosition parameter and layout
                 const labelPositionMap = {
                     top: {
                         layout: 'vertical'
@@ -39,11 +39,11 @@ const globalOptions = {
                     }
                 };
 
-                // 返回当前的 form ref
+                // Return current form ref
                 const formRef = ref(null);
                 if (attrs.setFormRef) {
                     onMounted(() => {
-                        // form组件实例上附加一个 validate 方法
+                        // Attach a validate method on form component instance
                         formRef.value.$$validate = (callBack) => {
                             formRef.value.validate().then((res) => {
                                 callBack(true, res);
@@ -90,7 +90,7 @@ const globalOptions = {
                         ...originAttrs,
                         ref: formItemRef,
 
-                        // 去掉callback 使用promise 模式
+                        // Remove callback and use promise mode
                         rules: (rules || []).map(validateRule => ({
                             ...validateRule,
                             validator(rule, value) {
@@ -101,19 +101,20 @@ const globalOptions = {
                     }, {
                         ...slots,
                         default: function proxySlotDefault() {
-                            // 解决 a-form-item 只对第一个子元素进行劫持，并监听 blur 和 change 事件，如果存在第一个元素description无法校验
+                            // Fix: a-form-item only hijacks the first child element and listens
+                            // to blur and change events. If the first element is a description, validation won't work
                             // @blur="() => {$refs.name.onFieldBlur()}"
                             // @change="() => {$refs.name.onFieldChange()}"
                             return slots.default.call(this, {
                                 onBlur: () => {
                                     if (formItemRef.value.$el.querySelector('.genFromWidget_des')) {
-                                        // 存在 description，需要手动触发校验事件
+                                        // Description exists, need to manually trigger validation event
                                         formItemRef.value.onFieldBlur();
                                     }
                                 },
                                 onChange: () => {
                                     if (formItemRef.value.$el.querySelector('.genFromWidget_des')) {
-                                        // 存在 description，需要手动触发校验事件
+                                        // Description exists, need to manually trigger validation event
                                         formItemRef.value.onFieldChange();
                                     }
                                 }
@@ -134,7 +135,7 @@ const globalOptions = {
         }),
     },
     HELPERS: {
-        // 是否mini显示 description
+        // Whether to display description in mini mode
         isMiniDes(formProps) {
             return formProps && (
                 ['left', 'right'].includes(formProps.labelPosition)

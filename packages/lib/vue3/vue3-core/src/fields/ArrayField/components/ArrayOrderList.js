@@ -7,67 +7,67 @@ import {
 } from '@lljj/vjsf-utils/icons';
 import { h, computed } from 'vue';
 
-// 支持数字排序 ，新增 ，删除等操作
+// Supports number sorting, add, delete and other operations
 export default {
     name: 'ArrayOrderList',
     emits: ['arrayOperate'],
     props: {
-        // 需要被排序的VNode list
+        // VNode list to be sorted
         vNodeList: {
             type: Array,
             default: []
         },
-        // tuple类型的数组，需要固定前值
+        // Tuple type array, need to fix prefix values
         tupleItemsLength: {
             type: Number,
             default: 0
         },
         addable: {
-            // 是否启用添加
+            // Whether to enable add
             type: Boolean,
             default: true
         },
         showIndexNumber: {
-            // 是否显示当前序号
+            // Whether to show current index number
             type: Boolean,
             default: false
         },
         sortable: {
-            // 是否可排序
+            // Whether sortable
             type: Boolean,
             default: true
         },
         removable: {
-            // 是否可移除
+            // Whether removable
             type: Boolean,
             default: true
         },
         maxItems: {
-            // 最多添加个数
+            // Maximum number to add
         },
         minItems: {
-            // 最少添加个数
+            // Minimum number to add
         },
         globalOptions: null
     },
     setup(props, { emit }) {
-        // 是否可添加
+        // Whether can add
         const canAdd = computed(() => {
             const { addable, maxItems, vNodeList } = props;
-            // 配置不可添加
+            // Configured as not addable
             if (!addable) return false;
 
-            // 配置了最大个数
+            // Configured with maximum number
             if (maxItems !== undefined) {
                 return vNodeList.length < maxItems;
             }
             return true;
         });
 
-        // 是否可移除
+        // Whether can remove
         const canRemove = computed(() => {
             const { removable, minItems, vNodeList } = props;
-            // 配置不可移除
+            // Configured as not removable
             if (!removable) return false;
 
             if (minItems !== undefined) {
@@ -78,10 +78,10 @@ export default {
         });
 
         return () => {
-            // 没有数据，且不能添加不渲染该组件
+            // No data and cannot add, don't render this component
             if (props.vNodeList.length <= 0 && !props.addable) return null;
 
-            // 是否可继续添加元素
+            // Whether can continue adding elements
             return h(
                 'div',
                 {
@@ -117,7 +117,7 @@ export default {
                                     h(
                                         'button',
                                         {
-                                            // 配置不可排序不显示排序按钮
+                                            // Don't show sort button when configured as not sortable
                                             style: {
                                                 ...(!props.sortable ? {
                                                     display: 'none'
@@ -143,7 +143,7 @@ export default {
                                     h(
                                         'button',
                                         {
-                                            // 配置不可排序不显示排序按钮
+                                            // Don't show sort button when configured as not sortable
                                             style: {
                                                 ...(!props.sortable ? {
                                                     display: 'none'
@@ -170,7 +170,7 @@ export default {
                                     h(
                                         'button',
                                         {
-                                            // 配置不可移除不显示移除按钮
+                                            // Don't show remove button when configured as not removable
                                             style: {
                                                 ...(!props.removable ? {
                                                     display: 'none'

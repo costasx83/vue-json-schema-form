@@ -2,64 +2,64 @@
  * Created by Liu.Jun on 2019/9/29 18:58.
  */
 
-// 基础组件
+// Basic components
 import componentPackInput from '../viewComponents/Input';
 import componentPackColor from '../viewComponents/Color';
 import componentPackInputNumber from '../viewComponents/InputNumber';
 import componentPackSlider from '../viewComponents/Slider';
 
-// 是否 Boolean
+// Boolean type
 import componentPackBooleanSwitch from '../viewComponents/SelectBoolean/elSwitch';
 import componentPackBooleanCheckbox from '../viewComponents/SelectBoolean/elCheckbox';
 import componentPackBooleanSelect from '../viewComponents/SelectBoolean/elSelect';
 import componentPackBooleanRadio from '../viewComponents/SelectBoolean/elRadio';
 
-// 单多选
+// Single/Multiple select
 import componentPackRadio from '../viewComponents/SingleSelect/elRadio';
 import componentPackRadioSelect from '../viewComponents/SingleSelect/elSelect';
 
 import componentPackMultiSelect from '../viewComponents/MultiSelect/elSelect';
 import componentPackMultiCheckbox from '../viewComponents/MultiSelect/elCheckbox';
 
-// 上传
+// Upload
 import componentPackUpload from '../viewComponents/Upload';
 import componentPackMultiUpload from '../viewComponents/MultiUpload';
 
-// 时间 日期
+// Time and Date
 import componentPackTime from '../viewComponents/Time';
 
-// 日期
+// Date
 import componentPackDate from '../viewComponents/Date';
 import componentPackDateString from '../viewComponents/Date/string';
 
-// 日期时间
+// DateTime
 import componentPackDateTime from '../viewComponents/DateTime';
 import componentPackDateTimeString from '../viewComponents/DateTime/string';
 
-// 日期区间
+// Date Range
 import componentPackDateRange from '../viewComponents/DateRange';
 import componentPackDateRangeString from '../viewComponents/DateRange/string';
 
-// 日期时间区间
+// DateTime Range
 import componentPackDateTimeRange from '../viewComponents/DateTimeRange';
 import componentPackDateTimeRangeString from '../viewComponents/DateTimeRange/string';
 
 
-// 布局 Object Array
+// Layout Object Array
 import componentPackObject from '../viewComponents/Object';
 import componentPackArray from '../viewComponents/Array';
 
 /**
- * hidden 隐藏，不显示在工具栏
- * maxNum Number 最大可配置数
- * topDisplay Bool 最顶部显示
- * bottomDisplay Bool 最底部显示
- * onlyCanConfig Bool 是否只能配置数据，不能删除 copy
+ * hidden: hidden, not shown in toolbar
+ * maxNum: Number, maximum configurable count
+ * topDisplay: Bool, display at the very top
+ * bottomDisplay: Bool, display at the very bottom
+ * onlyCanConfig: Bool, can only configure data, cannot delete or copy
  * @type {*[]}
  */
 const tools = [
     {
-        groupName: '布局组件',
+        groupName: 'Layout Components',
         componentList: [{
             title: 'Object',
             btnClass: 'w100',
@@ -71,91 +71,91 @@ const tools = [
         }]
     },
     {
-        groupName: '基础组件',
+        groupName: 'Basic Components',
         componentList: [{
-            title: '输入框',
+            title: 'Input',
             componentPack: componentPackInput
         }, {
-            title: '数字(slider)', // 这里顺便必须在 componentPackInputNumber 前，导入匹配的时候优先匹配
+            title: 'Number (slider)', // This must be before componentPackInputNumber for matching priority
             componentPack: componentPackSlider
         }, {
-            title: '数字输入框',
+            title: 'Number Input',
             componentPack: componentPackInputNumber
         }, {
-            title: '颜色选择',
+            title: 'Color Picker',
             componentPack: componentPackColor
         }]
     },
     {
-        groupName: '是否Bool',
+        groupName: 'Boolean',
         componentList: [{
-            title: '是否(Switch)',
+            title: 'Boolean (Switch)',
             componentPack: componentPackBooleanSwitch
         }, {
-            title: '是否(Checkbox)',
+            title: 'Boolean (Checkbox)',
             componentPack: componentPackBooleanCheckbox
         }, {
-            title: '是否(Select)',
+            title: 'Boolean (Select)',
             componentPack: componentPackBooleanSelect
         }, {
-            title: '是否(Radio)',
+            title: 'Boolean (Radio)',
             componentPack: componentPackBooleanRadio
         }]
     },
     {
-        groupName: '单选/多选',
+        groupName: 'Single/Multiple Select',
         componentList: [{
-            title: '单选(Radio)',
+            title: 'Single (Radio)',
             componentPack: componentPackRadio
         }, {
-            title: '单选(Select)',
+            title: 'Single (Select)',
             componentPack: componentPackRadioSelect
         }, {
-            title: '多选(Select)',
+            title: 'Multiple (Select)',
             componentPack: componentPackMultiSelect
         }, {
-            title: '多选(Checkbox)',
+            title: 'Multiple (Checkbox)',
             componentPack: componentPackMultiCheckbox
         }]
     },
     {
-        groupName: '文件上传',
+        groupName: 'File Upload',
         componentList: [{
-            title: '单文件',
+            title: 'Single File',
             componentPack: componentPackUpload
         }, {
-            title: '多个文件',
+            title: 'Multiple Files',
             componentPack: componentPackMultiUpload
         }]
     },
     {
-        groupName: '时间日期',
+        groupName: 'Date & Time',
         componentList: [{
-            title: 'Date(时间戳)',
+            title: 'Date (timestamp)',
             componentPack: componentPackDate
         }, {
-            title: 'Date(字符串)',
+            title: 'Date (string)',
             componentPack: componentPackDateString
         }, {
-            title: 'DateTime(时间戳)',
+            title: 'DateTime (timestamp)',
             componentPack: componentPackDateTime
         }, {
-            title: 'DateTime(字符串)',
+            title: 'DateTime (string)',
             componentPack: componentPackDateTimeString
         }, {
-            title: 'Date范围(时间戳)',
+            title: 'Date Range (timestamp)',
             componentPack: componentPackDateRange
         }, {
-            title: 'Date范围(字符串)',
+            title: 'Date Range (string)',
             componentPack: componentPackDateRangeString
         }, {
-            title: 'DateTime范围(时间戳)',
+            title: 'DateTime Range (timestamp)',
             componentPack: componentPackDateTimeRange
         }, {
-            title: 'DateTime范围(字符串)',
+            title: 'DateTime Range (string)',
             componentPack: componentPackDateTimeRangeString
         }, {
-            title: 'Time(字符串)',
+            title: 'Time (string)',
             componentPack: componentPackTime
         }]
     }

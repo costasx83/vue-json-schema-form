@@ -59,7 +59,7 @@
                             </el-image>
                         </a>
                         <div :class="$style.goodsTitle">
-                            商品标题，可以结合具体业务活动商品数据
+                            Product title, can be combined with specific business activity product data
                         </div>
                         <div :class="$style.goodsPrice">
                             ￥69.8
@@ -72,7 +72,7 @@
             v-else
             :line-num="2"
             :line-items="5"
-            title="分类管区"
+            title="Category section"
         ></GoodsListView>
     </div>
 </template>

@@ -4,7 +4,7 @@
 
 export default [
     {
-        // 默认轮播图
+        // Default carousel
         name: 'CarouselImg',
         value: {
             imgList: [
@@ -26,12 +26,12 @@ export default [
     {
         name: 'Text',
         value: {
-            txt: '抢购商品',
+            txt: 'Flash Sale Goods',
             txtColor: '#507aa0'
         }
     },
     {
-        // 默认秒杀商品
+        // Default flash sale goods
         name: 'FlashSaleGoodsList',
         value: {
             startTime: (new Date((+new Date() + 60 * 60 * 1000 * 3))).toISOString(),
@@ -71,7 +71,7 @@ export default [
     {
         name: 'Text',
         value: {
-            txt: '超值进口新发现',
+            txt: 'Great Imported Discoveries',
             txtColor: '#ff0132'
         }
     },
@@ -93,7 +93,7 @@ export default [
     {
         name: 'Text',
         value: {
-            txt: '超值进口新发现',
+            txt: 'Great Imported Discoveries',
             txtColor: '#487cff'
         }
     },
@@ -125,7 +125,7 @@ export default [
     {
         name: 'Text',
         value: {
-            txt: '超值进口新发现',
+            txt: 'Great Imported Discoveries',
             txtColor: '#589A6D'
         }
     },
@@ -153,15 +153,15 @@ export default [
     {
         name: 'CategoryGoods',
         value: {
-            title: '打造爱巢',
+            title: 'Build Your Love Nest',
             subTitle: 'HOME',
             banner: {
                 link: {
                     imgUrl: 'https://img.alicdn.com/tps/i4/TB1MesKcWmWQ1JjSZPhwu0CJFXa.png',
                     imgLink: 'https://www.jd.com'
                 },
-                bannerTitle: '广告位',
-                bannerSubTitle: '广告位副标题'
+                bannerTitle: 'Ad Space',
+                bannerSubTitle: 'Ad Space Subtitle'
             },
             goodsList: [
                 {

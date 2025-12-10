@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/11/26 10:01 下午.
+ * Created by Liu.Jun on 2020/11/26 10:01 PM.
  */
 
 import { h, ref, getCurrentInstance } from 'vue';
@@ -22,29 +22,29 @@ export default {
         },
         btnText: {
             type: String,
-            default: '点击上传'
+            default: 'Click to Upload'
         },
-        // 传入 VNode
+        // Pass in VNode
         slots: {
             type: null,
             default: null
         }
     },
     setup(props, { attrs, emit }) {
-        // 设置默认 fileList
+        // Set default fileList
         const curModelValue = props.modelValue;
         const isArrayValue = Array.isArray(curModelValue);
 
         const defaultFileList = attrs.fileList || (() => {
             if (isArrayValue) {
                 return curModelValue.map((item, index) => ({
-                    name: `已上传文件（${index + 1}）`,
+                    name: `Uploaded File (${index + 1})`,
                     url: item
                 }));
             }
             if (curModelValue) {
                 return [{
-                    name: '已上传文件',
+                    name: 'Uploaded File',
                     url: curModelValue
                 }];
             }
@@ -85,12 +85,12 @@ export default {
                 fileList: fileListRef.value,
                 'on-exceed': () => {
                     if (globalProperties.$message) {
-                        globalProperties.$message.warning('超出文件上传数');
+                        globalProperties.$message.warning('Exceeded file upload limit');
                     }
                 },
                 'on-error': () => {
                     if (globalProperties.$message) {
-                        globalProperties.$message.error('文件上传失败');
+                        globalProperties.$message.error('File upload failed');
                     }
                 },
                 'on-preview': (file) => {
@@ -106,7 +106,7 @@ export default {
                 },
                 'on-success': (response, file, fileList) => {
                     emitValue(fileList);
-                    // 用户注册的 onSuccess
+                    // User registered onSuccess callback
                     if (attrs['on-success']) {
                         attrs['on-success'](response, file, fileList);
                     }

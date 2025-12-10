@@ -7,7 +7,7 @@ export default {
     props: {
         okBtn: {
             type: String,
-            default: '保存'
+            default: 'Save'
         },
         okBtnProps: {
             type: Object,
@@ -15,7 +15,7 @@ export default {
         },
         cancelBtn: {
             type: String,
-            default: '取消'
+            default: 'Cancel'
         },
         formItemAttrs: {
             type: Object,

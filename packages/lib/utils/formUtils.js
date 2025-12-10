@@ -3,18 +3,18 @@ import { getPathVal } from './vueCommonUtils';
 
 import { getSchemaType, isObject } from './utils';
 
-// 通用的处理表达式方法
-// 这里打破 JSON Schema 规范
+// General expression handling method
+// This breaks the JSON Schema specification
 const regExpression = /{{(.*)}}/;
 function handleExpression(rootFormData, curNodePath, expression, fallBack) {
-    // 未配置
+    // Not configured
     if (undefined === expression) {
         return undefined;
     }
 
-    // 配置了 mustache 表达式
+    // Configured mustache expression
     const matchExpression = regExpression.exec(expression);
-    regExpression.lastIndex = 0; // 重置索引
+    regExpression.lastIndex = 0; // Reset index
     if (matchExpression) {
         const code = matchExpression[1].trim();
 
@@ -24,7 +24,7 @@ function handleExpression(rootFormData, curNodePath, expression, fallBack) {
         return fn(getPathVal(rootFormData, curNodePath, 1), rootFormData);
     }
 
-    // 回退
+    // Fallback
     return fallBack();
 }
 
@@ -43,7 +43,7 @@ export function replaceArrayIndex({ schema, uiSchema } = {}, index) {
     }, {});
 }
 
-// 是否为 hidden Widget
+// Is hidden Widget
 export function isHiddenWidget({
     schema = {},
     uiSchema = {},
@@ -53,36 +53,36 @@ export function isHiddenWidget({
     const widget = uiSchema['ui:widget'] || schema['ui:widget'];
     const hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden'];
 
-    // 支持配置 ui:hidden 表达式
+    // Support configuring ui:hidden expression
     return widget === 'HiddenWidget'
         || widget === 'hidden'
         || !!handleExpression(rootFormData, curNodePath, hiddenExpression, () => {
-            // 配置了函数 function
+            // Configured function
             if (typeof hiddenExpression === 'function') {
                 return hiddenExpression(getPathVal(rootFormData, curNodePath, 1), rootFormData);
             }
 
-            // 配置了常量 ？？
+            // Configured constant ??
             return hiddenExpression;
         });
 }
 
-// 解析当前节点 ui field
+// Resolve current node ui field
 export function getUiField(FIELDS_MAP, {
     schema = {},
     uiSchema = {},
 }) {
     const field = schema['ui:field'] || uiSchema['ui:field'];
 
-    // vue 组件，或者已注册的组件名
+    // Vue component, or registered component name
     if (typeof field === 'function' || typeof field === 'object' || typeof field === 'string') {
         return {
             field,
-            fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'], // 自定义field ，支持传入额外的 props
+            fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'], // Custom field, support passing additional props
         };
     }
 
-    // 类型默认 field
+    // Type default field
     const fieldCtor = FIELDS_MAP[getSchemaType(schema)];
     if (fieldCtor) {
         return {
@@ -90,48 +90,49 @@ export function getUiField(FIELDS_MAP, {
         };
     }
 
-    // 如果包含 oneOf anyOf 返回空不异常
-    // SchemaField 会附加onyOf anyOf信息
+    // If contains oneOf anyOf return empty without error
+    // SchemaField will append oneOf anyOf information
     if (!fieldCtor && (schema.anyOf || schema.oneOf)) {
         return {
             field: null
         };
     }
 
-    // 不支持的类型
-    console.error('当前schema:', schema);
-    throw new Error(`不支持的field类型, type: ${schema.type}`);
+    // Unsupported type
+    console.error('Current schema:', schema);
+    throw new Error(`Unsupported field type, type: ${schema.type}`);
 }
 
-// 解析用户配置的 uiSchema options
+// Resolve user configured uiSchema options
 export function getUserUiOptions({
     schema = {},
     uiSchema = {},
-    curNodePath, // undefined 不处理 表达式
+    curNodePath, // undefined does not process expression
     rootFormData = {}
 }) {
-    // 支持 uiSchema配置在 schema文件中
+    // Support uiSchema configured in schema file
     return Object.assign({}, ...[schema, uiSchema].map(itemSchema => Object.keys(itemSchema)
         .reduce((options, key) => {
             const value = itemSchema[key];
-            // options 内外合并
+            // Merge options inside and outside
             if (key === 'ui:options' && isObject(value)) {
                 return { ...options, ...value };
             }
 
             // https://github.com/lljj-x/vue-json-schema-form/issues/170
-            // ui:hidden需要作为内置属性使用，不能直接透传给widget组件，如果组件需要只能在ui:options 中使用hidden传递
+            // ui:hidden needs to be used as a built-in property and cannot be directly passed to widget component.
+            //  If component needs it, it can only be passed using hidden in ui:options
             if (key !== 'ui:hidden') {
-                // 处理 ui:xxx  参数
+                // Handle ui:xxx parameters
                 if (key.indexOf('ui:') === 0) {
-                    // 只对 ui:xxx 配置形式支持表达式
+                    // Only support expression for ui:xxx configuration format
                     return {
                         ...options,
                         [key.substring(3)]: curNodePath === undefined ? value : handleExpression(rootFormData, curNodePath, value, () => value)
                     };
                 }
 
-                // 处理 fui:xxx 参数，支持所有的options 通过function配置
+                // Handle fui:xxx parameters, support all options configured through function
                 if (key.indexOf('fui:') === 0) {
                     return {
                         ...options,
@@ -149,7 +150,7 @@ export function getUserUiOptions({
         }, {})));
 }
 
-// 解析当前节点的ui options参数
+// Resolve ui options parameters of current node
 export function getUiOptions({
     schema = {},
     uiSchema = {},
@@ -161,7 +162,7 @@ export function getUiOptions({
     if (containsSpec) {
         spec.readonly = !!schema.readOnly;
         if (undefined !== schema.multipleOf) {
-            // 组件计数器步长
+            // Component counter step
             spec.step = schema.multipleOf;
         }
         if (schema.minimum || schema.minimum === 0) {
@@ -179,13 +180,13 @@ export function getUiOptions({
         }
 
         if (schema.format === 'date-time' || schema.format === 'date') {
-            // 数组类型 时间区间
-            // 打破了schema的规范，type array 配置了 format
+            // Array type time range
+            // Breaks schema specification, type array configured with format
             if (schema.type === 'array') {
                 spec.isRange = true;
                 spec.isNumberValue = !(schema.items && schema.items.type === 'string');
             } else {
-                // 字符串 ISO 时间
+                // String ISO time
                 spec.isNumberValue = !(schema.type === 'string');
             }
         }
@@ -194,11 +195,11 @@ export function getUiOptions({
     if (schema.title) spec.title = schema.title;
     if (schema.description) spec.description = schema.description;
 
-    // 计算ui配置
+    // Calculate ui configuration
     return {
         ...spec,
 
-        // 用户配置最高优先级
+        // User configuration has highest priority
         ...getUserUiOptions({
             schema,
             uiSchema,
@@ -208,8 +209,8 @@ export function getUiOptions({
     };
 }
 
-// 获取当前节点的ui 配置 （options + widget）
-// 处理成 Widget 组件需要的格式
+// Get ui configuration of current node (options + widget)
+// Process into format needed by Widget component
 export function getWidgetConfig({
     schema = {},
     uiSchema = {},
@@ -223,7 +224,7 @@ export function getWidgetConfig({
         rootFormData,
     });
 
-    // 没有配置 Widget ，各个Field组件根据类型判断
+    // No Widget configured, each Field component judges by type
     if (!uiOptions.widget && fallback) {
         Object.assign(uiOptions, fallback({
             schema,
@@ -276,7 +277,7 @@ export function getWidgetConfig({
     };
 }
 
-// 解析用户配置的 errorSchema options
+// Resolve user configured errorSchema options
 export function getUserErrOptions({
     schema = {},
     uiSchema = {},
@@ -298,7 +299,7 @@ export function getUserErrOptions({
         }, {})));
 }
 
-// ui:order object-> properties 排序
+// ui:order object-> properties sorting
 export function orderProperties(properties, order) {
     if (!Array.isArray(order)) {
         return properties;
@@ -337,8 +338,8 @@ export function orderProperties(properties, order) {
 }
 
 /**
- * 单个匹配
- * 常量，或者只有一个枚举
+ * Single match
+ * Constant, or only one enum
  */
 export function isConstant(schema) {
     return (
@@ -357,8 +358,8 @@ export function toConstant(schema) {
 }
 
 /**
- * 是否为选择列表
- * 枚举 或者 oneOf anyOf 每项都只有一个固定常量值
+ * Is select list
+ * Enum or oneOf anyOf where each item has only one fixed constant value
  * @param _schema
  * @param rootSchema
  * @returns {boolean|*}
@@ -374,7 +375,7 @@ export function isSelect(_schema, rootSchema = {}) {
     return false;
 }
 
-// items 都为一个对象
+// Items are all objects
 export function isFixedItems(schema) {
     return (
         Array.isArray(schema.items)
@@ -383,7 +384,7 @@ export function isFixedItems(schema) {
     );
 }
 
-// 是否为多选
+// Is multi-select
 export function isMultiSelect(schema, rootSchema = {}) {
     if (!schema.uniqueItems || !schema.items) {
         return false;
@@ -400,7 +401,7 @@ export function allowAdditionalItems(schema) {
     return isObject(schema.additionalItems);
 }
 
-// 下拉选项
+// Dropdown options
 export function optionsList(schema, uiSchema, curNodePath, rootFormData) {
     // enum
     if (schema.enum) {
@@ -411,7 +412,7 @@ export function optionsList(schema, uiSchema, curNodePath, rootFormData) {
             rootFormData
         });
 
-        // ui配置 enumNames 优先
+        // ui configured enumNames has priority
         const enumNames = uiOptions.enumNames || schema.enumNames;
         return schema.enum.map((value, i) => {
             const label = (enumNames && enumNames[i]) || String(value);
@@ -441,7 +442,7 @@ export function fallbackLabel(oriLabel, isFallback, curNodePath) {
     if (isFallback) {
         const backLabel = curNodePath.split('.').pop();
 
-        // 过滤纯数字字符串
+        // Filter pure numeric strings
         if (backLabel && (backLabel !== `${Number(backLabel)}`)) return backLabel;
     }
 

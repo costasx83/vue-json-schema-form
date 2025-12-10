@@ -1,1 +1,1 @@
-通用的配置文件
+Common configuration files

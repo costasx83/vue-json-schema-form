@@ -19,7 +19,7 @@ export default {
                 return [
                     h('span', {
                         slot: 'suffix',
-                    }, '后缀')
+                    }, 'Suffix')
                 ];
             },
             getWidget(widgetVm) {

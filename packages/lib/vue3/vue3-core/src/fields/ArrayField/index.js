@@ -29,26 +29,26 @@ export default {
     name: 'ArrayField',
     props: vueProps,
     setup(props) {
-        // 获取当前的值
+        // Get current value
         const getCurFormData = () => {
             const { rootFormData, curNodePath } = props;
             const value = getPathVal(rootFormData, curNodePath);
 
             if (Array.isArray(value)) return value;
 
-            console.error('error: type array，值必须为 array 类型');
+            console.error('error: type array, value must be array type');
 
             return [];
         };
 
-        // 通过维护一份key，一份值 来解决list key的问题
+        // Solve list key problem by maintaining a copy of keys and a copy of values
         const formKeys = ref(getCurFormData().map(() => genId()));
 
-        // 当前 formData
+        // Current formData
         const curFormData = computed(() => getCurFormData());
         watch(curFormData, (newVal, oldVal) => {
-            // 引用类型，当值不相等，说明是被重新赋值
-            // 这里应该对比原始值
+            // Reference type, when values are not equal, it means it has been reassigned
+            // Should compare original values here
             if (newVal !== oldVal && toRaw(newVal) !== toRaw(oldVal) && Array.isArray(newVal)) {
                 formKeys.value = newVal.map(() => genId());
             }
@@ -56,13 +56,13 @@ export default {
             deep: true
         });
 
-        // 处理了key的formData
+        // FormData with processed keys
         const itemsFormData = computed(() => curFormData.value.map((item, index) => ({
             key: formKeys.value[index],
             value: item
         })));
 
-        // 当前节点的ui配置
+        // Current node UI configuration
         const uiOptions = computed(() => getUserUiOptions({
             schema: props.schema,
             uiSchema: props.uiSchema,
@@ -70,13 +70,13 @@ export default {
             rootFormData: props.rootFormData
         }));
 
-        // 获取一个新item
+        // Get a new item
         const getNewFormDataRow = () => {
             const { schema, rootSchema } = props;
             let itemSchema = schema.items;
 
             // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
-            // 数组为项的集合搭配additionalItems属性需要特殊处理
+            // Array as collection of items with additionalItems property needs special handling
             if (isFixedItems(schema) && allowAdditionalItems(schema)) {
                 itemSchema = schema.additionalItems;
             }
@@ -87,7 +87,7 @@ export default {
             command,
             data
         }) => {
-            // 统一处理数组数据的 新增，删除，排序等变更
+            // Uniformly handle array data changes such as add, delete, sort, etc.
             const strategyMap = {
                 moveUp(target, { index }) {
                     arrayMethods.moveUpAt(target, index);
@@ -117,16 +117,16 @@ export default {
                 let keysParams = data;
 
                 if (command === 'add') {
-                    // 单个添加
+                    // Single add
                     formDataPrams = { newRowData: getNewFormDataRow() };
                     keysParams = { newRowData: genId() };
                 } else if (command === 'batchPush') {
-                    // 批量添加
+                    // Batch add
                     keysParams = {
                         pushArray: formDataPrams.pushArray.map(item => genId())
                     };
                 } else if (command === 'setNewTarget') {
-                    // 设置
+                    // Set
                     formDataPrams = {
                         formData: props.rootFormData,
                         nodePath: props.curNodePath,
@@ -139,10 +139,10 @@ export default {
                     };
                 }
 
-                // 同步修改 formData keys
+                // Sync modify formData keys
                 curStrategy.apply(null, [formKeys.value, keysParams]);
 
-                // 修改formData数据
+                // Modify formData data
                 curStrategy.apply(null, [curFormData.value, formDataPrams]);
 
                 // onArrayOperate
@@ -150,7 +150,7 @@ export default {
                     this.uiOptions.afterArrayOperate.call(null, curFormData.value, command, data);
                 }
             } else {
-                throw new Error(`错误 - 未知的操作：[${command}]`);
+                throw new Error(`Error - Unknown operation: [${command}]`);
             }
         };
 
@@ -165,12 +165,12 @@ export default {
             } = props;
 
             if (!schema.hasOwnProperty('items')) {
-                throw new Error(`[${schema}] 请先定义 items属性`);
+                throw new Error(`[${schema}] Please define items property first`);
             }
 
-            // 多选类型
+            // Multi-select type
             if (isMultiSelect(schema, rootSchema)) {
-                // item 为枚举固定值
+                // item is enum fixed value
                 return h(ArrayFieldMultiSelect, {
                     ...props,
                     class: {
@@ -179,9 +179,9 @@ export default {
                 });
             }
 
-            // 特殊处理 date datetime time url-upload
-            // array 支持配置 ui:widget
-            // 时间日期区间 或者 ui:widget 特殊配置
+            // Special handling for date datetime time url-upload
+            // array supports ui:widget configuration
+            // Date time range or ui:widget special configuration
             if (schema.format || schema['ui:widget'] || uiSchema['ui:widget']) {
                 return h(ArrayFieldSpecialFormat, {
                     ...props,
@@ -205,7 +205,7 @@ export default {
                     }
                 }),
 
-                // 插入一个Widget，校验 array - maxItems. minItems. uniqueItems 等items外的属性校验
+                // Insert a Widget to validate array - maxItems, minItems, uniqueItems and other properties outside items
                 props.needValidFieldGroup ? h(Widget, {
                     key: 'validateWidget-array',
                     class: {

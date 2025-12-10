@@ -59,7 +59,7 @@ export default {
         }
     },
     methods: {
-        // clone 当前模块
+        // clone current module
         cloneDog(toolItem) {
             return generateEditorItem(toolItem);
         }
@@ -94,7 +94,7 @@ export default {
         position: relative;
         margin-top: 10px;
         width: 47%;
-        max-width: 120px;  /* 避免拖动ghost样式异常 */
+        max-width: 120px;  /* Avoid drag ghost style issues */
         height: 36px;
         line-height: 36px;
         cursor: move;

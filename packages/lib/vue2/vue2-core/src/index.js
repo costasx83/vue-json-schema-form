@@ -5,16 +5,16 @@
 
 import Vue from 'vue';
 
-// 生成form表单默认数据
+// Generate default form data
 import getDefaultFormState from '@lljj/vjsf-utils/schema/getDefaultFormState';
 import { deepEquals } from '@lljj/vjsf-utils/utils';
 
-// 基础公共样式
+// Basic common styles
 import '@lljj/vjsf-utils/style/baseForm.css';
 
 import vueProps from './props';
 
-// 默认表单底部
+// Default form footer
 import FormFooter from './components/FormFooter.js';
 
 import SchemaField from './fields/SchemaField';
@@ -42,7 +42,7 @@ export default function createForm(globalOptions = {}) {
         data() {
             const formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode);
 
-            // 保持v-model双向数据及时性
+            // Keep v-model two-way data timely
             this.emitFormDataChange(formData, this.value);
 
             return {
@@ -56,8 +56,8 @@ export default function createForm(globalOptions = {}) {
             footerParams() {
                 return {
                     show: true,
-                    okBtn: '保存',
-                    cancelBtn: '取消',
+                    okBtn: 'Save',
+                    cancelBtn: 'Cancel',
                     ...this.formFooter
                 };
             }
@@ -70,7 +70,7 @@ export default function createForm(globalOptions = {}) {
                 deep: true
             },
 
-            // 用于初始化了formData，监听变更是否重新计算 formData
+            // Used for initialized formData, watch for changes to recalculate formData
             schema(newVal, oldVal) {
                 this.willReceiveProps(newVal, oldVal);
             },
@@ -81,17 +81,17 @@ export default function createForm(globalOptions = {}) {
 
         methods: {
             emitFormDataChange(newValue, oldValue) {
-                // 支持v-model ，引用类型
+                // Support v-model, reference type
                 this.$emit('input', newValue);
 
-                // change 事件，引用类型修改属性 newValue
+                // Change event, reference type modifies property newValue
                 this.$emit('on-change', {
                     newValue,
                     oldValue
                 });
             },
 
-            // 避免用于双向绑定v-model 可能导致的循环调用
+            // Avoid circular calls that may be caused by v-model two-way binding
             willReceiveProps(newVal, oldVal) {
                 if (!deepEquals(newVal, oldVal)) {
                     const formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode);
@@ -154,9 +154,9 @@ export default function createForm(globalOptions = {}) {
                 customFormats: this.customFormats,
                 customRule: this.customRule,
                 rootSchema: this.schema,
-                rootFormData: this.formData, // 根节点的数据
-                curNodePath: '', // 当前节点路径
-                globalOptions, // 全局配置，差异化ui框架
+                rootFormData: this.formData, // Root node data
+                curNodePath: '', // Current node patht node path
+                globalOptions, // Global configuration, differentiate UI frameworks
                 formProps: {
                     labelPosition,
                     labelSuffix: '：',

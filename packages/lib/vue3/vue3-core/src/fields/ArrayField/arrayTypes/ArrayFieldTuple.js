@@ -25,15 +25,15 @@ export default {
     },
     emits: ['arrayOperate'],
     setup(props, { emit, attrs }) {
-        // 兼容数据 长度不足的的场景
+        // Compatibility for data with insufficient length
         const fixItemsFormData = () => {
             const isNoArray = !Array.isArray(props.itemsFormData);
             if (isNoArray || props.itemsFormData.length < props.schema.items.length) {
-                // 这里需要补齐默认数据，计算出需要的数据
+                // Need to fill in default data, calculate required data
                 const curSchemaState = getDefaultFormState(props.schema, undefined, props.rootSchema);
 
                 if (isNoArray) {
-                    // 数据修复 - 重置一个新的值
+                    // Data repair - reset to a new value
                     emit('arrayOperate', {
                         command: 'setNewTarget',
                         data: {
@@ -41,7 +41,7 @@ export default {
                         }
                     });
                 } else {
-                    // 修复数据 - 追加不足的数据
+                    // Data repair - append insufficient data
                     emit('arrayOperate', {
                         command: 'batchPush',
                         data: {
@@ -79,7 +79,7 @@ export default {
                 rootFormData: props.rootFormData,
             });
 
-            // 拆分为 tuple 和 additional
+            // Split into tuple and additional
             const cutOfArr = cutOff(props.itemsFormData, props.schema.items.length - 1);
 
             const tupleVNodeArr = cutOfArr[0].map((item, index) => h(
@@ -95,7 +95,7 @@ export default {
                 }
             ));
 
-            // 通过order组件做可排序处理
+            // Sortable handling through order component
             const additionalVNodeArr = cutOfArr[1].map((item, index) => {
                 const tempUiSchema = replaceArrayIndex({
                     schema: schema.additionalItems,
@@ -122,10 +122,10 @@ export default {
                 };
             });
 
-            // 是否可添加同时受限于 additionalItems 属性
+            // Whether addable is also restricted by additionalItems property
             const trueAddable = (addable === undefined ? true : addable) && allowAdditionalItems(props.schema);
 
-            // 默认循环固定配置的数据 长度外的使用ArrayOrderList渲染
+            // Default loop of fixed configured data, use ArrayOrderList to render beyond length
             return h(
                 FieldGroupWrap,
                 {
@@ -140,7 +140,7 @@ export default {
                 },
                 {
                     default: () => [
-                        // 先显示Tuple固定项
+                        // Display tuple fixed items first
                         ...tupleVNodeArr,
 
                         // additional items

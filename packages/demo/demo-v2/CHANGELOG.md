@@ -8,8 +8,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 支持配置 fui 自定义function ([955308d](https://github.com/lljj-x/vue-json-schema-form/commit/955308d0c13df87ff7cfcefa1ce104af756c29fe)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
-* **lib:** 添加 afterArrayOperate 配置，支持数组操作回调 ([de1068f](https://github.com/lljj-x/vue-json-schema-form/commit/de1068f0fc413a75401fc1989ff4444feb8e0178)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
+* **lib:** Support configuring fui custom function ([955308d](https://github.com/lljj-x/vue-json-schema-form/commit/955308d0c13df87ff7cfcefa1ce104af756c29fe)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
+* **lib:** Add afterArrayOperate config, support array operation callbacks ([de1068f](https://github.com/lljj-x/vue-json-schema-form/commit/de1068f0fc413a75401fc1989ff4444feb8e0178)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
 
 
 
@@ -84,7 +84,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 添加 defaultSelectFirstOption 配置 ([bf17a61](https://github.com/lljj-x/vue-json-schema-form/commit/bf17a616fc000194ddda1259a708b9c52571d3fd)), closes [#171](https://github.com/lljj-x/vue-json-schema-form/issues/171)
+* **lib:** Add defaultSelectFirstOption config ([bf17a61](https://github.com/lljj-x/vue-json-schema-form/commit/bf17a616fc000194ddda1259a708b9c52571d3fd)), closes [#171](https://github.com/lljj-x/vue-json-schema-form/issues/171)
 
 
 
@@ -111,7 +111,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 优化样式 ([e53291b](https://github.com/lljj-x/vue-json-schema-form/commit/e53291b8395fdceb971f15f72c9e809cdee8ec7e))
+* **lib:** Optimize styles ([e53291b](https://github.com/lljj-x/vue-json-schema-form/commit/e53291b8395fdceb971f15f72c9e809cdee8ec7e))
 
 
 

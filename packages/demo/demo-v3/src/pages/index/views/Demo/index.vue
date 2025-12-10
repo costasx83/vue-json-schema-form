@@ -7,7 +7,7 @@
         >
             <div :class="$style.btns">
                 <template v-if="isUseLabelWidth">
-                    <span style="font-size: 13px;">标签：</span>
+                    <span style="font-size: 13px;">Label:</span>
                     <el-slider
                         v-model="formProps.labelWidth"
                         style="width: 70px; margin-right: 6px;"
@@ -47,44 +47,44 @@
                     style="margin-right: 6px;"
                     size="small"
                 >
-                    底部
+                    Footer
                 </el-checkbox>
                 <el-select
                     v-model="formProps.layoutColumn"
-                    placeholder="布局"
+                    placeholder="Layout"
                     size="small"
                     style="margin-right: 6px;width: 100px;"
                 >
                     <el-option
                         :value="1"
-                        label="一列显示"
+                        label="One Column"
                     ></el-option>
                     <el-option
                         :value="2"
-                        label="二列显示"
+                        label="Two Columns"
                     ></el-option>
                     <el-option
                         :value="3"
-                        label="三列显示"
+                        label="Three Columns"
                     ></el-option>
                 </el-select>
                 <el-select
                     v-model="formProps.labelPosition"
-                    placeholder="对其"
+                    placeholder="Align"
                     size="small"
                     style="margin-right: 6px;width: 96px;"
                 >
                     <el-option
                         value="top"
-                        label="Label上"
+                        label="Label Top"
                     ></el-option>
                     <el-option
                         value="left"
-                        label="Label左"
+                        label="Label Left"
                     ></el-option>
                     <el-option
                         value="right"
-                        label="Label右"
+                        label="Label Right"
                     ></el-option>
                 </el-select>
                 <el-button
@@ -93,7 +93,7 @@
                     size="small"
                     @click="handlePreview"
                 >
-                    分享
+                    Share
                 </el-button>
             </div>
         </EditorHeader>
@@ -174,7 +174,7 @@
                                 class="clearfix"
                             >
                                 <span>
-                                    生成表单Ui库：
+                                    Form UI Library:
                                     <el-select
                                         v-model="curVueForm"
                                         placeholder="ui"
@@ -239,7 +239,7 @@ const VueAntForms = (async () => {
     const antdFormGenerator = (formProperty = 'default') => ({
         name: 'antFormWrap',
         setup(props, { attrs, slots }) {
-            // hack 动态install antDv，因为我不知其它地方如何获取 vue app
+            // hack: dynamically install antDv, because I don't know how to get the vue app elsewhere
             if (!installedAntdv) {
                 const instance = getCurrentInstance();
                 instance.appContext.app.use(antdv.default);
@@ -272,7 +272,7 @@ const VueNaiveForm = defineAsyncComponent(async () => {
     return {
         name: 'naiveFormWrap',
         setup(props, { attrs, slots }) {
-            // hack 动态install naive，因为我不知其它地方如何获取 vue app
+            // hack: dynamically install naive, because I don't know how to get the vue app elsewhere
             if (!installedNaive) {
                 const instance = getCurrentInstance();
                 instance.appContext.app.use(naive.default);
@@ -310,7 +310,7 @@ export default {
                 name: 'Antdv',
                 component: 'VueAntForm'
             }, {
-                name: 'Antdv（特殊适配antd4，未完整测试）',
+                name: 'Antdv (Special adaptation for antd4, not fully tested)',
                 component: 'VueAntFormV4'
             }, {
                 name: 'Naive',
@@ -466,7 +466,7 @@ export default {
             try {
                 this[vmKey] = val ? JSON.parse(val) : {};
             } catch (e) {
-                // 无法解析时不更新数据
+                // Do not update data when unable to parse
                 // this[vmKey] = {};
             }
         },
@@ -484,7 +484,7 @@ export default {
                 // nothing ...
             }
 
-            // 还原 labelWidth
+            // Restore labelWidth
             if (queryParamsObj.formProps && queryParamsObj.formProps.labelWidth) {
                 queryParamsObj.formProps.labelWidth = parseFloat(queryParamsObj.formProps.labelWidth) / 4;
             }
@@ -551,7 +551,7 @@ export default {
             const url = `${window.location.origin}${window.location.pathname}${genRoute.href}`;
 
             if (this.clipboard(url)) {
-                this.$message.success('复制预览地址成功');
+                this.$message.success('Preview URL copied successfully');
             }
         }
     }

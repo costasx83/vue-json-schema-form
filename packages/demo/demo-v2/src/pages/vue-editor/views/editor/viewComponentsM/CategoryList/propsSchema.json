@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "title": "配置分类条",
-    "description": "分别配置每个分类的名称以及图片链接，最多配置10组，最少配置3组",
+    "title": "Configure Category Bar",
+    "description": "Configure each category's name and image link separately, maximum 10 groups, minimum 3 groups",
     "properties": {
         "imgList": {
             "type": "array",
@@ -13,16 +13,16 @@
                 "required": ["name"],
                 "properties": {
                     "name": {
-                        "title": "配置类别名称",
+                        "title": "Configure Category Name",
                         "type": "string",
-                        "default": "京东",
+                        "default": "JD",
                         "ui:options": {
-                            "placeholder": "请输入类别名称"
+                            "placeholder": "Please enter category name"
                         }
                     },
                     "img": {
                         "type": "object",
-                        "title": "配置图片和连接",
+                        "title": "Configure Image and Link",
                         "required": [
                             "imgUrl",
                             "imgLink"
@@ -33,13 +33,13 @@
                                 "type": "string",
                                 "format": "uri",
                                 "default": "https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
-                                "err:format": "请输入正确的的图片地址"
+                                "err:format": "Please enter the correct image address"
                             },
                             "imgLink": {
                                 "type": "string",
                                 "format": "uri",
                                 "default": "https://www.tmall.com",
-                                "err:format": "请输入正确的的链接地址"
+                                "err:format": "Please enter the correct link address"
                             }
                         }
                     }

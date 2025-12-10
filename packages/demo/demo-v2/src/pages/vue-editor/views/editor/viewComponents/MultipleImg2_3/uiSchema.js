@@ -11,26 +11,26 @@ const line2Item = genImgItem({
 
 export default {
     imgItem1_1: {
-        'ui:title': '图片上左',
+        'ui:title': 'Image top left',
         ...genImgItem({
             width: 786,
             height: 420,
         })
     },
     imgItem1_2: {
-        'ui:title': '图片上右',
+        'ui:title': 'Image top right',
         ...line2Item
     },
     imgItem2_1: {
-        'ui:title': '图片下左',
+        'ui:title': 'Image bottom left',
         ...line2Item
     },
     imgItem2_2: {
-        'ui:title': '图片下中',
+        'ui:title': 'Image bottom center',
         ...line2Item
     },
     imgItem2_3: {
-        'ui:title': '图片下右',
+        'ui:title': 'Image bottom right',
         ...line2Item
     }
 };

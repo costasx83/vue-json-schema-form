@@ -1,6 +1,6 @@
 /**
- * 根据schema计算出formData的初始值
- * 源码来自：react-jsonschema-form 做了细节调整，重写了allOf实现逻辑
+ * Calculate initial value of formData based on schema
+ * Source code from: react-jsonschema-form with detail adjustments, rewrote allOf implementation logic
  * https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/utils.js#L283
  */
 
@@ -23,7 +23,7 @@ import retrieveSchema, { /* resolveDependencies, */ resolveAllOf } from './retri
 function mergeDefaultsWithFormData(defaults, formData) {
     if (Array.isArray(formData)) {
         if (!Array.isArray(defaults)) {
-            console.warn('无效的formData，已覆盖数据', formData);
+            console.warn('Invalid formData, data has been overwritten', formData);
             return defaults;
         }
         return formData.map((value, idx) => {
@@ -56,7 +56,7 @@ function computeDefaults(
     let schema = isObject(_schema) ? _schema : {};
     const formData = isObject(rawFormData) ? rawFormData : {};
 
-    // allOf 处理合并数据
+    // allOf processing and merging data
     if ('allOf' in schema) {
         schema = resolveAllOf(schema, rootSchema, formData);
     }
@@ -212,14 +212,14 @@ function computeDefaults(
             }
         }
 
-        // undefined 默认一个空数组
+        // undefined defaults to empty array
         defaults = defaults === undefined ? [] : defaults;
     }
     return defaults;
 }
 
 
-// 获取默认form data
+// Get default form data
 export default function getDefaultFormState(
     _schema,
     formData,
@@ -246,7 +246,7 @@ export default function getDefaultFormState(
         return defaults;
     }
 
-    // 传入formData时，合并传入数据
+    // When formData is passed in, merge the passed data
     if (isObject(formData) || Array.isArray(formData)) {
         return mergeDefaultsWithFormData(defaults, formData);
     }

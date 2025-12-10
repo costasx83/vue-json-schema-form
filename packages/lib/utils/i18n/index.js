@@ -2,14 +2,15 @@
  * Created by Liu.Jun on 2020/4/30 11:22.
  */
 
-// 使用 ajv-i18n 这里只为初始化默认可以设置语言
-// 也可以自己使用官方的语言包
+// Using ajv-i18n, this is only for initializing the default language setting
+// You can also use the official language pack
 // https://github.com/epoberezkin/ajv-i18n/tree/master/localize
 
-import localizeZh from './localize/zh';
+// import localizeZh from './localize/zh';
+import localizeEn from './localize/en';
 
 export default {
-    $$currentLocalizeFn: localizeZh,
+    $$currentLocalizeFn: localizeEn,
     getCurrentLocalize() {
         return this.$$currentLocalizeFn;
     },

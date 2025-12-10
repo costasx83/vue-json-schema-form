@@ -5,9 +5,9 @@
             :class="$style.content"
         >
             <div :class="$style.countdown">
-                <div :class="$style.countdownTitle">京东秒杀</div>
+                <div :class="$style.countdownTitle">JD Flash Sale</div>
                 <div :class="$style.countdownTime">
-                    <p>活动开始时间：</p>
+                    <p>Activity start time:</p>
                     <strong>{{ formData.startTime }}</strong>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                                 </el-image>
                             </a>
                             <div :class="$style.goodsTitle">
-                                商品标题，可以结合具体业务活动商品数据
+                                Product title, can be combined with specific business activity product data
                             </div>
                             <div :class="$style.goodsPrice">
                                 <span :class="$style.priceMiaosha">
@@ -84,7 +84,7 @@
             v-else
             :line-num="1"
             :line-items="6"
-            title="秒杀商品"
+            title="Flash sale products"
         ></GoodsListView>
     </div>
 </template>

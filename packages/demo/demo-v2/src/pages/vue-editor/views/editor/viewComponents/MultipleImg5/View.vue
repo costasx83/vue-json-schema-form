@@ -28,7 +28,7 @@
             v-else
             :line-num="1"
             :line-items="5"
-            title="多图模块(5)"
+            title="Multiple images module (5)"
         ></GoodsListView>
     </div>
 </template>

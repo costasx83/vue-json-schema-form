@@ -1,12 +1,12 @@
 # @lljj/vjsf-utils
-表单基础通用工具类，具体的参数可参见源码
+Form basic common utility classes, see source code for specific parameters
 
 ## @lljj/vjsf-utils/i18n
- 管理当前多语言
+Manage current multi-language
 
 
 ## @lljj/vjsf-utils/schema/getDefaultFormState
-根据 jsonSchema 和 formData，计算当前schema value
+Calculate current schema value based on jsonSchema and formData
 
 ## @lljj/vjsf-utils/schema/validate
 
@@ -17,24 +17,24 @@ import {
     isValid
 } from '@lljj/vjsf-utils/schema/validate';
 
-// 直接调用 ajv 验证schema，返回格式化后的结果
+// Directly call ajv to validate schema, return formatted result
 ajvValidateFormData(...args);
 
-// 校验数据并处理多语言(只处理当前节点)
+// Validate data and process multi-language (only process current node)
 validateFormDataAndTransformMsg(...args);
 
-// 返回数据是否校验成功
+// Return whether data validation is successful
 isValid(...args);
 
-// 返回数据是否校验成功
+// Return whether data validation is successful
 isValid(...args);
 ```
 
 ## @lljj/vjsf-utils/arrayUtils
-数组相关的工具类
+Array related utility classes
 
 ## @lljj/vjsf-utils/formUtils
-表单相关的工具类
+Form related utility classes
 
 ## @lljj/vjsf-utils/vueUtils
-Vue相关的工具类
+Vue related utility classes

@@ -1,10 +1,10 @@
 /**
- * Created by Liu.Jun on 2020/5/18 9:50 下午.
+ * Created by Liu.Jun on 2020/5/18 9:50 PM.
  */
 
 export default {
     schema: {
-        title: 'Refer 和 Refer递归调用',
+        title: 'References and Recursive References',
         definitions: {
             address: {
                 type: 'object',

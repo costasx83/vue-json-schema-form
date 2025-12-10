@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/11/26 10:01 下午.
+ * Created by Liu.Jun on 2020/11/26 10:01 PM.
  */
 
 import { h, ref } from 'vue';
@@ -21,9 +21,9 @@ export default {
         },
         btnText: {
             type: String,
-            default: '点击上传'
+            default: 'Click to Upload'
         },
-        // 传入 VNode
+        // Pass in VNode
         slots: {
             type: null,
             default: null
@@ -31,7 +31,7 @@ export default {
     },
     inheritAttrs: false,
     setup(props, { attrs, emit }) {
-        // 设置默认 fileList
+        // Set default fileList
         const curModelValue = props.modelValue;
         const isArrayValue = Array.isArray(curModelValue);
 
@@ -40,7 +40,7 @@ export default {
                 return curModelValue.map((item, index) => ({
                     uid: String(index),
                     status: 'done',
-                    name: `已上传文件（${index + 1}）`,
+                    name: `Uploaded File (${index + 1})`,
                     url: item
                 }));
             }
@@ -48,7 +48,7 @@ export default {
                 return [{
                     uid: '1',
                     status: 'done',
-                    name: '已上传文件',
+                    name: 'Uploaded File',
                     url: curModelValue
                 }];
             }

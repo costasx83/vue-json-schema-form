@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/11/22 9:48 下午.
+ * Created by Liu.Jun on 2020/11/22 9:48 PM.
  */
 
 export function isEmptyObject(obj) {

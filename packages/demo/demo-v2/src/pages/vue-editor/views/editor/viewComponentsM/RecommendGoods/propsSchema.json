@@ -1,15 +1,15 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "title": "配置分类条",
-    "description": "分别配置每个分类的名称以及图片链接，最多配置10组，最少配置3组",
+    "title": "Configure Category Bar",
+    "description": "Configure each category's name and image link separately, maximum 10 groups, minimum 3 groups",
     "properties": {
         "title": {
-            "title": "推荐名称",
+            "title": "Recommendation Name",
             "type": "string",
-            "default": "限时抢购",
+            "default": "Limited Time Sale",
             "ui:options": {
-                "placeholder": "请输入推荐名称"
+                "placeholder": "Please enter recommendation name"
             }
         },
         "imgList": {
@@ -18,7 +18,7 @@
             "maxItems": 4,
             "items": {
                 "type": "object",
-                "title": "配置图片和连接",
+                "title": "Configure Image and Link",
                 "required": [
                     "imgUrl",
                     "imgLink"
@@ -29,13 +29,13 @@
                         "type": "string",
                         "format": "uri",
                         "default": "https://img.alicdn.com/tfs/TB1vYlkdnZmx1VjSZFGXXax2XXa-468-644.jpg_320x5000q100.jpg_.webp",
-                        "err:format": "请输入正确的的图片地址"
+                        "err:format": "Please enter the correct image address"
                     },
                     "imgLink": {
                         "type": "string",
                         "format": "uri",
                         "default": "https://www.tmall.com",
-                        "err:format": "请输入正确的的链接地址"
+                        "err:format": "Please enter the correct link address"
                     }
                 }
             }

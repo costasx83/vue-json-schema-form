@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/5/17 10:41 下午.
+ * Created by Liu.Jun on 2020/5/17 10:41 PM.
  */
 
 import { modelValueComponent } from '@lljj/vjsf-utils/vue3Utils';

@@ -1,12 +1,12 @@
 /**
- * Created by Liu.Jun on 2020/3/31 11:30 上午.
+ * Created by Liu.Jun on 2020/3/31 11:30 AM.
  */
 
 import { getDefaultFormState } from '@lljj/vue-json-schema-form';
 import { genId } from 'demo-common/utils/id';
 import { isObject, isEmptyObject } from './utils';
 
-// 生成一个新的editor item
+// Generate a new editor item
 export function generateEditorItem(toolItem) {
     const currentComponentPack = toolItem.componentPack;
 
@@ -25,7 +25,7 @@ export function generateEditorItem(toolItem) {
         componentValue: {
             ...!toolItem.componentValue || isEmptyObject(toolItem.componentValue) ? getDefaultFormState(
                 currentComponentPack.propsSchema,
-                {}, // 初始值为空
+                {}, // Initial value is empty
                 currentComponentPack.propsSchema
             ) : toolItem.componentValue,
             property: (toolItem.componentValue && toolItem.componentValue.property) || id
@@ -37,12 +37,12 @@ export function generateEditorItem(toolItem) {
     };
 }
 
-// formLabel格式化
+// Format formLabel
 export function formatFormLabelWidth(value) {
     return value ? `${value * 4}px` : undefined;
 }
 
-// 转回来
+// Convert back
 export function deFormatFormLabelWidth(value) {
     return parseFloat(value) / 4;
 }
@@ -54,15 +54,15 @@ function filterObj(obj, filter = (key, value) => (isObject(value) && !isEmptyObj
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             const filterVal = filter(key, obj[key]);
-            // 返回值Bool
+            // Return value is Bool
             const isBoolOrUndefined = filterVal === undefined || Boolean(filterVal) === filterVal;
 
-            // 如果是 Boolean 类型，使用原值
+            // If it's a Boolean type, use the original value
             if (isBoolOrUndefined && filterVal) {
                 result[key] = obj[key];
             }
 
-            // 非Boolean类型 使用返回后的值
+            // For non-Boolean types, use the returned value
             if (!isBoolOrUndefined) {
                 result[key] = filterVal;
             }
@@ -104,8 +104,8 @@ export function editorItem2SchemaFieldProps(editorItem, formData) {
         })
     };
 
-    // false 时可省略的属性值
-    // todo: 这里需要优化自动对比default的值
+    // Attribute values that can be omitted when false
+    // todo: This needs optimization to automatically compare default values
     const ignoreAttrs = {
         // slider
         showInput: false,
@@ -137,14 +137,14 @@ export function editorItem2SchemaFieldProps(editorItem, formData) {
         ...uiOptions,
         ...ruleUiOptions
     }, (key, value) => {
-        // 省略掉默认值
+        // Omit default values
         if (ignoreAttrs[key] === value) return false;
 
         if (key === 'labelWidth') {
             return formatFormLabelWidth(value);
         }
 
-        // 过滤undefined
+        // Filter undefined
         return value !== undefined;
     });
 
@@ -189,12 +189,12 @@ export function componentList2JsonSchema(componentList) {
 
     const hasChild = data => Array.isArray(data.childList) && data.childList.length > 0;
 
-    // 队列广度，同时标记父节点
+    // Breadth-first queue, mark parent node simultaneously
     while (queue.length) {
-        // 出队
+        // Dequeue
         const item = queue.shift();
 
-        // 标记节点 切换parent
+        // Mark node, switch parent
         if (item.$$parentFlag) {
             parentObj = item.$$parentFlag;
         } else {
@@ -204,18 +204,18 @@ export function componentList2JsonSchema(componentList) {
                 ...uiSchema
             };
 
-            // 入队
+            // Enqueue
             if (hasChild(item)) {
                 queue = [...queue, { $$parentFlag: curSchema }, ...item.childList];
             }
 
-            // 连接数据
+            // Connect data
             (parentObj.properties || parentObj.items.properties)[item.componentValue.property] = curSchema;
 
-            // 设置 ui:order
+            // Set ui:order
             (parentObj['ui:order'] || parentObj.items['ui:order']).push(item.componentValue.property);
 
-            // 设置 required
+            // Set required
             if (required) {
                 (parentObj.required || parentObj.items.required).push(item.componentValue.property);
             }

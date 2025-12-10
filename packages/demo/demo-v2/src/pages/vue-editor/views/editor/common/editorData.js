@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/3/31 11:30 上午.
+ * Created by Liu.Jun on 2020/3/31 11:30 AM.
  */
 
 import { getDefaultFormState } from '@lljj/vue-json-schema-form';
@@ -14,7 +14,7 @@ function isEmptyObject(obj) {
     return true;
 }
 
-// 生成一个新的editor item
+// Generate a new editor item
 export function generateEditorItem(toolItem) {
     const currentComponentPack = toolItem.componentPack;
 
@@ -24,7 +24,7 @@ export function generateEditorItem(toolItem) {
     )
         ? getDefaultFormState(
             currentComponentPack.propsSchema,
-            {}, // 初始值为空
+            {}, // Initial value is empty
             currentComponentPack.propsSchema
         )
         : toolItem.componentValue || {};

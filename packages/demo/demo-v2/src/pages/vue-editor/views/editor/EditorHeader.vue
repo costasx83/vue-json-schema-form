@@ -2,7 +2,7 @@
     <BaseEditorHeader default-active="3">
         <el-select
             v-model="platform"
-            placeholder="请选择"
+            placeholder="Please select"
             :class="$style.selectPlatform"
         >
             <el-option
@@ -32,19 +32,19 @@
             circle
             @click="handlePlus"
         ></el-button>
-        <el-button @click="$emit('onPreview')">预览</el-button>
+        <el-button @click="$emit('onPreview')">Preview</el-button>
         <el-button
             type="primary"
             plain
             @click="$emit('onSave')"
         >
-            保存
+            Save
         </el-button>
         <el-button
             type="primary"
             @click="$emit('onPublish')"
         >
-            发布
+            Publish
         </el-button>
     </BaseEditorHeader>
 </template>

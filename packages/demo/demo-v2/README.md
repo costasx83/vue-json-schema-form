@@ -1,23 +1,27 @@
-# Vue2 Demo 演示相关
+# Vue2 Demo Related
 
 
-## 同时运行 `Playground/表单Schema生成器/活动编辑器`
+## Run `Playground/Form Schema Generator/Activity Editor` Simultaneously
 ```ssh
 # Playground http://127.0.0.1:8800/
-# 可视化表单Schema编辑器 http://127.0.0.1:8800/schema-generator.html
-# （H5）活动编辑器 http://127.0.0.1:8800/vue-editor.html
+# Visual Form Schema Editor http://127.0.0.1:8800/schema-generator.html
+# (H5) Activity Editor http://127.0.0.1:8800/vue-editor.html
 
 yarn run demo:dev
+
+If you get an error [ERR_OSSL_EVP_UNSUPPORTED] then use:
+
+$env:NODE_OPTIONS="--openssl-legacy-provider"; yarn demo:dev   
 ```
 
-## 单个运行（指定entry编译更快）
+## Run Individually (faster compilation by specifying entry)
 ```ssh
-# 只运行 Playground
+# Run only Playground
 yarn run demo:dev --dir=index
 
-# 只运行 表单Schema生成器
+# Run only Form Schema Generator
 yarn run demo:dev --dir=schema-generator
 
-# 只运行（H5）活动编辑器
+# Run only (H5) Activity Editor
 yarn run demo:dev --dir=vue-editor
 ```

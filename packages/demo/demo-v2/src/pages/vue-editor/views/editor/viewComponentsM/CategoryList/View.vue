@@ -27,7 +27,7 @@
             v-else
             :class="$style.emptyBox"
         >
-            点击配置数据
+            Click to configure data
         </div>
     </div>
 </template>

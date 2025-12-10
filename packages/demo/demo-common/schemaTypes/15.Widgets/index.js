@@ -159,7 +159,7 @@ export default {
     errorSchema: {
         stringFormats: {
             email: {
-                'err:required': '邮箱地址必须输入'
+                'err:required': 'Email address is required'
             }
         }
     }

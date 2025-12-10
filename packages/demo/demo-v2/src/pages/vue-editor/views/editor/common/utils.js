@@ -6,37 +6,37 @@ import { genId } from 'demo-common/utils/id';
 
 
 export function deepFreeze(obj) {
-    // 取回定义在obj上的属性名
+    // Retrieve property names defined on obj
     const propNames = Object.getOwnPropertyNames(obj);
 
-    // 在冻结自身之前冻结属性
+    // Freeze properties before freezing self
     propNames.forEach((name) => {
         const prop = obj[name];
 
-        // 如果prop是个对象，冻结它
+        // If prop is an object, freeze it
         if (typeof prop === 'object' && prop !== null) deepFreeze(prop);
     });
 
-    // 冻结自身(no-op if already frozen)
+    // Freeze itself (no-op if already frozen)
     return Object.freeze(obj);
 }
 
-// 初始化配置数据并返回所有组件
+// Initialize config data and return all components
 export function getComponentsAndInitToolsConfig(configTools) {
-    // 平铺开所有组
+    // Flatten all groups
     const componentList = configTools.reduce((preVal, curVal) => [
         ...preVal,
         ...curVal.componentList
     ], []);
 
-    // 注册组件结构
+    // Register component structure
     const data = componentList.reduce((preVal, { name: configItemName, componentPack }) => {
-        // 修改原数据
-        // 生成 From组件和View组件 Name
+        // Modify original datay original data
+        // Generate Form component and View component Name
         const needViewName = !componentPack.componentViewName;
         const needFormName = componentPack.Form && !componentPack.componentFormName;
 
-        // 需要生成viewName 或者 formName
+        // Need to generate viewName or formName
         if (needViewName || needFormName) {
             const id = configItemName || genId();
             if (needViewName) componentPack.componentViewName = `View${id}`;
@@ -53,7 +53,7 @@ export function getComponentsAndInitToolsConfig(configTools) {
     }, {});
 
 
-    // 冻结配置数据
+    // Freeze config data
     Object.freeze(configTools);
     return data;
 }

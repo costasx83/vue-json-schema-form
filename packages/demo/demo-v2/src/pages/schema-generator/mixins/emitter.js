@@ -5,7 +5,7 @@ function broadcast(componentName, eventName, params) {
         if (name === componentName) {
             child.$emit(...[eventName].concat(params));
         } else {
-            // 如果 params 是空数组，接收到的会是 undefined
+            // If params is an empty array, it will be received as undefined
             broadcast.apply(child, [componentName, eventName].concat([params]));
         }
     });

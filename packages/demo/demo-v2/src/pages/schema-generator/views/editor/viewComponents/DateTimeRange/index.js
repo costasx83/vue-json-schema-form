@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: 'DateTime范围(时间戳)',
+    title: 'DateTime Range (timestamp)',
     type: 'array',
     format: 'date-time',
     items: {
@@ -18,7 +18,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 uiOptions: {
@@ -26,13 +26,13 @@ export default {
                     properties: {
                         startPlaceholder: {
                             type: 'string',
-                            title: '开始占位符',
-                            default: '开始日期'
+                            title: 'Start Placeholder',
+                            default: 'Start Date'
                         },
                         endPlaceholder: {
                             type: 'string',
-                            title: '结束占位符',
-                            default: '结束日期'
+                            title: 'End Placeholder',
+                            default: 'End Date'
                         }
                     }
                 }

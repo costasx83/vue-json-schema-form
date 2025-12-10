@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: 'DateTime(时间戳)',
+    title: 'DateTime (timestamp)',
     type: 'number',
     format: 'date-time'
 };
@@ -15,7 +15,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 uiOptions: {
@@ -23,8 +23,8 @@ export default {
                     properties: {
                         placeholder: {
                             type: 'string',
-                            title: '输入占位文本',
-                            default: '请选择日期时间'
+                            title: 'Placeholder',
+                            default: 'Please select date time'
                         }
                     }
                 }

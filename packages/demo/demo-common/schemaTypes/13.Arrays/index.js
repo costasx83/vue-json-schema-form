@@ -168,8 +168,8 @@ export default {
                 },
                 {
                     'ui:options': {
-                        activeText: '开启',
-                        inactiveText: '不开启'
+                        activeText: 'On',
+                        inactiveText: 'Off'
                     }
                 }
             ],
@@ -197,7 +197,7 @@ export default {
             },
             items: {
                 'ui:options': {
-                    title: '不显示操作条'
+                    title: 'Hide toolbar'
                 }
             }
         },

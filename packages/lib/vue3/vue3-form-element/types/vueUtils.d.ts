@@ -1,24 +1,24 @@
 declare namespace vueUtils {
 
-    /** nodePath 转css类名 */
+    /** Convert nodePath to css class name */
     function nodePath2ClassName(path: string): string;
 
-    /** 是否为根节点 */
+    /** Whether it is a root node */
     function isRootNodePath(path: string): boolean;
 
-    /** 计算当前节点path */
+    /** Calculate current node path */
     function computedCurPath(prePath: string, curKey: string): string;
 
-    /** 计算当前节点name */
+    /** Calculate current node name */
     function deletePathVal(vueData: object, name: string): void;
 
-    /** 设置当前path值 */
+    /** Set current path value */
     function setPathVal(vueData: object, path: string, value: any): void;
 
-    /** 设置当前path值 */
+    /** Set current path value */
     function getPathVal(vueData: object, path: string): object;
 
-    /** 设置当前path值 */
+    /** Set current path value */
     function path2prop(path: string): string;
 }
 

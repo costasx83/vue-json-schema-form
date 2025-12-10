@@ -14,7 +14,7 @@ export default {
     install(app) {
         app.use(ElementPlus);
 
-        // 原型方法
+        // Prototype methods
         app.config.globalProperties.$loading = ElLoading.service;
         app.config.globalProperties.$alert = ElMessageBox.alert;
         app.config.globalProperties.$confirm = ElMessageBox.confirm;

@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/5/13 8:47 下午.
+ * Created by Liu.Jun on 2020/5/13 8:47 PM.
  */
 
 const routes = [

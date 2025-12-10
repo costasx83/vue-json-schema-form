@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '颜色选择器',
+    title: 'Color Picker',
     type: 'string',
     format: 'color'
 };

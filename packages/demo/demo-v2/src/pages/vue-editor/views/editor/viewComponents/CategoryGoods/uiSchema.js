@@ -6,20 +6,20 @@ import genImgItem from '../_commonConfig/ui/genImgItem';
 
 export default {
     title: {
-        'ui:placeholder': '请输入标题'
+        'ui:placeholder': 'Please enter title'
     },
     subTitle: {
-        'ui:placeholder': '请输入副标题'
+        'ui:placeholder': 'Please enter subtitle'
     },
     banner: {
         link: {
             ...genImgItem()
         },
         bannerTitle: {
-            'ui:placeholder': '请输入banner标题'
+            'ui:placeholder': 'Please enter banner title'
         },
         bannerSubTitle: {
-            'ui:placeholder': '请输入banner副标题'
+            'ui:placeholder': 'Please enter banner subtitle'
         }
     },
     goodsList: {

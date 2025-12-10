@@ -18,17 +18,17 @@ export function isEmptyObject(obj) {
 }
 
 export function deepFreeze(obj) {
-    // 取回定义在obj上的属性名
+    // Retrieve property names defined on obj
     const propNames = Object.getOwnPropertyNames(obj);
 
-    // 在冻结自身之前冻结属性
+    // Freeze properties before freezing itself
     propNames.forEach((name) => {
         const prop = obj[name];
 
-        // 如果prop是个对象，冻结它
+        // If prop is an object, freeze it
         if (typeof prop === 'object' && prop !== null) deepFreeze(prop);
     });
 
-    // 冻结自身(no-op if already frozen)
+    // Freeze itself (no-op if already frozen)
     return Object.freeze(obj);
 }

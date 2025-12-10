@@ -23,7 +23,7 @@ export default {
                 schema, rootSchema, uiSchema, curNodePath, rootFormData, globalOptions
             } = props;
 
-            // 这里需要索引当前节点，通过到schemaField组件的会统一处理
+            // Need to index the current node, which will be handled uniformly by the schemaField component
             const itemsSchema = retrieveSchema(schema.items, rootSchema);
 
             const enumOptions = optionsList(itemsSchema, uiSchema, curNodePath, rootFormData);
@@ -37,7 +37,7 @@ export default {
                 widget: globalOptions.WIDGET_MAP.common.checkboxGroup
             }));
 
-            // 存在枚举数据列表 传入 enumOptions
+            // If enumeration data list exists, pass in enumOptions
             widgetConfig.uiProps.multiple = true;
 
             if (enumOptions && !widgetConfig.uiProps.enumOptions) {

@@ -1,10 +1,10 @@
 # @lljj/vue3-form-naive
 
-基于 [NaiveUi](https://www.naiveui.com/zh-CN/os-theme) 、Vue3、 [JSON Schema](https://json-schema.org/understanding-json-schema/index.html) 生成表单
+Generate forms based on [NaiveUi](https://www.naiveui.com/zh-CN/os-theme), Vue3, and [JSON Schema](https://json-schema.org/understanding-json-schema/index.html)
 
-> 通过 [@lljj/vue3-form-core](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-core) 适配 NaiveUi 库
+> Adapted for NaiveUi library through [@lljj/vue3-form-core](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-core)
 
-## 安装
+## Installation
 
 ```ssh
 ## npm
@@ -14,7 +14,7 @@ npm install --save @lljj/vue3-form-naive
 yarn add @lljj/vue3-form-naive
 ```
 
-## 使用
+## Usage
 ```html
 <VueForm
     v-model="formData"
@@ -24,7 +24,7 @@ yarn add @lljj/vue3-form-naive
 ```
 
 ```js
-//  使用
+//  Usage
 import VueForm from '@lljj/vue3-form-naive';
 
 export default {
@@ -44,20 +44,20 @@ export default {
                 properties: {
                     userName: {
                         type: 'string',
-                        title: '用户名',
+                        title: 'Username',
                         default: 'Liu.Jun',
                     },
                     age: {
                         type: 'number',
-                        title: '年龄'
+                        title: 'Age'
                     },
                     bio: {
                         type: 'string',
-                        title: '签名',
+                        title: 'Bio',
                         minLength: 10,
-                        default: '知道的越多、就知道的越少',
+                        default: 'The more you know, the less you know',
                         'ui:options': {
-                            placeholder: '请输入你的签名',
+                            placeholder: 'Please enter your bio',
                             type: 'textarea',
                             rows: 1
                         }

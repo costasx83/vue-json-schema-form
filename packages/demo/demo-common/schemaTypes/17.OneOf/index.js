@@ -23,7 +23,7 @@
 //                 return Promise.resolve(curFn(res));
 //             });
 //         } else {
-//             // 首次调用无参数
+//             // First call without parameters
 //             preResult = Promise.resolve(curFn());
 //         }
 //     }
@@ -38,22 +38,22 @@ export default {
         ],
         properties: {
             // age: {
-            //     title: '测试基础类型 oneOf',
+            //     title: 'Test basic type oneOf',
             //     oneOf: [
             //         {
-            //             title: '测试基础类型 oneOf 5的倍数',
+            //             title: 'Test basic type oneOf multiple of 5',
             //             type: 'integer',
             //             multipleOf: 5
             //         },
             //         {
-            //             title: '测试基础类型 oneOf 3的倍数',
+            //             title: 'Test basic type oneOf multiple of 3',
             //             type: 'integer',
             //             multipleOf: 3
             //         }
             //     ]
             // },
             // test: {
-            //     title: '测试 const OneOf',
+            //     title: 'Test const OneOf',
             //     type: 'string',
             //     oneOf: [
             //         {
@@ -65,7 +65,7 @@ export default {
             //     ]
             // },
             items: {
-                title: '测试OneOf Array Items',
+                title: 'Test OneOf Array Items',
                 type: 'array',
                 items: {
                     type: 'object',
@@ -123,12 +123,12 @@ export default {
     },
     uiSchema: {
         oneOfSelect: {
-            'ui:title': '选择anyOf 选项',
+            'ui:title': 'Select anyOf option',
             'ui:widget': 'RadioWidget'
         },
         oneOf: {
             'ui:widget': 'RadioWidget',
-            'ui:title': '测试 OneOf object',
+            'ui:title': 'Test OneOf object',
             'ui:options': {
                 style: {
                     // width: '300px',
@@ -140,7 +140,7 @@ export default {
                 // widget: 'el-slider',
             },
             oneOfSelect: {
-                'ui:title': '选择选项 (uiSchema -> oneOfSelect)',
+                'ui:title': 'Select option (uiSchema -> oneOfSelect)',
                 'ui:widget': 'RadioWidget',
                 'ui:options': {
                     style: {
@@ -150,11 +150,11 @@ export default {
             },
             oneOf: [
                 {
-                    'ui:title': '5的倍数 (uiSchema)',
+                    'ui:title': 'Multiples of 5 (uiSchema)',
                     'ui:widget': 'el-slider',
                 },
                 {
-                    'ui:title': '3的倍数 (uiSchema)'
+                    'ui:title': 'Multiples of 3 (uiSchema)'
                 }
             ]
         },

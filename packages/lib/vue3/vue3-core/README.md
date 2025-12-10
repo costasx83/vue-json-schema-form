@@ -1,24 +1,24 @@
 # @lljj/vue3-form-core
-vue3 版本核心，可以基于此适配不同的 vue3 ui库。
+Vue3 version core, can be used to adapt different Vue3 UI libraries.
 
-适配的核心就是对应类型为自己的组件库，且处理默认 `props` 与自己组件库 props 之间的转换
+The core of the adaptation is to map corresponding types to your own component library and handle the conversion between default `props` and your component library props
 
-> 适配方案可参见 [@lljj/vue3-form-element](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-form-element) 、[@lljj/vue3-form-ant](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-form-ant)
+> For adaptation examples, refer to [@lljj/vue3-form-element](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-form-element) , [@lljj/vue3-form-ant](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue3/vue3-form-ant)
 
 
-## 兼容性
-npm 包直接为 es6+ 源码，需要在构建 lib 时通过babe转义
+## Compatibility
+The npm package is directly es6+ source code and needs to be transpiled through babel when building the lib
 
-如配置 rollup babel plugin：
+For example, configuring rollup babel plugin:
 
 ```js
 babel({
-    exclude: /node_modules\/(?!(@lljj)\/).*/, // 忽略跳过 @lljj
+    exclude: /node_modules\/(?!(@lljj)\/).*/, // Ignore and skip @lljj
     extensions: ['.js', '.vue'],
 })
 ```
 
-## 安装
+## Installation
 
 ```ssh
 ## npm
@@ -28,17 +28,17 @@ npm install --save @lljj/vue3-form-core
 yarn add @lljj/vue3-form-core
 ```
 
-## 使用方法
+## Usage
 
-按如下格式，配置对应组件在当前组件库中的映射关系，可以直接配置全局组件名或者组件构造函数，`默认组件 props 为elementUi格式，如果props格式不同需要中间组件来做转换`；
+Configure the mapping relationship of corresponding components in the current component library in the following format. You can directly configure global component names or component constructors. `Default component props are in elementUi format. If the props format is different, an intermediate component is needed for conversion`;
 
 ```js
 import createVue2Core from '@lljj/vue3-form-core';
 
 const globalOptions = {
-    // widget组件和现有组件库映射关系
+    // Mapping relationship between widget components and existing component library
     WIDGET_MAP: {
-        // 默认按schema type 映射默认widget组件
+        // Map default widget components by schema type
         types: {
             // type  boolean
             boolean: 'el-switch',
@@ -53,22 +53,22 @@ const globalOptions = {
             integer: 'el-input-number',
         },
 
-        // 按 schema format 映射默认widget组件，优先级高于 types
+        // Map default widget components by schema format, higher priority than types
         formats: {
             // format: color
             color: 'el-color-picker',
 
             // format: time
-            time: TimePickerWidget, // 格式 20:20:39+00:00
+            time: TimePickerWidget, // Format 20:20:39+00:00
 
             // format: date
-            date: DatePickerWidget, // 格式 2018-11-13
+            date: DatePickerWidget, // Format 2018-11-13
 
             // format: date-time
-            'date-time': DateTimePickerWidget, // 格式 2018-11-13T20:20:39+00:00
+            'date-time': DateTimePickerWidget, // Format 2018-11-13T20:20:39+00:00
         },
 
-        // 一些公共常用类型
+        // Some common public types
         common: {
             // select option
             select: SelectWidget,
@@ -80,8 +80,8 @@ const globalOptions = {
             checkboxGroup: CheckboxesWidget,
         },
 
-        // 这里配置一些 为当前ui库适配过的组件，会在运行时自动注册为全局组件，不注册为全局也可不配置
-        // Vue3 只有在组件内才能获取到当前的app，所以注册时机是在 form组件setup中，且只会注册一次。
+        // Configure some components adapted for the current UI library here. They will be automatically registered as global components at runtime. If not registered globally, no configuration is needed.
+        // Vue3 can only get the current app inside components, so the registration timing is in the form component setup and will only be registered once.
         widgetComponents: {
             CheckboxesWidget,
             RadioWidget,
@@ -92,22 +92,22 @@ const globalOptions = {
         }
     },
 
-    // 其它表单相关组件映射关系
+    // Other form-related component mapping relationships
     COMPONENT_MAP: {
-        // form组件
+        // form component
         form: 'el-form',
 
-        // formItem 组件
+        // formItem component
         formItem: 'el-form-item',
 
-        // button 组件
+        // button component
         button: 'el-button',
 
-        // popover，用在formLable 左右布局时鼠标移入显示description
+        // popover, used to display description on mouse hover when formLabel is in left/right layout
         popover: 'el-popover'
     },
     HELPERS: {
-        // 是否mini显示 description
+        // Whether to display description in mini mode
         isMiniDes(formProps) {
             return formProps && ['left', 'right'].includes(formProps.labselPosition);
         }
@@ -118,7 +118,7 @@ const mySchemaForm = createVue2Core(globalOptions);
 
 ```
 
-适配一个新的ui框架只需要适配如上的组件即可
+To adapt a new UI framework, you only need to adapt the above components
 
 ## License
 Apache-2.0

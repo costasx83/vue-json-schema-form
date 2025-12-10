@@ -15,8 +15,8 @@ import App from './App';
 // Ui
 Vue.use(elementUI);
 
-// 添加路由守卫
-routerGuards(router); // 路由守卫
+// Add router guards
+routerGuards(router); // Router guards
 
 new Vue({
     router,

@@ -14,12 +14,12 @@ function flatToolItems(toolItems) {
 }
 
 const getDefaultFormDataBySchema = (() => {
-    // cache 避免重复计算了
+    // cache to avoid redundant calculations
     const cacheValueMap = new Map();
 
     return (schema) => {
         if (!cacheValueMap.has(schema)) {
-            // 获取到配置的数据结构
+            // Get configured data structure
             const formData = getDefaultFormState(schema, {}, schema);
             cacheValueMap.set(schema, formData);
         }
@@ -31,13 +31,13 @@ const getDefaultFormDataBySchema = (() => {
 function schemaIncludes(target = {}, baseSchema = {}) {
     const keys = Object.keys(baseSchema);
     return keys.every((k) => {
-        // 跳过title 属性
+        // Skip title attribute
         if (k === 'title') return true;
 
-        // Array 类型暂不需要对比
+        // Array type does not need comparison for now
         if (Array.isArray(target[k])) return true;
 
-        // 对象递归
+        // Object recursion
         if (isObject(target[k]) && isObject(baseSchema[k])) {
             return schemaIncludes(target[k], baseSchema[k]);
         }
@@ -49,8 +49,8 @@ function schemaIncludes(target = {}, baseSchema = {}) {
 function viewSchemaMatch(target, toolItem) {
     const baseViewSchema = toolItem.componentPack.viewSchema;
 
-    // 计算 target 包含 toolItem
-    // 如果导入的属性包含了 ui:widget 那原始值也必须包含
+    // Calculate if target contains toolItem
+    // If imported property contains ui:widget then original value must also contain it
     return schemaIncludes(target, baseViewSchema)
         && (target['ui:widget'] ? !!baseViewSchema['ui:widget'] : true)
         && (target.format ? !!baseViewSchema.format : true);
@@ -64,7 +64,7 @@ function getUserConfigByViewSchema(curSchema, toolConfigList) {
     if (toolItem) {
         let componentValue = {};
 
-        // 需要计算 value
+        // Need to calculate value
         if (curSchema.$$key) {
             const curSchemaUiOptions = formUtils.getUserUiOptions({
                 schema: curSchema
@@ -78,7 +78,7 @@ function getUserConfigByViewSchema(curSchema, toolConfigList) {
 
                     const { schemaOptions, uiOptions } = emptyComponentValue[curVal];
 
-                    // 回填 schema options
+                    // Backfill schema options
                     if (schemaOptions) {
                         preVal[curVal].schemaOptions = {};
                         for (const k in schemaOptions) {
@@ -89,7 +89,7 @@ function getUserConfigByViewSchema(curSchema, toolConfigList) {
                         }
                     }
 
-                    // 回填 ui options
+                    // Backfill ui options
                     if (uiOptions) {
                         preVal[curVal].uiOptions = {};
                         for (const k in uiOptions) {
@@ -108,23 +108,23 @@ function getUserConfigByViewSchema(curSchema, toolConfigList) {
         return generateEditorItem({
             ...toolItem,
 
-            // todo:计算默认值
+            // todo: Calculate default value
             componentValue
         });
     }
 
-    // 错误只记录 title 和type
+    // Error only records title and type
     errorNode.push({
         title: curSchema.title,
         type: curSchema.type,
     });
 
-    // 异常数据
+    // Abnormal data
     return null;
 }
 
 export default function jsonSchema2ComponentList(code, toolItems) {
-    // 清空错误信息
+    // Clear error messages
     errorNode.length = 0;
 
     if (String(code).trim() === '') return null;
@@ -135,16 +135,16 @@ export default function jsonSchema2ComponentList(code, toolItems) {
         schema, formFooter, formProps, /* uiSchema, */
     } = data;
 
-    // 广度队列
+    // Breadth-first queue
     let eachQueue = [schema];
 
-    // 记录输出的list
+    // Record output list
     const componentList = [];
 
     //
     const getChildList = curSchema => (curSchema.$$parentEditorItem && curSchema.$$parentEditorItem.childList) || componentList;
 
-    // 删除附加数据
+    // Delete additional data
     const deleteAdditionalData = (curSchema) => {
         delete curSchema.$$parentEditorItem;
         delete curSchema.$$key;
@@ -154,21 +154,21 @@ export default function jsonSchema2ComponentList(code, toolItems) {
         const curSchema = eachQueue.shift();
 
         if (curSchema.properties || (curSchema.items && curSchema.items.properties)) {
-            // 对象 || 数组内对象
+            // Object || array of objects
             const curObjNode = curSchema.properties ? curSchema : curSchema.items;
 
-            // 计算当前节点
+            // Calculate current node
             const curItem = getUserConfigByViewSchema(curSchema, toolConfigList);
 
-            // 关联父子
+            // Associate parent-child
             (getChildList(curSchema)).push(curItem);
             deleteAdditionalData(curSchema);
 
-            // 处理子节点
+            // Process child nodes
             const properties = Object.keys(curObjNode.properties);
             const orderedProperties = formUtils.orderProperties(properties, curObjNode['ui:order']);
 
-            // 直接扩展当前节点了
+            // Directly extend current node
             const childSchema = orderedProperties.map(item => ({
                 $$parentEditorItem: curItem,
                 $$key: item,
@@ -178,10 +178,10 @@ export default function jsonSchema2ComponentList(code, toolItems) {
 
             eachQueue = [...eachQueue, ...childSchema];
         } else {
-            // 计算当前节点
+            // Calculate current node
             const curItem = getUserConfigByViewSchema(curSchema, toolConfigList);
 
-            // 关联父子
+            // Associate parent-child
             if (curItem) {
                 (getChildList(curSchema)).push(curItem);
             }

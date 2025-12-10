@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '是否选择(Select)',
+    title: 'Boolean (Select)',
     type: 'boolean',
     'ui:widget': 'SelectWidget'
 };
@@ -15,7 +15,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             properties: {
                 schemaOptions: {
                     type: 'object',
@@ -23,13 +23,13 @@ export default {
                         enumNames: {
                             type: 'array',
                             items: [{
-                                title: '选择文案',
+                                title: 'Active Text',
                                 type: 'string',
-                                default: '是'
+                                default: 'Yes'
                             }, {
-                                title: '非选择文案',
+                                title: 'Inactive Text',
                                 type: 'string',
-                                default: '否'
+                                default: 'No'
                             }]
                         }
                     }

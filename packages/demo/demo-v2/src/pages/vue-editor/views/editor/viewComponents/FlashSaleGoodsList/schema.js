@@ -6,12 +6,12 @@ export default {
             type: 'object',
             properties: {
                 imgUrl: {
-                    title: '图片地址',
+                    title: 'Image URL',
                     type: 'string',
                     format: 'uri'
                 },
                 imgLink: {
-                    title: '链接地址',
+                    title: 'Link URL',
                     type: 'string',
                     format: 'uri',
                     default: 'https://www.jd.com'
@@ -25,7 +25,7 @@ export default {
     },
     properties: {
         startTime: {
-            title: '配置秒杀开始时间',
+            title: 'Configure flash sale start time',
             type: 'string',
             format: 'date-time'
         },

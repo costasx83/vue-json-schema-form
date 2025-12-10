@@ -8,17 +8,17 @@ import {
     nodePath2ClassName, isRootNodePath, computedCurPath, getPathVal, path2prop, pathSeparator
 } from './vueCommonUtils';
 
-// 删除当前path值
+// Delete current path value
 export function deletePathVal(vueData, name) {
     delete vueData[name];
 }
 
-// 设置当前path值
+// Set current path value
 export function setPathVal(obj, path, value) {
     const pathArr = path.split(pathSeparator);
     for (let i = 0; i < pathArr.length; i += 1) {
         if (pathArr.length - i < 2) {
-            // 倒数第一个数据
+            // Last data
             obj[pathArr[pathArr.length - 1]] = value;
             break;
         }
@@ -32,7 +32,7 @@ export function resolveComponent(component) {
     return component;
 }
 
-// 转换antdv、naive等非moduleValue的v-model组件
+// Convert antdv, naive and other non-modelValue v-model components
 export const modelValueComponent = (component, {
     model = 'value'
 } = {}) => defineComponent({

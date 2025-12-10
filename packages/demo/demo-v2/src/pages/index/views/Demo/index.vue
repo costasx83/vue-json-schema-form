@@ -5,7 +5,7 @@
             default-active="2"
         >
             <div :class="$style.btns">
-                <span style="font-size: 13px;">标签：</span>
+                <span style="font-size: 13px;">Label:</span>
                 <el-slider
                     v-model="formProps.labelWidth"
                     style="width: 70px; margin-right: 6px;"
@@ -24,44 +24,44 @@
                     style="margin-right: 6px;"
                     size="small"
                 >
-                    底部
+                    Footer
                 </el-checkbox>
                 <el-select
                     v-model="formProps.layoutColumn"
-                    placeholder="布局"
+                    placeholder="Layout"
                     size="small"
                     style="margin-right: 6px;width: 100px;"
                 >
                     <el-option
                         :value="1"
-                        label="一列显示"
+                        label="One column"
                     ></el-option>
                     <el-option
                         :value="2"
-                        label="二列显示"
+                        label="Two columns"
                     ></el-option>
                     <el-option
                         :value="3"
-                        label="三列显示"
+                        label="Three columns"
                     ></el-option>
                 </el-select>
                 <el-select
                     v-model="formProps.labelPosition"
-                    placeholder="对其"
+                    placeholder="Alignment"
                     size="small"
                     style="margin-right: 6px;width: 96px;"
                 >
                     <el-option
                         value="top"
-                        label="Label上"
+                        label="Label Top"
                     ></el-option>
                     <el-option
                         value="left"
-                        label="Label左"
+                        label="Label Left"
                     ></el-option>
                     <el-option
                         value="right"
-                        label="Label右"
+                        label="Label Right"
                     ></el-option>
                 </el-select>
                 <el-button
@@ -70,7 +70,7 @@
                     size="small"
                     @click="handlePreview"
                 >
-                    分享
+                    Share
                 </el-button>
             </div>
         </EditorHeader>
@@ -151,7 +151,7 @@
                             class="clearfix"
                         >
                             <span>
-                                生成表单Ui库：
+                                Generate Form UI Library:
                                 <el-select
                                     v-model="curVueForm"
                                     placeholder="ui"
@@ -353,7 +353,7 @@ export default {
             try {
                 this[vmKey] = val ? JSON.parse(val) : {};
             } catch (e) {
-                // 无法解析时不更新数据
+                // Do not update data when unable to parse
                 // this[vmKey] = {};
             }
         },
@@ -371,7 +371,7 @@ export default {
                 // nothing ...
             }
 
-            // 还原 labelWidth
+            // Restore labelWidth
             if (queryParamsObj.formProps && queryParamsObj.formProps.labelWidth) {
                 queryParamsObj.formProps.labelWidth = parseFloat(queryParamsObj.formProps.labelWidth) / 4;
             }
@@ -430,7 +430,7 @@ export default {
             const url = `${window.location.origin}${window.location.pathname}${genRoute.href}`;
 
             if (this.clipboard(url)) {
-                this.$message.success('复制预览地址成功');
+                this.$message.success('Preview URL copied successfully');
             }
         }
     }

@@ -6,7 +6,7 @@ export default [
     {
         name: 'MTestModule',
         value: {
-            txt: '自定义Form表单测试'
+            txt: 'Custom Form Test'
         }
     },
     {
@@ -41,31 +41,31 @@ export default [
                         imgUrl: 'https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp',
                         imgLink: 'https://www.jd.com'
                     },
-                    name: '苏宁'
+                    name: 'Suning'
                 },
                 {
-                    name: '天猫超市',
+                    name: 'Tmall Supermarket',
                     img: {
                         imgUrl: 'https://gw.alicdn.com/tfs/TB1wSoFa5qAXuNjy1XdXXaYcVXa-196-196.png?avatar=1_110x10000.jpg_.webp',
                         imgLink: 'https://www.jd.com'
                     }
                 },
                 {
-                    name: '天猫国际',
+                    name: 'Tmall Global',
                     img: {
                         imgUrl: 'https://gw.alicdn.com/tfs/TB1Jc0fSFXXXXXTapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp',
                         imgLink: 'https://www.jd.com'
                     }
                 },
                 {
-                    name: '聚划算',
+                    name: 'Juhuasuan',
                     img: {
                         imgUrl: 'https://gw.alicdn.com/tfs/TB15lhOSFXXXXaKXpXXXXXXXXXX-147-147.png_110x10000.jpg_.webp',
                         imgLink: 'https://www.jd.com'
                     }
                 },
                 {
-                    name: '分类',
+                    name: 'Category',
                     img: {
                         imgUrl: 'https://gw.alicdn.com/tfs/TB12CFXSFXXXXcpapXXXXXXXXXX-146-147.png_110x10000.jpg_.webp',
                         imgLink: 'https://www.jd.com'
@@ -77,14 +77,14 @@ export default [
     {
         name: 'MText',
         value: {
-            txt: '推荐商品',
+            txt: 'Recommended Goods',
             txtColor: '#e46028'
         }
     },
     {
         name: 'MRecommendGoods',
         value: {
-            title: '推荐商品',
+            title: 'Recommended Goods',
             imgList: [
                 {
                     imgUrl: 'https://img.alicdn.com/bao/uploaded/i2/1714128138/O1CN017m1aWc29zFn8OMOqR_!!1714128138.jpg_400x400q60.jpg',
@@ -108,14 +108,14 @@ export default [
     {
         name: 'MText',
         value: {
-            txt: '抢购商品',
+            txt: 'Flash Sale Goods',
             txtColor: '#0A96ED'
         }
     },
     {
         name: 'MRecommendGoods',
         value: {
-            title: '抢购商品',
+            title: 'Flash Sale Goods',
             imgList: [
                 {
                     imgUrl: 'https://img.alicdn.com/bao/uploaded/i1/1714128138/O1CN01is1MtI29zFo5MCOY6_!!1714128138.jpg_400x400q60.jpg',

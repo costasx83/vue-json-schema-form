@@ -3,7 +3,7 @@
         :class="[$style.iconBox, !isNoEmpty ? $style.emptyBox : $style.contentBox]"
         class="viewEmpty_IconBox"
     >
-        <span class="module-name-tip">多图模块(2-3)</span>
+        <span class="module-name-tip">Multiple images module (2-3)</span>
         <div :class="[$style.line1, $style.block]">
             <div :class="$style.imgItem">
                 <a
@@ -145,7 +145,7 @@ export default {
             return `${parseFloat(this.smallImgWidth) * 2 + 20}px`;
         },
         isNoEmpty() {
-            // 配置了一个图片就不为空
+            // Not empty if one image is configured
             return this.formData.imgItem1_1.imgUrl && this.formData.imgItem1_1.imgLink;
         }
     },
@@ -154,7 +154,7 @@ export default {
 
 <style module>
     @import 'demo-common/css/variable.css';
-    /* 空壳 */
+    /* Empty state */
     .emptyBox {
         .imgItem {
             height: 200px;
@@ -178,7 +178,7 @@ export default {
             }
         }
     }
-    /* 数据 */
+    /* Data */
     .contentBox {
         .line2 {
             margin-top: 20px;

@@ -1,12 +1,12 @@
 /**
- * Created by Liu.Jun on 2020/7/22 11:07 下午.
+ * Created by Liu.Jun on 2020/7/22 11:07 PM.
  */
 
 export default {
     schema: {
-        title: '测试专用页',
+        title: 'Test Page',
         type: 'object',
-        description: '输入你的Schema，顶部分享按钮即可快速生成链接',
+        description: 'Enter your Schema, use the share button at the top to quickly generate a link',
         properties: {
         }
     }

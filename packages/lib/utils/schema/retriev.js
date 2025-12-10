@@ -19,7 +19,7 @@ import {
 
 // import { getMatchingOption, isValid } from './validate';
 
-// 自动添加分割线
+// Auto add divider
 
 // export const ADDITIONAL_PROPERTY_FLAG = '__additional_property';
 
@@ -210,7 +210,7 @@ function resolveReference(schema, rootSchema, formData) {
 }
 
 
-// 深度递归合并 合并allOf的每2项
+// Deep recursive merge, merge every 2 items of allOf
 function mergeSchemaAllOf(...args) {
     if (args.length < 2) return args[0];
 
@@ -225,18 +225,18 @@ function mergeSchemaAllOf(...args) {
             const left = obj1[key];
             const right = obj2[key];
 
-            // 左右一边为object
+            // Left or right one side is object
             if (isObject(left) || isObject(right)) {
 
-                // 两边同时为object
+                // Both sides are objects
                 if (isObject(left) && isObject(right)) {
                     acc[key] = mergeSchemaAllOf(left, right);
                 } else {
-                    // 其中一边为 object
+                    // One side is object
                     const [objTypeData, baseTypeData] = isObject(left) ? [left, right] : [right, left];
 
                     if (key === 'additionalProperties') {
-                        // 适配类型： 一边配置了对象一边没配置或者true false
+                        // Adapt type: one side configured object, other side not configured or true/false
                         // {
                         //     additionalProperties: {
                         //         type: 'string',
@@ -248,10 +248,10 @@ function mergeSchemaAllOf(...args) {
                         acc[key] = objTypeData;
                     }
                 }
-                // 一边为array
+                // One side is array
             } else if (Array.isArray(left) || Array.isArray(right)) {
 
-                // 同为数组取交集
+                // Both are arrays, take intersection
                 if (Array.isArray(left) && Array.isArray(right)) {
 
                     // 数组里面嵌套对象不支持 因为我不知道该怎么合并
@@ -309,7 +309,7 @@ function mergeSchemaAllOf(...args) {
             return acc;
         }, preVal);
 
-        // 先进先出
+        // First in first out
         copyArgs.splice(0, 2, preVal);
     }
 
@@ -328,7 +328,7 @@ export function resolveAllOf(schema, rootSchema, formData) {
         const { allOf, ...originProperties } = resolvedAllOfRefSchema;
         return mergeSchemaAllOf(originProperties, ...allOf);
     } catch (e) {
-        console.error(`无法合并allOf，丢弃allOf配置继续渲染: \n${e}`);
+        console.error(`Cannot merge allOf, discarding allOf config and continuing to render: \n${e}`);
         // eslint-disable-next-line no-unused-vars
         const { allOf: errAllOf, ...resolvedSchemaWithoutAllOf } = resolvedAllOfRefSchema;
         return resolvedSchemaWithoutAllOf;
@@ -414,7 +414,7 @@ function resolveSchema(schema, rootSchema = {}, formData = {}) {
     return schema;
 } */
 
-// 索引当前节点
+// Index current node
 export default function retrieveSchema(schema, rootSchema = {}, formData = {}) {
     if (!isObject(schema)) {
         return {};

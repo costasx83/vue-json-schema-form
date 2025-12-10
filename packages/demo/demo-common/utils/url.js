@@ -12,7 +12,7 @@ export function openNewPage(url, target = '_blank') {
     document.body.removeChild(a);
 }
 
-// 解析当前url的query 参数
+// Parse current URL query parameters
 export function getUrlQuery(href) {
     const url = String(href === undefined ? window.location.href : href).replace(/#.*$/, '');
     const search = url.substring(url.lastIndexOf('?') + 1);

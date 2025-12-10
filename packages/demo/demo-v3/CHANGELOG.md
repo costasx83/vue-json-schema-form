@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 支持antdv 4x 版本 ([90987f0](https://github.com/lljj-x/vue-json-schema-form/commit/90987f07107124ce569dcdaa63c570f557b56f48)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
+* **lib:** Support antdv 4x version ([90987f0](https://github.com/lljj-x/vue-json-schema-form/commit/90987f07107124ce569dcdaa63c570f557b56f48)), closes [#323](https://github.com/lljj-x/vue-json-schema-form/issues/323)
 
 
 
@@ -91,7 +91,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 添加 defaultSelectFirstOption 配置 ([bf17a61](https://github.com/lljj-x/vue-json-schema-form/commit/bf17a616fc000194ddda1259a708b9c52571d3fd)), closes [#171](https://github.com/lljj-x/vue-json-schema-form/issues/171)
+* **lib:** Add defaultSelectFirstOption config ([bf17a61](https://github.com/lljj-x/vue-json-schema-form/commit/bf17a616fc000194ddda1259a708b9c52571d3fd)), closes [#171](https://github.com/lljj-x/vue-json-schema-form/issues/171)
 
 
 
@@ -118,12 +118,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **lib:** 添加严格模式配置，更精准计算anyOf 默认值 ([10cdc08](https://github.com/lljj-x/vue-json-schema-form/commit/10cdc089087d83d8fe08e1fd379b7a1aaad0cd5d)), closes [#152](https://github.com/lljj-x/vue-json-schema-form/issues/152)
+* **lib:** Add strict mode config, more accurate calculation of anyOf default values ([10cdc08](https://github.com/lljj-x/vue-json-schema-form/commit/10cdc089087d83d8fe08e1fd379b7a1aaad0cd5d)), closes [#152](https://github.com/lljj-x/vue-json-schema-form/issues/152)
 
 
 ### Features
 
-* **lib:** 优化样式 ([e53291b](https://github.com/lljj-x/vue-json-schema-form/commit/e53291b8395fdceb971f15f72c9e809cdee8ec7e))
+* **lib:** Optimize styles ([e53291b](https://github.com/lljj-x/vue-json-schema-form/commit/e53291b8395fdceb971f15f72c9e809cdee8ec7e))
 
 
 
@@ -142,7 +142,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 添加 $$uiFormRef 属性，可在mounted 之直接访问子组件实例 ([08c6c4f](https://github.com/lljj-x/vue-json-schema-form/commit/08c6c4f2d247b4881e88fa380de8980c31cc5cd7)), closes [#127](https://github.com/lljj-x/vue-json-schema-form/issues/127)
+* **lib:** Add $$uiFormRef property, allows direct access to child component instances after mounted ([08c6c4f](https://github.com/lljj-x/vue-json-schema-form/commit/08c6c4f2d247b4881e88fa380de8980c31cc5cd7)), closes [#127](https://github.com/lljj-x/vue-json-schema-form/issues/127)
 
 
 
@@ -209,7 +209,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **demo:** 修复element plus无法打开，锁定element plus cdn版本 ([a3c4312](https://github.com/lljj-x/vue-json-schema-form/commit/a3c43121cee3cdfc06844974028f8c78f5486e4f))
+* **demo:** Fix element plus unable to open, lock element plus cdn version ([a3c4312](https://github.com/lljj-x/vue-json-schema-form/commit/a3c43121cee3cdfc06844974028f8c78f5486e4f))
 
 
 
@@ -292,7 +292,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **lib:** 添加 fallback-label 参数 ([cd2d8c3](https://github.com/lljj-x/vue-json-schema-form/commit/cd2d8c3ed72b9bc03e44eb5b86eb1b18fe67c34c)), closes [#45](https://github.com/lljj-x/vue-json-schema-form/issues/45)
+* **lib:** Add fallback-label parameter ([cd2d8c3](https://github.com/lljj-x/vue-json-schema-form/commit/cd2d8c3ed72b9bc03e44eb5b86eb1b18fe67c34c)), closes [#45](https://github.com/lljj-x/vue-json-schema-form/issues/45)
 
 
 
@@ -311,7 +311,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **vue3-antd:** 修复form label 双冒号问题 ([5b4f16c](https://github.com/lljj-x/vue-json-schema-form/commit/5b4f16c3c1a4f4b784c2fd5c1fbe7eec40cf8d7b)), closes [#46](https://github.com/lljj-x/vue-json-schema-form/issues/46)
+* **vue3-antd:** Fix form label double colon issue ([5b4f16c](https://github.com/lljj-x/vue-json-schema-form/commit/5b4f16c3c1a4f4b784c2fd5c1fbe7eec40cf8d7b)), closes [#46](https://github.com/lljj-x/vue-json-schema-form/issues/46)
 
 
 
@@ -322,7 +322,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **vue3-ant:** 更新初始化 ([71a2810](https://github.com/lljj-x/vue-json-schema-form/commit/71a281045af11f215333050396aa546dd5e78b88)), closes [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#40](https://github.com/lljj-x/vue-json-schema-form/issues/40)
+* **vue3-ant:** Update initialization ([71a2810](https://github.com/lljj-x/vue-json-schema-form/commit/71a281045af11f215333050396aa546dd5e78b88)), closes [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#27](https://github.com/lljj-x/vue-json-schema-form/issues/27) [#40](https://github.com/lljj-x/vue-json-schema-form/issues/40)
 
 
 
@@ -333,7 +333,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **style:** 修复p标签等自带边距导致的样式问题  ([7b7e43e](https://github.com/lljj-x/vue-json-schema-form/commit/7b7e43eaa06c14a436b34c38d6d69aad27d67512))
+* **style:** Fix style issues caused by default margins on p tags  ([7b7e43e](https://github.com/lljj-x/vue-json-schema-form/commit/7b7e43eaa06c14a436b34c38d6d69aad27d67512))
 
 
 

@@ -40,7 +40,7 @@ import Draggable from 'vuedraggable';
 import * as arrayMethods from 'demo-common/utils/array';
 import { generateEditorItem } from '../common/editorData';
 
-// 避免循环依赖导致undefined
+// Avoid circular dependency causing undefined
 const ViewComponentWrap = () => import('./ViewComponentWrap');
 
 export default {
@@ -81,17 +81,17 @@ export default {
         handleDragChange(...args) {
             console.log(args);
         },
-        // 计算各个组件状态栏按钮状态
+        // Calculate component toolbar button status
         computedComponentToolBarStatus() {
             this.childComponentList.forEach((component, componentIndex) => {
                 Object.assign(component.toolBar, {
-                    moveUpDisabled: componentIndex === 0, // 是否可上移动
-                    moveDownDisabled: componentIndex === this.childComponentList.length - 1, // 是否可下移
-                    removeDisabled: component.additional && component.additional.unRemove // 是否可移除
+                    moveUpDisabled: componentIndex === 0, // Whether can move up
+                    moveDownDisabled: componentIndex === this.childComponentList.length - 1, // Whether can move down
+                    removeDisabled: component.additional && component.additional.unRemove // Whether can remove
                 });
             });
         },
-        // 操作单个组件
+        // Operate single component
         handleItemOperate({ item, command }) {
             const strategyMap = {
                 moveUp(target, arrayItem) {
@@ -101,7 +101,7 @@ export default {
                     return arrayMethods.moveDown(target, arrayItem);
                 },
                 copy(target, arrayItem) {
-                    // 不copy数据
+                    // Do not copy data
                     // eslint-disable-next-line no-unused-vars
                     const { componentValue, ...emptyPack } = arrayItem;
 
@@ -117,7 +117,7 @@ export default {
             if (curStrategy) {
                 curStrategy.apply(this, [this.childComponentList, item]);
             } else {
-                this.$message.error(`系统错误 - 未知的操作：[${command}]`);
+                this.$message.error(`System error - Unknown operation: [${command}]`);
             }
         },
     }
@@ -147,7 +147,7 @@ export default {
             }
         }
 
-        /* inline 布局 */
+        /* inline layout */
         .el-form--inline {
             :local .formItem {
                 display: inline-block;
@@ -171,7 +171,7 @@ export default {
             }
         }
 
-        /* column 布局 */
+        /* column layout */
         .layoutColumn {
             .w100 {
                 width: 100% !important;
@@ -237,7 +237,7 @@ export default {
                     display: block;
                     text-align: center;
                     font-size: 12px;
-                    content: '拖入子组件';
+                    content: 'Drag child components here';
                 }
             }
         }

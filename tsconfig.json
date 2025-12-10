@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    // Target modern JavaScript
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM"],
+    
+    // Module resolution
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    
+    // Type checking
+    "strict": false,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
+    
+    // Emit
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "noEmit": true,
+    
+    // Advanced
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    
+    // Vue support
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    
+    // Paths
+    "baseUrl": ".",
+    "paths": {
+      "@lljj/*": [
+        "packages/lib/*",
+        "packages/demo/*"
+      ]
+    }
+  },
+  "include": [
+    "packages/lib/**/*.ts",
+    "packages/lib/**/*.d.ts",
+    "packages/lib/**/*.vue",
+    "packages/demo/**/*.ts",
+    "packages/demo/**/*.d.ts",
+    "packages/demo/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "**/dist",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}

@@ -3,8 +3,8 @@
     "type": "object",
     "properties": {
         "show": {
-            "title": "显示状态",
-            "description": "优惠券模块不可编辑，系统会自动抓取您已经创建的优惠券，按照优惠券力度由大到小进行排列 。",
+            "title": "Display Status",
+            "description": "Coupon module is not editable, the system will automatically fetch coupons you have created and sort them by coupon value from high to low.",
             "type": "boolean",
             "default": true,
             "ui:disabled": true

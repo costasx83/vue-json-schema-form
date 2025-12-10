@@ -23,7 +23,7 @@ export default {
     name: 'FieldGroupWrap',
     inject: ['genFormProvide'],
     props: {
-        // 当前节点路径
+        // Current node path
         curNodePath: {
             type: String,
             default: ''

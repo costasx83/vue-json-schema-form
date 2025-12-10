@@ -24,7 +24,7 @@
                 v-if="showVersion"
                 :model-value="version"
                 :value="version"
-                placeholder="版本"
+                placeholder="Version"
                 size="small"
                 style="margin-right: 6px;width: 84px;"
                 @change="handleVersionChange"

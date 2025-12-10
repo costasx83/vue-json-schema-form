@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '数字（slider）',
+    title: 'Number (slider)',
     type: 'number',
     'ui:widget': 'ElSlider'
 };
@@ -15,14 +15,14 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 schemaOptions: {
                     type: 'object',
                     properties: {
                         multipleOf: {
-                            title: '步长',
+                            title: 'Step',
                             type: 'number',
                             default: 1
                         },
@@ -32,27 +32,27 @@ export default {
                     type: 'object',
                     properties: {
                         showInput: {
-                            title: '显示输入框',
+                            title: 'Show Input',
                             type: 'boolean',
                             default: false
                         },
                         showInputControls: {
-                            title: '控制按钮',
+                            title: 'Control Buttons',
                             type: 'boolean',
                             default: true
                         },
                         showStops: {
-                            title: '显示间断点',
+                            title: 'Show Stops',
                             type: 'boolean',
                             default: false
                         },
                         showTooltip: {
-                            title: '显示Tooltip',
+                            title: 'Show Tooltip',
                             type: 'boolean',
                             default: true
                         },
                         debounce: {
-                            title: '去抖延迟ms',
+                            title: 'Debounce (ms)',
                             type: 'number',
                             default: 300
                         }
@@ -62,18 +62,18 @@ export default {
         },
         rules: {
             type: 'object',
-            title: '数据校验',
+            title: 'Validation Rules',
             required: [],
             properties: {
                 schemaOptions: {
                     type: 'object',
                     properties: {
                         minimum: {
-                            title: '最小值',
+                            title: 'Minimum',
                             type: 'number'
                         },
                         maximum: {
-                            title: '最大值',
+                            title: 'Maximum',
                             type: 'number'
                         },
                     }

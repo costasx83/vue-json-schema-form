@@ -1,11 +1,11 @@
 <template>
     <div style="text-align: right;">
-        <el-button @click="toCopy">复制代码</el-button>
+        <el-button @click="toCopy">Copy Code</el-button>
         <el-button
             type="primary"
             @click="$emit('toDemo')"
         >
-            在 Playground 页验证
+            Validate in Playground
         </el-button>
         <JsonPrettyPrint :json-string="genCode"></JsonPrettyPrint>
     </div>
@@ -43,7 +43,7 @@ export default {
             pre.removeAttribute('contenteditable');
             setTimeout(() => {
                 this.copied = false;
-                this.$message.success('复制成功');
+                this.$message.success('Copy successful');
             }, 300);
         }
     }

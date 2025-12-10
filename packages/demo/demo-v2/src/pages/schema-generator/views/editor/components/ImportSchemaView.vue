@@ -1,13 +1,13 @@
 <template>
     <div style="text-align: right;">
         <div style="margin: -10px 0 10px; text-align: left;color: #999;">
-            <p>如果导出的数据手动修改过再次导入可能会导入失败，同时配置组件做了细化拆分方便导入匹配正确结果，可能得不偿失，有点鸡肋 Orz . ...</p>
+            <p>If exported data is manually modified and then re-imported, import may fail. Also, configuration components are split into fine details for easy import matching to correct results, which may not be worth it, a bit redundant Orz . ...</p>
         </div>
         <el-input
             v-model="importStr"
             type="textarea"
             :autosize="{ minRows: 10, maxRows: 20}"
-            placeholder="注意：导入数据格式请参考导出数据格式"
+            placeholder="Note: Import data format should refer to export data format"
         >
         </el-input>
         <p style="margin-top: 20px;">
@@ -15,7 +15,7 @@
                 type="primary"
                 @click="$emit('onImport', importStr)"
             >
-                导入
+                Import
             </el-button>
         </p>
     </div>

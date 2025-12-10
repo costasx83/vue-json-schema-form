@@ -22,7 +22,7 @@
                 style="position: fixed;right: 20px;top: 20px;z-index: 5;"
                 @click="(scale = 70) && (isPreview = false)"
             >
-                结束预览
+                End Preview
             </el-button>
         </transition>
 
@@ -41,7 +41,7 @@
                     :current-use-component-num="currentUseComponentNum"
                     :drag-group="dragOptions.group"
                     :config-tools="configTools"
-                    @onFilter="$message.error('该组件添加数目已达上限！')"
+                    @onFilter="$message.error('The number of this component has reached the limit!')"
                 >
                 </EditorToolBar>
             </div>
@@ -78,7 +78,7 @@
                                     :is-preview="isPreview"
                                     @onOperate="handleItemOperate"
                                 >
-                                    <!-- 传入form使用传入的form组件 -->
+                                    <!-- Use passed form component -->
                                     <component
                                         :is="item.componentFormName"
                                         v-if="item.componentFormName"
@@ -90,7 +90,7 @@
                                     >
                                     </component>
 
-                                    <!-- schema生成form -->
+                                    <!-- Generate form from schema -->
                                     <VueElementForm
                                         v-else
                                         slot="componentForm"
@@ -121,7 +121,7 @@
                                 src="./assets/img/empty-tip.png"
                                 alt="empty-img"
                             >
-                            <p>左边选择模块拖入该区域</p>
+                            <p>Select modules from the left and drag them into this area</p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ import { getComponentsAndInitToolsConfig } from './common/utils';
 import { generateEditorItem } from './common/editorData';
 import './common/registerExtraElementComponent';
 
-// 工具栏配置的组件
+// Toolbar configured components
 const components = getComponentsAndInitToolsConfig(configTools);
 
 export default {
@@ -174,8 +174,8 @@ export default {
             configTools,
             scale: 70,
             editComponentList: [],
-            editHeaderComponentList: [], // 兼容header slot ，插件内部实现导致必须分割多分数据
-            editFooterComponentList: [], // 兼容footer slot ，插件内部实现导致必须分割多分数据
+            editHeaderComponentList: [], // Compatible with header slot, plugin internal implementation requires data splitting
+            editFooterComponentList: [], // Compatible with footer slot, plugin internal implementation requires data splitting
             showToolBar: true,
         };
     },
@@ -195,17 +195,17 @@ export default {
                 // fallbackTolerance: 0
             };
         },
-        // 头部、中间、底部各个list集合
+        // Header, middle, and footer list collections
         componentListGroup() {
             return [this.editHeaderComponentList, this.editComponentList, this.editFooterComponentList];
         },
 
-        // 真实使用的组件 - 包含顶部、底部、不可拖动的模块平铺
+        // Actually used components - includes top, bottom, non-draggable modules
         trueComponentList() {
             return [].concat(...this.componentListGroup);
         },
 
-        // 计算出各个模块当前的使用数量
+        // Calculate current usage count for each module
         currentUseComponentNum() {
             return this.trueComponentList.reduce((preVal, curVal) => {
                 preVal[curVal.componentViewName] = preVal[curVal.componentViewName]
@@ -219,12 +219,12 @@ export default {
         trueComponentList() {
             this.computedComponentToolBarStatus();
 
-            // 修复form弹窗位置
+            // Fix form popup position
             this.fixComponentFormPosition();
         }
     },
     mounted() {
-        // todo: 通过计算获取
+        // todo: Get through calculation
         window.document.body.classList.add('page-decorate-design');
         const scrollDom = this.$refs.domScrollWrap;
         this.$refs.domScrollWrap.scrollLeft = (scrollDom.scrollWidth - scrollDom.clientWidth) / 2;
@@ -238,55 +238,55 @@ export default {
     methods: {
         validateDataList(validateData = false) {
             if (this.trueComponentList.length <= 0) {
-                this.$message.warning('请先拖入需要配置的组件');
+                this.$message.warning('Please drag in components to configure first');
                 return false;
             }
 
-            // 是否检测数据格式
+            // Whether to check data format
             if (!validateData) return true;
 
-            // 完整校验整个数据格式是否正确
-            // 完整校验整个数据格式是否正确
+            // Fully validate that the entire data format is correct
+            // Fully validate that the entire data format is correct
             for (let i = 0; i < this.trueComponentList.length; i += 1) {
                 const item = this.trueComponentList[i];
 
                 let hasError = false;
 
-                // schema 直接校验数据
+                // Validate data directly with schema
                 if (item.componentPack.propsSchema) {
-                    // 验证失败
+                    // Validation failed
                     hasError = !schemaValidate.isValid(item.componentPack.propsSchema, item.componentValue);
                 } else {
-                    // 这里需要执行校验，也可以统一配置在每个pack中 需要使用者自行处理
-                    // 推荐使用schema
-                    this.$message.warning('使用非schema生成表单 需要自行校验数据!');
+                    // Validation needs to be performed here, can also be configured uniformly in each pack, user handles it themselves
+                    // Using schema is recommended
+                    this.$message.warning('Using non-schema generated form requires self-validation!');
                 }
 
                 if (hasError) {
-                    // 通过触发事件打开弹窗，保持和点击行为一致
+                    // Open popup by triggering event, keeping consistent with click behavior
                     document.querySelectorAll('.js_viewComponentBox')[i].click();
-                    this.$message.error('数据配置校验不通过，请检查!');
+                    this.$message.error('Data configuration validation failed, please check!');
                     return false;
                 }
             }
             return true;
         },
         async initEditorData() {
-            // 使用默认值
+            // Use default values
             const dataList = api2VmToolItem(configTools, configDefaultItems);
 
-            // 重新插入数据
+            // Re-insert data
             dataList.forEach((toolItemData) => {
                 if (!toolItemData.componentPack) {
-                    console.warn('存在一条异常数据，请检查：');
+                    console.warn('There is an abnormal data entry, please check:');
                     console.log(dataList);
                     return;
                 }
                 const editorData = generateEditorItem(toolItemData);
-                // 模拟拖入组件插入数据
+                // Simulate dragging component to insert data
                 this.editComponentList.push(editorData);
                 if (editorData.additional) {
-                    // 新加的元素处理特殊配置信息
+                    // Process special configuration info for newly added elements
                     this.additionalStrategy(editorData.additional, editorData);
                 }
             });
@@ -297,7 +297,7 @@ export default {
             componentWithDialog({
                 VueComponent: JsonPerttyPrint,
                 dialogProps: {
-                    title: '提交数据',
+                    title: 'Submit Data',
                 },
                 componentProps: {
                     jsonString: vm2Api(this.trueComponentList)
@@ -307,21 +307,21 @@ export default {
         handlePublish() {
             this.handleSave(true);
         },
-        // 计算各个组件状态栏按钮状态
+        // Calculate toolbar button status for each component
         computedComponentToolBarStatus() {
             this.componentListGroup.forEach((componentList) => {
                 componentList.forEach((component, componentIndex) => {
                     Object.assign(component.toolBar, {
-                        moveUpDisabled: componentIndex === 0, // 是否可上移动
-                        moveDownDisabled: componentIndex === componentList.length - 1, // 是否可下移
-                        copyDisabled: (this.currentUseComponentNum[component.componentViewName] || 0) >= component.maxNum, // 是否可copy
-                        removeDisabled: component.additional && component.additional.unRemove // 是否可移除
+                        moveUpDisabled: componentIndex === 0, // Can move up
+                        moveDownDisabled: componentIndex === componentList.length - 1, // Can move down
+                        copyDisabled: (this.currentUseComponentNum[component.componentViewName] || 0) >= component.maxNum, // Can copy
+                        removeDisabled: component.additional && component.additional.unRemove // Can remove
                     });
                 });
             });
         },
 
-        // 计算当前item 位于哪个list
+        // Calculate which list the current item belongs to
         getCurrentListByItem(item) {
             for (const value of this.componentListGroup) {
                 if (value.includes(item)) return value;
@@ -330,9 +330,9 @@ export default {
             return [];
         },
 
-        // 修复form 弹窗位置
+        // Fix form popup position
         fixComponentFormPosition() {
-            // Popper 通过、父滚动容器 scroll 和window resize 来触发重新计算位置
+            // Popper triggers position recalculation through parent scroll container scroll and window resize
             // https://github.com/ElemeFE/element/blob/dev/src/utils/popper.js#L464
             setTimeout(() => {
                 const evt = window.document.createEvent('UIEvents');
@@ -345,13 +345,13 @@ export default {
             });
         },
 
-        // 用户操作数据
+        // User operates data
         handleDataChange() {
-            // todo: ie 会导致输入框丢失光标
+            // todo: ie will cause input box to lose focus
             this.fixComponentFormPosition();
         },
 
-        // 操作单个组件
+        // Operate on a single component
         handleItemOperate({ item, command }) {
             const strategyMap = {
                 moveUp(target, arrayItem) {
@@ -361,7 +361,7 @@ export default {
                     return arrayMethods.moveDown(target, arrayItem);
                 },
                 copy(target, arrayItem) {
-                    // 不copy数据
+                    // Don't copy data
                     // eslint-disable-next-line no-unused-vars
                     const { componentValue, ...emptyPack } = arrayItem;
 
@@ -377,11 +377,11 @@ export default {
             if (curStrategy) {
                 curStrategy.apply(this, [this.getCurrentListByItem(item), item]);
             } else {
-                this.$message.error(`系统错误 - 未知的操作：[${command}]`);
+                this.$message.error(`System error - unknown operation: [${command}]`);
             }
         },
 
-        // 提交表单
+        // Submit form
         handleSaveForm(data, item) {
             Object.assign(item, {
                 componentValue: data,
@@ -390,21 +390,22 @@ export default {
         },
 
         /**
-         * 移动一个模块到两端 顶或者底部
+         * Move a module to either end, top or bottom
          * @param element
-         * @param position  0 移动到顶部/ 1 移动到底部
+         * @param position  0 move to top / 1 move to bottom
          */
         moveToBothEnds(element, position) {
             const curIndex = this.editComponentList.indexOf(element);
             if (curIndex >= 0) {
-                // 移除放入到不同的list
+                // Remove and place in different list
                 (position === 0 ? this.editHeaderComponentList : this.editFooterComponentList)
                     .push(this.editComponentList.splice(curIndex, 1)[0]);
             }
         },
 
         /**
-         * 需要置顶或置底的需要移入另一个数组 - 同数组元素拖到存在置顶或置底元素会导致异常
+         * Items that need to be pinned to top or bottom need to be moved to another array - dragging elements in the same
+         * array with pinned items causes issues
          * @param additional
          * @param element
          */
@@ -428,13 +429,13 @@ export default {
         },
 
         handlerStart(evt) {
-            // 无法重置拖动效果图 ？？
+            // Unable to reset drag effect image ??
             // evt.originalEvent.dataTransfer.setDragImage(document.querySelector('H1'), 50, 50);
         },
-        // 处理DragChange - 新加元素需要做特殊处理
+        // Handle DragChange - newly added elements need special processing
         handleDragChange(evt) {
             if (evt.added && evt.added.element.additional) {
-                // 新加的元素处理特殊配置信息
+                // Process special configuration info for newly added elements
                 this.additionalStrategy(evt.added.element.additional, evt.added.element);
             }
         }
@@ -460,7 +461,7 @@ export default {
         --tool-bar-width: 260px;
         --drag-area-width: 1920px;
     }
-    /*预览模式 同步样式重置*/
+    /*Preview mode - sync style reset*/
     .previewBox {
         .toolsBar,.leftCaret {
             display: none;

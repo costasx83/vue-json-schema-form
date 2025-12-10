@@ -24,7 +24,7 @@ const globalOptions = {
         form: defineComponent({
             inheritAttrs: false,
             setup(props, { attrs, slots }) {
-                // 处理 labelPosition 参数和 label-placement 之间的关系
+                // Handle relationship between labelPosition parameter and label-placement
                 const labelPositionMap = {
                     top: {
                         labelAlign: 'left',
@@ -43,7 +43,7 @@ const globalOptions = {
                 const formRef = ref(null);
                 if (attrs.setFormRef) {
                     onMounted(() => {
-                        // form组件实例上重置一个 validate 方法
+                        // Reset a validate method on form component instance
                         formRef.value.$$validate = (callBack) => {
                             formRef.value.validate((errors) => {
                                 if (errors) {
@@ -66,7 +66,7 @@ const globalOptions = {
 
                     return h(vueUtils.resolveComponent('n-form'), {
                         ref: formRef,
-                        model: model.value, // 不会自动解包
+                        model: model.value, // Won't auto-unwrap
                         ...labelPositionMap[labelPosition || 'top'],
                         ...otherAttrs
                     }, slots);
@@ -104,7 +104,7 @@ const globalOptions = {
         }),
     },
     HELPERS: {
-        // 是否mini显示 description
+        // Whether to display description in mini mode
         isMiniDes(formProps) {
             return formProps && ['left', 'right'].includes(formProps.labelPosition);
         }

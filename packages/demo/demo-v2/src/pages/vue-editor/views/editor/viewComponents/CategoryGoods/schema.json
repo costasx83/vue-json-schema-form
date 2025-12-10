@@ -7,12 +7,12 @@
             "type": "object",
             "properties": {
                 "imgUrl": {
-                    "title": "图片地址",
+                    "title": "Image URL",
                     "type": "string",
                     "format": "uri"
                 },
                 "imgLink": {
-                    "title": "链接地址",
+                    "title": "Link URL",
                     "type": "string",
                     "format": "uri",
                     "default": "https://www.jd.com"
@@ -26,30 +26,30 @@
     },
     "properties": {
         "title": {
-            "title": "标题",
+            "title": "Title",
             "type": "string",
             "maxLength": 10
         },
         "subTitle": {
-            "title": "副标题",
+            "title": "Subtitle",
             "type": "string",
             "maxLength": 30
         },
         "banner": {
-            "title": "左侧banner配置",
+            "title": "Left Banner Configuration",
             "type": "object",
             "properties": {
                 "link": {
-                    "title": "banner图片和链接配置",
+                    "title": "Banner Image and Link Configuration",
                     "$ref": "#/definitions/ImgItem"
                 },
                 "bannerTitle": {
-                    "title": "banner主标题",
+                    "title": "Banner Main Title",
                     "type": "string",
                     "maxLength": 4
                 },
                 "bannerSubTitle": {
-                    "title": "banner副标题",
+                    "title": "Banner Subtitle",
                     "type": "string",
                     "maxLength": 8
                 }
@@ -57,11 +57,11 @@
         },
         "goodsList": {
             "type": "array",
-            "title": "商品信息配置",
+            "title": "Product Information Configuration",
             "minItems": 4,
             "maxItems": 8,
             "items": {
-                "title": "配置商品信息",
+                "title": "Configure Product Information",
                 "$ref": "#/definitions/ImgItem"
             }
         }

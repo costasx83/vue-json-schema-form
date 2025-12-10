@@ -1,31 +1,31 @@
 declare namespace fieldProps {
 
-    /** 当前节点schema */
+    /** Current node schema */
     export const schema:object
 
-    /** 当前节点 uiSchema */
+    /** Current node uiSchema */
 
     export const uiSchema:object
 
-    /** 当前节点 errorSchema */
+    /** Current node errorSchema */
     export const errorSchema:object
 
-    /** 自定义校验规则 */
+    /** Custom validation rules */
     export const customFormats:object
 
-    /** 根节点 schema */
+    /** Root node schema */
     export const rootSchema:object
 
-    /** 根节点 formData */
+    /** Root node formData */
     export const rootFormData:object
 
-    /** 当前节点 路径 */
+    /** Current node path */
     export const curNodePath:string
 
-    /** 是否为必填 */
+    /** Whether it is required */
     export const required:boolean
 
-    /** 是否需要校验数据组 */
+    /** Whether data group validation is needed */
     export const needValidFieldGroup:boolean
 }
 

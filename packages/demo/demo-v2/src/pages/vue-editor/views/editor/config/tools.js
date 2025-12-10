@@ -2,87 +2,87 @@
  * Created by Liu.Jun on 2019/9/29 18:58.
  */
 
-// 轮播图
+// Carousel image
 import componentPackCarouselImg from '../viewComponents/CarouselImg';
 
-// 秒杀商品
+// Flash sale products
 import componentPackFlashSaleGoodsList from '../viewComponents/FlashSaleGoodsList';
 
-// 纯文本
+// Plain text
 import componentPackText from '../viewComponents/Text';
 
-// 多图模块一排5个
+// Multiple images module - 5 in a row
 import componentPackMultipleImg5 from '../viewComponents/MultipleImg5';
 
-// 多图模块 2-3
+// Multiple images module 2-3
 import componentPackMultipleImg23 from '../viewComponents/MultipleImg2_3';
 
-// 多图模块 1-2
+// Multiple images module 1-2
 import componentPackMultipleImg13 from '../viewComponents/MultipleImg1_3';
 
-// 分类管区
+// Category district
 import componentPackCategoryGoods from '../viewComponents/CategoryGoods';
 
-// 推荐
+// Recommended
 import componentPackRecommendedGoodsList from '../viewComponents/RecommendedGoodsList';
 
-// 所有商品
+// All products
 import componentPackAllGoodsList from '../viewComponents/AllGoodsList';
 
-// 优惠券
+// Coupon
 import componentPackCoupon from '../viewComponents/Coupon';
 
 
 /**
- * hidden 隐藏，不显示在工具栏
- * maxNum Number 最大可配置数
- * topDisplay Bool 最顶部显示
- * bottomDisplay Bool 最底部显示
- * onlyCanConfig Bool 是否只能配置数据，不能删除 copy
+ * hidden - Hidden, not displayed in toolbar
+ * maxNum Number - Maximum configurable count
+ * topDisplay Bool - Display at the top
+ * bottomDisplay Bool - Display at the bottom
+ * onlyCanConfig Bool - Can only configure data, cannot delete or copy
  * @type {*[]}
  */
 const tools = [
     {
-        groupName: '图文类',
+        groupName: 'Image & Text',
         componentList: [{
-            title: '轮播 (普通数组)',
+            title: 'Carousel (Normal Array)',
             maxNum: 2,
             viewWidth: '1920px',
             icon: 'el-icon-picture',
             name: 'CarouselImg',
             componentPack: componentPackCarouselImg
         }, {
-            title: '秒杀商品',
+            title: 'Flash Sale Products',
             maxNum: 3,
             icon: 'el-icon-picture',
             name: 'FlashSaleGoodsList',
             componentPack: componentPackFlashSaleGoodsList
         }, {
-            title: '多图(5)',
+            title: 'Multiple Images (5)',
             maxNum: 5,
             icon: 'el-icon-picture',
             name: 'MultipleImg5',
             componentPack: componentPackMultipleImg5
         }, {
-            title: '多图(2-3)',
+            title: 'Multiple Images (2-3)',
             maxNum: 10,
             icon: 'el-icon-s-grid',
             name: 'MultipleImg2_3',
             componentPack: componentPackMultipleImg23
         }, {
-            title: '多图(1-3)',
+            title: 'Multiple Images (1-3)',
             maxNum: 10,
             icon: 'el-icon-s-grid',
             name: 'MultipleImg1_3',
             componentPack: componentPackMultipleImg13
         }, {
-            title: '分类管区',
+            title: 'Category District',
             maxNum: 10,
             icon: 'el-icon-s-grid',
             name: 'CategoryGoods',
             componentPack: componentPackCategoryGoods
         }, {
-            title: '纯文本',
+            title: 'Plain Text',
             maxNum: 20,
             icon: 'el-icon-notebook-1',
             name: 'Text',
@@ -90,19 +90,19 @@ const tools = [
         }]
     },
     {
-        groupName: '商品类',
+        groupName: 'Products',
         componentList: [{
-            title: '全部商品',
+            title: 'All Products',
             maxNum: 1,
             icon: 'el-icon-s-goods',
             componentPack: componentPackAllGoodsList,
             name: 'AllGoodsList',
             additional: {
                 bottomDisplay: true,
-                unRemove: true // 不可移除
+                unRemove: true // Cannot be removed
             }
         }, {
-            title: '推荐商品',
+            title: 'Recommended Products',
             maxNum: 1,
             icon: 'el-icon-s-goods',
             name: 'RecommendedGoodsList',
@@ -110,9 +110,9 @@ const tools = [
         }]
     },
     {
-        groupName: '营销互动类',
+        groupName: 'Marketing & Interaction',
         componentList: [{
-            title: '优惠券',
+            title: 'Coupon',
             maxNum: 1,
             icon: 'el-icon-s-ticket',
             name: 'Coupon',

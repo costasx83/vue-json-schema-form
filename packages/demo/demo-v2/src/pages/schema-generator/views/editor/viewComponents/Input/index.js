@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '输入框',
+    title: 'Input',
     type: 'string'
 };
 export default {
@@ -13,7 +13,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 uiOptions: {
@@ -21,34 +21,34 @@ export default {
                     properties: {
                         placeholder: {
                             type: 'string',
-                            title: '输入占位文本',
-                            default: '请输入'
+                            title: 'Placeholder',
+                            default: 'Please enter'
                         },
                         clearable: {
-                            title: '显示清空按钮',
+                            title: 'Show Clear Button',
                             type: 'boolean',
                             default: false
                         },
                         showWordLimit: {
-                            title: '字数统计',
+                            title: 'Show Word Limit',
                             type: 'boolean',
                             default: false
                         },
                         showPassword: {
-                            title: '密码框',
+                            title: 'Password Field',
                             type: 'boolean',
                             default: false
                         },
                         type: {
                             type: 'string',
-                            title: '输入框类型',
+                            title: 'Input Type',
                             enum: [
                                 'text',
                                 'textarea'
                             ],
                             enumNames: [
-                                '输入框 Input',
-                                '文字域 Textarea'
+                                'Input',
+                                'Textarea'
                             ]
                         },
                     }
@@ -57,18 +57,18 @@ export default {
         },
         rules: {
             type: 'object',
-            title: '数据校验',
+            title: 'Validation Rules',
             required: [],
             properties: {
                 schemaOptions: {
                     type: 'object',
                     properties: {
                         maxLength: {
-                            title: '最大长度',
+                            title: 'Max Length',
                             type: 'number'
                         },
                         minLength: {
-                            title: '最小长度',
+                            title: 'Min Length',
                             type: 'number'
                         }
                     }

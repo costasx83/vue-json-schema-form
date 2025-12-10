@@ -1,4 +1,4 @@
-// $ref 引用
+// $ref reference
 function getPathVal(obj, pathStr) {
     const pathArr = pathStr.split('/');
     for (let i = 0; i < pathArr.length; i += 1) {
@@ -8,7 +8,7 @@ function getPathVal(obj, pathStr) {
     return obj;
 }
 
-// 找到ref引用的schema
+// Find schema referenced by ref
 export default function findSchemaDefinition($ref, rootSchema = {}) {
     const origRef = $ref;
     if ($ref.startsWith('#')) {

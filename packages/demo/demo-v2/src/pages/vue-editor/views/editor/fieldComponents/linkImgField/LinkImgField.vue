@@ -9,7 +9,7 @@
                     validator(rule, value, callback) {
                         const validProperties = ['imgUrl', 'imgLink'];
 
-                        // 针对叶子节点做校验
+                        // Validate leaf nodes
                         let errors = [];
                         const isValidate = validProperties.every(item => {
                             errors = schemaValidate.validateFormDataAndTransformMsg({
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-    // 覆盖默认field 做个性商品选择和链接输入
+    // Override default field for custom product selection and link input
 import {
     fieldProps,
     vueUtils,
@@ -89,7 +89,7 @@ export default {
     },
     computed: {
         elItemRequired() {
-            // 配置了 required 的属性提示小红点
+            // Display red dot for required properties
             return this.schema.required.length > 0;
         },
         placeholder() {
@@ -97,7 +97,7 @@ export default {
                 schema: this.schema.properties.imgLink,
                 uiSchema: this.uiSchema.imgLink || {}
             });
-            return imgLinkOptions.placeholder || '请输入合法的链接';
+            return imgLinkOptions.placeholder || 'Please enter a valid link';
         },
         selectProps() {
             return formUtils.getUiOptions({
@@ -156,7 +156,7 @@ export default {
                 'https://gw.alicdn.com/tfs/TB1xVR9oFP7gK0jSZFjXXc5aXXa-468-602.jpg',
                 'https://img.alicdn.com/tps/i4/TB1R8tlXxvbeK8jSZPfSuuriXXa.jpg_490x490q100.jpg_.webp'
             ];
-            this.$message.success('选择图片成功，随机一个图片');
+            this.$message.success('Image selected successfully, randomly choosing one image');
             this.imgUrl = imgs[Math.floor(Math.random() * imgs.length)];
         }
     }

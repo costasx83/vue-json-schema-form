@@ -2,63 +2,63 @@
  * Created by Liu.Jun on 2019/9/29 18:58.
  */
 
-// 轮播图
+// Carousel
 import componentPackCarouselImg from '../viewComponentsM/CarouselImg';
 
-// 纯文本
+// Plain text
 import componentPackText from '../viewComponentsM/Text';
 
-// 分类条
+// Category bar
 import CategoryList from '../viewComponentsM/CategoryList';
 
-// 分类条
+// Recommended goods
 import RecommendGoods from '../viewComponentsM/RecommendGoods';
 
-// 分类条
+// Category bar
 import Test from '../viewComponentsM/Test';
 
 
 /**
- * hidden 隐藏，不显示在工具栏
- * maxNum Number 最大可配置数
- * topDisplay Bool 最顶部显示
- * bottomDisplay Bool 最底部显示
- * onlyCanConfig Bool 是否只能配置数据，不能删除 copy
+ * hidden - Hidden, not displayed in toolbar
+ * maxNum Number - Maximum configurable number
+ * topDisplay Bool - Display at top
+ * bottomDisplay Bool - Display at bottom
+ * onlyCanConfig Bool - Can only configure data, cannot delete or copy
  * @type {*[]}
  */
 const tools = [
     {
-        groupName: '图文类',
+        groupName: 'Image & Text',
         componentList: [{
-            title: '轮播 (普通数组)',
+            title: 'Carousel (Normal Array)',
             maxNum: 2,
             viewWidth: '100%',
             icon: 'el-icon-picture',
             name: 'MCarouselImg',
             componentPack: componentPackCarouselImg
         }, {
-            title: '纯文本',
+            title: 'Plain Text',
             maxNum: 20,
             viewWidth: '100%',
             icon: 'el-icon-notebook-1',
             name: 'MText',
             componentPack: componentPackText
         }, {
-            title: '分类条',
+            title: 'Category Bar',
             maxNum: 5,
             viewWidth: '100%',
             icon: 'el-icon-notebook-1',
             name: 'MCategoryList',
             componentPack: CategoryList
         }, {
-            title: '推荐商品',
+            title: 'Recommended Goods',
             maxNum: 5,
             viewWidth: '100%',
             icon: 'el-icon-notebook-1',
             name: 'MRecommendGoods',
             componentPack: RecommendGoods
         }, {
-            title: '测试自定义form',
+            title: 'Test Custom Form',
             maxNum: 5,
             viewWidth: '100%',
             icon: 'el-icon-notebook-1',

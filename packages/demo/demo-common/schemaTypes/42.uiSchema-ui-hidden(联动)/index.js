@@ -4,51 +4,53 @@
 
 export default {
     schema: {
-        title: '使用ui-schema配置ui:hidden表达式',
-        description: '实现类ali formRender的配置方法, 如下参数：<br><b>rootFormData</b>：根节点的值 <br><b>parentFormData</b>：当前父节点的值',
+        title: 'Configure ui:hidden Expression using ui-schema',
+        description: `Implement configuration method similar to Ali formRender, with the following parameters:
+            <br><b>rootFormData</b>: Root node value
+            <br><b>parentFormData</b>: Current parent node value`,
         type: 'object',
         properties: {
             case1: {
-                title: '整体隐藏',
+                title: 'Hide entire section',
                 type: 'object',
                 properties: {
                     showMore: {
-                        title: '显示更多',
+                        title: 'Show more',
                         type: 'boolean',
                         default: false
                     },
                     x1: {
-                        title: '输入框1',
+                        title: 'Input 1',
                         type: 'string',
                         'ui:hidden': '{{rootFormData.case1.showMore === false}}'
                     },
                     x2: {
-                        title: '输入框2',
+                        title: 'Input 2',
                         type: 'string',
                         'ui:hidden': '{{rootFormData.case1.showMore === false}}'
                     }
                 }
             },
             case3: {
-                title: '列表/显示不同组件',
+                title: 'List/Show different components',
                 type: 'object',
                 properties: {
                     ruleList: {
-                        title: '球员筛选',
+                        title: 'Player filtering',
                         type: 'array',
                         items: {
                             type: 'object',
                             properties: {
                                 attr: {
-                                    title: '标准',
+                                    title: 'Criteria',
                                     type: 'string',
                                     enum: [
                                         'goal',
                                         'league'
                                     ],
                                     enumNames: [
-                                        '入球数',
-                                        '所在联盟'
+                                        'Goals scored',
+                                        'League'
                                     ],
                                     'ui:width': '40%'
                                 },
@@ -64,17 +66,17 @@ export default {
                                     'ui:width': '20%'
                                 },
                                 goal: {
-                                    title: '入球数',
+                                    title: 'Goals scored',
                                     type: 'string',
                                     pattern: '^[0-9]+$',
                                     message: {
-                                        pattern: '输入正确得分'
+                                        pattern: 'Enter valid score'
                                     },
                                     'ui:hidden': "{{parentFormData.attr !== 'goal'}}",
                                     'ui:width': '40%'
                                 },
                                 league: {
-                                    title: '名称',
+                                    title: 'Name',
                                     type: 'string',
                                     enum: [
                                         'a',
@@ -82,9 +84,9 @@ export default {
                                         'c'
                                     ],
                                     enumNames: [
-                                        '西甲',
-                                        '英超',
-                                        '中超'
+                                        'La Liga',
+                                        'Premier League',
+                                        'Chinese Super League'
                                     ],
                                     'ui:hidden': "{{parentFormData.attr !== 'league'}}",
                                     'ui:width': '40%'

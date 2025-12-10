@@ -1,7 +1,7 @@
 <template>
     <div :class="$style.box">
         <h2>
-            {{ formData.txt || '请配置标题' }}
+            {{ formData.txt || 'Please configure title' }}
         </h2>
     </div>
 </template>

@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/4/20 9:55 下午.
+ * Created by Liu.Jun on 2020/4/20 9:55 PM.
  */
 
 // eslint-disable-next-line import/no-cycle
@@ -26,7 +26,7 @@ import AnyOfField from './fields/combiningSchemas/AnyOfField';
 // eslint-disable-next-line import/no-cycle
 import OneOfField from './fields/combiningSchemas/OneOfField';
 
-// 默认类型使用field映射关系
+// Default type to field mapping relationship
 const FIELDS_MAPS = {
     array: ArrayField,
     boolean: BooleanField,

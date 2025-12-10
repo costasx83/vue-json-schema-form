@@ -1,11 +1,11 @@
 /**
- * Created by Liu.Jun on 2020/11/27 11:03 下午.
+ * Created by Liu.Jun on 2020/11/27 11:03 PM.
  */
 
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '单文件',
+    title: 'Single File',
     type: 'string',
     'ui:widget': 'UploadWidget',
 };
@@ -14,7 +14,7 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 uiOptions: {
@@ -22,13 +22,13 @@ export default {
                     required: ['action'],
                     properties: {
                         action: {
-                            title: '上传接口',
+                            title: 'Upload URL',
                             type: 'string',
                             format: 'uri',
                             default: 'https://run.mocky.io/v3/518d7af7-204f-45ab-9628-a6e121dab8ca'
                         },
                         btnText: {
-                            title: '上传按钮文案',
+                            title: 'Button Text',
                             type: 'string'
                         }
                     }

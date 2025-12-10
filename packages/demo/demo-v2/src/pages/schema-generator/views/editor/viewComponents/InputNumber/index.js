@@ -5,7 +5,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '数字输入框',
+    title: 'Number Input',
     type: 'number'
 };
 
@@ -14,14 +14,14 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             required: [],
             properties: {
                 schemaOptions: {
                     type: 'object',
                     properties: {
                         multipleOf: {
-                            title: '步长',
+                            title: 'Step',
                             type: 'number',
                             default: 1
                         },
@@ -31,25 +31,25 @@ export default {
                     type: 'object',
                     properties: {
                         stepStrictly: {
-                            title: '严格步长',
+                            title: 'Strict Step',
                             type: 'boolean',
                             default: false
                         },
                         precision: {
-                            title: '精度',
+                            title: 'Precision',
                             type: 'number',
                             minimum: 0
                         },
                         controlsPosition: {
                             type: 'string',
-                            title: '按钮位置',
+                            title: 'Control Position',
                             enum: [
                                 'default',
                                 'right'
                             ],
                             enumNames: [
-                                '默认两边',
-                                '右侧显示'
+                                'Default Both Sides',
+                                'Right Side'
                             ],
                             default: 'default'
                         },
@@ -59,18 +59,18 @@ export default {
         },
         rules: {
             type: 'object',
-            title: '数据校验',
+            title: 'Validation Rules',
             required: [],
             properties: {
                 schemaOptions: {
                     type: 'object',
                     properties: {
                         minimum: {
-                            title: '最小值',
+                            title: 'Minimum',
                             type: 'number'
                         },
                         maximum: {
-                            title: '最大值',
+                            title: 'Maximum',
                             type: 'number'
                         },
                     }

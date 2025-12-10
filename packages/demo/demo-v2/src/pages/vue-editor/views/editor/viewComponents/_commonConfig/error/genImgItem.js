@@ -6,12 +6,12 @@
 export default function () {
     return {
         imgUrl: {
-            'err:format': '请正常选择图片',
-            'err:required': '请选择你要配置的图片'
+            'err:format': 'Please select an image properly',
+            'err:required': 'Please select the image you want to configure'
         },
         imgLink: {
-            'err:format': '请输入合法的链接地址',
-            'err:required': '请输入合法的链接地址'
+            'err:format': 'Please enter a valid link address',
+            'err:required': 'Please enter a valid link address'
         }
     };
 }

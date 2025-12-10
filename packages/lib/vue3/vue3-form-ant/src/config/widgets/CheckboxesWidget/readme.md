@@ -1,15 +1,15 @@
-### 文件说明
-> 默认widget直接使用element的组件，这里附加一些不能直接满足场景而使用的组件
+### File Description
+> Default widget directly uses element components, here are some additional components that cannot directly meet the scenario
 
-### 组件说明
-单文件夹为单个组件，组件需要统一为v-model双向绑定值
+### Component Description
+Single folder is a single component, components need to be unified as v-model two-way binding values
 
 #### CheckboxesWidget
-说明：多选列表，接受value 和 enumOptions参数
-> value - array，选中的值
-> enumOptions - Array ，下拉选项
+Description: Multi-select list, accepts value and enumOptions parameters
+> value - array, selected values
+> enumOptions - Array, dropdown options
 
-示例：
+Example:
 ```js
 console.log(1);
 ```

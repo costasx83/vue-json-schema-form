@@ -1,19 +1,19 @@
 /**
- * Created by Liu.Jun on 2020/7/22 11:07 下午.
+ * Created by Liu.Jun on 2020/7/22 11:07 PM.
  */
 
 export default {
     schema: {
-        title: 'uiSchema 配置表达式',
+        title: 'uiSchema Expression Configuration',
         type: 'object',
-        description: '<ui><li><b>rootFormData</b>：根节点的值</li><li><b>parentFormData</b>：当前父节点的值</li></ui>',
+        description: '<ui><li><b>rootFormData</b>: Root node value</li><li><b>parentFormData</b>: Current parent node value</li></ui>',
         properties: {
             age: {
                 type: 'integer',
-                title: '输入年龄',
+                title: 'Enter Age',
                 maximum: 80,
                 minimum: 16,
-                'ui:title': '{{ parentFormData.age > 18 ? "呵呵呵" : "嘿嘿嘿" }}',
+                'ui:title': '{{ parentFormData.age > 18 ? "Haha" : "Hehe" }}',
             },
             bio: {
                 type: 'string',
@@ -26,7 +26,7 @@ export default {
                 type: 'string',
                 // eslint-disable-next-line max-len
                 'ui:style': '{{ parentFormData.selectWidgetOptions === "foo"  ?  { boxShadow: "0 0 6px 2px pink"} : { boxShadow: "0 0 6px 2px red"} }}',
-                'ui:title': '{{ parentFormData.a === "1" ? "呵呵呵" : "嘿嘿嘿" }}',
+                'ui:title': '{{ parentFormData.a === "1" ? "Haha" : "Hehe" }}',
                 enum: [
                     'foo',
                     'bar'

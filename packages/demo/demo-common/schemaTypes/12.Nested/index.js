@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/5/13 9:18 下午.
+ * Created by Liu.Jun on 2020/5/13 9:18 PM.
  */
 
 export default {
@@ -41,7 +41,7 @@ export default {
     },
     uiSchema: {
         title: {
-            'err:required': '请输入title'
+            'err:required': 'Please enter title'
         },
         tasks: {
             items: {

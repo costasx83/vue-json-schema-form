@@ -1,6 +1,6 @@
 export default {
     schema: {
-        title: '测试注册表单',
+        title: 'Test Registration Form',
         description: 'A simple form example.',
         type: 'object',
         required: ['firstName', 'lastName'],
@@ -20,14 +20,14 @@ export default {
                 type: 'string',
                 title: 'Last name',
                 'ui:options': {
-                    description: '请输入你的姓'
+                    description: 'Please enter your last name'
                 },
-                'err:required': '必须输入Last Name'
+                'err:required': 'Last Name is required'
             },
             price: {
                 type: 'string',
-                description: '最多输入两位小数点，最大值 999999.99',
-                title: '价格',
+                description: 'Enter up to two decimal places, maximum value 999999.99',
+                title: 'Price',
                 format: 'price'
             },
             age: {
@@ -56,18 +56,18 @@ export default {
     formData: {
         lastName: 'Liu',
         age: 88,
-        bio: '知道的越多、就知道的越少',
+        bio: 'The more you know, the less you know',
         password: 'My.Pass',
         telephone: '1881446xxxx'
     },
     uiSchema: {
-        'ui:description': '简单表单例子（这里通过UiSchema覆盖了默认description描述配置）',
+        'ui:description': 'Simple form example (overriding default description configuration via UiSchema)',
         firstName: {
-            'ui:title': '名字',
-            'ui:description': '比如：李白姓李、孙尚香姓孙、马可波罗姓马可波',
+            'ui:title': 'First Name',
+            'ui:description': 'For example: Li Bai\'s surname is Li, Sun Shangxiang\'s surname is Sun, Marco Polo\'s surname is Marco',
             'ui:emptyValue': '',
             'ui:options': {
-                placeholder: '请输入你的姓',
+                placeholder: 'Please enter your first name',
                 attrs: {
                     autofocus: true
                 }
@@ -75,7 +75,7 @@ export default {
         },
         bio: {
             'ui:options': {
-                placeholder: '请输入你的签名',
+                placeholder: 'Please enter your bio',
                 type: 'textarea',
                 rows: 6
             }
@@ -83,7 +83,7 @@ export default {
     },
     errorSchema: {
         bio: {
-            'err:minLength': '签名最小长度10个字符串'
+            'err:minLength': 'Bio must be at least 10 characters'
         }
     }
 };

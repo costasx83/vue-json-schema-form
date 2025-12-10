@@ -2,7 +2,7 @@
  * Created by Liu.Jun on 2020/4/21 18:23.
  */
 
-// widget 组件对应elementUi 配置表
+// Widget component mapping to ElementUI configuration table
 import widgetComponents from './index';
 
 const {

@@ -14,7 +14,7 @@ const {
 export default {
     install(Vue) {
         Vue.use(Loading.directive);
-        // 原型方法
+        // Prototype methods
         Vue.prototype.$loading = Loading.service;
         Vue.prototype.$alert = MessageBox.alert;
         Vue.prototype.$confirm = MessageBox.confirm;

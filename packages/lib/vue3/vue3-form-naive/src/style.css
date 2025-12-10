@@ -1,10 +1,10 @@
-/* element plus 重置样式*/
+/* Element Plus reset styles*/
 .genFromComponent {
     .n-form-item-blank {
         flex-wrap: wrap;
     }
 
-    /*如果引起问题可以覆盖*/
+    /*Can be overridden if it causes issues*/
     .n-form-item.n-form-item--top-labelled {
         grid-template-rows: none;
     }

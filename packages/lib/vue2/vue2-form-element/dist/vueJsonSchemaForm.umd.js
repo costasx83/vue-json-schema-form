@@ -1,4 +1,4 @@
-/** @license @lljj/vue-json-schema-form (c) 2020-2023 Liu.Jun License: Apache-2.0 */
+/** @license @lljj/vue-json-schema-form (c) 2020-2025 Liu.Jun License: Apache-2.0 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
   typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
@@ -229,7 +229,7 @@
 
   function isArguments(object) {
     return Object.prototype.toString.call(object) === '[object Arguments]';
-  } // 定义的数据推导出schema 类型
+  } // Infer schema type from defined data
 
 
   var guessType = function guessType(value) {
@@ -281,24 +281,24 @@
 
       return acc;
     }, preAcc);
-  } // 获取给定 schema 类型。
+  } // Get given schema type
 
   function getSchemaType(schema) {
-    var type = schema.type; // 通过const 申明的常量 做类型推断
+    var type = schema.type; // Type inference through const declared constant
 
     if (!type && schema.const) {
       return guessType(schema.const);
-    } // 枚举默认字符串
+    } // Enum defaults to string
 
 
     if (!type && schema.enum) {
       return 'string';
-    } // items 推断为 array 类型
+    } // Items inferred as array type
 
 
     if (!type && schema.items) {
       return 'array';
-    } // anyOf oneOf 不申明 type 字段
+    } // anyOf oneOf do not declare type field
 
 
     if (!type && (schema.properties || schema.additionalProperties)) {
@@ -312,7 +312,7 @@
     }
 
     return type;
-  } // 深度相等对比
+  } // Deep equality comparison
 
   function deepEquals(a, b) {
     var ca = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
@@ -403,7 +403,7 @@
     ca.pop();
     cb.pop();
     return true;
-  } // 只保证同时生成不重复
+  } // Only guarantee non-duplicate simultaneous generation
 
   var genId = function genIdFn() {
     var preKey = "".concat(+new Date());
@@ -414,14 +414,14 @@
       if (curTimestamp === preKey) {
         key += 1;
       } else {
-        // 重置 key
+        // Reset key
         key = 0;
       }
 
       preKey = curTimestamp;
       return "".concat(preKey, "x").concat(key);
     };
-  }(); // 空对象
+  }(); // Empty object
 
   function isEmptyObject(obj) {
     if (!obj) return true;
@@ -433,7 +433,7 @@
     }
 
     return true;
-  } // 过滤和转换对象的key
+  } // Filter and transform object keys
 
   function filterObject(obj, filterFn) {
     return Object.entries(obj).reduce(function (preVal, _ref) {
@@ -456,16 +456,16 @@
     return String(str).replace(/^./, function (s) {
       return s.toLocaleLowerCase();
     });
-  } // 最大公约数
+  } // Greatest common divisor
 
   function gcd(a, b) {
     if (b === 0) return a;
     return gcd(b, a % b);
-  } // 最小公倍数
+  } // Least common multiple
 
   function scm(a, b) {
     return a * b / gcd(a, b);
-  } // 打开新页面
+  } // Open new page
 
   function openNewPage(url) {
     var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '_blank';
@@ -478,7 +478,7 @@
     document.body.removeChild(a);
   }
 
-  // $ref 引用
+  // $ref reference
   function getPathVal(obj, pathStr) {
     var pathArr = pathStr.split('/');
 
@@ -488,7 +488,7 @@
     }
 
     return obj;
-  } // 找到ref引用的schema
+  } // Find schema referenced by ref
 
 
   function findSchemaDefinition($ref) {
@@ -7657,7 +7657,7 @@
   function noop() {}
 
   // https://github.com/epoberezkin/ajv-i18n
-  function localizeZh(errors) {
+  function localizeEn(errors) {
     if (!(errors && errors.length)) return;
 
     for (var i = 0; i < errors.length; i += 1) {
@@ -7668,175 +7668,175 @@
 
       switch (e.keyword) {
         case '$ref':
-          out = "\u65E0\u6CD5\u627E\u5230\u5F15\u7528".concat(e.params.ref);
+          out = "can't resolve reference ".concat(e.params.ref);
           break;
 
         case 'additionalItems':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5141\u8BB8\u8D85\u8FC7".concat(n, "\u4E2A\u5143\u7D20");
+          out += "should NOT have more than ".concat(n, " items");
           break;
 
         case 'additionalProperties':
-          out = '不允许有额外的属性';
+          out = 'should NOT have additional properties';
           break;
 
         case 'anyOf':
-          out = '数据应为 anyOf 所指定的其中一个';
+          out = 'should match some schema in anyOf';
           break;
 
         case 'const':
-          out = '应当等于常量';
+          out = 'should be equal to constant';
           break;
 
         case 'contains':
-          out = '应当包含一个有效项';
+          out = 'should contain a valid item';
           break;
 
         case 'custom':
-          out = "\u5E94\u5F53\u901A\u8FC7 \"".concat(e.keyword, " \u5173\u952E\u8BCD\u6821\u9A8C\"");
+          out = "should pass \"".concat(e.keyword, "\" keyword validation");
           break;
 
         case 'dependencies':
           out = '';
           n = e.params.depsCount;
-          out += "\u5E94\u5F53\u62E5\u6709\u5C5E\u6027".concat(e.params.property, "\u7684\u4F9D\u8D56\u5C5E\u6027").concat(e.params.deps);
+          out += "should have property ".concat(e.params.deps, " when property ").concat(e.params.property, " is present");
           break;
 
         case 'enum':
-          out = '应当是预设定的枚举值之一';
+          out = 'should be equal to one of the allowed values';
           break;
 
         case 'exclusiveMaximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u4E3A ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'exclusiveMinimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u4E3A ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'false schema':
-          out = '布尔模式出错';
+          out = 'boolean schema is false';
           break;
 
         case 'format':
-          out = "\u5E94\u5F53\u5339\u914D\u683C\u5F0F \"".concat(e.params.format, "\"");
+          out = "should match format \"".concat(e.params.format, "\"");
           break;
 
         case 'formatExclusiveMaximum':
-          out = 'formatExclusiveMaximum 应当是布尔值';
+          out = 'formatExclusiveMaximum should be boolean';
           break;
 
         case 'formatExclusiveMinimum':
-          out = 'formatExclusiveMinimum 应当是布尔值';
+          out = 'formatExclusiveMinimum should be boolean';
           break;
 
         case 'formatMaximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u662F ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'formatMinimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u662F ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'if':
-          out = "\u5E94\u5F53\u5339\u914D\u6A21\u5F0F \"".concat(e.params.failingKeyword, "\" ");
+          out = "should match \"".concat(e.params.failingKeyword, "\" schema");
           break;
 
         case 'maximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u4E3A ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'maxItems':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u591A\u4E8E ".concat(n, " \u4E2A\u9879");
+          out += "should NOT have more than ".concat(n, " items");
           break;
 
         case 'maxLength':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u591A\u4E8E ".concat(n, " \u4E2A\u5B57\u7B26");
+          out += "should NOT be longer than ".concat(n, " characters");
           break;
 
         case 'maxProperties':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u6709\u591A\u4E8E ".concat(n, " \u4E2A\u5C5E\u6027");
+          out += "should NOT have more than ".concat(n, " properties");
           break;
 
         case 'minimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
-          out += "\u5E94\u5F53\u4E3A ".concat(cond);
+          out += "should be ".concat(cond);
           break;
 
         case 'minItems':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u5C11\u4E8E ".concat(n, " \u4E2A\u9879");
+          out += "should NOT have fewer than ".concat(n, " items");
           break;
 
         case 'minLength':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u5C11\u4E8E ".concat(n, " \u4E2A\u5B57\u7B26");
+          out += "should NOT be shorter than ".concat(n, " characters");
           break;
 
         case 'minProperties':
           out = '';
           n = e.params.limit;
-          out += "\u4E0D\u5E94\u6709\u5C11\u4E8E ".concat(n, " \u4E2A\u5C5E\u6027");
+          out += "should NOT have fewer than ".concat(n, " properties");
           break;
 
         case 'multipleOf':
-          out = "\u5E94\u5F53\u662F ".concat(e.params.multipleOf, " \u7684\u6574\u6570\u500D");
+          out = "should be multiple of ".concat(e.params.multipleOf);
           break;
 
         case 'not':
-          out = '不应当匹配 "not" schema';
+          out = 'should NOT be valid according to schema in "not"';
           break;
 
         case 'oneOf':
-          out = '只能匹配一个 "oneOf" 中的 schema';
+          out = 'should match exactly one schema in "oneOf"';
           break;
 
         case 'pattern':
-          out = "\u5E94\u5F53\u5339\u914D\u6A21\u5F0F \"".concat(e.params.pattern, "\"");
+          out = "should match pattern \"".concat(e.params.pattern, "\"");
           break;
 
         case 'patternRequired':
-          out = "\u5E94\u5F53\u6709\u5C5E\u6027\u5339\u914D\u6A21\u5F0F ".concat(e.params.missingPattern);
+          out = "should have property matching pattern ".concat(e.params.missingPattern);
           break;
 
         case 'propertyNames':
-          out = "\u5C5E\u6027\u540D '".concat(e.params.propertyName, "' \u65E0\u6548");
+          out = "property name '".concat(e.params.propertyName, "' is invalid");
           break;
 
         case 'required':
-          out = "\u5E94\u5F53\u6709\u5FC5\u9700\u5C5E\u6027 ".concat(e.params.missingProperty);
+          out = "should have required property ".concat(e.params.missingProperty);
           break;
 
         case 'switch':
-          out = "\u7531\u4E8E ".concat(e.params.caseIndex, " \u5931\u8D25\uFF0C\u672A\u901A\u8FC7 \"switch\" \u6821\u9A8C, ");
+          out = "should pass \"switch\" keyword validation, case ".concat(e.params.caseIndex, " fails");
           break;
 
         case 'type':
-          out = "\u5E94\u5F53\u662F ".concat(e.params.type, " \u7C7B\u578B");
+          out = "should be ".concat(e.params.type);
           break;
 
         case 'uniqueItems':
-          out = "\u4E0D\u5E94\u5F53\u542B\u6709\u91CD\u590D\u9879 (\u7B2C ".concat(e.params.j, " \u9879\u4E0E\u7B2C ").concat(e.params.i, " \u9879\u662F\u91CD\u590D\u7684)");
+          out = "should NOT have duplicate items (items ## ".concat(e.params.j, " and ").concat(e.params.i, " are identical)");
           break;
 
         default:
@@ -7852,7 +7852,7 @@
    * Created by Liu.Jun on 2020/4/30 11:22.
    */
   var i18n = {
-    $$currentLocalizeFn: localizeZh,
+    $$currentLocalizeFn: localizeEn,
     getCurrentLocalize: function getCurrentLocalize() {
       return this.$$currentLocalizeFn;
     },
@@ -7864,28 +7864,28 @@
   /**
    * Created by Liu.Jun on 2020/4/25 10:53.
    */
-  // 通过 index 上移
+  // Move up by index
   function moveUpAt(target, index) {
     if (index === 0) return false;
     var item = target[index];
     var newItems = [item, target[index - 1]];
     return target.splice.apply(target, [index - 1, 2].concat(newItems));
-  } // 通过 index 下移动
+  } // Move down by index
 
   function moveDownAt(target, index) {
     if (index === target.length - 1) return false;
     var item = target[index];
     var newItems = [target[index + 1], item];
     return target.splice.apply(target, [index, 2].concat(newItems));
-  } // 移除
+  } // Remove
 
   function removeAt(target, index) {
-    // 移除数组中指定位置的元素，返回布尔表示成功与否
+    // Remove element at specified position in array, return boolean indicating success
     return !!target.splice(index, 1).length;
-  } // 数组填充对象
+  } // Fill array with objects
 
   function fillObj(target, data) {
-    // 简单复制 异常直接抛错
+    // Simple copy, throw error on exception
     try {
       if (_typeof(data) === 'object') {
         return target.fill(null).map(function () {
@@ -7893,18 +7893,18 @@
         });
       }
     } catch (e) {// nothing ...
-    } // 默认返回一个 undefined
+    } // Default return undefined
 
 
     return undefined;
-  } // 切割分为多个数组
+  } // Split into multiple arrays
 
   function cutOff(target, cutOffPointIndex) {
     return target.reduce(function (preVal, curVal, curIndex) {
       preVal[curIndex > cutOffPointIndex ? 1 : 0].push(curVal);
       return preVal;
     }, [[], []]);
-  } // 数组交集
+  } // Array intersection
 
   function intersection(arr1, arr2) {
     return arr1.filter(function (item) {
@@ -7912,7 +7912,7 @@
     });
   }
 
-  // 自动添加分割线
+  // Auto add divider
   // export const ADDITIONAL_PROPERTY_FLAG = '__additional_property';
   // resolve Schema - dependencies
   // https://json-schema.org/understanding-json-schema/reference/object.html#dependencies
@@ -8096,7 +8096,7 @@
 
 
     return retrieveSchema(_objectSpread2(_objectSpread2({}, $refSchema), localSchema), rootSchema, formData);
-  } // 深度递归合并 合并allOf的每2项
+  } // Deep recursive merge, merge every 2 items of allOf
 
 
   function mergeSchemaAllOf() {
@@ -8114,21 +8114,21 @@
       preVal = Object.assign({}, obj1);
       Object.keys(obj2).reduce(function (acc, key) {
         var left = obj1[key];
-        var right = obj2[key]; // 左右一边为object
+        var right = obj2[key]; // Left or right one side is object
 
         if (isObject(left) || isObject(right)) {
-          // 两边同时为object
+          // Both sides are objects
           if (isObject(left) && isObject(right)) {
             acc[key] = mergeSchemaAllOf(left, right);
           } else {
-            // 其中一边为 object
+            // One side is object
             var _ref = isObject(left) ? [left, right] : [right, left],
                 _ref2 = _slicedToArray(_ref, 2),
                 objTypeData = _ref2[0],
                 baseTypeData = _ref2[1];
 
             if (key === 'additionalProperties') {
-              // 适配类型： 一边配置了对象一边没配置或者true false
+              // Adapt type: one side configured object, other side not configured or true/false
               // {
               //     additionalProperties: {
               //         type: 'string',
@@ -8139,10 +8139,10 @@
             } else {
               acc[key] = objTypeData;
             }
-          } // 一边为array
+          } // One side is array
 
         } else if (Array.isArray(left) || Array.isArray(right)) {
-          // 同为数组取交集
+          // Both are arrays, take intersection
           if (Array.isArray(left) && Array.isArray(right)) {
             // 数组里面嵌套对象不支持 因为我不知道该怎么合并
             if (isObject(left[0]) || isObject(right[0])) {
@@ -8202,7 +8202,7 @@
         }
 
         return acc;
-      }, preVal); // 先进先出
+      }, preVal); // First in first out
 
       copyArgs.splice(0, 2, preVal);
     };
@@ -8229,7 +8229,7 @@
 
       return mergeSchemaAllOf.apply(void 0, [originProperties].concat(_toConsumableArray(allOf)));
     } catch (e) {
-      console.error("\u65E0\u6CD5\u5408\u5E76allOf\uFF0C\u4E22\u5F03allOf\u914D\u7F6E\u7EE7\u7EED\u6E32\u67D3: \n".concat(e)); // eslint-disable-next-line no-unused-vars
+      console.error("Cannot merge allOf, discarding allOf config and continuing to render: \n".concat(e)); // eslint-disable-next-line no-unused-vars
 
       resolvedAllOfRefSchema.allOf;
           var resolvedSchemaWithoutAllOf = _objectWithoutProperties(resolvedAllOfRefSchema, ["allOf"]);
@@ -8316,7 +8316,7 @@
 
       return schema;
   } */
-  // 索引当前节点
+  // Index current node
 
 
   function retrieveSchema(schema) {
@@ -8331,58 +8331,58 @@
   }
 
   // 内部使用 . ，配置数据key不能出现.
-  var pathSeparator = '.'; // nodePath 转css类名
+  var pathSeparator = '.'; // Convert nodePath to css class name
 
   function nodePath2ClassName(path) {
     var rootPathName = '__pathRoot';
     return path ? "".concat(rootPathName, ".").concat(path).replace(/\./g, '_') : rootPathName;
-  } // 是否为根节点
+  } // Is root node
 
   function isRootNodePath(path) {
     return path === '';
-  } // 计算当前节点path
+  } // Calculate current node path
 
   function computedCurPath(prePath, curKey) {
     return prePath === '' ? curKey : [prePath, curKey].join(pathSeparator);
-  } // 获取当前path值
+  } // Get current path value
 
   function getPathVal$1(obj, path) {
     var leftDeviation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var pathArr = path.split(pathSeparator);
 
     for (var i = 0; i < pathArr.length - leftDeviation; i += 1) {
-      // 错误路径或者undefined中断查找
+      // Error path or undefined interrupts search
       if (obj === undefined) return undefined;
       obj = pathArr[i] === '' ? obj : obj[pathArr[i]];
     }
 
     return obj;
-  } // path 等于props
+  } // Path equals props
 
   function path2prop(path) {
     return path;
   }
 
-  // 这里打破 JSON Schema 规范
+  // This breaks the JSON Schema specification
 
   var regExpression = /{{(.*)}}/;
 
   function handleExpression(rootFormData, curNodePath, expression, fallBack) {
-    // 未配置
+    // Not configured
     if (undefined === expression) {
       return undefined;
-    } // 配置了 mustache 表达式
+    } // Configured mustache expression
 
 
     var matchExpression = regExpression.exec(expression);
-    regExpression.lastIndex = 0; // 重置索引
+    regExpression.lastIndex = 0; // Reset index
 
     if (matchExpression) {
       var code = matchExpression[1].trim(); // eslint-disable-next-line no-new-func
 
       var fn = new Function('parentFormData', 'rootFormData', "return ".concat(code));
       return fn(getPathVal$1(rootFormData, curNodePath, 1), rootFormData);
-    } // 回退
+    } // Fallback
 
 
     return fallBack();
@@ -8406,7 +8406,7 @@
 
       return preVal;
     }, {});
-  } // 是否为 hidden Widget
+  } // Is hidden Widget
 
   function isHiddenWidget(_ref2) {
     var _ref2$schema = _ref2.schema,
@@ -8418,33 +8418,33 @@
         _ref2$rootFormData = _ref2.rootFormData,
         rootFormData = _ref2$rootFormData === void 0 ? {} : _ref2$rootFormData;
     var widget = uiSchema['ui:widget'] || schema['ui:widget'];
-    var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden']; // 支持配置 ui:hidden 表达式
+    var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden']; // Support configuring ui:hidden expression
 
     return widget === 'HiddenWidget' || widget === 'hidden' || !!handleExpression(rootFormData, curNodePath, hiddenExpression, function () {
-      // 配置了函数 function
+      // Configured function
       if (typeof hiddenExpression === 'function') {
         return hiddenExpression(getPathVal$1(rootFormData, curNodePath, 1), rootFormData);
-      } // 配置了常量 ？？
+      } // Configured constant ??
 
 
       return hiddenExpression;
     });
-  } // 解析当前节点 ui field
+  } // Resolve current node ui field
 
   function getUiField(FIELDS_MAP, _ref3) {
     var _ref3$schema = _ref3.schema,
         schema = _ref3$schema === void 0 ? {} : _ref3$schema,
         _ref3$uiSchema = _ref3.uiSchema,
         uiSchema = _ref3$uiSchema === void 0 ? {} : _ref3$uiSchema;
-    var field = schema['ui:field'] || uiSchema['ui:field']; // vue 组件，或者已注册的组件名
+    var field = schema['ui:field'] || uiSchema['ui:field']; // Vue component, or registered component name
 
     if (typeof field === 'function' || _typeof(field) === 'object' || typeof field === 'string') {
       return {
         field: field,
-        fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'] // 自定义field ，支持传入额外的 props
+        fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'] // Custom field, support passing additional props
 
       };
-    } // 类型默认 field
+    } // Type default field
 
 
     var fieldCtor = FIELDS_MAP[getSchemaType(schema)];
@@ -8453,20 +8453,20 @@
       return {
         field: fieldCtor
       };
-    } // 如果包含 oneOf anyOf 返回空不异常
-    // SchemaField 会附加onyOf anyOf信息
+    } // If contains oneOf anyOf return empty without error
+    // SchemaField will append oneOf anyOf information
 
 
     if (!fieldCtor && (schema.anyOf || schema.oneOf)) {
       return {
         field: null
       };
-    } // 不支持的类型
+    } // Unsupported type
 
 
-    console.error('当前schema:', schema);
-    throw new Error("\u4E0D\u652F\u6301\u7684field\u7C7B\u578B, type: ".concat(schema.type));
-  } // 解析用户配置的 uiSchema options
+    console.error('Current schema:', schema);
+    throw new Error("Unsupported field type, type: ".concat(schema.type));
+  } // Resolve user configured uiSchema options
 
   function getUserUiOptions(_ref4) {
     var _ref4$schema = _ref4.schema,
@@ -8476,25 +8476,26 @@
         curNodePath = _ref4.curNodePath,
         _ref4$rootFormData = _ref4.rootFormData,
         rootFormData = _ref4$rootFormData === void 0 ? {} : _ref4$rootFormData;
-    // 支持 uiSchema配置在 schema文件中
+    // Support uiSchema configured in schema file
     return Object.assign.apply(Object, [{}].concat(_toConsumableArray([schema, uiSchema].map(function (itemSchema) {
       return Object.keys(itemSchema).reduce(function (options, key) {
-        var value = itemSchema[key]; // options 内外合并
+        var value = itemSchema[key]; // Merge options inside and outside
 
         if (key === 'ui:options' && isObject(value)) {
           return _objectSpread2(_objectSpread2({}, options), value);
         } // https://github.com/lljj-x/vue-json-schema-form/issues/170
-        // ui:hidden需要作为内置属性使用，不能直接透传给widget组件，如果组件需要只能在ui:options 中使用hidden传递
+        // ui:hidden needs to be used as a built-in property and cannot be directly passed to widget component.
+        //  If component needs it, it can only be passed using hidden in ui:options
 
 
         if (key !== 'ui:hidden') {
-          // 处理 ui:xxx  参数
+          // Handle ui:xxx parameters
           if (key.indexOf('ui:') === 0) {
-            // 只对 ui:xxx 配置形式支持表达式
+            // Only support expression for ui:xxx configuration format
             return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(3), curNodePath === undefined ? value : handleExpression(rootFormData, curNodePath, value, function () {
               return value;
             })));
-          } // 处理 fui:xxx 参数，支持所有的options 通过function配置
+          } // Handle fui:xxx parameters, support all options configured through function
 
 
           if (key.indexOf('fui:') === 0) {
@@ -8505,7 +8506,7 @@
         return options;
       }, {});
     }))));
-  } // 解析当前节点的ui options参数
+  } // Resolve ui options parameters of current node
 
   function getUiOptions(_ref5) {
     var _ref5$schema = _ref5.schema,
@@ -8522,7 +8523,7 @@
       spec.readonly = !!schema.readOnly;
 
       if (undefined !== schema.multipleOf) {
-        // 组件计数器步长
+        // Component counter step
         spec.step = schema.multipleOf;
       }
 
@@ -8543,20 +8544,20 @@
       }
 
       if (schema.format === 'date-time' || schema.format === 'date') {
-        // 数组类型 时间区间
-        // 打破了schema的规范，type array 配置了 format
+        // Array type time range
+        // Breaks schema specification, type array configured with format
         if (schema.type === 'array') {
           spec.isRange = true;
           spec.isNumberValue = !(schema.items && schema.items.type === 'string');
         } else {
-          // 字符串 ISO 时间
+          // String ISO time
           spec.isNumberValue = !(schema.type === 'string');
         }
       }
     }
 
     if (schema.title) spec.title = schema.title;
-    if (schema.description) spec.description = schema.description; // 计算ui配置
+    if (schema.description) spec.description = schema.description; // Calculate ui configuration
 
     return _objectSpread2(_objectSpread2({}, spec), getUserUiOptions({
       schema: schema,
@@ -8564,8 +8565,8 @@
       curNodePath: curNodePath,
       rootFormData: rootFormData
     }));
-  } // 获取当前节点的ui 配置 （options + widget）
-  // 处理成 Widget 组件需要的格式
+  } // Get ui configuration of current node (options + widget)
+  // Process into format needed by Widget component
 
   function getWidgetConfig(_ref6) {
     var _ref6$schema = _ref6.schema,
@@ -8580,7 +8581,7 @@
       uiSchema: uiSchema,
       curNodePath: curNodePath,
       rootFormData: rootFormData
-    }); // 没有配置 Widget ，各个Field组件根据类型判断
+    }); // No Widget configured, each Field component judges by type
 
     if (!uiOptions.widget && fallback) {
       Object.assign(uiOptions, fallback({
@@ -8630,7 +8631,7 @@
       uiProps: uiProps,
       uiRequired: uiRequired
     };
-  } // 解析用户配置的 errorSchema options
+  } // Resolve user configured errorSchema options
 
   function getUserErrOptions(_ref7) {
     var _ref7$schema = _ref7.schema,
@@ -8654,7 +8655,7 @@
         return options;
       }, {});
     }))));
-  } // ui:order object-> properties 排序
+  } // ui:order object-> properties sorting
 
   function orderProperties(properties, order) {
     if (!Array.isArray(order)) {
@@ -8700,8 +8701,8 @@
     return complete;
   }
   /**
-   * 单个匹配
-   * 常量，或者只有一个枚举
+   * Single match
+   * Constant, or only one enum
    */
 
   function isConstant(schema) {
@@ -8719,8 +8720,8 @@
     throw new Error('schema cannot be inferred as a constant');
   }
   /**
-   * 是否为选择列表
-   * 枚举 或者 oneOf anyOf 每项都只有一个固定常量值
+   * Is select list
+   * Enum or oneOf anyOf where each item has only one fixed constant value
    * @param _schema
    * @param rootSchema
    * @returns {boolean|*}
@@ -8742,13 +8743,13 @@
     }
 
     return false;
-  } // items 都为一个对象
+  } // Items are all objects
 
   function isFixedItems(schema) {
     return Array.isArray(schema.items) && schema.items.length > 0 && schema.items.every(function (item) {
       return isObject(item);
     });
-  } // 是否为多选
+  } // Is multi-select
 
   function isMultiSelect(schema) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -8767,7 +8768,7 @@
     }
 
     return isObject(schema.additionalItems);
-  } // 下拉选项
+  } // Dropdown options
 
   function optionsList(schema, uiSchema, curNodePath, rootFormData) {
     // enum
@@ -8777,7 +8778,7 @@
         uiSchema: uiSchema,
         curNodePath: curNodePath,
         rootFormData: rootFormData
-      }); // ui配置 enumNames 优先
+      }); // ui configured enumNames has priority
 
       var enumNames = uiOptions.enumNames || schema.enumNames;
       return schema.enum.map(function (value, i) {
@@ -8811,7 +8812,7 @@
     if (oriLabel) return oriLabel;
 
     if (isFallback) {
-      var backLabel = curNodePath.split('.').pop(); // 过滤纯数字字符串
+      var backLabel = curNodePath.split('.').pop(); // Filter pure numeric strings
 
       if (backLabel && backLabel !== "".concat(Number(backLabel))) return backLabel;
     }
@@ -8841,7 +8842,7 @@
 
   var ajv$1 = createAjvInstance();
   var formerCustomFormats = null;
-  var formerMetaSchema = null; // 创建实例
+  var formerMetaSchema = null; // Create instance
 
   function createAjvInstance() {
     var ajvInstance = new ajv({
@@ -8859,7 +8860,7 @@
     return ajvInstance;
   }
   /**
-   * 将错误输出从ajv转换为jsonschema使用的格式
+   * Transform error output from ajv to the format used by jsonschema
    * At some point, components should be updated to support ajv.
    */
 
@@ -8891,12 +8892,12 @@
     });
   }
   /**
-   * 通过 schema校验formData并返回错误信息
-   * @param formData 校验的数据
+   * Validate formData through schema and return error information
+   * @param formData Data to validate
    * @param schema
-   * @param transformErrors function - 转换错误, 如个性化的配置
-   * @param additionalMetaSchemas 数组 添加 ajv metaSchema
-   * @param customFormats 添加 ajv 自定义 formats
+   * @param transformErrors function - Transform errors, such as personalized configuration
+   * @param additionalMetaSchemas Array - Add ajv metaSchema
+   * @param customFormats Add ajv custom formats
    * @returns {{errors: ([]|{stack: string, schemaPath: *, name: *, property: string, message: *, params: *}[])}}
    */
 
@@ -8912,17 +8913,17 @@
         customFormats = _ref$customFormats === void 0 ? {} : _ref$customFormats;
 
     var hasNewMetaSchemas = !deepEquals(formerMetaSchema, additionalMetaSchemas);
-    var hasNewFormats = !deepEquals(formerCustomFormats, customFormats); // 变更了 Meta或者调整了format配置重置新的实例
+    var hasNewFormats = !deepEquals(formerCustomFormats, customFormats); // Changed Meta or adjusted format config, reset new instance
 
     if (hasNewMetaSchemas || hasNewFormats) {
       ajv$1 = createAjvInstance();
-    } // 添加更多要验证的模式
+    } // Add more schemas to validate
 
 
     if (additionalMetaSchemas && hasNewMetaSchemas && Array.isArray(additionalMetaSchemas)) {
       ajv$1.addMetaSchema(additionalMetaSchemas);
       formerMetaSchema = additionalMetaSchemas;
-    } // 注册自定义的 formats - 没有变更只会注册一次 - 否则重新创建实例
+    } // Register custom formats - unchanged, register only once - otherwise recreate instance
 
 
     if (customFormats && hasNewFormats && isObject(customFormats)) {
@@ -8938,13 +8939,13 @@
       ajv$1.validate(schema, formData);
     } catch (err) {
       validationError = err;
-    } // ajv 默认多语言处理
+    } // ajv default multilingual processing
 
 
     i18n.getCurrentLocalize()(ajv$1.errors);
-    var errors = transformAjvErrors(ajv$1.errors); // 清除错误
+    var errors = transformAjvErrors(ajv$1.errors); // Clear errors
 
-    ajv$1.errors = null; // 处理异常
+    ajv$1.errors = null; // Handle exceptions
 
     var noProperMetaSchema = validationError && validationError.message && typeof validationError.message === 'string' && validationError.message.includes('no schema with key or ref ');
 
@@ -8952,7 +8953,7 @@
       errors = [].concat(_toConsumableArray(errors), [{
         stack: validationError.message
       }]);
-    } // 转换错误, 如传入自定义的错误
+    } // Transform errors, such as passing in custom errors
 
 
     if (typeof transformErrors === 'function') {
@@ -8962,7 +8963,7 @@
     return {
       errors: errors
     };
-  } // 校验formData 并转换错误信息
+  } // Validate formData and transform error messages
 
   function validateFormDataAndTransformMsg() {
     var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -8982,7 +8983,7 @@
         propPath = _ref2$propPath === void 0 ? '' : _ref2$propPath,
         _ref2$isOnlyFirstErro = _ref2.isOnlyFirstError,
         isOnlyFirstError = _ref2$isOnlyFirstErro === void 0 ? true : _ref2$isOnlyFirstErro;
-    // 如果数组类型针对配置了 format 的特殊处理
+    // Special handling for array types configured with format
 
     var emptyArray = schema.type === 'array' && Array.isArray(formData) && formData.length === 0;
     var isEmpty = formData === undefined || emptyArray;
@@ -8994,7 +8995,7 @@
           params: {
             missingProperty: propPath
           }
-        }; // 用户设置校验信息
+        }; // User set validation message
 
         var errSchemaMsg = getUserErrOptions({
           schema: schema,
@@ -9005,16 +9006,16 @@
         if (errSchemaMsg) {
           requireErrObj.message = errSchemaMsg;
         } else {
-          // 处理多语言require提示信息 （ajv 修改原引用）
+          // Process multilingual require message (ajv modifies original reference)
           i18n.getCurrentLocalize()([requireErrObj]);
         }
 
         return [requireErrObj];
       }
     } else if (isEmpty && !emptyArray) {
-      // 非required 为空 校验通过
+      // Non-required, empty, validation passes
       return [];
-    } // 校验ajv错误信息
+    } // Validate ajv error messages
 
 
     var ajvErrors = ajvValidateFormData({
@@ -9023,7 +9024,7 @@
       transformErrors: transformErrors,
       additionalMetaSchemas: additionalMetaSchemas,
       customFormats: customFormats
-    }).errors; // 过滤顶级错误
+    }).errors; // Filter top-level errors
 
     {
       ajvErrors = ajvErrors.filter(function (item) {
@@ -9037,14 +9038,14 @@
       errorSchema: errorSchema
     });
     return (isOnlyFirstError && ajvErrors.length > 0 ? [ajvErrors[0]] : ajvErrors).reduce(function (preErrors, errorItem) {
-      // 优先获取 errorSchema 配置
+      // Get errorSchema config with priority
       errorItem.message = userErrOptions[errorItem.name] !== undefined ? userErrOptions[errorItem.name] : errorItem.message;
       preErrors.push(errorItem);
       return preErrors;
     }, []);
   }
   /**
-   * 根据模式验证数据，如果数据有效则返回true，否则返回* false。如果模式无效，那么这个函数将返回* false。
+   * Validate data according to schema, return true if data is valid, otherwise return false. If schema is invalid, this function will return false.
    * @param schema
    * @param data
    * @returns {boolean|PromiseLike<any>}
@@ -9060,7 +9061,7 @@
 
   function ajvValid(schema, data) {
     return ajv$1.validate(schema, data);
-  } // 如果查找不到
+  } // If not found
   // return -1
 
   function getMatchingIndex(formData, options, rootSchema) {
@@ -9108,7 +9109,7 @@
           augmentedSchema = Object.assign({}, option, requiresAnyOf);
         } // Remove the "required" field as it's likely that not all fields have
         // been filled in yet, which will mean that the schema is not valid
-        // 如果编辑回填数据的场景 可直接使用 required 判断
+        // For edit backfill data scenarios, can directly use required for judgment
 
 
         if (!haveAllFields) delete augmentedSchema.required;
@@ -9119,7 +9120,7 @@
       } else if (isValid(option, formData)) {
         return i;
       }
-    } // 尝试查找const 配置
+    } // Try to find const config
 
 
     if (options[0] && options[0].properties) {
@@ -9138,7 +9139,7 @@
     }
 
     return -1;
-  } // oneOf anyOf 通过formData的值来找到当前匹配项索引
+  } // oneOf anyOf find current matching item index through formData value
 
   function getMatchingOption(formData, options, rootSchema) {
     var haveAllFields = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
@@ -9157,8 +9158,8 @@
   });
 
   /**
-   * 根据schema计算出formData的初始值
-   * 源码来自：react-jsonschema-form 做了细节调整，重写了allOf实现逻辑
+   * Calculate initial value of formData based on schema
+   * Source code from: react-jsonschema-form with detail adjustments, rewrote allOf implementation logic
    * https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/utils.js#L283
    */
   /**
@@ -9174,7 +9175,7 @@
   function mergeDefaultsWithFormData(defaults, formData) {
     if (Array.isArray(formData)) {
       if (!Array.isArray(defaults)) {
-        console.warn('无效的formData，已覆盖数据', formData);
+        console.warn('Invalid formData, data has been overwritten', formData);
         return defaults;
       }
 
@@ -9204,7 +9205,7 @@
     var includeUndefinedValues = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
     var haveAllFields = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
     var schema = isObject(_schema) ? _schema : {};
-    var formData = isObject(rawFormData) ? rawFormData : {}; // allOf 处理合并数据
+    var formData = isObject(rawFormData) ? rawFormData : {}; // allOf processing and merging data
 
     if ('allOf' in schema) {
       schema = resolveAllOf(schema, rootSchema, formData);
@@ -9318,14 +9319,14 @@
           } else {
             return defaults || [];
           }
-        } // undefined 默认一个空数组
+        } // undefined defaults to empty array
 
 
         defaults = defaults === undefined ? [] : defaults;
     }
 
     return defaults;
-  } // 获取默认form data
+  } // Get default form data
 
 
   function getDefaultFormState(_schema, formData) {
@@ -9343,7 +9344,7 @@
     if (typeof formData === 'undefined') {
       // No form data? Use schema defaults.
       return defaults;
-    } // 传入formData时，合并传入数据
+    } // When formData is passed in, merge the passed data
 
 
     if (isObject(formData) || Array.isArray(formData)) {
@@ -9396,8 +9397,8 @@
       default: function _default() {
         return {
           show: true,
-          okBtn: '保存',
-          cancelBtn: '取消'
+          okBtn: 'Save',
+          cancelBtn: 'Cancel'
         };
       }
     },
@@ -9429,26 +9430,26 @@
       },
       required: true
     },
-    // 重置ui样式
+    // Reset UI styles
     uiSchema: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
-    // 自定义校验规则
+    // Custom validation rules
     customFormats: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
-    // 自定义校验
+    // Custom validation
     customRule: {
       type: Function,
       default: null
     },
-    // 重置自定义错误
+    // Reset custom errors
     errorSchema: {
       type: Object,
       default: function _default() {
@@ -9465,7 +9466,7 @@
     props: {
       okBtn: {
         type: String,
-        default: '保存'
+        default: 'Save'
       },
       okBtnProps: {
         type: Object,
@@ -9475,7 +9476,7 @@
       },
       cancelBtn: {
         type: String,
-        default: '取消'
+        default: 'Cancel'
       },
       formItemAttrs: {
         type: Object,
@@ -9524,7 +9525,7 @@
 
   function deletePathVal(vueData, name) {
     Vue__default['default'].delete(vueData, name);
-  } // 设置当前path值
+  } // Set current path value
 
   function setPathVal(obj, path, value) {
     // Vue.set ?
@@ -9532,7 +9533,7 @@
 
     for (var i = 0; i < pathArr.length; i += 1) {
       if (pathArr.length - i < 2) {
-        // 倒数第一个数据
+        // Last data
         // obj[pathArr[pathArr.length - 1]] = value;
         Vue__default['default'].set(obj, pathArr[pathArr.length - 1], value);
         break;
@@ -9578,7 +9579,7 @@
     name: 'FieldGroupWrap',
     inject: ['genFormProvide'],
     props: {
-      // 当前节点路径
+      // Current node path
       curNodePath: {
         type: String,
         default: ''
@@ -11784,7 +11785,7 @@
         };
       },
       data: function data() {
-        var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode); // 保持v-model双向数据及时性
+        var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode); // Keep v-model two-way data timely
 
         this.emitFormDataChange(formData, this.value);
         return {
@@ -11798,8 +11799,8 @@
         footerParams: function footerParams() {
           return _objectSpread2({
             show: true,
-            okBtn: '保存',
-            cancelBtn: '取消'
+            okBtn: 'Save',
+            cancelBtn: 'Cancel'
           }, this.formFooter);
         }
       },
@@ -11810,7 +11811,7 @@
           },
           deep: true
         },
-        // 用于初始化了formData，监听变更是否重新计算 formData
+        // Used for initialized formData, watch for changes to recalculate formData
         schema: function schema(newVal, oldVal) {
           this.willReceiveProps(newVal, oldVal);
         },
@@ -11820,15 +11821,15 @@
       },
       methods: {
         emitFormDataChange: function emitFormDataChange(newValue, oldValue) {
-          // 支持v-model ，引用类型
-          this.$emit('input', newValue); // change 事件，引用类型修改属性 newValue
+          // Support v-model, reference type
+          this.$emit('input', newValue); // Change event, reference type modifies property newValue
 
           this.$emit('on-change', {
             newValue: newValue,
             oldValue: oldValue
           });
         },
-        // 避免用于双向绑定v-model 可能导致的循环调用
+        // Avoid circular calls that may be caused by v-model two-way binding
         willReceiveProps: function willReceiveProps(newVal, oldVal) {
           if (!deepEquals(newVal, oldVal)) {
             var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode);
@@ -11902,11 +11903,11 @@
           customRule: this.customRule,
           rootSchema: this.schema,
           rootFormData: this.formData,
-          // 根节点的数据
+          // Root node data
           curNodePath: '',
-          // 当前节点路径
+          // Current node patht node path
           globalOptions: globalOptions,
-          // 全局配置，差异化ui框架
+          // Global configuration, differentiate UI frameworks
           formProps: _objectSpread2({
             labelPosition: labelPosition,
             labelSuffix: '：',

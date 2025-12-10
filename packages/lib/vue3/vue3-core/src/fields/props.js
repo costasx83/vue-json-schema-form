@@ -2,62 +2,62 @@
  * Created by Liu.Jun on 2020/4/22 18:58.
  */
 
-// 递归参数，统一props
+// Recursive parameters, unified props
 export default {
     formProps: {
         type: null
     },
-    // 全局的配置，用于 初始化差异，适配不同的ui框架
+    // Global configuration for initialization differences, adapting to different UI frameworks
     globalOptions: {
         type: null
     },
-    // 当前节点schema
+    // Current node schema
     schema: {
         type: Object,
         default: () => ({})
     },
-    // 当前节点Ui Schema
+    // Current node UI Schema
     uiSchema: {
         type: Object,
         default: () => ({})
     },
-    // 当前节点Error Schema
+    // Current node Error Schema
     errorSchema: {
         type: Object,
         default: () => ({})
     },
-    // 自定义校验
+    // Custom validation
     customRule: {
         type: Function,
         default: null
     },
-    // 自定义校验规则
+    // Custom validation rules
     customFormats: {
         type: Object,
         default: () => ({})
     },
-    // 根节点 Schema
+    // Root node Schema
     rootSchema: {
         type: Object,
         default: () => ({})
     },
-    // 根节点的数据
+    // Root node data
     rootFormData: {
         type: null,
         default: () => ({})
     },
-    // 当前节点路径
+    // Current node path
     curNodePath: {
         type: String,
         default: ''
     },
-    // 是否必填
+    // Whether required
     required: {
         type: Boolean,
         default: false
     },
-    // 是否需要校验数据组
-    // object array 类型默认会最后追加一个校验组件校验整体数据
+    // Whether validation data group is needed
+    // object array type will append a validation component at the end to validate overall data by default
     needValidFieldGroup: {
         type: Boolean,
         default: true

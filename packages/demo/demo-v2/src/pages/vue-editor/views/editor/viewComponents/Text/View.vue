@@ -5,7 +5,7 @@
                 color: formData.txtColor
             }"
         >
-            {{ formData.txt || '请配置标题' }}
+            {{ formData.txt || 'Please configure title' }}
         </h2>
     </div>
 </template>

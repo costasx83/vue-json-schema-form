@@ -18,11 +18,11 @@ async function build() {
     // create a bundle
     const bundle = await rollup.rollup(inputOptions);
 
-    // 循环输出每种格式
+    // Loop output for each format
     for (const outputOptions of outputList) {
         // or write the bundle to disk
         // eslint-disable-next-line no-await-in-loop
-        // 并发
+        // Concurrent
         bundle.write(outputOptions).then(() => {
             console.log(`Success: ${outputOptions.file}`);
         });

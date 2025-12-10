@@ -7,7 +7,7 @@ import baseData from './index';
 export default {
     viewSchema: {
         ...baseData.viewSchema,
-        title: 'Date(字符串)',
+        title: 'Date (string)',
         type: 'string'
     },
     propsSchema: baseData.propsSchema

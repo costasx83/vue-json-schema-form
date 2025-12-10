@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/12/27 9:53 下午.
+ * Created by Liu.Jun on 2020/12/27 9:53 PM.
  */
 
 import { h } from 'vue';
@@ -11,7 +11,7 @@ export default {
     props: {
         okBtn: {
             type: String,
-            default: '保存'
+            default: 'OK'
         },
         okBtnProps: {
             type: Object,
@@ -19,7 +19,7 @@ export default {
         },
         cancelBtn: {
             type: String,
-            default: '取消'
+            default: 'Cancel'
         },
         formItemAttrs: {
             type: Object,
@@ -32,7 +32,7 @@ export default {
     },
     emits: ['cancel', 'submit'],
     setup(props, { emit }) {
-        // globalOptions 不需要响应式
+        // globalOptions does not need to be reactive
         const { globalOptions: { COMPONENT_MAP } } = props;
 
         return () => h(resolveComponent(COMPONENT_MAP.formItem), {

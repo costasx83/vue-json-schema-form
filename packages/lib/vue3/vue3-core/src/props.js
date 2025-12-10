@@ -1,5 +1,5 @@
 /**
- * Created by Liu.Jun on 2020/4/16 10:47 下午.
+ * Created by Liu.Jun on 2020/4/16 10:47 PM.
  */
 
 export default {
@@ -7,8 +7,8 @@ export default {
         type: Object,
         default: () => ({
             show: true,
-            okBtn: '保存',
-            cancelBtn: '取消',
+            okBtn: 'Save',
+            cancelBtn: 'Cancel',
         }),
     },
     modelValue: {
@@ -26,29 +26,28 @@ export default {
     },
     formProps: {
         type: Object,
-        default: () => ({}),
+        default: () => ({})
     },
     schema: {
         type: Object,
-        default: () => ({}),
-        required: true
+        default: () => ({})
     },
-    // 重置ui样式
+    // Reset UI styles
     uiSchema: {
         type: Object,
         default: () => ({})
     },
-    // 自定义校验规则
+    // Custom validation rules
     customFormats: {
         type: Object,
         default: () => ({})
     },
-    // 自定义校验
+    // Custom validation
     customRule: {
         type: Function,
         default: null
     },
-    // 重置自定义错误
+    // Reset custom errors
     errorSchema: {
         type: Object,
         default: () => ({})

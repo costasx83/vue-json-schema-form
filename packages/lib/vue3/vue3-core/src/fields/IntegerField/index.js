@@ -1,6 +1,6 @@
 /**
  * Created by Liu.Jun on 2020/4/21 9:24.
- * IntegerField 复用StringField
+ * IntegerField reuses StringField
  */
 
 import { h } from 'vue';

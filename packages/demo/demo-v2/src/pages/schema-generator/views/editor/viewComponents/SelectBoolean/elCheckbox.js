@@ -6,7 +6,7 @@
 import genSchema from '../genSchema.js';
 
 const viewSchema = {
-    title: '是否选择(Checkbox)',
+    title: 'Boolean (Checkbox)',
     type: 'boolean',
     'ui:widget': 'el-checkbox'
 };
@@ -16,15 +16,15 @@ export default {
     propsSchema: genSchema({
         options: {
             type: 'object',
-            title: '选项',
+            title: 'Options',
             properties: {
                 uiOptions: {
                     type: 'object',
                     properties: {
                         label: {
-                            title: '标签文案',
+                            title: 'Label Text',
                             type: 'string',
-                            default: '是否'
+                            default: 'Yes/No'
                         }
                     }
                 }

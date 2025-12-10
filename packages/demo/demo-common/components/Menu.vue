@@ -15,7 +15,7 @@
                     :class="$style.menuLink"
                     href="https://vue-json-schema-form.lljj.me/"
                 >
-                    文档
+                    Documentation
                 </a>
             </el-menu-item>
             <el-menu-item index="2">
@@ -34,7 +34,7 @@
                     :class="$style.menuLink"
                     href="/vue-editor.html#/editor"
                 >
-                    活动编辑器
+                    Activity Editor
                 </a>
             </el-menu-item>
             <el-menu-item
@@ -45,16 +45,7 @@
                     :class="$style.menuLink"
                     href="/schema-generator.html#/index"
                 >
-                    Schema 生成器
-                </a>
-            </el-menu-item>
-            <el-menu-item index="5">
-                <a
-                    :class="$style.menuLink"
-                    href="https://github.com/lljj-x/vue-json-schema-form"
-                    target="_blank"
-                >
-                    Github
+                    Schema Generator
                 </a>
             </el-menu-item>
         </el-menu>

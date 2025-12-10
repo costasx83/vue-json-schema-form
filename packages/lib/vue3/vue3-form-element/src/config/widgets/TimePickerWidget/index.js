@@ -16,7 +16,7 @@ const formatTimeObj = (timeStr) => {
         return timeStr;
     }
 
-    // 取当前时间 改时分秒
+    // Get current time and modify hours, minutes, seconds
     if (typeof timeStr === 'string') {
         const [hours, minutes, seconds] = timeStr.split(':');
         const curTime = new Date();
@@ -26,7 +26,7 @@ const formatTimeObj = (timeStr) => {
         return curTime;
     }
 
-    // 其它格式清空
+    // Clear other formats
     return undefined;
 };
 
@@ -40,16 +40,16 @@ export default {
         }
     },
     setup(props, { attrs, slots }) {
-        // hack element plus timePicker 变为object类型
+        // Hack: element plus timePicker becomes object type
         const originValue = ref(formatTimeObj(props.modelValue));
 
-        // 不需要响应式
+        // Does not need to be reactive
         let formatValue = props.modelValue;
 
-        // 如果外部修改了值
+        // If the external value was modified
         watch(() => props.modelValue, (newVal) => {
             if (newVal !== formatValue) {
-                // 更新内部值
+                // Update internal value
                 originValue.value = formatTimeObj(newVal);
             }
         });
@@ -60,10 +60,10 @@ export default {
             'onUpdate:modelValue': (val) => {
                 originValue.value = val;
 
-                // 更新并缓存内部 timeStr
+                // Update and cache internal timeStr
                 formatValue = val === null ? undefined : formatTimeStr(val);
 
-                // 更新外部的值
+                // Update external value
                 attrs['onUpdate:modelValue'].apply(attrs, [formatValue]);
             }
         }, slots);

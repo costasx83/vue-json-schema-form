@@ -4,13 +4,13 @@ interface HELPERS {
 
 declare namespace globalOptions {
 
-    /** WIDGET_MAP 配置 */
+    /** WIDGET_MAP configuration */
     export const WIDGET_MAP:object
 
-    /** COMPONENT_MAP 配置 */
+    /** COMPONENT_MAP configuration */
     export const COMPONENT_MAP:object
 
-    /** HELPERS 配置 */
+    /** HELPERS configuration */
     export const HELPERS: HELPERS
 }
 

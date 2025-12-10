@@ -77,7 +77,7 @@ export default {
         }
     },
     methods: {
-        // clone 当前模块
+        // Clone current module
         cloneDog(toolItem) {
             return generateEditorItem(toolItem);
         }
@@ -109,7 +109,7 @@ export default {
     .listItem {
         position: relative;
         width: 50%;
-        max-width: 120px;  /* 避免拖动ghost样式异常 */
+        max-width: 120px;  /* Avoid drag ghost style issues */
         height: 80px;
         cursor: move;
         flex-shrink: 0;

@@ -1,7 +1,7 @@
 {
     "name": "@lljj/vue3-form-element",
-    "version": "1.19.0",
-    "description": "基于 Vue3 、ElementPlus、JsonSchema快速构建一个带完整校验的form表单",
+    "version": "1.19.1",
+    "description": "Based on Vue3, ElementPlus, JsonSchema to quickly build a form with complete validation",
     "main": "dist/vue3-form-element.umd.min.js",
     "module": "dist/vue3-form-element.esm.min.js",
     "scripts": {

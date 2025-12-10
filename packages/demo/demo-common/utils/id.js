@@ -3,7 +3,7 @@
  */
 
 
-// 只保证同时生成不重复
+// Only guarantees no duplicates when generated simultaneously
 export default function genIdFn() {
     let preKey = `${+new Date()}`;
     let key = 0;
@@ -12,7 +12,7 @@ export default function genIdFn() {
         if (curTimestamp === preKey) {
             key += 1;
         } else {
-            // 重置 key
+            // Reset key
             key = 0;
         }
 
