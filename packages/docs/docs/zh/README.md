@@ -3,24 +3,23 @@ home: true
 pageClass: custom-page-home
 heroImage: /logo.png
 heroText: Vue JSON Schema Form
-tagline: Quickly building HTML form based on Vue and JSON Schema
+tagline: 基于 Vue 、JSON Schema 构建form表单，支持Vue3和多Ui框架
 footer: Apache2.0 Licensed | Copyright © 2020-2023 Jun
-actionText: Quick start →
-actionLink: /en/guide/
+actionText: 快速开始 →
+actionLink: /zh/guide/
 ---
 
-## Experience quickly
-* [Live playground](https://form.lljj.me/ "Vue JSON Schema Form Demo")
-* [Document](https://vue-json-schema-form.lljj.me/ "Vue JSON Schema Docs")
-* [Github](https://github.com/lljj-x/vue-json-schema-form "Vue JSON Schema github")
-* [Usage scenario - visual activity editor](https://form.lljj.me/vue-editor.html)
-* [Partial plan and update plans are not supported](/zh/guide/todo.html)
+## 快速体验
+* [Playground 演示](https://form.lljj.me/ "Vue JSON Schema Form Playground")
+* [源代码](https://github.com/lljj-x/vue-json-schema-form "Vue JSON Schema github") / [可视化表单Schema生成器](https://form.lljj.me/schema-generator.html "Vue JSON Schema Form 可视化表单Schema生成器") / [Vue可视化活动编辑器](https://form.lljj.me/vue-editor.html)
+* [不支持部分和更新计划](/zh/guide/todo.html)
 
 ``` bash
-# NPM
-npm install --save @lljj/vue-json-schema-form
+# 安装
+# vue2+elementUi 版本
+npm install --save @lljj/vue-json-schema-form element-ui
 
-# Yarn
+# 或者：
 yarn add @lljj/vue-json-schema-form
 ```
 
@@ -35,7 +34,13 @@ yarn add @lljj/vue-json-schema-form
 </template>
 
 <script >
+//  使用
 import VueForm from '@lljj/vue-json-schema-form';
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+
+// 需要配置element全局组件，也可以按需use component
+Vue.use(ElementUI);
 
 export default {
     name: 'Demo',
@@ -54,25 +59,25 @@ export default {
                 properties: {
                     userName: {
                         type: 'string',
-                        title: 'Username',
+                        title: '用户名',
                         default: 'Liu.Jun',
                     },
                     age: {
                         type: 'number',
-                        title: 'Age'
+                        title: '年龄'
                     },
                     bio: {
                         type: 'string',
-                        title: 'Bio',
+                        title: '签名',
                         minLength: 10,
-                        default: 'The more you know, the less you know',
+                        default: '知道的越多、就知道的越少',
                     }
                 }
             },
             uiSchema: {
                 bio: {
                     'ui:options': {
-                        placeholder: 'Please enter your bio.',
+                        placeholder: '请输入你的签名',
                         type: 'textarea',
                         rows: 1
                     }
@@ -83,6 +88,8 @@ export default {
 };
 </script>
 ```
+
+> 运行如下：
 
 ## DEMO
 ::: demo
@@ -111,25 +118,25 @@ export default {
                 properties: {
                     userName: {
                         type: 'string',
-                        title: 'Username',
+                        title: '用户名',
                         default: 'Liu.Jun',
                     },
                     age: {
                         type: 'number',
-                        title: 'Age'
+                        title: '年龄'
                     },
                     bio: {
                         type: 'string',
-                        title: 'Bio',
+                        title: '签名',
                         minLength: 10,
-                        default: 'This is default bio .',
+                        default: '知道的越多、就知道的越少',
                     }
                 }
             },
             uiSchema: {
                 bio: {
                     'ui:options': {
-                        placeholder: 'Please enter your bio.',
+                        placeholder: '请输入你的签名',
                         type: 'textarea',
                         rows: 1
                     }
@@ -142,12 +149,11 @@ export default {
 ```
 :::
 
-## Relevant
+## 相关资料
 [JSON Schema](https://json-schema.org/understanding-json-schema/index.html) |
-[Vue](https://cn.vuejs.org/) |
-[Element Ui](https://element.eleme.io/)
+[Vue](https://cn.vuejs.org/)
 
-## Why
-Originated from shop decoration scenes, it can also be called front-end visual editing. In order to solve the universality of the component data configuration form, the form is generated through `JsonSchema`.
+## 为何开发
+在做前端可视化编辑时，为了解决数据配置表单的通用性，所以使用 `JSON Schema` 描述数据结构，动态生成表单。
 
-The advantage of this is to solve the repetitive work of each configuration form, and the server can also maintain the same verification rules as the front-end based on the same schema.
+这样做的好处除了解决在每个配置表单的重复工作，服务端也可以基于同一份schema保持和前端一致的校验规则，不过对于使用 vue elementUi并未找到合适库可以直接使用，所以在后面一段时间决定自己实现一个 ..

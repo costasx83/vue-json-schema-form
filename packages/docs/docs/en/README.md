@@ -5,8 +5,8 @@ heroImage: /logo.png
 heroText: Vue JSON Schema Form
 tagline: Quickly building HTML form based on Vue and JSON Schema
 footer: Apache2.0 Licensed | Copyright © 2020-2023 Jun
-# actionText: Quick start →
-# actionLink: /en/guide/
+actionText: Quick start →
+actionLink: /en/guide/
 ---
 
 ## Experience quickly

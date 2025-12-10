@@ -105,7 +105,7 @@ Two concepts are involved, Field and Widget
 
 > `Field` and `Widget` can pass `uiSchema`
 >
-> [Custom Field](/zh/guide/adv-config.html#自定义field)、[Custom Widget](/zh/guide/adv-config.html#自定义widget)
+> [Custom Field](/en/guide/adv-config.html#custom-field)、[Custom Widget](/en/guide/adv-config.html#custom-widget)
 
 ## Exposure methods
 ```js

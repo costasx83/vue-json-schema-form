@@ -11,11 +11,11 @@
 
 const lang = {
     zh: {
-        path: '/',
+        path: '/zh/',
         configPack: require('./localesConfig/zh.config')
     },
     en: {
-        path: '/en/',
+        path: '/',
         configPack: require('./localesConfig/en.config')
     }
 }
