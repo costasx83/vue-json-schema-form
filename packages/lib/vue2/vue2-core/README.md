@@ -1,24 +1,24 @@
 # @lljj/vue2-form-core
-vue2 版本核心，可以基于此适配不同的 vue2 ui库。
+Vue2 core library that can be used to adapt different Vue2 UI frameworks.
 
-适配的核心就是对应类型为自己的组件库，且处理默认 `props` 与自己组件库 props 之间的转换
+The core of adaptation is to map schema types to your own component library and handle the conversion between default `props` and your component library's props.
 
-> 适配方案可参见 [@lljj/vue-json-schema-form](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue2/vue2-form-element) 、[@lljj/vue2-form-iview3](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue2/vue2-form-iview3)
+> For adaptation examples, see [@lljj/vue-json-schema-form](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue2/vue2-form-element) and [@lljj/vue2-form-iview3](https://github.com/lljj-x/vue-json-schema-form/tree/master/packages/lib/vue2/vue2-form-iview3)
 
 
-## 兼容性
-npm 包直接为 es6+ 源码，需要在构建 lib 时通过babe转义
+## Compatibility
+The npm package is ES6+ source code and needs to be transpiled through Babel when building the library.
 
-如配置 rollup babel plugin：
+For example, configure the Rollup Babel plugin:
 
 ```js
 babel({
-    exclude: /node_modules\/(?!(@lljj)\/).*/, // 忽略跳过 @lljj
+    exclude: /node_modules\/(?!(@lljj)\/).*/, // Skip ignoring @lljj
     extensions: ['.js', '.vue'],
 })
 ```
 
-## 安装
+## Installation
 
 ```ssh
 ## npm
@@ -28,17 +28,17 @@ npm install --save @lljj/vue2-form-core
 yarn add @lljj/vue2-form-core
 ```
 
-## 使用方法
+## Usage
 
-按如下格式，配置对应组件在当前组件库中的映射关系，可以直接配置全局组件名或者组件构造函数，`默认组件 props 为elementUi格式，如果props格式不同需要中间组件来做转换`；
+Configure the mapping relationship between corresponding components in your current component library in the following format. You can directly configure global component names or component constructors. `Default component props are in ElementUI format. If the props format is different, you need an intermediate component for conversion`;
 
 ```js
 import createVue2Core from '@lljj/vue2-form-core';
 
 const globalOptions = {
-    // widget组件和现有组件库映射关系
+    // Mapping relationship between widget components and existing component library
     WIDGET_MAP: {
-        // 默认按schema type 映射默认widget组件
+        // Map default widget components by schema type
         types: {
             // type  boolean
             boolean: 'el-switch',
@@ -53,7 +53,7 @@ const globalOptions = {
             integer: 'el-input-number',
         },
 
-        // 按 schema format 映射默认widget组件，优先级高于 types
+        // Map default widget components by schema format, higher priority than types
         formats: {
             // format: color
             color: 'el-color-picker',
@@ -68,7 +68,7 @@ const globalOptions = {
             'date-time': DateTimePickerWidget, // 格式 2018-11-13T20:20:39+00:00
         },
 
-        // 一些公共常用类型
+        // Some common types
         common: {
             // select option
             select: SelectWidget,
@@ -80,8 +80,8 @@ const globalOptions = {
             checkboxGroup: CheckboxesWidget,
         },
 
-        // 这里配置一些 为当前ui库适配过的组件，会在运行时自动注册为全局组件，不注册为全局也可不配置
-        // Vue2 会在调用 createVue2Core 时注册。
+        // Configure components adapted for the current UI library here, they will be automatically registered as global components at runtime
+        // Vue2 will register them when calling createVue2Core.
         widgetComponents: {
             CheckboxesWidget,
             RadioWidget,
@@ -92,34 +92,34 @@ const globalOptions = {
         }
     },
 
-    // 其它表单相关组件映射关系
+    // Other form-related component mapping relationships
     COMPONENT_MAP: {
-        // form组件
+        // form component
         form: 'el-form',
 
-        // formItem 组件
+        // formItem component
         formItem: 'el-form-item',
 
-        // button 组件
+        // button component
         button: 'el-button',
 
-        // popover，用在formLable 左右布局时鼠标移入显示description
+        // popover, used to display description on hover when formLabel is in left/right layout
         popover: 'el-popover'
     },
     HELPERS: {
-        // 是否mini显示 description
+        // Whether to display description in mini mode
         isMiniDes(formProps) {
             return formProps && ['left', 'right'].includes(formProps.labselPosition);
         }
     }
 };
 
-// 为了性能也可 object.freeze globalOptions 配置数据
+// For performance, you can also Object.freeze the globalOptions configuration data
 const mySchemaForm = createVue2Core(globalOptions);
 
 ```
 
-适配一个新的ui框架只需要适配如上的组件即可
+Adapting a new UI framework only requires adapting the components mentioned above.
 
 ## License
 Apache-2.0

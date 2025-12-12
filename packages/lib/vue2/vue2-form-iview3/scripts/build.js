@@ -7,7 +7,7 @@ const rollup = require('rollup');
 const baseConfig = require('./base.config');
 
 const buildConfig = baseConfig({
-    sourcemap: false,
+    sourcemap: true,
     uglify: true
 });
 

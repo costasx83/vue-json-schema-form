@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["title"],
+    "definitions": {
+        "ImgItem": {
+            "type": "object",
+            "properties": {
+                "imgUrl": {
+                    "title": "Image URL",
+                    "type": "string",
+                    "format": "uri"
+                },
+                "imgLink": {
+                    "title": "Link URL",
+                    "type": "string",
+                    "format": "uri",
+                    "default": "https://www.jd.com"
+                }
+            },
+            "required": [
+                "imgUrl",
+                "imgLink"
+            ]
+        }
+    },
+    "properties": {
+        "title": {
+            "title": "Title",
+            "type": "string",
+            "maxLength": 10
+        },
+        "subTitle": {
+            "title": "Subtitle",
+            "type": "string",
+            "maxLength": 30
+        },
+        "banner": {
+            "title": "Left Banner Configuration",
+            "type": "object",
+            "properties": {
+                "link": {
+                    "title": "Banner Image and Link Configuration",
+                    "$ref": "#/definitions/ImgItem"
+                },
+                "bannerTitle": {
+                    "title": "Banner Main Title",
+                    "type": "string",
+                    "maxLength": 4
+                },
+                "bannerSubTitle": {
+                    "title": "Banner Subtitle",
+                    "type": "string",
+                    "maxLength": 8
+                }
+            }
+        },
+        "goodsList": {
+            "type": "array",
+            "title": "Product Information Configuration",
+            "minItems": 4,
+            "maxItems": 8,
+            "items": {
+                "title": "Configure Product Information",
+                "$ref": "#/definitions/ImgItem"
+            }
+        }
+    },
+    "additionalProperties": false
+}

@@ -1,0 +1,221 @@
+<template>
+    <div
+        :class="[$style.iconBox, !isNoEmpty ? $style.emptyBox : $style.contentBox]"
+        class="viewEmpty_IconBox"
+    >
+        <span class="module-name-tip">Multiple images module (2-3)</span>
+        <div :class="[$style.line1, $style.block]">
+            <div :class="$style.imgItem">
+                <a
+                    v-if="isNoEmpty"
+                    :href="formData.imgItem1_1.imgLink"
+                    target="_blank"
+                >
+                    <v-img
+                        :src="formData.imgItem1_1.imgUrl"
+                        :style="{
+                            width: bigImgWidth,
+                            height: '420px',
+                        }"
+                        :lazy-src="formData.imgItem1_1.imgUrl"
+                        class="hover-animation"
+                        cover
+                        alt=""
+                    ></v-img>
+                </a>
+                <v-icon
+                    v-else
+                    size="x-large"
+                >
+                    mdi-image
+                </v-icon>
+            </div>
+            <div :class="$style.imgItem">
+                <a
+                    v-if="isNoEmpty"
+                    :href="formData.imgItem1_2.imgLink"
+                    target="_blank"
+                >
+                    <v-img
+                        :src="formData.imgItem1_2.imgUrl"
+                        :style="{
+                            width: smallImgWidth,
+                            height: '420px',
+                        }"
+                        :lazy-src="formData.imgItem1_2.imgUrl"
+                        class="hover-animation"
+                        cover
+                        alt=""
+                    ></v-img>
+                </a>
+                <v-icon
+                    v-else
+                    size="x-large"
+                >
+                    mdi-image
+                </v-icon>
+            </div>
+        </div>
+        <div :class="[$style.line2, $style.block]">
+            <div :class="$style.imgItem">
+                <a
+                    v-if="isNoEmpty"
+                    :href="formData.imgItem2_1.imgLink"
+                    target="_blank"
+                >
+                    <v-img
+                        :src="formData.imgItem2_1.imgUrl"
+                        :style="{
+                            width: smallImgWidth,
+                            height: '500px',
+                        }"
+                        :lazy-src="formData.imgItem2_1.imgUrl"
+                        class="hover-animation"
+                        cover
+                        alt=""
+                    ></v-img>
+                </a>
+                <v-icon
+                    v-else
+                    size="x-large"
+                >
+                    mdi-image
+                </v-icon>
+            </div>
+            <div :class="$style.imgItem">
+                <a
+                    v-if="isNoEmpty"
+                    :href="formData.imgItem2_2.imgLink"
+                    target="_blank"
+                >
+                    <v-img
+                        :src="formData.imgItem2_2.imgUrl"
+                        :style="{
+                            width: smallImgWidth,
+                            height: '500px',
+                        }"
+                        :lazy-src="formData.imgItem2_2.imgUrl"
+                        class="hover-animation"
+                        cover
+                        alt=""
+                    ></v-img>
+                </a>
+                <v-icon
+                    v-else
+                    size="x-large"
+                >
+                    mdi-image
+                </v-icon>
+            </div>
+            <div :class="$style.imgItem">
+                <a
+                    v-if="isNoEmpty"
+                    :href="formData.imgItem2_3.imgLink"
+                    target="_blank"
+                >
+                    <v-img
+                        :src="formData.imgItem2_3.imgUrl"
+                        :style="{
+                            width: smallImgWidth,
+                            height: '500px',
+                        }"
+                        :lazy-src="formData.imgItem2_3.imgUrl"
+                        class="hover-animation"
+                        cover
+                        alt=""
+                    ></v-img>
+                </a>
+                <v-icon
+                    v-else
+                    size="x-large"
+                >
+                    mdi-image
+                </v-icon>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'MultipleImg2',
+    props: {
+        formData: {
+            type: Object,
+            default: () => ({})
+        }
+    },
+    data() {
+        return {
+            smallImgWidth: '383.33px'
+        };
+    },
+    computed: {
+        bigImgWidth() {
+            return `${parseFloat(this.smallImgWidth) * 2 + 20}px`;
+        },
+        isNoEmpty() {
+            // Not empty if one image is configured
+            return this.formData.imgItem1_1.imgUrl && this.formData.imgItem1_1.imgLink;
+        }
+    },
+};
+</script>
+
+<style module>
+    @import 'demo-common/css/variable.css';
+    /* Empty state */
+    .emptyBox {
+        .imgItem {
+            height: 200px;
+            background-color: var(--background-color-selected);
+        }
+        .block {
+            padding: 20px;
+        }
+        .line1 {
+            .imgItem {
+                width: 363px;
+                &:first-child {
+                    width: 758px;
+                }
+            }
+        }
+        .line2 {
+            margin-top: -20px;
+            .imgItem {
+                width: 363px;
+            }
+        }
+    }
+    /* Data */
+    .contentBox {
+        .line2 {
+            margin-top: 20px;
+        }
+        img {
+            vertical-align: top;
+        }
+    }
+
+    .imgItem {
+        flex-shrink: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .line2, .line1{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .imgitem_img {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>

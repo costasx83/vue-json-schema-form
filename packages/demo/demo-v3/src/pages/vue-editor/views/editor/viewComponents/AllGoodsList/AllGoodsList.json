@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "show": {
+            "type": "boolean",
+            "title": "Add All Products",
+            "description": "All products module is not editable, cannot be removed, automatically placed at the bottom; system will retrieve all products.",
+            "default": true,
+            "ui:label": true,
+            "ui:disabled": true
+        }
+    },
+    "required": [
+        "show"
+    ]
+}

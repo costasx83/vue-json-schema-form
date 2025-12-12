@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Single Text Input Component",
+    "description":"Single text input component, used to configure a text message on the page" ,
+    "type": "object",
+    "required": ["txt"],
+    "properties": {
+        "txt": {
+            "title": "Text",
+            "type": "string"
+        },
+        "txtColor": {
+            "title": "Select Text Color",
+            "type": "string",
+            "default": "#ff0132"
+        }
+    }
+}

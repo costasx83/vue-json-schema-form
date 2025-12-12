@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Configure Category Bar",
+    "description": "Configure each category's name and image link separately, maximum 10 groups, minimum 3 groups",
+    "properties": {
+        "title": {
+            "title": "Recommendation Name",
+            "type": "string",
+            "default": "Limited Time Sale",
+            "ui:options": {
+                "placeholder": "Please enter recommendation name"
+            }
+        },
+        "imgList": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+                "type": "object",
+                "title": "Configure Image and Link",
+                "required": [
+                    "imgUrl",
+                    "imgLink"
+                ],
+                "ui:field": "LinkImgField",
+                "properties": {
+                    "imgUrl": {
+                        "type": "string",
+                        "format": "uri",
+                        "default": "https://img.alicdn.com/tfs/TB1vYlkdnZmx1VjSZFGXXax2XXa-468-644.jpg_320x5000q100.jpg_.webp",
+                        "err:format": "Please enter the correct image address"
+                    },
+                    "imgLink": {
+                        "type": "string",
+                        "format": "uri",
+                        "default": "https://www.tmall.com",
+                        "err:format": "Please enter the correct link address"
+                    }
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

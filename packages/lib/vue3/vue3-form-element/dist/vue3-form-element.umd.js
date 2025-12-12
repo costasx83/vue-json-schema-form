@@ -5,290 +5,228 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.vue3FormElement = {}, global.Vue));
 }(this, (function (exports, vue) { 'use strict';
 
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
+  function _arrayLikeToArray(r, a) {
+    (null == a || a > r.length) && (a = r.length);
+    for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+    return n;
   }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
+  function _arrayWithHoles(r) {
+    if (Array.isArray(r)) return r;
   }
-
+  function _arrayWithoutHoles(r) {
+    if (Array.isArray(r)) return _arrayLikeToArray(r);
+  }
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[r] = t, e;
+  }
   function _extends() {
-    _extends = Object.assign || function (target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
-
-        for (var key in source) {
-          if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-          }
+    return _extends = Object.assign ? Object.assign.bind() : function (n) {
+      for (var e = 1; e < arguments.length; e++) {
+        var t = arguments[e];
+        for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+      }
+      return n;
+    }, _extends.apply(null, arguments);
+  }
+  function _iterableToArray(r) {
+    if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
+  }
+  function _iterableToArrayLimit(r, l) {
+    var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (null != t) {
+      var e,
+        n,
+        i,
+        u,
+        a = [],
+        f = !0,
+        o = !1;
+      try {
+        if (i = (t = t.call(r)).next, 0 === l) {
+          if (Object(t) !== t) return;
+          f = !1;
+        } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+      } catch (r) {
+        o = !0, n = r;
+      } finally {
+        try {
+          if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+        } finally {
+          if (o) throw n;
         }
       }
-
-      return target;
-    };
-
-    return _extends.apply(this, arguments);
-  }
-
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
+      return a;
     }
-
-    return keys;
   }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(Object(source), true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-    }
-
-    return target;
-  }
-
-  function _objectWithoutPropertiesLoose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-
-    for (i = 0; i < sourceKeys.length; i++) {
-      key = sourceKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      target[key] = source[key];
-    }
-
-    return target;
-  }
-
-  function _objectWithoutProperties(source, excluded) {
-    if (source == null) return {};
-
-    var target = _objectWithoutPropertiesLoose(source, excluded);
-
-    var key, i;
-
-    if (Object.getOwnPropertySymbols) {
-      var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-      for (i = 0; i < sourceSymbolKeys.length; i++) {
-        key = sourceSymbolKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-      }
-    }
-
-    return target;
-  }
-
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-  }
-
-  function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-  }
-
-  function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArray(iter) {
-    if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-  }
-
-  function _iterableToArrayLimit(arr, i) {
-    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-
-    try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"] != null) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
-
-  function _toPrimitive(input, hint) {
-    if (typeof input !== "object" || input === null) return input;
-    var prim = input[Symbol.toPrimitive];
-
-    if (prim !== undefined) {
-      var res = prim.call(input, hint || "default");
-      if (typeof res !== "object") return res;
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  function _objectDestructuringEmpty(t) {
+    if (null == t) throw new TypeError("Cannot destructure " + t);
+  }
+  function ownKeys(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var o = Object.getOwnPropertySymbols(e);
+      r && (o = o.filter(function (r) {
+        return Object.getOwnPropertyDescriptor(e, r).enumerable;
+      })), t.push.apply(t, o);
+    }
+    return t;
+  }
+  function _objectSpread2(e) {
+    for (var r = 1; r < arguments.length; r++) {
+      var t = null != arguments[r] ? arguments[r] : {};
+      r % 2 ? ownKeys(Object(t), !0).forEach(function (r) {
+        _defineProperty(e, r, t[r]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) {
+        Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+      });
+    }
+    return e;
+  }
+  function _objectWithoutProperties(e, t) {
+    if (null == e) return {};
+    var o,
+      r,
+      i = _objectWithoutPropertiesLoose(e, t);
+    if (Object.getOwnPropertySymbols) {
+      var n = Object.getOwnPropertySymbols(e);
+      for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+    }
+    return i;
+  }
+  function _objectWithoutPropertiesLoose(r, e) {
+    if (null == r) return {};
+    var t = {};
+    for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+      if (-1 !== e.indexOf(n)) continue;
+      t[n] = r[n];
+    }
+    return t;
+  }
+  function _slicedToArray(r, e) {
+    return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+  }
+  function _toConsumableArray(r) {
+    return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r || "default");
+      if ("object" != typeof i) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
-
-    return (hint === "string" ? String : Number)(input);
+    return ("string" === r ? String : Number)(t);
   }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
+  function _typeof(o) {
+    "@babel/helpers - typeof";
 
-  function _toPropertyKey(arg) {
-    var key = _toPrimitive(arg, "string");
-
-    return typeof key === "symbol" ? key : String(key);
+    return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+      return typeof o;
+    } : function (o) {
+      return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, _typeof(o);
+  }
+  function _unsupportedIterableToArray(r, a) {
+    if (r) {
+      if ("string" == typeof r) return _arrayLikeToArray(r, a);
+      var t = {}.toString.call(r).slice(8, -1);
+      return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+    }
   }
 
   // 内部使用 . ，配置数据key不能出现.
-  var pathSeparator = '.'; // Convert nodePath to css class name
+  var pathSeparator = '.';
 
+  // Convert nodePath to css class name
   function nodePath2ClassName(path) {
     var rootPathName = '__pathRoot';
     return path ? "".concat(rootPathName, ".").concat(path).replace(/\./g, '_') : rootPathName;
-  } // Is root node
+  }
 
+  // Is root node
   function isRootNodePath(path) {
     return path === '';
-  } // Calculate current node path
+  }
 
+  // Calculate current node path
   function computedCurPath(prePath, curKey) {
     return prePath === '' ? curKey : [prePath, curKey].join(pathSeparator);
-  } // Get current path value
+  }
 
+  // Get current path value
   function getPathVal(obj, path) {
     var leftDeviation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
     var pathArr = path.split(pathSeparator);
-
     for (var i = 0; i < pathArr.length - leftDeviation; i += 1) {
       // Error path or undefined interrupts search
       if (obj === undefined) return undefined;
       obj = pathArr[i] === '' ? obj : obj[pathArr[i]];
     }
-
     return obj;
-  } // Path equals props
+  }
 
+  // Path equals props
   function path2prop(path) {
     return path;
   }
 
+  var _excluded = ["modelValue", "onUpdate:modelValue"];
+
+  // Delete current path value
   function deletePathVal(vueData, name) {
     delete vueData[name];
-  } // Set current path value
+  }
 
+  // Set current path value
   function setPathVal(obj, path, value) {
     var pathArr = path.split(pathSeparator);
-
     for (var i = 0; i < pathArr.length; i += 1) {
       if (pathArr.length - i < 2) {
         // Last data
         obj[pathArr[pathArr.length - 1]] = value;
         break;
       }
-
       obj = obj[pathArr[i]];
     }
   }
   function resolveComponent(component) {
     if (typeof component === 'string') return vue.resolveComponent(component);
     return component;
-  } // Convert antdv, naive and other non-modelValue v-model components
+  }
 
+  // Convert antdv, naive and other non-modelValue v-model components
   var modelValueComponent = function modelValueComponent(component) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$model = _ref.model,
-        model = _ref$model === void 0 ? 'value' : _ref$model;
-
+      _ref$model = _ref.model,
+      model = _ref$model === void 0 ? 'value' : _ref$model;
     return vue.defineComponent({
       inheritAttrs: false,
       setup: function setup(props, _ref2) {
         var attrs = _ref2.attrs,
-            slots = _ref2.slots;
+          slots = _ref2.slots;
         return function () {
-          var _objectSpread2$1;
-
           var value = attrs.modelValue,
-              onUpdateValue = attrs['onUpdate:modelValue'],
-              otherAttrs = _objectWithoutProperties(attrs, ["modelValue", "onUpdate:modelValue"]); // eg: 'a-input'
+            onUpdateValue = attrs['onUpdate:modelValue'],
+            otherAttrs = _objectWithoutProperties(attrs, _excluded);
 
-
-          return vue.h(resolveComponent(component), _objectSpread2((_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, model, value), _defineProperty(_objectSpread2$1, "onUpdate:".concat(model), onUpdateValue), _objectSpread2$1), otherAttrs), slots);
+          // eg: 'a-input'
+          return vue.h(resolveComponent(component), _objectSpread2(_defineProperty(_defineProperty({}, model, value), "onUpdate:".concat(model), onUpdateValue), otherAttrs), slots);
         };
       }
     });
@@ -311,55 +249,51 @@
   /**
    * Created by Liu.Jun on 2020/4/17 17:05.
    */
+
   // is object
   function isObject(object) {
     return Object.prototype.toString.call(object) === '[object Object]';
-  } // is arguments
+  }
 
+  // is arguments
   function isArguments(object) {
     return Object.prototype.toString.call(object) === '[object Arguments]';
-  } // Infer schema type from defined data
+  }
 
-
+  // Infer schema type from defined data
   var guessType = function guessType(value) {
     if (Array.isArray(value)) {
       return 'array';
     }
-
     if (typeof value === 'string') {
       return 'string';
     }
-
     if (value == null) {
       return 'null';
     }
-
     if (typeof value === 'boolean') {
-      return 'boolean'; // eslint-disable-next-line no-restricted-globals
+      return 'boolean';
+      // eslint-disable-next-line no-restricted-globals
     }
-
     if (!isNaN(value)) {
       return 'number';
     }
-
     if (_typeof(value) === 'object') {
       return 'object';
-    } // Default to string if we can't figure it out
-
-
+    }
+    // Default to string if we can't figure it out
     return 'string';
   };
 
+  // Merge object data
   function mergeObjects(obj1, obj2) {
     var concatArrays = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     // Recursively merge deeply nested objects.
     var preAcc = Object.assign({}, obj1); // Prevent mutation of source object.
-
     if (!isObject(obj2)) return preAcc;
     return Object.keys(obj2).reduce(function (acc, key) {
       var left = obj1 ? obj1[key] : {};
       var right = obj2[key];
-
       if (obj1 && obj1.hasOwnProperty(key) && isObject(right)) {
         acc[key] = mergeObjects(left, right, concatArrays);
       } else if (concatArrays && Array.isArray(left) && Array.isArray(right)) {
@@ -367,186 +301,163 @@
       } else {
         acc[key] = right;
       }
-
       return acc;
     }, preAcc);
-  } // Get given schema type
+  }
 
+  // Get given schema type
   function getSchemaType(schema) {
-    var type = schema.type; // Type inference through const declared constant
+    var type = schema.type;
 
+    // Type inference through const declared constant
     if (!type && schema.const) {
       return guessType(schema.const);
-    } // Enum defaults to string
+    }
 
-
+    // Enum defaults to string
     if (!type && schema.enum) {
       return 'string';
-    } // Items inferred as array type
+    }
 
-
+    // Items inferred as array type
     if (!type && schema.items) {
       return 'array';
-    } // anyOf oneOf do not declare type field
+    }
 
-
+    // anyOf oneOf do not declare type field
     if (!type && (schema.properties || schema.additionalProperties)) {
       return 'object';
     }
-
     if (type instanceof Array && type.length === 2 && type.includes('null')) {
       return type.find(function (curType) {
         return curType !== 'null';
       });
     }
-
     return type;
-  } // Deep equality comparison
+  }
 
+  // Deep equality comparison
   function deepEquals(a, b) {
     var ca = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
     var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-
     // Partially extracted from node-deeper and adapted to exclude comparison
     // checks for functions.
     // https://github.com/othiym23/node-deeper
     if (a === b) {
       return true;
     }
-
     if (typeof a === 'function' || typeof b === 'function') {
       // Assume all functions are equivalent
       // see https://github.com/mozilla-services/react-jsonschema-form/issues/255
       return true;
     }
-
     if (_typeof(a) !== 'object' || _typeof(b) !== 'object') {
       return false;
     }
-
     if (a === null || b === null) {
       return false;
     }
-
     if (a instanceof Date && b instanceof Date) {
       return a.getTime() === b.getTime();
     }
-
     if (a instanceof RegExp && b instanceof RegExp) {
       return a.source === b.source && a.global === b.global && a.multiline === b.multiline && a.lastIndex === b.lastIndex && a.ignoreCase === b.ignoreCase;
     }
-
     if (isArguments(a) || isArguments(b)) {
       if (!(isArguments(a) && isArguments(b))) {
         return false;
       }
-
       var slice = Array.prototype.slice;
       return deepEquals(slice.call(a), slice.call(b), ca, cb);
     }
-
     if (a.constructor !== b.constructor) {
       return false;
     }
-
     var ka = Object.keys(a);
-    var kb = Object.keys(b); // don't bother with stack acrobatics if there's nothing there
-
+    var kb = Object.keys(b);
+    // don't bother with stack acrobatics if there's nothing there
     if (ka.length === 0 && kb.length === 0) {
       return true;
     }
-
     if (ka.length !== kb.length) {
       return false;
     }
-
-    var cal = ca.length; // eslint-disable-next-line no-plusplus
-
+    var cal = ca.length;
+    // eslint-disable-next-line no-plusplus
     while (cal--) {
       if (ca[cal] === a) {
         return cb[cal] === b;
       }
     }
-
     ca.push(a);
     cb.push(b);
     ka.sort();
-    kb.sort(); // eslint-disable-next-line no-plusplus
-
+    kb.sort();
+    // eslint-disable-next-line no-plusplus
     for (var j = ka.length - 1; j >= 0; j--) {
       if (ka[j] !== kb[j]) {
         return false;
       }
     }
-
-    var key; // eslint-disable-next-line no-plusplus
-
+    var key;
+    // eslint-disable-next-line no-plusplus
     for (var k = ka.length - 1; k >= 0; k--) {
       key = ka[k];
-
       if (!deepEquals(a[key], b[key], ca, cb)) {
         return false;
       }
     }
-
     ca.pop();
     cb.pop();
     return true;
-  } // Only guarantee non-duplicate simultaneous generation
+  }
 
+  // Only guarantee non-duplicate simultaneous generation
   var genId = function genIdFn() {
     var preKey = "".concat(+new Date());
     var key = 0;
     return function () {
       var curTimestamp = "".concat(+new Date());
-
       if (curTimestamp === preKey) {
         key += 1;
       } else {
         // Reset key
         key = 0;
       }
-
       preKey = curTimestamp;
       return "".concat(preKey, "x").concat(key);
     };
-  }(); // Empty object
+  }();
 
+  // Empty object
   function isEmptyObject(obj) {
     if (!obj) return true;
-
     for (var key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
         return false;
       }
     }
-
     return true;
-  } // Filter and transform object keys
+  }
 
+  // Filter and transform object keys
   function filterObject(obj, filterFn) {
     return Object.entries(obj).reduce(function (preVal, _ref) {
       var _ref2 = _slicedToArray(_ref, 2),
-          key = _ref2[0],
-          value = _ref2[1];
-
+        key = _ref2[0],
+        value = _ref2[1];
       var newKey = filterFn(key, value);
-
       if (undefined !== newKey) {
         preVal[newKey] = value;
       }
-
       return preVal;
     }, {});
   }
-
   var f = function f(s) {
     return "0".concat(s).substr(-2);
   };
-
   function parseDateString(dateString) {
     var includeTime = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-
     if (!dateString) {
       return {
         year: -1,
@@ -557,13 +468,10 @@
         second: includeTime ? -1 : 0
       };
     }
-
     var date = new Date(dateString);
-
     if (Number.isNaN(date.getTime())) {
       throw new Error("Unable to parse date ".concat(dateString));
     }
-
     return {
       year: date.getFullYear(),
       month: f(date.getMonth() + 1),
@@ -575,22 +483,26 @@
     };
   }
 
+  // Lowercase first letter of string
   function lowerCase(str) {
     if (undefined === str) return str;
     return String(str).replace(/^./, function (s) {
       return s.toLocaleLowerCase();
     });
-  } // Greatest common divisor
+  }
 
+  // Greatest common divisor
   function gcd(a, b) {
     if (b === 0) return a;
     return gcd(b, a % b);
-  } // Least common multiple
+  }
 
+  // Least common multiple
   function scm(a, b) {
     return a * b / gcd(a, b);
-  } // Open new page
+  }
 
+  // Open new page
   function openNewPage(url) {
     var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '_blank';
     var a = document.createElement('a');
@@ -605,37 +517,30 @@
   // $ref reference
   function getPathVal$1(obj, pathStr) {
     var pathArr = pathStr.split('/');
-
     for (var i = 0; i < pathArr.length; i += 1) {
       if (obj === undefined) return undefined;
       obj = pathArr[i] === '' ? obj : obj[pathArr[i]];
     }
-
     return obj;
-  } // Find schema referenced by ref
+  }
 
-
+  // Find schema referenced by ref
   function findSchemaDefinition($ref) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var origRef = $ref;
-
     if ($ref.startsWith('#')) {
       // Decode URI fragment representation.
       $ref = decodeURIComponent($ref.substring(1));
     } else {
       throw new Error("Could not find a definition for ".concat(origRef, "."));
     }
-
     var current = getPathVal$1(rootSchema, $ref);
-
     if (current === undefined) {
       throw new Error("Could not find a definition for ".concat(origRef, "."));
     }
-
     if (current.hasOwnProperty('$ref')) {
       return findSchemaDefinition(current.$ref, rootSchema);
     }
-
     return current;
   }
 
@@ -7783,191 +7688,152 @@
   // https://github.com/epoberezkin/ajv-i18n
   function localizeEn(errors) {
     if (!(errors && errors.length)) return;
-
     for (var i = 0; i < errors.length; i += 1) {
       var e = errors[i];
       var out = void 0;
       var n = void 0;
       var cond = void 0;
-
       switch (e.keyword) {
         case '$ref':
           out = "can't resolve reference ".concat(e.params.ref);
           break;
-
         case 'additionalItems':
           out = '';
           n = e.params.limit;
           out += "should NOT have more than ".concat(n, " items");
           break;
-
         case 'additionalProperties':
           out = 'should NOT have additional properties';
           break;
-
         case 'anyOf':
           out = 'should match some schema in anyOf';
           break;
-
         case 'const':
           out = 'should be equal to constant';
           break;
-
         case 'contains':
           out = 'should contain a valid item';
           break;
-
         case 'custom':
           out = "should pass \"".concat(e.keyword, "\" keyword validation");
           break;
-
         case 'dependencies':
           out = '';
           n = e.params.depsCount;
           out += "should have property ".concat(e.params.deps, " when property ").concat(e.params.property, " is present");
           break;
-
         case 'enum':
           out = 'should be equal to one of the allowed values';
           break;
-
         case 'exclusiveMaximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'exclusiveMinimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'false schema':
           out = 'boolean schema is false';
           break;
-
         case 'format':
           out = "should match format \"".concat(e.params.format, "\"");
           break;
-
         case 'formatExclusiveMaximum':
           out = 'formatExclusiveMaximum should be boolean';
           break;
-
         case 'formatExclusiveMinimum':
           out = 'formatExclusiveMinimum should be boolean';
           break;
-
         case 'formatMaximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'formatMinimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'if':
           out = "should match \"".concat(e.params.failingKeyword, "\" schema");
           break;
-
         case 'maximum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'maxItems':
           out = '';
           n = e.params.limit;
           out += "should NOT have more than ".concat(n, " items");
           break;
-
         case 'maxLength':
           out = '';
           n = e.params.limit;
           out += "should NOT be longer than ".concat(n, " characters");
           break;
-
         case 'maxProperties':
           out = '';
           n = e.params.limit;
           out += "should NOT have more than ".concat(n, " properties");
           break;
-
         case 'minimum':
           out = '';
           cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
           out += "should be ".concat(cond);
           break;
-
         case 'minItems':
           out = '';
           n = e.params.limit;
           out += "should NOT have fewer than ".concat(n, " items");
           break;
-
         case 'minLength':
           out = '';
           n = e.params.limit;
           out += "should NOT be shorter than ".concat(n, " characters");
           break;
-
         case 'minProperties':
           out = '';
           n = e.params.limit;
           out += "should NOT have fewer than ".concat(n, " properties");
           break;
-
         case 'multipleOf':
           out = "should be multiple of ".concat(e.params.multipleOf);
           break;
-
         case 'not':
           out = 'should NOT be valid according to schema in "not"';
           break;
-
         case 'oneOf':
           out = 'should match exactly one schema in "oneOf"';
           break;
-
         case 'pattern':
           out = "should match pattern \"".concat(e.params.pattern, "\"");
           break;
-
         case 'patternRequired':
           out = "should have property matching pattern ".concat(e.params.missingPattern);
           break;
-
         case 'propertyNames':
           out = "property name '".concat(e.params.propertyName, "' is invalid");
           break;
-
         case 'required':
           out = "should have required property ".concat(e.params.missingProperty);
           break;
-
         case 'switch':
           out = "should pass \"switch\" keyword validation, case ".concat(e.params.caseIndex, " fails");
           break;
-
         case 'type':
           out = "should be ".concat(e.params.type);
           break;
-
         case 'uniqueItems':
           out = "should NOT have duplicate items (items ## ".concat(e.params.j, " and ").concat(e.params.i, " are identical)");
           break;
-
         default:
           // eslint-disable-next-line no-continue
           continue;
       }
-
       e.message = out;
     }
   }
@@ -7988,26 +7854,30 @@
   /**
    * Created by Liu.Jun on 2020/4/25 10:53.
    */
+
   // Move up by index
   function moveUpAt(target, index) {
     if (index === 0) return false;
     var item = target[index];
     var newItems = [item, target[index - 1]];
     return target.splice.apply(target, [index - 1, 2].concat(newItems));
-  } // Move down by index
+  }
 
+  // Move down by index
   function moveDownAt(target, index) {
     if (index === target.length - 1) return false;
     var item = target[index];
     var newItems = [target[index + 1], item];
     return target.splice.apply(target, [index, 2].concat(newItems));
-  } // Remove
+  }
 
+  // Remove
   function removeAt(target, index) {
     // Remove element at specified position in array, return boolean indicating success
     return !!target.splice(index, 1).length;
-  } // Fill array with objects
+  }
 
+  // Fill array with objects
   function fillObj(target, data) {
     // Simple copy, throw error on exception
     try {
@@ -8016,31 +7886,41 @@
           return JSON.parse(JSON.stringify(data));
         });
       }
-    } catch (e) {// nothing ...
-    } // Default return undefined
+    } catch (e) {
+      // nothing ...
+    }
 
-
+    // Default return undefined
     return undefined;
-  } // Split into multiple arrays
+  }
 
+  // Split into multiple arrays
   function cutOff(target, cutOffPointIndex) {
     return target.reduce(function (preVal, curVal, curIndex) {
       preVal[curIndex > cutOffPointIndex ? 1 : 0].push(curVal);
       return preVal;
     }, [[], []]);
-  } // Array intersection
+  }
 
+  // Array intersection
   function intersection(arr1, arr2) {
     return arr1.filter(function (item) {
       return arr2.includes(item);
     });
   }
 
+  var _excluded$1 = ["$ref"],
+    _excluded2 = ["allOf"],
+    _excluded3 = ["allOf"];
+
+  // import { getMatchingOption, isValid } from './validate';
+
   // Auto add divider
+
   // export const ADDITIONAL_PROPERTY_FLAG = '__additional_property';
+
   // resolve Schema - dependencies
   // https://json-schema.org/understanding-json-schema/reference/object.html#dependencies
-
   /*
   export function resolveDependencies(schema, rootSchema, formData) {
       // 从源模式中删除依赖项。
@@ -8063,9 +7943,9 @@
       );
   }
   */
+
   // 处理依赖关系 dependencies
   // https://json-schema.org/understanding-json-schema/reference/object.html#dependencies
-
   /*
 
   function processDependencies(
@@ -8114,6 +7994,7 @@
       return resolvedSchema;
   }
   */
+
   // 属性依赖
   // https://json-schema.org/understanding-json-schema/reference/object.html#property-dependencies
 
@@ -8128,9 +8009,9 @@
       return { ...schema, required };
   }
   */
+
   // schema 依赖
   // https://json-schema.org/understanding-json-schema/reference/object.html#schema-dependencies
-
   /*
   function withDependentSchema(
       schema,
@@ -8207,39 +8088,37 @@
       );
   }
   */
+
   // resolve Schema - $ref
   // https://json-schema.org/understanding-json-schema/structuring.html#using-id-with-ref
-
   function resolveReference(schema, rootSchema, formData) {
     // Retrieve the referenced schema definition.
-    var $refSchema = findSchemaDefinition(schema.$ref, rootSchema); // Drop the $ref property of the source schema.
+    var $refSchema = findSchemaDefinition(schema.$ref, rootSchema);
+    // Drop the $ref property of the source schema.
     // eslint-disable-next-line no-unused-vars
-
     schema.$ref;
-        var localSchema = _objectWithoutProperties(schema, ["$ref"]); // Update referenced schema definition with local schema properties.
-
-
+      var localSchema = _objectWithoutProperties(schema, _excluded$1);
+    // Update referenced schema definition with local schema properties.
     return retrieveSchema(_objectSpread2(_objectSpread2({}, $refSchema), localSchema), rootSchema, formData);
-  } // Deep recursive merge, merge every 2 items of allOf
+  }
 
-
+  // Deep recursive merge, merge every 2 items of allOf
   function mergeSchemaAllOf() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     if (args.length < 2) return args[0];
     var preVal = {};
     var copyArgs = [].concat(args);
-
     var _loop = function _loop() {
       var obj1 = isObject(copyArgs[0]) ? copyArgs[0] : {};
       var obj2 = isObject(copyArgs[1]) ? copyArgs[1] : {};
       preVal = Object.assign({}, obj1);
       Object.keys(obj2).reduce(function (acc, key) {
         var left = obj1[key];
-        var right = obj2[key]; // Left or right one side is object
+        var right = obj2[key];
 
+        // Left or right one side is object
         if (isObject(left) || isObject(right)) {
           // Both sides are objects
           if (isObject(left) && isObject(right)) {
@@ -8247,10 +8126,9 @@
           } else {
             // One side is object
             var _ref = isObject(left) ? [left, right] : [right, left],
-                _ref2 = _slicedToArray(_ref, 2),
-                objTypeData = _ref2[0],
-                baseTypeData = _ref2[1];
-
+              _ref2 = _slicedToArray(_ref, 2),
+              objTypeData = _ref2[0],
+              baseTypeData = _ref2[1];
             if (key === 'additionalProperties') {
               // Adapt type: one side configured object, other side not configured or true/false
               // {
@@ -8263,23 +8141,23 @@
             } else {
               acc[key] = objTypeData;
             }
-          } // One side is array
-
+          }
+          // One side is array
         } else if (Array.isArray(left) || Array.isArray(right)) {
           // Both are arrays, take intersection
           if (Array.isArray(left) && Array.isArray(right)) {
             // 数组里面嵌套对象不支持 因为我不知道该怎么合并
             if (isObject(left[0]) || isObject(right[0])) {
               throw new Error('暂不支持如上数组对象元素合并');
-            } // 交集
+            }
 
+            // 交集
+            var intersectionArray = intersection([].concat(left), [].concat(right));
 
-            var intersectionArray = intersection([].concat(left), [].concat(right)); // 没有交集
-
+            // 没有交集
             if (intersectionArray.length <= 0) {
               throw new Error('无法合并如上数据');
             }
-
             if (intersectionArray.length === 0 && key === 'type') {
               // 自己取出值
               acc[key] = intersectionArray[0];
@@ -8290,18 +8168,16 @@
             // 其中一边为 Array
             // 查找包含关系
             var _ref3 = Array.isArray(left) ? [left, right] : [right, left],
-                _ref4 = _slicedToArray(_ref3, 2),
-                arrayTypeData = _ref4[0],
-                _baseTypeData = _ref4[1]; // 空值直接合并另一边
-
-
+              _ref4 = _slicedToArray(_ref3, 2),
+              arrayTypeData = _ref4[0],
+              _baseTypeData = _ref4[1];
+            // 空值直接合并另一边
             if (_baseTypeData === undefined) {
               acc[key] = arrayTypeData;
             } else {
               if (!arrayTypeData.includes(_baseTypeData)) {
                 throw new Error('无法合并如下数据');
               }
-
               acc[key] = _baseTypeData;
             }
           }
@@ -8324,21 +8200,19 @@
           // 一边为undefined
           acc[key] = left === undefined ? right : left;
         }
-
         return acc;
-      }, preVal); // First in first out
+      }, preVal);
 
+      // First in first out
       copyArgs.splice(0, 2, preVal);
     };
-
     while (copyArgs.length >= 2) {
       _loop();
     }
-
     return preVal;
-  } // resolve Schema - allOf
+  }
 
-
+  // resolve Schema - allOf
   function resolveAllOf(schema, rootSchema, formData) {
     // allOf item中可能存在 $ref
     var resolvedAllOfRefSchema = _objectSpread2(_objectSpread2({}, schema), {}, {
@@ -8346,45 +8220,44 @@
         return retrieveSchema(allOfItem, rootSchema, formData);
       })
     });
-
     try {
       var allOf = resolvedAllOfRefSchema.allOf,
-          originProperties = _objectWithoutProperties(resolvedAllOfRefSchema, ["allOf"]);
-
+        originProperties = _objectWithoutProperties(resolvedAllOfRefSchema, _excluded2);
       return mergeSchemaAllOf.apply(void 0, [originProperties].concat(_toConsumableArray(allOf)));
     } catch (e) {
-      console.error("Cannot merge allOf, discarding allOf config and continuing to render: \n".concat(e)); // eslint-disable-next-line no-unused-vars
-
+      console.error("Cannot merge allOf, discarding allOf config and continuing to render: \n".concat(e));
+      // eslint-disable-next-line no-unused-vars
       resolvedAllOfRefSchema.allOf;
-          var resolvedSchemaWithoutAllOf = _objectWithoutProperties(resolvedAllOfRefSchema, ["allOf"]);
-
+        var resolvedSchemaWithoutAllOf = _objectWithoutProperties(resolvedAllOfRefSchema, _excluded3);
       return resolvedSchemaWithoutAllOf;
     }
-  } // resolve Schema
+  }
 
+  // resolve Schema
   function resolveSchema$1(schema) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var formData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
     // allOf 、$ref、dependencies 可能被同时配置
+
     // allOf
     if (schema.hasOwnProperty('allOf')) {
       schema = resolveAllOf(schema, rootSchema, formData);
-    } // $ref
+    }
 
-
+    // $ref
     if (schema.hasOwnProperty('$ref')) {
       schema = resolveReference(schema, rootSchema, formData);
-    } // dependencies
+    }
 
+    // dependencies
     /*
     if (schema.hasOwnProperty('dependencies')) {
         const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
         schema = retrieveSchema(resolvedSchema, rootSchema, formData);
     }
     */
-    // additionalProperties
 
+    // additionalProperties
     /*
     const hasAdditionalProperties = schema.hasOwnProperty('additionalProperties') && schema.additionalProperties !== false;
     if (hasAdditionalProperties) {
@@ -8396,11 +8269,11 @@
     }
     */
 
-
     return schema;
-  } // 这个函数将为formData中的每个键创建新的“属性”项
-  // 查找到附加属性统一到properties[key]格式 并且打上标准
+  }
 
+  // 这个函数将为formData中的每个键创建新的“属性”项
+  // 查找到附加属性统一到properties[key]格式 并且打上标准
   /* function stubExistingAdditionalProperties(
       schema,
       rootSchema = {},
@@ -8440,50 +8313,46 @@
 
       return schema;
   } */
+
   // Index current node
-
-
   function retrieveSchema(schema) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var formData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
     if (!isObject(schema)) {
       return {};
     }
-
     return resolveSchema$1(schema, rootSchema, formData);
   }
 
+  var _excluded$2 = ["widget", "title", "labelWidth", "description", "attrs", "class", "style", "widgetListeners", "fieldAttrs", "fieldStyle", "fieldClass", "emptyValue", "width", "getWidget", "renderScopedSlots", "renderChildren", "onChange", "required"];
+
+  // General expression handling method
   // This breaks the JSON Schema specification
-
   var regExpression = /{{(.*)}}/;
-
   function handleExpression(rootFormData, curNodePath, expression, fallBack) {
     // Not configured
     if (undefined === expression) {
       return undefined;
-    } // Configured mustache expression
+    }
 
-
+    // Configured mustache expression
     var matchExpression = regExpression.exec(expression);
     regExpression.lastIndex = 0; // Reset index
-
     if (matchExpression) {
-      var code = matchExpression[1].trim(); // eslint-disable-next-line no-new-func
+      var code = matchExpression[1].trim();
 
+      // eslint-disable-next-line no-new-func
       var fn = new Function('parentFormData', 'rootFormData', "return ".concat(code));
       return fn(getPathVal(rootFormData, curNodePath, 1), rootFormData);
-    } // Fallback
+    }
 
-
+    // Fallback
     return fallBack();
   }
-
   function replaceArrayIndex() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        schema = _ref.schema,
-        uiSchema = _ref.uiSchema;
-
+      schema = _ref.schema,
+      uiSchema = _ref.uiSchema;
     var index = arguments.length > 1 ? arguments[1] : undefined;
     var itemUiOptions = getUiOptions({
       schema: schema,
@@ -8494,91 +8363,93 @@
       if (itemUiOptions[curItem]) {
         preVal["ui:".concat(curItem)] = String(itemUiOptions[curItem]).replace(/\$index/g, index + 1);
       }
-
       return preVal;
     }, {});
-  } // Is hidden Widget
+  }
 
+  // Is hidden Widget
   function isHiddenWidget(_ref2) {
     var _ref2$schema = _ref2.schema,
-        schema = _ref2$schema === void 0 ? {} : _ref2$schema,
-        _ref2$uiSchema = _ref2.uiSchema,
-        uiSchema = _ref2$uiSchema === void 0 ? {} : _ref2$uiSchema,
-        _ref2$curNodePath = _ref2.curNodePath,
-        curNodePath = _ref2$curNodePath === void 0 ? '' : _ref2$curNodePath,
-        _ref2$rootFormData = _ref2.rootFormData,
-        rootFormData = _ref2$rootFormData === void 0 ? {} : _ref2$rootFormData;
+      schema = _ref2$schema === void 0 ? {} : _ref2$schema,
+      _ref2$uiSchema = _ref2.uiSchema,
+      uiSchema = _ref2$uiSchema === void 0 ? {} : _ref2$uiSchema,
+      _ref2$curNodePath = _ref2.curNodePath,
+      curNodePath = _ref2$curNodePath === void 0 ? '' : _ref2$curNodePath,
+      _ref2$rootFormData = _ref2.rootFormData,
+      rootFormData = _ref2$rootFormData === void 0 ? {} : _ref2$rootFormData;
     var widget = uiSchema['ui:widget'] || schema['ui:widget'];
-    var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden']; // Support configuring ui:hidden expression
+    var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden'];
 
+    // Support configuring ui:hidden expression
     return widget === 'HiddenWidget' || widget === 'hidden' || !!handleExpression(rootFormData, curNodePath, hiddenExpression, function () {
       // Configured function
       if (typeof hiddenExpression === 'function') {
         return hiddenExpression(getPathVal(rootFormData, curNodePath, 1), rootFormData);
-      } // Configured constant ??
+      }
 
-
+      // Configured constant ??
       return hiddenExpression;
     });
-  } // Resolve current node ui field
+  }
 
+  // Resolve current node ui field
   function getUiField(FIELDS_MAP, _ref3) {
     var _ref3$schema = _ref3.schema,
-        schema = _ref3$schema === void 0 ? {} : _ref3$schema,
-        _ref3$uiSchema = _ref3.uiSchema,
-        uiSchema = _ref3$uiSchema === void 0 ? {} : _ref3$uiSchema;
-    var field = schema['ui:field'] || uiSchema['ui:field']; // Vue component, or registered component name
+      schema = _ref3$schema === void 0 ? {} : _ref3$schema,
+      _ref3$uiSchema = _ref3.uiSchema,
+      uiSchema = _ref3$uiSchema === void 0 ? {} : _ref3$uiSchema;
+    var field = schema['ui:field'] || uiSchema['ui:field'];
 
+    // Vue component, or registered component name
     if (typeof field === 'function' || _typeof(field) === 'object' || typeof field === 'string') {
       return {
         field: field,
         fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'] // Custom field, support passing additional props
-
       };
-    } // Type default field
+    }
 
-
+    // Type default field
     var fieldCtor = FIELDS_MAP[getSchemaType(schema)];
-
     if (fieldCtor) {
       return {
         field: fieldCtor
       };
-    } // If contains oneOf anyOf return empty without error
+    }
+
+    // If contains oneOf anyOf return empty without error
     // SchemaField will append oneOf anyOf information
-
-
     if (!fieldCtor && (schema.anyOf || schema.oneOf)) {
       return {
         field: null
       };
-    } // Unsupported type
+    }
 
-
+    // Unsupported type
     console.error('Current schema:', schema);
     throw new Error("Unsupported field type, type: ".concat(schema.type));
-  } // Resolve user configured uiSchema options
+  }
 
+  // Resolve user configured uiSchema options
   function getUserUiOptions(_ref4) {
     var _ref4$schema = _ref4.schema,
-        schema = _ref4$schema === void 0 ? {} : _ref4$schema,
-        _ref4$uiSchema = _ref4.uiSchema,
-        uiSchema = _ref4$uiSchema === void 0 ? {} : _ref4$uiSchema,
-        curNodePath = _ref4.curNodePath,
-        _ref4$rootFormData = _ref4.rootFormData,
-        rootFormData = _ref4$rootFormData === void 0 ? {} : _ref4$rootFormData;
+      schema = _ref4$schema === void 0 ? {} : _ref4$schema,
+      _ref4$uiSchema = _ref4.uiSchema,
+      uiSchema = _ref4$uiSchema === void 0 ? {} : _ref4$uiSchema,
+      curNodePath = _ref4.curNodePath,
+      _ref4$rootFormData = _ref4.rootFormData,
+      rootFormData = _ref4$rootFormData === void 0 ? {} : _ref4$rootFormData;
     // Support uiSchema configured in schema file
     return Object.assign.apply(Object, [{}].concat(_toConsumableArray([schema, uiSchema].map(function (itemSchema) {
       return Object.keys(itemSchema).reduce(function (options, key) {
-        var value = itemSchema[key]; // Merge options inside and outside
-
+        var value = itemSchema[key];
+        // Merge options inside and outside
         if (key === 'ui:options' && isObject(value)) {
           return _objectSpread2(_objectSpread2({}, options), value);
-        } // https://github.com/lljj-x/vue-json-schema-form/issues/170
+        }
+
+        // https://github.com/lljj-x/vue-json-schema-form/issues/170
         // ui:hidden needs to be used as a built-in property and cannot be directly passed to widget component.
         //  If component needs it, it can only be passed using hidden in ui:options
-
-
         if (key !== 'ui:hidden') {
           // Handle ui:xxx parameters
           if (key.indexOf('ui:') === 0) {
@@ -8586,54 +8457,47 @@
             return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(3), curNodePath === undefined ? value : handleExpression(rootFormData, curNodePath, value, function () {
               return value;
             })));
-          } // Handle fui:xxx parameters, support all options configured through function
+          }
 
-
+          // Handle fui:xxx parameters, support all options configured through function
           if (key.indexOf('fui:') === 0) {
             return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(4), value.call(null, getPathVal(rootFormData, curNodePath, 1), rootFormData, curNodePath)));
           }
         }
-
         return options;
       }, {});
     }))));
-  } // Resolve ui options parameters of current node
+  }
 
+  // Resolve ui options parameters of current node
   function getUiOptions(_ref5) {
     var _ref5$schema = _ref5.schema,
-        schema = _ref5$schema === void 0 ? {} : _ref5$schema,
-        _ref5$uiSchema = _ref5.uiSchema,
-        uiSchema = _ref5$uiSchema === void 0 ? {} : _ref5$uiSchema,
-        _ref5$containsSpec = _ref5.containsSpec,
-        containsSpec = _ref5$containsSpec === void 0 ? true : _ref5$containsSpec,
-        curNodePath = _ref5.curNodePath,
-        rootFormData = _ref5.rootFormData;
+      schema = _ref5$schema === void 0 ? {} : _ref5$schema,
+      _ref5$uiSchema = _ref5.uiSchema,
+      uiSchema = _ref5$uiSchema === void 0 ? {} : _ref5$uiSchema,
+      _ref5$containsSpec = _ref5.containsSpec,
+      containsSpec = _ref5$containsSpec === void 0 ? true : _ref5$containsSpec,
+      curNodePath = _ref5.curNodePath,
+      rootFormData = _ref5.rootFormData;
     var spec = {};
-
     if (containsSpec) {
       spec.readonly = !!schema.readOnly;
-
       if (undefined !== schema.multipleOf) {
         // Component counter step
         spec.step = schema.multipleOf;
       }
-
       if (schema.minimum || schema.minimum === 0) {
         spec.min = schema.minimum;
       }
-
       if (schema.maximum || schema.maximum === 0) {
         spec.max = schema.maximum;
       }
-
       if (schema.minLength || schema.minLength === 0) {
         spec.minlength = schema.minLength;
       }
-
       if (schema.maxLength || schema.maxLength === 0) {
         spec.maxlength = schema.maxLength;
       }
-
       if (schema.format === 'date-time' || schema.format === 'date') {
         // Array type time range
         // Breaks schema specification, type array configured with format
@@ -8646,61 +8510,61 @@
         }
       }
     }
-
     if (schema.title) spec.title = schema.title;
-    if (schema.description) spec.description = schema.description; // Calculate ui configuration
+    if (schema.description) spec.description = schema.description;
 
+    // Calculate ui configuration
     return _objectSpread2(_objectSpread2({}, spec), getUserUiOptions({
       schema: schema,
       uiSchema: uiSchema,
       curNodePath: curNodePath,
       rootFormData: rootFormData
     }));
-  } // Get ui configuration of current node (options + widget)
-  // Process into format needed by Widget component
+  }
 
+  // Get ui configuration of current node (options + widget)
+  // Process into format needed by Widget component
   function getWidgetConfig(_ref6) {
     var _ref6$schema = _ref6.schema,
-        schema = _ref6$schema === void 0 ? {} : _ref6$schema,
-        _ref6$uiSchema = _ref6.uiSchema,
-        uiSchema = _ref6$uiSchema === void 0 ? {} : _ref6$uiSchema,
-        curNodePath = _ref6.curNodePath,
-        rootFormData = _ref6.rootFormData;
+      schema = _ref6$schema === void 0 ? {} : _ref6$schema,
+      _ref6$uiSchema = _ref6.uiSchema,
+      uiSchema = _ref6$uiSchema === void 0 ? {} : _ref6$uiSchema,
+      curNodePath = _ref6.curNodePath,
+      rootFormData = _ref6.rootFormData;
     var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var uiOptions = getUiOptions({
       schema: schema,
       uiSchema: uiSchema,
       curNodePath: curNodePath,
       rootFormData: rootFormData
-    }); // No Widget configured, each Field component judges by type
+    });
 
+    // No Widget configured, each Field component judges by type
     if (!uiOptions.widget && fallback) {
       Object.assign(uiOptions, fallback({
         schema: schema,
         uiSchema: uiSchema
       }));
     }
-
     var widget = uiOptions.widget,
-        label = uiOptions.title,
-        labelWidth = uiOptions.labelWidth,
-        description = uiOptions.description,
-        widgetAttrs = uiOptions.attrs,
-        widgetClass = uiOptions.class,
-        widgetStyle = uiOptions.style,
-        widgetListeners = uiOptions.widgetListeners,
-        fieldAttrs = uiOptions.fieldAttrs,
-        fieldStyle = uiOptions.fieldStyle,
-        fieldClass = uiOptions.fieldClass,
-        emptyValue = uiOptions.emptyValue,
-        width = uiOptions.width,
-        getWidget = uiOptions.getWidget,
-        renderScopedSlots = uiOptions.renderScopedSlots,
-        renderChildren = uiOptions.renderChildren,
-        onChange = uiOptions.onChange,
-        uiRequired = uiOptions.required,
-        uiProps = _objectWithoutProperties(uiOptions, ["widget", "title", "labelWidth", "description", "attrs", "class", "style", "widgetListeners", "fieldAttrs", "fieldStyle", "fieldClass", "emptyValue", "width", "getWidget", "renderScopedSlots", "renderChildren", "onChange", "required"]);
-
+      label = uiOptions.title,
+      labelWidth = uiOptions.labelWidth,
+      description = uiOptions.description,
+      widgetAttrs = uiOptions.attrs,
+      widgetClass = uiOptions.class,
+      widgetStyle = uiOptions.style,
+      widgetListeners = uiOptions.widgetListeners,
+      fieldAttrs = uiOptions.fieldAttrs,
+      fieldStyle = uiOptions.fieldStyle,
+      fieldClass = uiOptions.fieldClass,
+      emptyValue = uiOptions.emptyValue,
+      width = uiOptions.width,
+      getWidget = uiOptions.getWidget,
+      renderScopedSlots = uiOptions.renderScopedSlots,
+      renderChildren = uiOptions.renderChildren,
+      onChange = uiOptions.onChange,
+      uiRequired = uiOptions.required,
+      uiProps = _objectWithoutProperties(uiOptions, _excluded$2);
     return {
       widget: widget,
       label: label,
@@ -8722,48 +8586,45 @@
       uiProps: uiProps,
       uiRequired: uiRequired
     };
-  } // Resolve user configured errorSchema options
+  }
 
+  // Resolve user configured errorSchema options
   function getUserErrOptions(_ref7) {
     var _ref7$schema = _ref7.schema,
-        schema = _ref7$schema === void 0 ? {} : _ref7$schema,
-        _ref7$uiSchema = _ref7.uiSchema,
-        uiSchema = _ref7$uiSchema === void 0 ? {} : _ref7$uiSchema,
-        _ref7$errorSchema = _ref7.errorSchema,
-        errorSchema = _ref7$errorSchema === void 0 ? {} : _ref7$errorSchema;
+      schema = _ref7$schema === void 0 ? {} : _ref7$schema,
+      _ref7$uiSchema = _ref7.uiSchema,
+      uiSchema = _ref7$uiSchema === void 0 ? {} : _ref7$uiSchema,
+      _ref7$errorSchema = _ref7.errorSchema,
+      errorSchema = _ref7$errorSchema === void 0 ? {} : _ref7$errorSchema;
     return Object.assign.apply(Object, [{}].concat(_toConsumableArray([schema, uiSchema, errorSchema].map(function (itemSchema) {
       return Object.keys(itemSchema).reduce(function (options, key) {
-        var value = itemSchema[key]; // options 内外合并
-
+        var value = itemSchema[key];
+        // options 内外合并
         if (key === 'err:options' && isObject(value)) {
           return _objectSpread2(_objectSpread2({}, options), value);
         }
-
         if (key.indexOf('err:') === 0) {
           return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(4), value));
         }
-
         return options;
       }, {});
     }))));
-  } // ui:order object-> properties sorting
+  }
 
+  // ui:order object-> properties sorting
   function orderProperties(properties, order) {
     if (!Array.isArray(order)) {
       return properties;
     }
-
     var arrayToHash = function arrayToHash(arr) {
       return arr.reduce(function (prev, curr) {
         prev[curr] = true;
         return prev;
       }, {});
     };
-
     var errorPropList = function errorPropList(arr) {
       return arr.length > 1 ? "properties '".concat(arr.join("', '"), "'") : "property '".concat(arr[0], "'");
     };
-
     var propertyHash = arrayToHash(properties);
     var orderFiltered = order.filter(function (prop) {
       return prop === '*' || propertyHash[prop];
@@ -8773,29 +8634,24 @@
       return !orderHash[prop];
     });
     var restIndex = orderFiltered.indexOf('*');
-
     if (restIndex === -1) {
       if (rest.length) {
         throw new Error("uiSchema order list does not contain ".concat(errorPropList(rest)));
       }
-
       return orderFiltered;
     }
-
     if (restIndex !== orderFiltered.lastIndexOf('*')) {
       throw new Error('uiSchema order list contains more than one wildcard item');
     }
-
     var complete = _toConsumableArray(orderFiltered);
-
     complete.splice.apply(complete, [restIndex, 1].concat(_toConsumableArray(rest)));
     return complete;
   }
+
   /**
    * Single match
    * Constant, or only one enum
    */
-
   function isConstant(schema) {
     return Array.isArray(schema.enum) && schema.enum.length === 1 || schema.hasOwnProperty('const');
   }
@@ -8803,13 +8659,12 @@
     if (Array.isArray(schema.enum) && schema.enum.length === 1) {
       return schema.enum[0];
     }
-
     if (schema.hasOwnProperty('const')) {
       return schema.const;
     }
-
     throw new Error('schema cannot be inferred as a constant');
   }
+
   /**
    * Is select list
    * Enum or oneOf anyOf where each item has only one fixed constant value
@@ -8817,50 +8672,47 @@
    * @param rootSchema
    * @returns {boolean|*}
    */
-
   function isSelect(_schema) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var schema = retrieveSchema(_schema, rootSchema);
     var altSchemas = schema.oneOf || schema.anyOf;
-
     if (Array.isArray(schema.enum)) {
       return true;
     }
-
     if (Array.isArray(altSchemas)) {
       return altSchemas.every(function (altSchemasItem) {
         return isConstant(altSchemasItem);
       });
     }
-
     return false;
-  } // Items are all objects
+  }
 
+  // Items are all objects
   function isFixedItems(schema) {
     return Array.isArray(schema.items) && schema.items.length > 0 && schema.items.every(function (item) {
       return isObject(item);
     });
-  } // Is multi-select
+  }
 
+  // Is multi-select
   function isMultiSelect(schema) {
     var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
     if (!schema.uniqueItems || !schema.items) {
       return false;
     }
-
     return isSelect(schema.items, rootSchema);
-  } // array additionalItems
-  // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
+  }
 
+  // array additionalItems
+  // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
   function allowAdditionalItems(schema) {
     if (schema.additionalItems === true) {
       console.warn('additionalItems=true is currently not supported');
     }
-
     return isObject(schema.additionalItems);
-  } // Dropdown options
+  }
 
+  // Dropdown options
   function optionsList(schema, uiSchema, curNodePath, rootFormData) {
     // enum
     if (schema.enum) {
@@ -8869,8 +8721,9 @@
         uiSchema: uiSchema,
         curNodePath: curNodePath,
         rootFormData: rootFormData
-      }); // ui configured enumNames has priority
+      });
 
+      // ui configured enumNames has priority
       var enumNames = uiOptions.enumNames || schema.enumNames;
       return schema.enum.map(function (value, i) {
         var label = enumNames && enumNames[i] || String(value);
@@ -8879,9 +8732,9 @@
           value: value
         };
       });
-    } // oneOf | anyOf
+    }
 
-
+    // oneOf | anyOf
     var altSchemas = schema.oneOf || schema.anyOf;
     var altUiSchemas = uiSchema.oneOf || uiSchema.anyOf;
     return altSchemas.map(function (curSchema, i) {
@@ -8901,13 +8754,12 @@
   }
   function fallbackLabel(oriLabel, isFallback, curNodePath) {
     if (oriLabel) return oriLabel;
-
     if (isFallback) {
-      var backLabel = curNodePath.split('.').pop(); // Filter pure numeric strings
+      var backLabel = curNodePath.split('.').pop();
 
+      // Filter pure numeric strings
       if (backLabel && backLabel !== "".concat(Number(backLabel))) return backLabel;
     }
-
     return '';
   }
 
@@ -8933,8 +8785,9 @@
 
   var ajv$1 = createAjvInstance();
   var formerCustomFormats = null;
-  var formerMetaSchema = null; // Create instance
+  var formerMetaSchema = null;
 
+  // Create instance
   function createAjvInstance() {
     var ajvInstance = new ajv({
       errorDataPath: 'property',
@@ -8942,35 +8795,36 @@
       multipleOfPrecision: 8,
       schemaId: 'auto',
       unknownFormats: 'ignore'
-    }); // 添加base-64 format
+    });
 
-    ajvInstance.addFormat('data-url', /^data:([a-z]+\/[a-z0-9-+.]+)?;(?:name=(.*);)?base64,(.*)$/); // 添加color format
+    // 添加base-64 format
+    ajvInstance.addFormat('data-url', /^data:([a-z]+\/[a-z0-9-+.]+)?;(?:name=(.*);)?base64,(.*)$/);
 
-    ajvInstance.addFormat('color', // eslint-disable-next-line max-len
+    // 添加color format
+    ajvInstance.addFormat('color',
+    // eslint-disable-next-line max-len
     /^(#?([0-9A-Fa-f]{3,4}){1,2}\b|aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow|(rgba?|hsla?)\(.*\))$/);
     return ajvInstance;
   }
+
   /**
    * Transform error output from ajv to the format used by jsonschema
    * At some point, components should be updated to support ajv.
    */
-
-
   function transformAjvErrors() {
     var errors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
     if (errors === null) {
       return [];
     }
-
     return errors.map(function (e) {
       var dataPath = e.dataPath,
-          keyword = e.keyword,
-          message = e.message,
-          params = e.params,
-          schemaPath = e.schemaPath;
-      var property = "".concat(dataPath); // put data in expected format
+        keyword = e.keyword,
+        message = e.message,
+        params = e.params,
+        schemaPath = e.schemaPath;
+      var property = "".concat(dataPath);
 
+      // put data in expected format
       return {
         name: keyword,
         property: property,
@@ -8982,6 +8836,7 @@
       };
     });
   }
+
   /**
    * Validate formData through schema and return error information
    * @param formData Data to validate
@@ -8991,94 +8846,91 @@
    * @param customFormats Add ajv custom formats
    * @returns {{errors: ([]|{stack: string, schemaPath: *, name: *, property: string, message: *, params: *}[])}}
    */
-
-
   function ajvValidateFormData() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        formData = _ref.formData,
-        schema = _ref.schema,
-        transformErrors = _ref.transformErrors,
-        _ref$additionalMetaSc = _ref.additionalMetaSchemas,
-        additionalMetaSchemas = _ref$additionalMetaSc === void 0 ? [] : _ref$additionalMetaSc,
-        _ref$customFormats = _ref.customFormats,
-        customFormats = _ref$customFormats === void 0 ? {} : _ref$customFormats;
-
+      formData = _ref.formData,
+      schema = _ref.schema,
+      transformErrors = _ref.transformErrors,
+      _ref$additionalMetaSc = _ref.additionalMetaSchemas,
+      additionalMetaSchemas = _ref$additionalMetaSc === void 0 ? [] : _ref$additionalMetaSc,
+      _ref$customFormats = _ref.customFormats,
+      customFormats = _ref$customFormats === void 0 ? {} : _ref$customFormats;
     var hasNewMetaSchemas = !deepEquals(formerMetaSchema, additionalMetaSchemas);
-    var hasNewFormats = !deepEquals(formerCustomFormats, customFormats); // Changed Meta or adjusted format config, reset new instance
+    var hasNewFormats = !deepEquals(formerCustomFormats, customFormats);
 
+    // Changed Meta or adjusted format config, reset new instance
     if (hasNewMetaSchemas || hasNewFormats) {
       ajv$1 = createAjvInstance();
-    } // Add more schemas to validate
+    }
 
-
+    // Add more schemas to validate
     if (additionalMetaSchemas && hasNewMetaSchemas && Array.isArray(additionalMetaSchemas)) {
       ajv$1.addMetaSchema(additionalMetaSchemas);
       formerMetaSchema = additionalMetaSchemas;
-    } // Register custom formats - unchanged, register only once - otherwise recreate instance
+    }
 
-
+    // Register custom formats - unchanged, register only once - otherwise recreate instance
     if (customFormats && hasNewFormats && isObject(customFormats)) {
       Object.keys(customFormats).forEach(function (formatName) {
         ajv$1.addFormat(formatName, customFormats[formatName]);
       });
       formerCustomFormats = customFormats;
     }
-
     var validationError = null;
-
     try {
       ajv$1.validate(schema, formData);
     } catch (err) {
       validationError = err;
-    } // ajv default multilingual processing
+    }
 
-
+    // ajv default multilingual processing
     i18n.getCurrentLocalize()(ajv$1.errors);
-    var errors = transformAjvErrors(ajv$1.errors); // Clear errors
+    var errors = transformAjvErrors(ajv$1.errors);
 
-    ajv$1.errors = null; // Handle exceptions
+    // Clear errors
+    ajv$1.errors = null;
 
+    // Handle exceptions
     var noProperMetaSchema = validationError && validationError.message && typeof validationError.message === 'string' && validationError.message.includes('no schema with key or ref ');
-
     if (noProperMetaSchema) {
       errors = [].concat(_toConsumableArray(errors), [{
         stack: validationError.message
       }]);
-    } // Transform errors, such as passing in custom errors
+    }
 
-
+    // Transform errors, such as passing in custom errors
     if (typeof transformErrors === 'function') {
       errors = transformErrors(errors);
     }
-
     return {
       errors: errors
     };
-  } // Validate formData and transform error messages
+  }
 
+  // Validate formData and transform error messages
   function validateFormDataAndTransformMsg() {
     var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        formData = _ref2.formData,
-        schema = _ref2.schema,
-        uiSchema = _ref2.uiSchema,
-        transformErrors = _ref2.transformErrors,
-        _ref2$additionalMetaS = _ref2.additionalMetaSchemas,
-        additionalMetaSchemas = _ref2$additionalMetaS === void 0 ? [] : _ref2$additionalMetaS,
-        _ref2$customFormats = _ref2.customFormats,
-        customFormats = _ref2$customFormats === void 0 ? {} : _ref2$customFormats,
-        _ref2$errorSchema = _ref2.errorSchema,
-        errorSchema = _ref2$errorSchema === void 0 ? {} : _ref2$errorSchema,
-        _ref2$required = _ref2.required,
-        required = _ref2$required === void 0 ? false : _ref2$required,
-        _ref2$propPath = _ref2.propPath,
-        propPath = _ref2$propPath === void 0 ? '' : _ref2$propPath,
-        _ref2$isOnlyFirstErro = _ref2.isOnlyFirstError,
-        isOnlyFirstError = _ref2$isOnlyFirstErro === void 0 ? true : _ref2$isOnlyFirstErro;
-    // Special handling for array types configured with format
+      formData = _ref2.formData,
+      schema = _ref2.schema,
+      uiSchema = _ref2.uiSchema,
+      transformErrors = _ref2.transformErrors,
+      _ref2$additionalMetaS = _ref2.additionalMetaSchemas,
+      additionalMetaSchemas = _ref2$additionalMetaS === void 0 ? [] : _ref2$additionalMetaS,
+      _ref2$customFormats = _ref2.customFormats,
+      customFormats = _ref2$customFormats === void 0 ? {} : _ref2$customFormats,
+      _ref2$errorSchema = _ref2.errorSchema,
+      errorSchema = _ref2$errorSchema === void 0 ? {} : _ref2$errorSchema,
+      _ref2$required = _ref2.required,
+      required = _ref2$required === void 0 ? false : _ref2$required,
+      _ref2$propPath = _ref2.propPath,
+      propPath = _ref2$propPath === void 0 ? '' : _ref2$propPath,
+      _ref2$isOnlyFirstErro = _ref2.isOnlyFirstError,
+      isOnlyFirstError = _ref2$isOnlyFirstErro === void 0 ? true : _ref2$isOnlyFirstErro;
 
+    // Validate required information, isEmpty check
+    // Special handling for array types configured with format
     var emptyArray = schema.type === 'array' && Array.isArray(formData) && formData.length === 0;
     var isEmpty = formData === undefined || emptyArray;
-
     if (required) {
       if (isEmpty) {
         var requireErrObj = {
@@ -9086,43 +8938,42 @@
           params: {
             missingProperty: propPath
           }
-        }; // User set validation message
+        };
 
+        // User set validation message
         var errSchemaMsg = getUserErrOptions({
           schema: schema,
           uiSchema: uiSchema,
           errorSchema: errorSchema
         }).required;
-
         if (errSchemaMsg) {
           requireErrObj.message = errSchemaMsg;
         } else {
           // Process multilingual require message (ajv modifies original reference)
           i18n.getCurrentLocalize()([requireErrObj]);
         }
-
         return [requireErrObj];
       }
     } else if (isEmpty && !emptyArray) {
       // Non-required, empty, validation passes
       return [];
-    } // Validate ajv error messages
+    }
 
-
+    // Validate ajv error messages
     var ajvErrors = ajvValidateFormData({
       formData: formData,
       schema: schema,
       transformErrors: transformErrors,
       additionalMetaSchemas: additionalMetaSchemas,
       customFormats: customFormats
-    }).errors; // Filter top-level errors
+    }).errors;
 
+    // Filter top-level errors
     {
       ajvErrors = ajvErrors.filter(function (item) {
         return item.property === '' && !item.schemaPath.includes('#/anyOf/') && !item.schemaPath.includes('#/oneOf/') || item.name === 'additionalProperties';
       });
     }
-
     var userErrOptions = getUserErrOptions({
       schema: schema,
       uiSchema: uiSchema,
@@ -9135,39 +8986,41 @@
       return preErrors;
     }, []);
   }
+
   /**
    * Validate data according to schema, return true if data is valid, otherwise return false. If schema is invalid, this function will return false.
    * @param schema
    * @param data
    * @returns {boolean|PromiseLike<any>}
    */
-
   function isValid(schema, data) {
     try {
       return ajv$1.validate(schema, data);
     } catch (e) {
       return false;
     }
-  } // ajv valida
+  }
 
+  // ajv valida
   function ajvValid(schema, data) {
     return ajv$1.validate(schema, data);
-  } // If not found
-  // return -1
+  }
 
+  // If not found
+  // return -1
   function getMatchingIndex(formData, options, rootSchema) {
     var haveAllFields = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
     // eslint-disable-next-line no-plusplus
     for (var i = 0; i < options.length; i++) {
-      var option = retrieveSchema(options[i], rootSchema, formData); // If the schema describes an object then we need to add slightly more
+      var option = retrieveSchema(options[i], rootSchema, formData);
+
+      // If the schema describes an object then we need to add slightly more
       // strict matching to the schema, because unless the schema uses the
       // "requires" keyword, an object will match the schema as long as it
       // doesn't have matching keys with a conflicting type. To do this we use an
       // "anyOf" with an array of requires. This augmentation expresses that the
       // schema should match if any of the keys in the schema are present on the
       // object and pass validation.
-
       if (option.properties) {
         // Create an "anyOf" schema that requires at least one of the keys in the
         // "properties" object
@@ -9180,45 +9033,42 @@
             };
           })
         });
+        var augmentedSchema = void 0;
 
-        var augmentedSchema = void 0; // If the "anyOf" keyword already exists, wrap the augmentation in an "allOf"
-
+        // If the "anyOf" keyword already exists, wrap the augmentation in an "allOf"
         if (option.anyOf) {
           // Create a shallow clone of the option
-          var shallowClone = _extends({}, option);
-
+          var shallowClone = _extends({}, (_objectDestructuringEmpty(option), option));
           if (!shallowClone.allOf) {
             shallowClone.allOf = [];
           } else {
             // If "allOf" already exists, shallow clone the array
             shallowClone.allOf = shallowClone.allOf.slice();
           }
-
           shallowClone.allOf.push(requiresAnyOf);
           augmentedSchema = shallowClone;
         } else {
           augmentedSchema = Object.assign({}, option, requiresAnyOf);
-        } // Remove the "required" field as it's likely that not all fields have
+        }
+
+        // Remove the "required" field as it's likely that not all fields have
         // been filled in yet, which will mean that the schema is not valid
+
         // For edit backfill data scenarios, can directly use required for judgment
-
-
         if (!haveAllFields) delete augmentedSchema.required;
-
         if (isValid(augmentedSchema, formData)) {
           return i;
         }
       } else if (isValid(option, formData)) {
         return i;
       }
-    } // Try to find const config
+    }
 
-
+    // Try to find const config
     if (options[0] && options[0].properties) {
       var constProperty = Object.keys(options[0].properties).find(function (k) {
         return options[0].properties[k].const;
       });
-
       if (constProperty) {
         // eslint-disable-next-line no-plusplus
         for (var _i = 0; _i < options.length; _i++) {
@@ -9228,10 +9078,10 @@
         }
       }
     }
-
     return -1;
-  } // oneOf anyOf find current matching item index through formData value
+  }
 
+  // oneOf anyOf find current matching item index through formData value
   function getMatchingOption(formData, options, rootSchema) {
     var haveAllFields = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
     var index = getMatchingIndex(formData, options, rootSchema, haveAllFields);
@@ -9253,6 +9103,7 @@
    * Source code from: react-jsonschema-form with detail adjustments, rewrote allOf implementation logic
    * https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/utils.js#L283
    */
+
   /**
    * When merging defaults and form data, we want to merge in this specific way:
    * - objects are deeply merged
@@ -9262,49 +9113,42 @@
    *   - when the array is not set in form data, the default is copied over
    * - scalars are overwritten/set by form data
    */
-
   function mergeDefaultsWithFormData(defaults, formData) {
     if (Array.isArray(formData)) {
       if (!Array.isArray(defaults)) {
         console.warn('Invalid formData, data has been overwritten', formData);
         return defaults;
       }
-
       return formData.map(function (value, idx) {
         if (defaults[idx]) {
           return mergeDefaultsWithFormData(defaults[idx], value);
         }
-
         return value;
       });
     }
-
     if (isObject(formData)) {
       var acc = Object.assign({}, defaults); // Prevent mutation of source object.
-
       return Object.keys(formData).reduce(function (preAcc, key) {
         preAcc[key] = mergeDefaultsWithFormData(defaults ? defaults[key] : {}, formData[key]);
         return preAcc;
       }, acc);
     }
-
     return formData;
   }
-
   function computeDefaults(_schema, parentDefaults, rootSchema) {
     var rawFormData = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
     var includeUndefinedValues = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
     var haveAllFields = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
     var schema = isObject(_schema) ? _schema : {};
-    var formData = isObject(rawFormData) ? rawFormData : {}; // allOf processing and merging data
+    var formData = isObject(rawFormData) ? rawFormData : {};
 
+    // allOf processing and merging data
     if ('allOf' in schema) {
       schema = resolveAllOf(schema, rootSchema, formData);
-    } // Compute the defaults recursively: give highest priority to deepest nodes.
+    }
 
-
+    // Compute the defaults recursively: give highest priority to deepest nodes.
     var defaults = parentDefaults;
-
     if (isObject(defaults) && isObject(schema.default)) {
       // For object defaults, only override parent defaults that are defined in
       // schema.default.
@@ -9316,26 +9160,27 @@
       // Use referenced schema defaults for this node.
       var refSchema = findSchemaDefinition(schema.$ref, rootSchema);
       return computeDefaults(refSchema, defaults, rootSchema, formData, includeUndefinedValues, haveAllFields);
-    } else if (
-    /* ('dependencies' in schema) {
-    const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
-    return computeDefaults(
-    resolvedSchema,
-    defaults,
-    rootSchema,
-    formData,
-    includeUndefinedValues,
-    haveAllFields
-    );
-    } else if */
-    isFixedItems(schema)) {
+    } else if /* ('dependencies' in schema) {
+              const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
+              return computeDefaults(
+              resolvedSchema,
+              defaults,
+              rootSchema,
+              formData,
+              includeUndefinedValues,
+              haveAllFields
+              );
+              } else if */
+    (isFixedItems(schema)) {
       defaults = schema.items.map(function (itemSchema, idx) {
         return computeDefaults(itemSchema, Array.isArray(parentDefaults) ? parentDefaults[idx] : undefined, rootSchema, formData, includeUndefinedValues, haveAllFields);
       });
     } else if ('oneOf' in schema) {
       var matchSchema = retrieveSchema(schema.oneOf[getMatchingOption(formData, schema.oneOf, rootSchema, haveAllFields)], rootSchema, formData);
       schema = mergeObjects(schema, matchSchema);
-      delete schema.oneOf; // if (schema.properties && matchSchema.properties) {
+      delete schema.oneOf;
+
+      // if (schema.properties && matchSchema.properties) {
       //     // 对象 oneOf 需要合并原属性和 oneOf 属性
       //     const mergeSchema = mergeObjects(schema, matchSchema);
       //     delete mergeSchema.oneOf;
@@ -9345,9 +9190,10 @@
       // }
     } else if ('anyOf' in schema) {
       var _matchSchema = retrieveSchema(schema.anyOf[getMatchingOption(formData, schema.anyOf, rootSchema, haveAllFields)], rootSchema, formData);
-
       schema = mergeObjects(schema, _matchSchema);
-      delete schema.anyOf; // if (schema.properties && matchSchema.properties) {
+      delete schema.anyOf;
+
+      // if (schema.properties && matchSchema.properties) {
       //     // 对象 anyOf 需要合并原属性和 anyOf 属性
       //     const mergeSchema = mergeObjects(schema, matchSchema);
       //     delete mergeSchema.anyOf;
@@ -9355,54 +9201,47 @@
       // } else {
       //     schema = matchSchema;
       // }
-    } // Not defaults defined for this node, fallback to generic typed ones.
-
-
+    }
+    // Not defaults defined for this node, fallback to generic typed ones.
     if (typeof defaults === 'undefined') {
       defaults = schema.default;
-    } // eslint-disable-next-line default-case
-
-
+    }
+    // eslint-disable-next-line default-case
     switch (getSchemaType(schema)) {
       case 'null':
         return null;
-      // We need to recur for object schema inner default values.
 
+      // We need to recur for object schema inner default values.
       case 'object':
         return Object.keys(schema.properties || {}).reduce(function (acc, key) {
           // Compute the defaults for this node, with the parent defaults we might
           // have from a previous run: defaults[key].
           var computedDefault = computeDefaults(schema.properties[key], (defaults || {})[key], rootSchema, (formData || {})[key], includeUndefinedValues, haveAllFields);
-
           if (includeUndefinedValues || computedDefault !== undefined) {
             acc[key] = computedDefault;
           }
-
           return acc;
         }, {});
-
       case 'array':
         // Inject defaults into existing array defaults
         if (Array.isArray(defaults)) {
           defaults = defaults.map(function (item, idx) {
             return computeDefaults(schema.items[idx] || schema.additionalItems || {}, item, rootSchema, {}, includeUndefinedValues, haveAllFields);
           });
-        } // Deeply inject defaults into already existing form data
+        }
 
-
+        // Deeply inject defaults into already existing form data
         if (Array.isArray(rawFormData)) {
           defaults = rawFormData.map(function (item, idx) {
             return computeDefaults(schema.items, (defaults || {})[idx], rootSchema, item, {}, includeUndefinedValues, haveAllFields);
           });
         }
-
         if (schema.minItems) {
           if (!isMultiSelect(schema, rootSchema)) {
             var defaultsLength = defaults ? defaults.length : 0;
-
             if (schema.minItems > defaultsLength) {
-              var defaultEntries = defaults || []; // populate the array with the defaults
-
+              var defaultEntries = defaults || [];
+              // populate the array with the defaults
               var fillerSchema = Array.isArray(schema.items) ? schema.additionalItems : schema.items;
               var fillerEntries = fillObj(new Array(schema.minItems - defaultsLength), computeDefaults(fillerSchema, fillerSchema.defaults, rootSchema, {}, includeUndefinedValues, haveAllFields));
               return defaultEntries.concat(fillerEntries);
@@ -9410,42 +9249,36 @@
           } else {
             return defaults || [];
           }
-        } // undefined defaults to empty array
+        }
 
-
+        // undefined defaults to empty array
         defaults = defaults === undefined ? [] : defaults;
     }
-
     return defaults;
-  } // Get default form data
+  }
 
-
+  // Get default form data
   function getDefaultFormState(_schema, formData) {
     var rootSchema = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     var includeUndefinedValues = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
     var haveAllFields = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-
     if (!isObject(_schema)) {
       throw new Error("Invalid schema: ".concat(_schema));
     }
-
     var schema = retrieveSchema(_schema, rootSchema, formData);
     var defaults = computeDefaults(schema, _schema.default, rootSchema, formData, includeUndefinedValues, haveAllFields);
-
     if (typeof formData === 'undefined') {
       // No form data? Use schema defaults.
       return defaults;
-    } // When formData is passed in, merge the passed data
+    }
 
-
+    // When formData is passed in, merge the passed data
     if (isObject(formData) || Array.isArray(formData)) {
       return mergeDefaultsWithFormData(defaults, formData);
     }
-
     if (formData === 0 || formData === false || formData === '') {
       return formData;
     }
-
     return formData || defaults;
   }
 
@@ -9482,6 +9315,7 @@
   /**
    * Created by Liu.Jun on 2020/4/16 10:47 PM.
    */
+
   var vueProps = {
     formFooter: {
       type: Object,
@@ -9646,23 +9480,17 @@
     computed: {
       trueTitle: function trueTitle() {
         var _this$genFormProvide$;
-
         var title = this.title;
-
         if (title) {
           return title;
         }
-
         var fallbackLabel;
-
         if (typeof ((_this$genFormProvide$ = this.genFormProvide.fallbackLabel) === null || _this$genFormProvide$ === void 0 ? void 0 : _this$genFormProvide$.value) === 'boolean') {
           var _this$genFormProvide$2;
-
           fallbackLabel = (_this$genFormProvide$2 = this.genFormProvide.fallbackLabel) === null || _this$genFormProvide$2 === void 0 ? void 0 : _this$genFormProvide$2.value;
         } else {
           fallbackLabel = this.genFormProvide.fallbackLabel;
         }
-
         var backTitle = fallbackLabel && this.curNodePath.split('.').pop();
         if (backTitle !== "".concat(Number(backTitle))) return backTitle;
         return '';
@@ -9677,19 +9505,16 @@
     key: 0,
     class: "fieldGroupWrap_title"
   };
-  var _hoisted_3 = {
+  var _hoisted_3 = ["innerHTML"];
+  var _hoisted_4 = {
     class: "fieldGroupWrap_box"
   };
   function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createBlock("div", _hoisted_1, [$props.showTitle && $options.trueTitle ? (vue.openBlock(), vue.createBlock("h3", _hoisted_2, vue.toDisplayString($options.trueTitle), 1
-    /* TEXT */
-    )) : vue.createCommentVNode("v-if", true), $props.showDescription && $props.description ? (vue.openBlock(), vue.createBlock("p", {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [$props.showTitle && $options.trueTitle ? (vue.openBlock(), vue.createElementBlock("h3", _hoisted_2, vue.toDisplayString($options.trueTitle), 1 /* TEXT */)) : vue.createCommentVNode("v-if", true), $props.showDescription && $props.description ? (vue.openBlock(), vue.createElementBlock("p", {
       key: 1,
       class: "fieldGroupWrap_des",
       innerHTML: $props.description
-    }, null, 8
-    /* PROPS */
-    , ["innerHTML"])) : vue.createCommentVNode("v-if", true), vue.createVNode("div", _hoisted_3, [vue.renderSlot(_ctx.$slots, "default")])]);
+    }, null, 8 /* PROPS */, _hoisted_3)) : vue.createCommentVNode("v-if", true), vue.createElementVNode("div", _hoisted_4, [vue.renderSlot(_ctx.$slots, "default")])]);
   }
 
   script.render = render;
@@ -9698,6 +9523,7 @@
   /**
    * Created by Liu.Jun on 2020/4/22 18:58.
    */
+
   // Recursive parameters, unified props
   var vueProps$1 = {
     formProps: {
@@ -9777,15 +9603,10 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 1024 1024"
   };
-
-  var _hoisted_2$1 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
-  }, null, -1
-  /* HOISTED */
-  );
-
   function render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createBlock("svg", _hoisted_1$1, [_hoisted_2$1]);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _toConsumableArray(_cache[0] || (_cache[0] = [vue.createElementVNode("path", {
+      d: "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"
+    }, null, -1 /* CACHED */)])));
   }
 
   var script$1 = {};
@@ -9797,15 +9618,10 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 1024 1024"
   };
-
-  var _hoisted_2$2 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
-  }, null, -1
-  /* HOISTED */
-  );
-
   function render$2(_ctx, _cache) {
-    return vue.openBlock(), vue.createBlock("svg", _hoisted_1$2, [_hoisted_2$2]);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _toConsumableArray(_cache[0] || (_cache[0] = [vue.createElementVNode("path", {
+      d: "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"
+    }, null, -1 /* CACHED */)])));
   }
 
   var script$2 = {};
@@ -9817,15 +9633,10 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 1024 1024"
   };
-
-  var _hoisted_2$3 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1\r\n            191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0\r\n            0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
-  }, null, -1
-  /* HOISTED */
-  );
-
   function render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createBlock("svg", _hoisted_1$3, [_hoisted_2$3]);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _toConsumableArray(_cache[0] || (_cache[0] = [vue.createElementVNode("path", {
+      d: "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1\r\n            191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0\r\n            0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+    }, null, -1 /* CACHED */)])));
   }
 
   var script$3 = {};
@@ -9843,23 +9654,14 @@
     width: "200",
     height: "200"
   };
-
-  var _hoisted_2$4 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z",
-    "p-id": "10298"
-  }, null, -1
-  /* HOISTED */
-  );
-
-  var _hoisted_3$1 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z",
-    "p-id": "10299"
-  }, null, -1
-  /* HOISTED */
-  );
-
   function render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createBlock("svg", _hoisted_1$4, [_hoisted_2$4, _hoisted_3$1]);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _toConsumableArray(_cache[0] || (_cache[0] = [vue.createElementVNode("path", {
+      d: "M474 152m8 0l60 0q8 0 8 8l0 704q0 8-8 8l-60 0q-8 0-8-8l0-704q0-8 8-8Z",
+      "p-id": "10298"
+    }, null, -1 /* CACHED */), vue.createElementVNode("path", {
+      d: "M168 474m8 0l672 0q8 0 8 8l0 60q0 8-8 8l-672 0q-8 0-8-8l0-60q0-8 8-8Z",
+      "p-id": "10299"
+    }, null, -1 /* CACHED */)])));
   }
 
   var script$4 = {};
@@ -9871,15 +9673,10 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 1024 1024"
   };
-
-  var _hoisted_2$5 = /*#__PURE__*/vue.createVNode("path", {
-    d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 708c-22.1\r\n            0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm62.9-219.5a48.3 48.3 0 0\r\n            0-30.9 44.8V620c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-21.5c0-23.1 6.7-45.9 19.9-64.9 12.9-18.6 30.9-32.8\r\n            52.1-40.9 34-13.1 56-41.6 56-72.7 0-44.1-43.1-80-96-80s-96 35.9-96 80v7.6c0 4.4-3.6\r\n            8-8 8h-48c-4.4 0-8-3.6-8-8V420c0-39.3 17.2-76 48.4-103.3C430.4 290.4 470 276 512 276s81.6 14.5 111.6\r\n            40.7C654.8 344 672 380.7 672 420c0 57.8-38.1 109.8-97.1 132.5z"
-  }, null, -1
-  /* HOISTED */
-  );
-
   function render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createBlock("svg", _hoisted_1$5, [_hoisted_2$5]);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _toConsumableArray(_cache[0] || (_cache[0] = [vue.createElementVNode("path", {
+      d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 708c-22.1\r\n            0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40zm62.9-219.5a48.3 48.3 0 0\r\n            0-30.9 44.8V620c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8v-21.5c0-23.1 6.7-45.9 19.9-64.9 12.9-18.6 30.9-32.8\r\n            52.1-40.9 34-13.1 56-41.6 56-72.7 0-44.1-43.1-80-96-80s-96 35.9-96 80v7.6c0 4.4-3.6\r\n            8-8 8h-48c-4.4 0-8-3.6-8-8V420c0-39.3 17.2-76 48.4-103.3C430.4 290.4 470 276 512 276s81.6 14.5 111.6\r\n            40.7C654.8 344 672 380.7 672 420c0 57.8-38.1 109.8-97.1 132.5z"
+    }, null, -1 /* CACHED */)])));
   }
 
   var script$5 = {};
@@ -10042,7 +9839,6 @@
         set: function set(value) {
           // Most components will reset to null when empty value is deleted.
           var trueValue = value === '' || value === null ? props.emptyValue : value;
-
           if (props.isFormData) {
             setPathVal(props.rootFormData, props.curNodePath, trueValue);
           } else {
@@ -10052,10 +9848,10 @@
       });
       var realRequired = vue.computed(function () {
         var _props$uiRequired;
-
         return (_props$uiRequired = props.uiRequired) !== null && _props$uiRequired !== void 0 ? _props$uiRequired : props.required;
-      }); // Enum type default value is first option
+      });
 
+      // Enum type default value is first option
       if (props.uiProps.enumOptions && props.uiProps.enumOptions.length > 0 && widgetValue.value === undefined && widgetValue.value !== props.uiProps.enumOptions[0]) {
         // array rendered as multi-select defaults to empty array
         if (props.schema.items) {
@@ -10063,20 +9859,18 @@
         } else if (realRequired.value && props.formProps.defaultSelectFirstOption) {
           widgetValue.value = props.uiProps.enumOptions[0].value;
         }
-      } // Get widget component instance
+      }
 
-
-      var widgetRef = vue.ref(null); // Provide a special config allowing direct access to widget vm
-
+      // Get widget component instance
+      var widgetRef = vue.ref(null);
+      // Provide a special config allowing direct access to widget vm
       if (typeof props.getWidget === 'function') {
         vue.watch(widgetRef, function () {
           props.getWidget.call(null, widgetRef.value);
         });
       }
-
       return function () {
         var _props$formProps;
-
         // Check if it's root node
         var isRootNode = isRootNodePath(props.curNodePath);
         var isMiniDes = props.formProps && props.formProps.isMiniDes;
@@ -10104,17 +9898,17 @@
           reference: function reference() {
             return vue.h(script$5);
           }
-        }) : null; // form-item style
+        }) : null;
 
+        // form-item style
         var formItemStyle = _objectSpread2(_objectSpread2({}, props.fieldStyle), props.width ? {
           width: props.width,
           flexBasis: props.width,
           paddingRight: '10px'
-        } : {}); // Runtime config fallback to property name
+        } : {});
 
-
+        // Runtime config fallback to property name
         var _label = fallbackLabel(props.label, props.widget && genFormProvide.fallbackLabel.value, props.curNodePath);
-
         return vue.h(resolveComponent(COMPONENT_MAP.formItem), _objectSpread2(_objectSpread2(_objectSpread2({
           class: _objectSpread2(_objectSpread2({}, props.fieldClass), {}, {
             genFormItem: true
@@ -10127,8 +9921,9 @@
           prop: isRootNode ? '__$$root' : path2prop(props.curNodePath),
           rules: [{
             validator: function validator(rule, value, callback) {
-              if (isRootNode) value = props.rootFormData; // Validation expands schema level by level, only capture root node errors here
+              if (isRootNode) value = props.rootFormData;
 
+              // Validation expands schema level by level, only capture root node errors here
               var errors = validateFormDataAndTransformMsg({
                 formData: value,
                 schema: props.schema,
@@ -10137,16 +9932,16 @@
                 errorSchema: props.errorSchema,
                 required: realRequired.value,
                 propPath: path2prop(props.curNodePath)
-              }); // Validation failed fields exist
+              });
 
+              // Validation failed fields exist
               if (errors.length > 0) {
                 if (callback) return callback(errors[0].message);
                 return Promise.reject(errors[0].message);
-              } // customRule if custom validation exists
+              }
 
-
+              // customRule if custom validation exists
               var curCustomRule = props.customRule;
-
               if (curCustomRule && typeof curCustomRule === 'function') {
                 return curCustomRule({
                   field: props.curNodePath,
@@ -10154,9 +9949,9 @@
                   rootFormData: props.rootFormData,
                   callback: callback
                 });
-              } // Validation success
+              }
 
-
+              // Validation success
               if (callback) return callback();
               return Promise.resolve();
             },
@@ -10184,7 +9979,8 @@
         } : {}), {}, {
           // default
           default: function _default(otherAttrs) {
-            return [].concat(_toConsumableArray(!miniDesModel && descriptionVNode ? [descriptionVNode] : []), _toConsumableArray(props.widget ? [vue.h( // Key input component
+            return [].concat(_toConsumableArray(!miniDesModel && descriptionVNode ? [descriptionVNode] : []), _toConsumableArray(props.widget ? [vue.h(
+            // Key input component
             resolveComponent(props.widget), _objectSpread2(_objectSpread2(_objectSpread2({
               style: props.widgetStyle,
               class: props.widgetClass
@@ -10194,10 +9990,8 @@
               ref: widgetRef,
               'onUpdate:modelValue': function updateModelValue(event) {
                 var preVal = widgetValue.value;
-
                 if (preVal !== event) {
                   widgetValue.value = event;
-
                   if (props.onChange) {
                     props.onChange({
                       curVal: event,
@@ -10210,8 +10004,9 @@
               }
             }, otherAttrs ? function () {
               return Object.keys(otherAttrs).reduce(function (pre, k) {
-                pre[k] = otherAttrs[k]; // Ensure UI config methods with same name execute UI methods first
+                pre[k] = otherAttrs[k];
 
+                // Ensure UI config methods with same name execute UI methods first
                 [props.widgetAttrs[k], props.uiProps[k]].forEach(function (uiConfFn) {
                   if (uiConfFn && typeof uiConfFn === 'function') {
                     pre[k] = function () {
@@ -10236,70 +10031,66 @@
       // required
       var isRequired = function isRequired(name) {
         return Array.isArray(props.schema.required) && !!~props.schema.required.indexOf(name);
-      }; // Dependencies configuration exists, need to check if current property has dependency
+      };
+
+      // Dependencies configuration exists, need to check if current property has dependency
       // relationship and if current property is being depended on
       // tip: Determining dependency relationship requires using formData values for judgment,
       // so when user inputs, it will trigger re-rendering of the entire object tree
       // TODO: Each property needs to traverse dependencies separately, which can be optimized
       // a bit (can be calculated by reversing key-value and adding cache)
-
-
       var isDependOn = function isDependOn(name) {
         var isDependency = false; // Whether it is a dependency item
-
         var curDependent = false; // Whether dependency is currently triggered
 
         if (isObject(props.schema.dependencies)) {
           curDependent = Object.entries(props.schema.dependencies).some(function (_ref) {
             var _ref2 = _slicedToArray(_ref, 2),
-                key = _ref2[0],
-                value = _ref2[1];
-
+              key = _ref2[0],
+              value = _ref2[1];
             // Whether there is a dependency relationship with the current property
-            var tempDependency = !!(Array.isArray(value) && ~value.indexOf(name)); // Whether it is a dependency item
+            var tempDependency = !!(Array.isArray(value) && ~value.indexOf(name));
 
-            isDependency = isDependency || tempDependency; // Current needs to depend
+            // Whether it is a dependency item
+            isDependency = isDependency || tempDependency;
 
+            // Current needs to depend
             return tempDependency && getPathVal(props.rootFormData, props.curNodePath)[key] !== undefined;
           });
         }
-
         return {
           isDependency: isDependency,
           curDependent: curDependent
         };
       };
-
       return function () {
         var curNodePath = props.curNodePath;
-
         var _getUiOptions = getUiOptions({
-          schema: props.schema,
-          uiSchema: props.uiSchema,
-          curNodePath: curNodePath,
-          rootFormData: props.rootFormData
-        }),
-            title = _getUiOptions.title,
-            description = _getUiOptions.description,
-            showTitle = _getUiOptions.showTitle,
-            showDescription = _getUiOptions.showDescription,
-            order = _getUiOptions.order,
-            fieldClass = _getUiOptions.fieldClass,
-            fieldAttrs = _getUiOptions.fieldAttrs,
-            fieldStyle = _getUiOptions.fieldStyle,
-            onlyShowIfDependent = _getUiOptions.onlyShowIfDependent;
-
+            schema: props.schema,
+            uiSchema: props.uiSchema,
+            curNodePath: curNodePath,
+            rootFormData: props.rootFormData
+          }),
+          title = _getUiOptions.title,
+          description = _getUiOptions.description,
+          showTitle = _getUiOptions.showTitle,
+          showDescription = _getUiOptions.showDescription,
+          order = _getUiOptions.order,
+          fieldClass = _getUiOptions.fieldClass,
+          fieldAttrs = _getUiOptions.fieldAttrs,
+          fieldStyle = _getUiOptions.fieldStyle,
+          onlyShowIfDependent = _getUiOptions.onlyShowIfDependent;
         var properties = Object.keys(props.schema.properties || {});
-        var orderedProperties = orderProperties(properties, order); // Recursive parameters
+        var orderedProperties = orderProperties(properties, order);
 
+        // Recursive parameters
         var propertiesVNodeList = orderedProperties.map(function (name) {
           var required = isRequired(name);
-
           var _isDependOn = isDependOn(name),
-              isDependency = _isDependOn.isDependency,
-              curDependent = _isDependOn.curDependent; // onlyShowWhenDependent only renders dependent properties
+            isDependency = _isDependOn.isDependency,
+            curDependent = _isDependOn.curDependent;
 
-
+          // onlyShowWhenDependent only renders dependent properties
           return isDependency && onlyShowIfDependent && !curDependent ? null : vue.h(SchemaField, _objectSpread2(_objectSpread2({
             key: name
           }, props), {}, {
@@ -10328,9 +10119,8 @@
               },
               schema: Object.entries(props.schema).reduce(function (preVal, _ref3) {
                 var _ref4 = _slicedToArray(_ref3, 2),
-                    key = _ref4[0],
-                    value = _ref4[1];
-
+                  key = _ref4[0],
+                  value = _ref4[1];
                 if (props.schema.additionalProperties === false || !['properties', 'id', '$id'].includes(key)) preVal[key] = value;
                 return preVal;
               }, {}),
@@ -10364,12 +10154,12 @@
           return {
             widget: enumOptions ? props.globalOptions.WIDGET_MAP.common.select : props.globalOptions.WIDGET_MAP.formats[props.schema.format] || (isNumber ? props.globalOptions.WIDGET_MAP.types.number : props.globalOptions.WIDGET_MAP.types.string)
           };
-        }); // If enumeration data list exists, pass in enumOptions
+        });
 
+        // If enumeration data list exists, pass in enumOptions
         if (enumOptions && !tempWidgetConfig.uiProps.enumOptions) {
           tempWidgetConfig.uiProps.enumOptions = enumOptions;
         }
-
         return tempWidgetConfig;
       });
       return function () {
@@ -10407,11 +10197,12 @@
       var attrs = _ref.attrs;
       return function () {
         var schema = props.schema,
-            uiSchema = props.uiSchema,
-            curNodePath = props.curNodePath,
-            rootFormData = props.rootFormData,
-            globalOptions = props.globalOptions; // Bool will pass in enum type options true false by default
+          uiSchema = props.uiSchema,
+          curNodePath = props.curNodePath,
+          rootFormData = props.rootFormData,
+          globalOptions = props.globalOptions;
 
+        // Bool will pass in enum type options true false by default
         var enumOptions = optionsList({
           enumNames: schema.enumNames || ['true', 'false'],
           enum: schema.enum || [true, false]
@@ -10432,6 +10223,7 @@
     }
   };
 
+  // Supports number sorting, add, delete and other operations
   var ArrayOrderList = {
     name: 'ArrayOrderList',
     emits: ['arrayOperate'],
@@ -10466,9 +10258,11 @@
         type: Boolean,
         default: true
       },
-      maxItems: {// Maximum number to add
+      maxItems: {
+        // Maximum number to add
       },
-      minItems: {// Minimum number to add
+      minItems: {
+        // Minimum number to add
       },
       globalOptions: null
     },
@@ -10477,42 +10271,42 @@
       // Whether can add
       var canAdd = vue.computed(function () {
         var addable = props.addable,
-            maxItems = props.maxItems,
-            vNodeList = props.vNodeList; // Configured as not addable
+          maxItems = props.maxItems,
+          vNodeList = props.vNodeList;
+        // Configured as not addable
+        if (!addable) return false;
 
-        if (!addable) return false; // Configured with maximum number
-
+        // Configured with maximum number
         if (maxItems !== undefined) {
           return vNodeList.length < maxItems;
         }
-
         return true;
-      }); // Whether can remove
+      });
 
+      // Whether can remove
       var canRemove = vue.computed(function () {
         var removable = props.removable,
-            minItems = props.minItems,
-            vNodeList = props.vNodeList; // Configured as not removable
-
+          minItems = props.minItems,
+          vNodeList = props.vNodeList;
+        // Configured as not removable
         if (!removable) return false;
-
         if (minItems !== undefined) {
           return vNodeList.length > minItems;
         }
-
         return true;
       });
       return function () {
         // No data and cannot add, don't render this component
-        if (props.vNodeList.length <= 0 && !props.addable) return null; // Whether can continue adding elements
+        if (props.vNodeList.length <= 0 && !props.addable) return null;
 
+        // Whether can continue adding elements
         return vue.h('div', {
           class: {
             arrayOrderList: true
           }
         }, props.vNodeList.map(function (_ref2, index) {
           var key = _ref2.key,
-              VNodeItem = _ref2.vNode;
+            VNodeItem = _ref2.vNode;
           var trueIndex = props.tupleItemsLength + index;
           var indexNumber = index + 1;
           return vue.h('div', {
@@ -10629,31 +10423,29 @@
       var attrs = _ref.attrs;
       return function () {
         var schema = props.schema,
-            uiSchema = props.uiSchema,
-            curNodePath = props.curNodePath,
-            rootFormData = props.rootFormData,
-            itemsFormData = props.itemsFormData,
-            errorSchema = props.errorSchema,
-            globalOptions = props.globalOptions;
-
+          uiSchema = props.uiSchema,
+          curNodePath = props.curNodePath,
+          rootFormData = props.rootFormData,
+          itemsFormData = props.itemsFormData,
+          errorSchema = props.errorSchema,
+          globalOptions = props.globalOptions;
         var _getUiOptions = getUiOptions({
-          schema: schema,
-          uiSchema: uiSchema,
-          curNodePath: curNodePath,
-          rootFormData: rootFormData
-        }),
-            title = _getUiOptions.title,
-            description = _getUiOptions.description,
-            addable = _getUiOptions.addable,
-            showIndexNumber = _getUiOptions.showIndexNumber,
-            sortable = _getUiOptions.sortable,
-            removable = _getUiOptions.removable,
-            showTitle = _getUiOptions.showTitle,
-            showDescription = _getUiOptions.showDescription,
-            fieldClass = _getUiOptions.fieldClass,
-            fieldAttrs = _getUiOptions.fieldAttrs,
-            fieldStyle = _getUiOptions.fieldStyle;
-
+            schema: schema,
+            uiSchema: uiSchema,
+            curNodePath: curNodePath,
+            rootFormData: rootFormData
+          }),
+          title = _getUiOptions.title,
+          description = _getUiOptions.description,
+          addable = _getUiOptions.addable,
+          showIndexNumber = _getUiOptions.showIndexNumber,
+          sortable = _getUiOptions.sortable,
+          removable = _getUiOptions.removable,
+          showTitle = _getUiOptions.showTitle,
+          showDescription = _getUiOptions.showDescription,
+          fieldClass = _getUiOptions.fieldClass,
+          fieldAttrs = _getUiOptions.fieldAttrs,
+          fieldStyle = _getUiOptions.fieldStyle;
         var arrayItemsVNodeList = itemsFormData.map(function (item, index) {
           var tempUiSchema = replaceArrayIndex({
             schema: schema.items,
@@ -10706,12 +10498,13 @@
       var attrs = _ref.attrs;
       return function () {
         var schema = props.schema,
-            rootSchema = props.rootSchema,
-            uiSchema = props.uiSchema,
-            curNodePath = props.curNodePath,
-            rootFormData = props.rootFormData,
-            globalOptions = props.globalOptions; // Need to index the current node, which will be handled uniformly by the schemaField component
+          rootSchema = props.rootSchema,
+          uiSchema = props.uiSchema,
+          curNodePath = props.curNodePath,
+          rootFormData = props.rootFormData,
+          globalOptions = props.globalOptions;
 
+        // Need to index the current node, which will be handled uniformly by the schemaField component
         var itemsSchema = retrieveSchema(schema.items, rootSchema);
         var enumOptions = optionsList(itemsSchema, uiSchema, curNodePath, rootFormData);
         var widgetConfig = getWidgetConfig({
@@ -10723,14 +10516,13 @@
           return {
             widget: globalOptions.WIDGET_MAP.common.checkboxGroup
           };
-        }); // If enumeration data list exists, pass in enumOptions
+        });
 
+        // If enumeration data list exists, pass in enumOptions
         widgetConfig.uiProps.multiple = true;
-
         if (enumOptions && !widgetConfig.uiProps.enumOptions) {
           widgetConfig.uiProps.enumOptions = enumOptions;
         }
-
         return vue.h(Widget, _objectSpread2(_objectSpread2(_objectSpread2({}, attrs), props), widgetConfig));
       };
     }
@@ -10749,16 +10541,13 @@
     emits: ['arrayOperate'],
     setup: function setup(props, _ref) {
       var emit = _ref.emit;
-          _ref.attrs;
-
+        _ref.attrs;
       // Compatibility for data with insufficient length
       var fixItemsFormData = function fixItemsFormData() {
         var isNoArray = !Array.isArray(props.itemsFormData);
-
         if (isNoArray || props.itemsFormData.length < props.schema.items.length) {
           // Need to fill in default data, calculate required data
           var curSchemaState = getDefaultFormState(props.schema, undefined, props.rootSchema);
-
           if (isNoArray) {
             // Data repair - reset to a new value
             emit('arrayOperate', {
@@ -10778,35 +10567,33 @@
           }
         }
       };
-
       fixItemsFormData();
       return function () {
         if (!Array.isArray(props.itemsFormData)) return null;
         var schema = props.schema,
-            uiSchema = props.uiSchema,
-            errorSchema = props.errorSchema,
-            curNodePath = props.curNodePath,
-            globalOptions = props.globalOptions;
-
+          uiSchema = props.uiSchema,
+          errorSchema = props.errorSchema,
+          curNodePath = props.curNodePath,
+          globalOptions = props.globalOptions;
         var _getUiOptions = getUiOptions({
-          schema: schema,
-          uiSchema: uiSchema,
-          curNodePath: curNodePath,
-          rootFormData: props.rootFormData
-        }),
-            title = _getUiOptions.title,
-            description = _getUiOptions.description,
-            addable = _getUiOptions.addable,
-            showIndexNumber = _getUiOptions.showIndexNumber,
-            sortable = _getUiOptions.sortable,
-            removable = _getUiOptions.removable,
-            showTitle = _getUiOptions.showTitle,
-            showDescription = _getUiOptions.showDescription,
-            fieldClass = _getUiOptions.fieldClass,
-            fieldAttrs = _getUiOptions.fieldAttrs,
-            fieldStyle = _getUiOptions.fieldStyle; // Split into tuple and additional
+            schema: schema,
+            uiSchema: uiSchema,
+            curNodePath: curNodePath,
+            rootFormData: props.rootFormData
+          }),
+          title = _getUiOptions.title,
+          description = _getUiOptions.description,
+          addable = _getUiOptions.addable,
+          showIndexNumber = _getUiOptions.showIndexNumber,
+          sortable = _getUiOptions.sortable,
+          removable = _getUiOptions.removable,
+          showTitle = _getUiOptions.showTitle,
+          showDescription = _getUiOptions.showDescription,
+          fieldClass = _getUiOptions.fieldClass,
+          fieldAttrs = _getUiOptions.fieldAttrs,
+          fieldStyle = _getUiOptions.fieldStyle;
 
-
+        // Split into tuple and additional
         var cutOfArr = cutOff(props.itemsFormData, props.schema.items.length - 1);
         var tupleVNodeArr = cutOfArr[0].map(function (item, index) {
           return vue.h(SchemaField, _objectSpread2(_objectSpread2({
@@ -10818,8 +10605,9 @@
             errorSchema: errorSchema.items ? errorSchema.items[index] : {},
             curNodePath: computedCurPath(curNodePath, index)
           }));
-        }); // Sortable handling through order component
+        });
 
+        // Sortable handling through order component
         var additionalVNodeArr = cutOfArr[1].map(function (item, index) {
           var tempUiSchema = replaceArrayIndex({
             schema: schema.additionalItems,
@@ -10837,10 +10625,12 @@
               curNodePath: computedCurPath(props.curNodePath, index + schema.items.length)
             }))
           };
-        }); // Whether addable is also restricted by additionalItems property
+        });
 
-        var trueAddable = (addable === undefined ? true : addable) && allowAdditionalItems(props.schema); // Default loop of fixed configured data, use ArrayOrderList to render beyond length
+        // Whether addable is also restricted by additionalItems property
+        var trueAddable = (addable === undefined ? true : addable) && allowAdditionalItems(props.schema);
 
+        // Default loop of fixed configured data, use ArrayOrderList to render beyond length
         return vue.h(script, _objectSpread2(_objectSpread2({
           title: title,
           description: description,
@@ -10852,13 +10642,13 @@
           style: fieldStyle
         }), {
           default: function _default() {
-            return [].concat(_toConsumableArray(tupleVNodeArr), [// additional items
+            return [].concat(_toConsumableArray(tupleVNodeArr), [
+            // additional items
             vue.h(ArrayOrderList, {
               onArrayOperate: function onArrayOperate() {
                 for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
                   args[_key] = arguments[_key];
                 }
-
                 return emit.apply(void 0, ['arrayOperate'].concat(args));
               },
               vNodeList: additionalVNodeArr,
@@ -10903,22 +10693,22 @@
     props: vueProps$1,
     setup: function setup(props) {
       var _this = this;
-
       // Get current value
       var getCurFormData = function getCurFormData() {
         var rootFormData = props.rootFormData,
-            curNodePath = props.curNodePath;
+          curNodePath = props.curNodePath;
         var value = getPathVal(rootFormData, curNodePath);
         if (Array.isArray(value)) return value;
         console.error('error: type array, value must be array type');
         return [];
-      }; // Solve list key problem by maintaining a copy of keys and a copy of values
+      };
 
-
+      // Solve list key problem by maintaining a copy of keys and a copy of values
       var formKeys = vue.ref(getCurFormData().map(function () {
         return genId();
-      })); // Current formData
+      }));
 
+      // Current formData
       var curFormData = vue.computed(function () {
         return getCurFormData();
       });
@@ -10932,8 +10722,9 @@
         }
       }, {
         deep: true
-      }); // FormData with processed keys
+      });
 
+      // FormData with processed keys
       var itemsFormData = vue.computed(function () {
         return curFormData.value.map(function (item, index) {
           return {
@@ -10941,8 +10732,9 @@
             value: item
           };
         });
-      }); // Current node UI configuration
+      });
 
+      // Current node UI configuration
       var uiOptions = vue.computed(function () {
         return getUserUiOptions({
           schema: props.schema,
@@ -10950,24 +10742,24 @@
           curNodePath: props.curNodePath,
           rootFormData: props.rootFormData
         });
-      }); // Get a new item
+      });
 
+      // Get a new item
       var getNewFormDataRow = function getNewFormDataRow() {
         var schema = props.schema,
-            rootSchema = props.rootSchema;
-        var itemSchema = schema.items; // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
-        // Array as collection of items with additionalItems property needs special handling
+          rootSchema = props.rootSchema;
+        var itemSchema = schema.items;
 
+        // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
+        // Array as collection of items with additionalItems property needs special handling
         if (isFixedItems(schema) && allowAdditionalItems(schema)) {
           itemSchema = schema.additionalItems;
         }
-
         return getDefaultFormState(itemSchema, undefined, rootSchema);
       };
-
       var handleArrayOperate = function handleArrayOperate(_ref) {
         var command = _ref.command,
-            data = _ref.data;
+          data = _ref.data;
         // Uniformly handle array data changes such as add, delete, sort, etc.
         var strategyMap = {
           moveUp: function moveUp(target, _ref2) {
@@ -10994,17 +10786,15 @@
           },
           setNewTarget: function setNewTarget(target, _ref7) {
             var formData = _ref7.formData,
-                nodePath = _ref7.nodePath,
-                newTarget = _ref7.newTarget;
+              nodePath = _ref7.nodePath,
+              newTarget = _ref7.newTarget;
             setPathVal(formData, nodePath, newTarget);
           }
         };
         var curStrategy = strategyMap[command];
-
         if (curStrategy) {
           var formDataPrams = data;
           var keysParams = data;
-
           if (command === 'add') {
             // Single add
             formDataPrams = {
@@ -11034,13 +10824,15 @@
                 return genId();
               })
             };
-          } // Sync modify formData keys
+          }
 
+          // Sync modify formData keys
+          curStrategy.apply(null, [formKeys.value, keysParams]);
 
-          curStrategy.apply(null, [formKeys.value, keysParams]); // Modify formData data
+          // Modify formData data
+          curStrategy.apply(null, [curFormData.value, formDataPrams]);
 
-          curStrategy.apply(null, [curFormData.value, formDataPrams]); // onArrayOperate
-
+          // onArrayOperate
           if (uiOptions.value.afterArrayOperate) {
             _this.uiOptions.afterArrayOperate.call(null, curFormData.value, command, data);
           }
@@ -11048,45 +10840,44 @@
           throw new Error("Error - Unknown operation: [".concat(command, "]"));
         }
       };
-
       return function () {
         var schema = props.schema,
-            uiSchema = props.uiSchema,
-            rootSchema = props.rootSchema,
-            rootFormData = props.rootFormData,
-            curNodePath = props.curNodePath,
-            globalOptions = props.globalOptions;
-
+          uiSchema = props.uiSchema,
+          rootSchema = props.rootSchema,
+          rootFormData = props.rootFormData,
+          curNodePath = props.curNodePath,
+          globalOptions = props.globalOptions;
         if (!schema.hasOwnProperty('items')) {
           throw new Error("[".concat(schema, "] Please define items property first"));
-        } // Multi-select type
+        }
 
-
+        // Multi-select type
         if (isMultiSelect(schema, rootSchema)) {
           // item is enum fixed value
           return vue.h(ArrayFieldMultiSelect, _objectSpread2(_objectSpread2({}, props), {}, {
             class: _defineProperty({}, lowerCase(ArrayFieldMultiSelect.name), true)
           }));
-        } // Special handling for date datetime time url-upload
+        }
+
+        // Special handling for date datetime time url-upload
         // array supports ui:widget configuration
         // Date time range or ui:widget special configuration
-
-
         if (schema.format || schema['ui:widget'] || uiSchema['ui:widget']) {
           return vue.h(ArrayFieldSpecialFormat, _objectSpread2(_objectSpread2({}, props), {}, {
             class: _defineProperty({}, lowerCase(ArrayFieldSpecialFormat.name), true)
           }));
-        } // https://json-schema.org/understanding-json-schema/reference/array.html#list-validation
+        }
+
+        // https://json-schema.org/understanding-json-schema/reference/array.html#list-validation
         // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
-
-
         var CurrentField = isFixedItems(schema) ? ArrayFieldTuple : ArrayFieldNormal;
         return vue.h('div', [vue.h(CurrentField, _objectSpread2(_objectSpread2({
           itemsFormData: itemsFormData.value
         }, props), {}, {
           onArrayOperate: handleArrayOperate,
           class: _defineProperty({}, lowerCase(CurrentField.name), true)
-        })), // Insert a Widget to validate array - maxItems, minItems, uniqueItems and other properties outside items
+        })),
+        // Insert a Widget to validate array - maxItems, minItems, uniqueItems and other properties outside items
         props.needValidFieldGroup ? vue.h(Widget, {
           key: 'validateWidget-array',
           class: {
@@ -11095,9 +10886,8 @@
           },
           schema: Object.entries(schema).reduce(function (preVal, _ref8) {
             var _ref9 = _slicedToArray(_ref8, 2),
-                key = _ref9[0],
-                value = _ref9[1];
-
+              key = _ref9[0],
+              value = _ref9[1];
             if (key !== 'items') preVal[key] = value;
             return preVal;
           }, {}),
@@ -11111,13 +10901,13 @@
     }
   };
 
+  var _excluded$3 = ["title", "description", "properties"];
   var SelectLinkageField = {
     name: 'SelectLinkageField',
     props: _objectSpread2(_objectSpread2({}, vueProps$1), {}, {
       combiningType: {
         type: String,
         default: 'anyOf' // anyOf oneOf
-
       },
       selectList: {
         type: Array,
@@ -11128,11 +10918,12 @@
       var computedCurSelectIndexByFormData = function computedCurSelectIndexByFormData(formData) {
         var index = getMatchingOption(formData, props.selectList, props.rootSchema, true);
         return index || 0;
-      }; // Currently selected option item
+      };
 
+      // Currently selected option item
+      var curSelectIndex = vue.ref(computedCurSelectIndexByFormData(getPathVal(props.rootFormData, props.curNodePath)));
 
-      var curSelectIndex = vue.ref(computedCurSelectIndexByFormData(getPathVal(props.rootFormData, props.curNodePath))); // Dropdown option VNode
-
+      // Dropdown option VNode
       var getSelectBoxVNode = function getSelectBoxVNode() {
         // Dropdown option parameters
         var selectWidgetConfig = getWidgetConfig({
@@ -11147,31 +10938,33 @@
             // Enum parameters
             widget: 'SelectWidget'
           };
-        }); // title description fallback to schema config, but don't use uiSchema config here
+        });
+
+        // title description fallback to schema config, but don't use uiSchema config here
         // select ui config needs to use (oneOf|anyOf)Select
-
         selectWidgetConfig.label = selectWidgetConfig.label || props.schema.title;
-        selectWidgetConfig.description = selectWidgetConfig.description || props.schema.description; // Dropdown list enum values
+        selectWidgetConfig.description = selectWidgetConfig.description || props.schema.description;
 
+        // Dropdown list enum values
         if (!selectWidgetConfig.uiProps.enumOptions) {
           var uiSchemaSelectList = props.uiSchema[props.combiningType] || [];
           selectWidgetConfig.uiProps.enumOptions = props.selectList.map(function (option, index) {
             var curUiOptions = getUiOptions({
               schema: option,
               uiSchema: uiSchemaSelectList[index],
-              containsSpec: false // curNodePath: props.curNodePath,
+              containsSpec: false
+              // curNodePath: props.curNodePath,
               // rootFormData: props.rootFormData,
-
             });
             return {
               label: curUiOptions.title || "Option ".concat(index + 1),
               value: index
             };
           });
-        } // oneOf option rendering
+        }
+
+        // oneOf option rendering
         // Select box VNode
-
-
         return vue.h(Widget, _objectSpread2(_objectSpread2({
           key: "fieldSelect_".concat(props.combiningType),
           class: _defineProperty({}, "fieldSelect_".concat(props.combiningType), true),
@@ -11185,20 +10978,21 @@
             curSelectIndex.value = event;
           }
         }));
-      }; // Object switched select
+      };
+
+      // Object switched select
       // If object type option has added properties, remove them here
       // Calculate default value for new option
-
-
       vue.watch(curSelectIndex, function (newVal, oldVal) {
-        var curFormData = getPathVal(props.rootFormData, props.curNodePath); // Calculate new option default value
+        var curFormData = getPathVal(props.rootFormData, props.curNodePath);
 
+        // Calculate new option default value
         var newOptionData = getDefaultFormState(props.selectList[newVal], undefined, props.rootSchema);
-        var hasOwn = Object.prototype.hasOwnProperty; // Remove old key
+        var hasOwn = Object.prototype.hasOwnProperty;
 
+        // Remove old key
         if (isObject(curFormData)) {
           var oldSelectSchema = retrieveSchema(props.selectList[oldVal], props.rootSchema);
-
           if (getSchemaType(oldSelectSchema) === 'object') {
             // Remove properties added by old schema
             // Object.keys(oldSelectSchema.properties)
@@ -11208,18 +11002,15 @@
               }
             }
           }
-        } // Set new value
+        }
 
-
+        // Set new value
         if (isObject(newOptionData)) {
           Object.entries(newOptionData).forEach(function (_ref) {
             var _ref2 = _slicedToArray(_ref, 2),
-                key = _ref2[0],
-                value = _ref2[1];
-
-            if (value !== undefined && (curFormData[key] === undefined || isObject(value) || function () {
-              var _newSelectSchema$prop;
-
+              key = _ref2[0],
+              value = _ref2[1];
+            if (value !== undefined && (curFormData[key] === undefined || isObject(value) || function (_newSelectSchema$prop) {
               var newSelectSchema = retrieveSchema(props.selectList[newVal], props.rootSchema);
               return ((_newSelectSchema$prop = newSelectSchema.properties[key]) === null || _newSelectSchema$prop === void 0 ? void 0 : _newSelectSchema$prop.const) !== undefined;
             }())) {
@@ -11235,33 +11026,33 @@
         }
       });
       return function () {
-        var _class4;
-
         var curNodePath = props.curNodePath;
-        var pathClassName = nodePath2ClassName(curNodePath); // is object
+        var pathClassName = nodePath2ClassName(curNodePath);
 
-        var isTypeObject = props.schema.type === 'object' || props.schema.properties; // Select attached node
+        // is object
+        var isTypeObject = props.schema.type === 'object' || props.schema.properties;
 
-        var childrenVNodeList = [getSelectBoxVNode()]; // Current option content
+        // Select attached node
+        var childrenVNodeList = [getSelectBoxVNode()];
 
-        var curSelectSchema = props.selectList[curSelectIndex.value]; // Merge schema of current selected node
+        // Current option content
+        var curSelectSchema = props.selectList[curSelectIndex.value];
 
+        // Merge schema of current selected node
         if (curSelectSchema) {
           // Override parent properties
           var _props$schema = props.schema,
-              _props$combiningType = props.combiningType,
-              _ref3 = "".concat(props.combiningType, "Select");
-              _props$schema.properties;
-              _props$schema[_props$combiningType];
-              _props$schema[_ref3];
-              var parentSchema = _objectWithoutProperties(_props$schema, ["properties", _props$combiningType, _ref3].map(_toPropertyKey));
-
+            _props$combiningType = props.combiningType,
+            _ref3 = "".concat(props.combiningType, "Select");
+            _props$schema.properties;
+            _props$schema[_props$combiningType];
+            _props$schema[_ref3];
+            var parentSchema = _objectWithoutProperties(_props$schema, ["properties", _props$combiningType, _ref3].map(_toPropertyKey));
           curSelectSchema = Object.assign({}, parentSchema, curSelectSchema);
-        } // Object type but no attached properties
+        }
 
-
+        // Object type but no attached properties
         var isObjectEmptyAttachProperties = isTypeObject && isEmptyObject(curSelectSchema && curSelectSchema.properties);
-
         if (curSelectSchema && !isObjectEmptyAttachProperties) {
           // Current node's ui err config, used to support unified config for all options
           // Extract oneOf anyOf same-level config, then merge into currently selected schema
@@ -11291,36 +11082,33 @@
             }, curSelectSchema),
             required: props.required,
             uiSchema: _objectSpread2(_objectSpread2({}, userUiOptions), (props.uiSchema[props.combiningType] || [])[curSelectIndex.value]),
-            errorSchema: _objectSpread2(_objectSpread2({}, userErrOptions), (props.errorSchema[props.combiningType] || [])[curSelectIndex.value]) // needValidFieldGroup: false // Validate separately, no need to handle here
-
+            errorSchema: _objectSpread2(_objectSpread2({}, userErrOptions), (props.errorSchema[props.combiningType] || [])[curSelectIndex.value])
+            // needValidFieldGroup: false // Validate separately, no need to handle here
           })));
-        } // object needs to keep original properties, render separately if original properties exist
+        }
 
-
+        // object needs to keep original properties, render separately if original properties exist
         var originVNode = null;
-
         if (isTypeObject && !isEmptyObject(props.schema.properties)) {
-          var _class2;
-
           var _curSelectSchema = curSelectSchema;
-              _curSelectSchema.title;
-              _curSelectSchema.description;
-              _curSelectSchema.properties;
-              var optionSchema = _objectWithoutProperties(_curSelectSchema, ["title", "description", "properties"]); // object original item rendering also needs to merge anyOf content
+            _curSelectSchema.title;
+            _curSelectSchema.description;
+            _curSelectSchema.properties;
+            var optionSchema = _objectWithoutProperties(_curSelectSchema, _excluded$3);
 
-
+          // object original item rendering also needs to merge anyOf content
           var origSchema = Object.assign({}, props.schema, optionSchema);
           delete origSchema[props.combiningType];
           originVNode = vue.h(SchemaField, _objectSpread2(_objectSpread2({
             key: "origin_".concat(props.combiningType),
-            class: (_class2 = {}, _defineProperty(_class2, "".concat(props.combiningType, "_originBox"), true), _defineProperty(_class2, "".concat(pathClassName, "-originBox"), true), _class2)
+            class: _defineProperty(_defineProperty({}, "".concat(props.combiningType, "_originBox"), true), "".concat(pathClassName, "-originBox"), true)
           }, props), {}, {
-            schema: origSchema // needValidFieldGroup: false // Validate separately, no need to handle here
-
+            schema: origSchema
+            // needValidFieldGroup: false // Validate separately, no need to handle here
           }));
-        } // oneOf validation VNode
+        }
 
-
+        // oneOf validation VNode
         childrenVNodeList.push(vue.h(Widget, {
           key: "validateWidget-".concat(props.combiningType),
           class: _defineProperty({
@@ -11335,9 +11123,9 @@
         }));
         return vue.h('div', [originVNode, vue.h('div', {
           key: "appendBox_".concat(props.combiningType),
-          class: (_class4 = {
+          class: _defineProperty(_defineProperty({
             appendCombining_box: true
-          }, _defineProperty(_class4, "".concat(props.combiningType, "_appendBox"), true), _defineProperty(_class4, "".concat(pathClassName, "-appendBox"), true), _class4)
+          }, "".concat(props.combiningType, "_appendBox"), true), "".concat(pathClassName, "-appendBox"), true)
         }, childrenVNodeList)]);
       };
     }
@@ -11347,7 +11135,7 @@
     name: 'AnyOfField',
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          slots = _ref.slots;
+        slots = _ref.slots;
       return function () {
         return vue.h(SelectLinkageField, _objectSpread2(_objectSpread2({}, attrs), {}, {
           combiningType: 'anyOf',
@@ -11361,7 +11149,7 @@
     name: 'oneOfField',
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          slots = _ref.slots;
+        slots = _ref.slots;
       return function () {
         return vue.h(SelectLinkageField, _objectSpread2(_objectSpread2({}, attrs), {}, {
           combiningType: 'oneOf',
@@ -11375,6 +11163,7 @@
    * Created by Liu.Jun on 2020/4/20 9:55 PM.
    */
 
+  // Default type to field mapping relationship
   var FIELDS_MAPS = {
     array: ArrayField,
     boolean: BooleanField,
@@ -11396,24 +11185,24 @@
     props: vueProps$1,
     setup: function setup(props) {
       return function () {
-        var _class3;
-
         // Currently does not support schema dependencies and additionalProperties display, no need to pass formData
         // const schema = retrieveSchema(props.schema, props.rootSchema, formData);
-        var schema = retrieveSchema(props.schema, props.rootSchema); // Current parameters
+        var schema = retrieveSchema(props.schema, props.rootSchema);
 
+        // Current parameters
         var curProps = _objectSpread2(_objectSpread2({}, props), {}, {
           schema: schema
-        }); // Empty data
+        });
 
+        // Empty data
+        if (Object.keys(schema).length === 0) return null;
 
-        if (Object.keys(schema).length === 0) return null; // Get node UI configuration to render field component
-
+        // Get node UI configuration to render field component
         var _getUiField = getUiField(FIELDS_MAPS, curProps),
-            fieldComponent = _getUiField.field,
-            fieldProps = _getUiField.fieldProps; // hidden
+          fieldComponent = _getUiField.field,
+          fieldProps = _getUiField.fieldProps;
 
-
+        // hidden
         var hiddenWidget = isHiddenWidget({
           schema: schema,
           uiSchema: props.uiSchema,
@@ -11421,33 +11210,27 @@
           rootFormData: props.rootFormData
         });
         var pathClassName = nodePath2ClassName(props.curNodePath);
-
         if (schema.anyOf && schema.anyOf.length > 0 && !isSelect(schema)) {
-          var _class;
-
           // anyOf
           return vue.h(resolveComponent(FIELDS_MAPS.anyOf), _objectSpread2({
-            class: (_class = {}, _defineProperty(_class, "".concat(pathClassName, "-anyOf"), true), _defineProperty(_class, "fieldItem", true), _defineProperty(_class, "anyOfField", true), _class)
+            class: _defineProperty(_defineProperty(_defineProperty({}, "".concat(pathClassName, "-anyOf"), true), "fieldItem", true), "anyOfField", true)
           }, curProps));
         }
-
         if (schema.oneOf && schema.oneOf.length > 0 && !isSelect(schema)) {
-          var _class2;
-
           // oneOf
           return vue.h(resolveComponent(FIELDS_MAPS.oneOf), _objectSpread2({
-            class: (_class2 = {}, _defineProperty(_class2, "".concat(pathClassName, "-oneOf"), true), _defineProperty(_class2, "fieldItem", true), _defineProperty(_class2, "oneOfField", true), _class2)
+            class: _defineProperty(_defineProperty(_defineProperty({}, "".concat(pathClassName, "-oneOf"), true), "fieldItem", true), "oneOfField", true)
           }, curProps));
         }
-
         return fieldComponent && !hiddenWidget ? vue.h(resolveComponent(fieldComponent), _objectSpread2(_objectSpread2({}, curProps), {}, {
           fieldProps: fieldProps,
-          class: (_class3 = {}, _defineProperty(_class3, lowerCase(fieldComponent.name) || fieldComponent, true), _defineProperty(_class3, "hiddenWidget", hiddenWidget), _defineProperty(_class3, "fieldItem", true), _defineProperty(_class3, pathClassName, true), _class3)
+          class: _defineProperty(_defineProperty(_defineProperty(_defineProperty({}, lowerCase(fieldComponent.name) || fieldComponent, true), "hiddenWidget", hiddenWidget), "fieldItem", true), pathClassName, true)
         })) : null;
       };
     }
   };
 
+  var _excluded$4 = ["layoutColumn", "inlineFooter", "labelSuffix", "isMiniDes", "defaultSelectFirstOption", "popover"];
   function createForm() {
     var globalOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var Form = {
@@ -11456,28 +11239,27 @@
       emits: ['update:modelValue', 'change', 'cancel', 'submit', 'validation-failed', 'form-mounted'],
       setup: function setup(props, _ref) {
         var slots = _ref.slots,
-            emit = _ref.emit;
+          emit = _ref.emit;
         // global components
         var internalInstance = vue.getCurrentInstance();
-
         if (!Form.installed && globalOptions.WIDGET_MAP.widgetComponents) {
           Object.entries(globalOptions.WIDGET_MAP.widgetComponents).forEach(function (_ref2) {
             var _ref3 = _slicedToArray(_ref2, 2),
-                componentName = _ref3[0],
-                component = _ref3[1];
-
+              componentName = _ref3[0],
+              component = _ref3[1];
             return internalInstance.appContext.app.component(componentName, component);
-          }); // Register only once
+          });
 
+          // Register only once
           Form.installed = true;
-        } // Use provide to pass cross-component data
+        }
 
-
+        // Use provide to pass cross-component data
         var fallbackLabel = vue.toRef(props, 'fallbackLabel');
         vue.provide('genFormProvide', {
           fallbackLabel: fallbackLabel
-        }); // rootFormData
-
+        });
+        // rootFormData
         var rootFormData = vue.ref(getDefaultFormState(props.schema, props.modelValue, props.schema, props.strictMode));
         var footerParams = vue.computed(function () {
           return _objectSpread2({
@@ -11486,52 +11268,56 @@
             okBtnProps: {},
             cancelBtn: 'Cancel'
           }, props.formFooter);
-        }); // Form component instance, does not need to be reactive
+        });
 
-        var formRef = null; // Update formData
+        // Form component instance, does not need to be reactive
+        var formRef = null;
 
+        // Update formData
         var emitFormDataChange = function emitFormDataChange(newValue, oldValue) {
           // Support v-model, reference type
-          emit('update:modelValue', newValue); // Change event, reference type modifies newValue property
+          emit('update:modelValue', newValue);
 
+          // Change event, reference type modifies newValue property
           emit('change', {
             newValue: newValue,
             oldValue: oldValue
           });
-        }; // Update props
+        };
 
-
+        // Update props
         var willReceiveProps = function willReceiveProps(newVal, oldVal) {
           if (!deepEquals(newVal, oldVal)) {
             var tempVal = getDefaultFormState(props.schema, props.modelValue, props.schema, props.strictMode);
-
             if (!deepEquals(rootFormData.value, tempVal)) {
               rootFormData.value = tempVal;
             }
           }
-        }; // Emit v-model, synchronize values
+        };
 
-
+        // Emit v-model, synchronize values
         vue.watch(rootFormData, function (newValue, oldValue) {
           emitFormDataChange(newValue, oldValue);
         }, {
           deep: true
-        }); // Schema is reassigned
+        });
 
+        // Schema is reassigned
         vue.watch(function () {
           return props.schema;
         }, function (newVal, oldVal) {
           willReceiveProps(newVal, oldVal);
-        }); // Model value changes
+        });
 
+        // Model value changes
         vue.watch(function () {
           return props.modelValue;
         }, function (newVal, oldVal) {
           willReceiveProps(newVal, oldVal);
-        }); // Maintain v-model bidirectional data timeliness
+        });
 
+        // Maintain v-model bidirectional data timeliness
         emitFormDataChange(rootFormData.value, props.modelValue);
-
         var getDefaultSlot = function getDefaultSlot() {
           if (slots.default) {
             return slots.default({
@@ -11541,7 +11327,6 @@
               }
             });
           }
-
           if (footerParams.value.show) {
             return vue.h(FormFooter, {
               globalOptions: globalOptions,
@@ -11558,34 +11343,28 @@
                   if (isValid) {
                     return emit('submit', rootFormData);
                   }
-
                   console.warn(resData);
                   return emit('validation-failed', resData);
                 });
               }
             });
           }
-
           return [];
         };
-
         return function () {
-          var _class;
-
           var _props$formProps = props.formProps,
-              _props$formProps$layo = _props$formProps.layoutColumn,
-              layoutColumn = _props$formProps$layo === void 0 ? 1 : _props$formProps$layo,
-              inlineFooter = _props$formProps.inlineFooter;
-              _props$formProps.labelSuffix;
-              _props$formProps.isMiniDes;
-              _props$formProps.defaultSelectFirstOption;
-              _props$formProps.popover;
-              var uiFormProps = _objectWithoutProperties(_props$formProps, ["layoutColumn", "inlineFooter", "labelSuffix", "isMiniDes", "defaultSelectFirstOption", "popover"]);
-
+            _props$formProps$layo = _props$formProps.layoutColumn,
+            layoutColumn = _props$formProps$layo === void 0 ? 1 : _props$formProps$layo,
+            inlineFooter = _props$formProps.inlineFooter;
+            _props$formProps.labelSuffix;
+            _props$formProps.isMiniDes;
+            _props$formProps.defaultSelectFirstOption;
+            _props$formProps.popover;
+            var uiFormProps = _objectWithoutProperties(_props$formProps, _excluded$4);
           var _uiFormProps$inline = uiFormProps.inline,
-              inline = _uiFormProps$inline === void 0 ? false : _uiFormProps$inline,
-              _uiFormProps$labelPos = uiFormProps.labelPosition,
-              labelPosition = _uiFormProps$labelPos === void 0 ? 'top' : _uiFormProps$labelPos;
+            inline = _uiFormProps$inline === void 0 ? false : _uiFormProps$inline,
+            _uiFormProps$labelPos = uiFormProps.labelPosition,
+            labelPosition = _uiFormProps$labelPos === void 0 ? 'top' : _uiFormProps$labelPos;
           var schemaProps = {
             schema: props.schema,
             uiSchema: props.uiSchema,
@@ -11607,11 +11386,11 @@
             }, props.formProps)
           };
           return vue.h(resolveComponent(globalOptions.COMPONENT_MAP.form), _objectSpread2({
-            class: (_class = {
+            class: _defineProperty(_defineProperty(_defineProperty({
               genFromComponent: true,
               formInlineFooter: inlineFooter,
               formInline: inline
-            }, _defineProperty(_class, "genFromComponent_".concat(props.schema.id, "Form"), !!props.schema.id), _defineProperty(_class, "layoutColumn", !inline), _defineProperty(_class, "layoutColumn-".concat(layoutColumn), !inline), _class),
+            }, "genFromComponent_".concat(props.schema.id, "Form"), !!props.schema.id), "layoutColumn", !inline), "layoutColumn-".concat(layoutColumn), !inline),
             setFormRef: function setFormRef(form) {
               formRef = form;
               internalInstance.ctx.$$uiFormRef = formRef;
@@ -11634,12 +11413,10 @@
         };
       }
     };
-
     Form.install = function (vueApp) {
       var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       vueApp.component(options.name || Form.name, Form);
     };
-
     return Form;
   }
 
@@ -11657,37 +11434,23 @@
 
   function render$6(_ctx, _cache, $props, $setup, $data, $options) {
     var _component_el_checkbox = vue.resolveComponent("el-checkbox");
-
     var _component_el_checkbox_group = vue.resolveComponent("el-checkbox-group");
-
-    return vue.openBlock(), vue.createBlock(_component_el_checkbox_group, _ctx.$attrs, {
+    return vue.openBlock(), vue.createBlock(_component_el_checkbox_group, vue.normalizeProps(vue.guardReactiveProps(_ctx.$attrs)), {
       default: vue.withCtx(function () {
-        return [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
+        return [(vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
           return vue.openBlock(), vue.createBlock(_component_el_checkbox, {
             key: index,
             label: item.value
           }, {
             default: vue.withCtx(function () {
-              return [vue.createTextVNode(vue.toDisplayString(item.label), 1
-              /* TEXT */
-              )];
+              return [vue.createTextVNode(vue.toDisplayString(item.label), 1 /* TEXT */)];
             }),
-            _: 2
-            /* DYNAMIC */
-
-          }, 1032
-          /* PROPS, DYNAMIC_SLOTS */
-          , ["label"]);
-        }), 128
-        /* KEYED_FRAGMENT */
-        ))];
+            _: 2 /* DYNAMIC */
+          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["label"]);
+        }), 128 /* KEYED_FRAGMENT */))];
       }),
-      _: 1
-      /* STABLE */
-
-    }, 16
-    /* FULL_PROPS */
-    );
+      _: 1 /* STABLE */
+    }, 16 /* FULL_PROPS */);
   }
 
   script$6.render = render$6;
@@ -11707,37 +11470,23 @@
 
   function render$7(_ctx, _cache, $props, $setup, $data, $options) {
     var _component_el_radio = vue.resolveComponent("el-radio");
-
     var _component_el_radio_group = vue.resolveComponent("el-radio-group");
-
-    return vue.openBlock(), vue.createBlock(_component_el_radio_group, _ctx.$attrs, {
+    return vue.openBlock(), vue.createBlock(_component_el_radio_group, vue.normalizeProps(vue.guardReactiveProps(_ctx.$attrs)), {
       default: vue.withCtx(function () {
-        return [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
+        return [(vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
           return vue.openBlock(), vue.createBlock(_component_el_radio, {
             key: index,
             label: item.value
           }, {
             default: vue.withCtx(function () {
-              return [vue.createTextVNode(vue.toDisplayString(item.label), 1
-              /* TEXT */
-              )];
+              return [vue.createTextVNode(vue.toDisplayString(item.label), 1 /* TEXT */)];
             }),
-            _: 2
-            /* DYNAMIC */
-
-          }, 1032
-          /* PROPS, DYNAMIC_SLOTS */
-          , ["label"]);
-        }), 128
-        /* KEYED_FRAGMENT */
-        ))];
+            _: 2 /* DYNAMIC */
+          }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["label"]);
+        }), 128 /* KEYED_FRAGMENT */))];
       }),
-      _: 1
-      /* STABLE */
-
-    }, 16
-    /* FULL_PROPS */
-    );
+      _: 1 /* STABLE */
+    }, 16 /* FULL_PROPS */);
   }
 
   script$7.render = render$7;
@@ -11757,67 +11506,53 @@
 
   function render$8(_ctx, _cache, $props, $setup, $data, $options) {
     var _component_el_option = vue.resolveComponent("el-option");
-
     var _component_el_select = vue.resolveComponent("el-select");
-
-    return vue.openBlock(), vue.createBlock(_component_el_select, _ctx.$attrs, {
+    return vue.openBlock(), vue.createBlock(_component_el_select, vue.normalizeProps(vue.guardReactiveProps(_ctx.$attrs)), {
       default: vue.withCtx(function () {
-        return [(vue.openBlock(true), vue.createBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
+        return [(vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($props.enumOptions, function (item, index) {
           return vue.openBlock(), vue.createBlock(_component_el_option, {
             key: index,
             label: item.label,
             value: item.value
-          }, null, 8
-          /* PROPS */
-          , ["label", "value"]);
-        }), 128
-        /* KEYED_FRAGMENT */
-        ))];
+          }, null, 8 /* PROPS */, ["label", "value"]);
+        }), 128 /* KEYED_FRAGMENT */))];
       }),
-      _: 1
-      /* STABLE */
-
-    }, 16
-    /* FULL_PROPS */
-    );
+      _: 1 /* STABLE */
+    }, 16 /* FULL_PROPS */);
   }
 
   script$8.render = render$8;
   script$8.__file = "src/config/widgets/SelectWidget/index.vue";
 
+  var _excluded$5 = ["isNumberValue", "isRange"];
   function isEmptyValue(value) {
     return value === null || value === '' || Array.isArray(value) && value.every(function (item) {
       return item === '';
     });
   }
-
   var formatDateStr = function formatDateStr(dateString) {
     var _parseDateString = parseDateString(dateString, false),
-        year = _parseDateString.year,
-        month = _parseDateString.month,
-        day = _parseDateString.day;
-
+      year = _parseDateString.year,
+      month = _parseDateString.month,
+      day = _parseDateString.day;
     return "".concat(year, "-").concat(month, "-").concat(day);
   };
-
   var DatePickerWidget = {
     name: 'DatePickerWidget',
     inheritAttrs: false,
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          slots = _ref.slots;
+        slots = _ref.slots;
       return function () {
         var _ref2 = attrs || {},
-            isNumberValue = _ref2.isNumberValue,
-            isRange = _ref2.isRange,
-            otherProps = _objectWithoutProperties(_ref2, ["isNumberValue", "isRange"]);
-
+          isNumberValue = _ref2.isNumberValue,
+          isRange = _ref2.isRange,
+          otherProps = _objectWithoutProperties(_ref2, _excluded$5);
         return vue.h(resolveComponent('el-date-picker'), _objectSpread2(_objectSpread2({
           type: isRange ? 'daterange' : 'date'
         }, otherProps), {}, {
           'onUpdate:modelValue': function onUpdateModelValue(val) {
             var trueVal;
-
             if (isRange) {
               trueVal = isEmptyValue(val) ? [] : val.map(function (item) {
                 return isNumberValue ? new Date(item).valueOf() : formatDateStr(item);
@@ -11825,7 +11560,6 @@
             } else {
               trueVal = isEmptyValue(val) ? undefined : isNumberValue ? new Date(val).valueOf() : formatDateStr(val);
             }
-
             attrs['onUpdate:modelValue'].apply(attrs, [trueVal]);
           }
         }), slots);
@@ -11833,29 +11567,26 @@
     }
   };
 
+  var _excluded$6 = ["isNumberValue", "isRange"];
   var DateTimePickerWidget = {
     name: 'DateTimePickerWidget',
     inheritAttrs: false,
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          slots = _ref.slots;
-
+        slots = _ref.slots;
       var trueValue = function trueValue(isRange, isNumberValue, val) {
         if (isRange) {
           return val === null ? [] : val.map(function (item) {
             return new Date(item)[isNumberValue ? 'valueOf' : 'toISOString']();
           });
         }
-
         return val === null ? undefined : new Date(val)[isNumberValue ? 'valueOf' : 'toISOString']();
       };
-
       return function () {
         var _ref2 = attrs || {},
-            isNumberValue = _ref2.isNumberValue,
-            isRange = _ref2.isRange,
-            otherProps = _objectWithoutProperties(_ref2, ["isNumberValue", "isRange"]);
-
+          isNumberValue = _ref2.isNumberValue,
+          isRange = _ref2.isRange,
+          otherProps = _objectWithoutProperties(_ref2, _excluded$6);
         return vue.h(resolveComponent('el-date-picker'), _objectSpread2(_objectSpread2({
           type: isRange ? 'datetimerange' : 'datetime'
         }, otherProps), {}, {
@@ -11870,37 +11601,33 @@
 
   var formatTimeStr = function formatTimeStr(dateString) {
     var _parseDateString = parseDateString(dateString, true),
-        hour = _parseDateString.hour,
-        minute = _parseDateString.minute,
-        second = _parseDateString.second;
-
+      hour = _parseDateString.hour,
+      minute = _parseDateString.minute,
+      second = _parseDateString.second;
     return "".concat(hour, ":").concat(minute, ":").concat(second);
   };
-
   var formatTimeObj = function formatTimeObj(timeStr) {
     if (timeStr instanceof Date) {
       return timeStr;
-    } // Get current time and modify hours, minutes, seconds
+    }
 
-
+    // Get current time and modify hours, minutes, seconds
     if (typeof timeStr === 'string') {
       var _timeStr$split = timeStr.split(':'),
-          _timeStr$split2 = _slicedToArray(_timeStr$split, 3),
-          hours = _timeStr$split2[0],
-          minutes = _timeStr$split2[1],
-          seconds = _timeStr$split2[2];
-
+        _timeStr$split2 = _slicedToArray(_timeStr$split, 3),
+        hours = _timeStr$split2[0],
+        minutes = _timeStr$split2[1],
+        seconds = _timeStr$split2[2];
       var curTime = new Date();
       curTime.setHours(+hours);
       curTime.setMinutes(+minutes);
       curTime.setSeconds(+seconds);
       return curTime;
-    } // Clear other formats
+    }
 
-
+    // Clear other formats
     return undefined;
   };
-
   var TimePickerWidget = {
     name: 'TimePickerWidget',
     inheritAttrs: false,
@@ -11912,12 +11639,14 @@
     },
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          slots = _ref.slots;
+        slots = _ref.slots;
       // Hack: element plus timePicker becomes object type
-      var originValue = vue.ref(formatTimeObj(props.modelValue)); // Does not need to be reactive
+      var originValue = vue.ref(formatTimeObj(props.modelValue));
 
-      var formatValue = props.modelValue; // If the external value was modified
+      // Does not need to be reactive
+      var formatValue = props.modelValue;
 
+      // If the external value was modified
       vue.watch(function () {
         return props.modelValue;
       }, function (newVal) {
@@ -11930,10 +11659,12 @@
         return vue.h(resolveComponent('el-time-picker'), _objectSpread2(_objectSpread2({}, attrs), {}, {
           modelValue: originValue.value,
           'onUpdate:modelValue': function onUpdateModelValue(val) {
-            originValue.value = val; // Update and cache internal timeStr
+            originValue.value = val;
 
-            formatValue = val === null ? undefined : formatTimeStr(val); // Update external value
+            // Update and cache internal timeStr
+            formatValue = val === null ? undefined : formatTimeStr(val);
 
+            // Update external value
             attrs['onUpdate:modelValue'].apply(attrs, [formatValue]);
           }
         }), slots);
@@ -11941,6 +11672,7 @@
     }
   };
 
+  // mock
   // https://run.mocky.io/v3/518d7af7-204f-45ab-9628-a6e121dab8ca
 
   var UploadWidget = {
@@ -11970,11 +11702,10 @@
     },
     setup: function setup(props, _ref) {
       var attrs = _ref.attrs,
-          emit = _ref.emit;
+        emit = _ref.emit;
       // Set default fileList
       var curModelValue = props.modelValue;
       var isArrayValue = Array.isArray(curModelValue);
-
       var defaultFileList = attrs.fileList || function () {
         if (isArrayValue) {
           return curModelValue.map(function (item, index) {
@@ -11984,28 +11715,23 @@
             };
           });
         }
-
         if (curModelValue) {
           return [{
             name: 'Uploaded File',
             url: curModelValue
           }];
         }
-
         return [];
-      }(); // fileList
+      }();
 
-
+      // fileList
       var fileListRef = vue.ref(defaultFileList);
-
       var getUrl = function getUrl(fileItem) {
         return fileItem && (fileItem.response && props.responseFileUrl(fileItem.response) || fileItem.url) || '';
       };
-
       var emitValue = function emitValue(emitFileList) {
         // v-model
         var curValue;
-
         if (isArrayValue) {
           curValue = emitFileList.length ? emitFileList.reduce(function (pre, item) {
             var url = getUrl(item);
@@ -12016,10 +11742,8 @@
           var fileItem = emitFileList[emitFileList.length - 1];
           curValue = getUrl(fileItem);
         }
-
         emit('update:modelValue', curValue);
       };
-
       var globalProperties = vue.getCurrentInstance().appContext.config.globalProperties;
       return function () {
         var data = _objectSpread2(_objectSpread2({
@@ -12041,22 +11765,19 @@
         }, attrs), {}, {
           'on-remove': function onRemove(file, fileList) {
             emitValue(fileList);
-
             if (attrs['on-remove']) {
               attrs['on-remove'](file, fileList);
             }
           },
           'on-success': function onSuccess(response, file, fileList) {
-            emitValue(fileList); // User registered onSuccess callback
-
+            emitValue(fileList);
+            // User registered onSuccess callback
             if (attrs['on-success']) {
               attrs['on-success'](response, file, fileList);
             }
           }
         });
-
         if (!isArrayValue) data.limit = 1;
-
         var childVNode = _objectSpread2({
           default: function _default() {
             return vue.h(resolveComponent('el-button'), {
@@ -12068,7 +11789,6 @@
             });
           }
         }, props.slots || {});
-
         return vue.h(resolveComponent('el-upload'), data, childVNode);
       };
     }
@@ -12091,11 +11811,11 @@
    * Created by Liu.Jun on 2020/4/21 18:23.
    */
   var CheckboxesWidget = widgetComponents.CheckboxesWidget,
-      RadioWidget = widgetComponents.RadioWidget,
-      SelectWidget = widgetComponents.SelectWidget,
-      TimePickerWidget$1 = widgetComponents.TimePickerWidget,
-      DatePickerWidget$1 = widgetComponents.DatePickerWidget,
-      DateTimePickerWidget$1 = widgetComponents.DateTimePickerWidget;
+    RadioWidget = widgetComponents.RadioWidget,
+    SelectWidget = widgetComponents.SelectWidget,
+    TimePickerWidget$1 = widgetComponents.TimePickerWidget,
+    DatePickerWidget$1 = widgetComponents.DatePickerWidget,
+    DateTimePickerWidget$1 = widgetComponents.DateTimePickerWidget;
   var WIDGET_MAP = {
     types: {
       boolean: 'el-switch',
@@ -12110,7 +11830,6 @@
       date: DatePickerWidget$1,
       // 2018-11-13
       'date-time': DateTimePickerWidget$1 // 2018-11-13T20:20:39+00:00
-
     },
     common: {
       select: SelectWidget,
@@ -12123,6 +11842,7 @@
   var css_248z$1 = ".genFromComponent.el-form--label-top .el-form-item__label{line-height:26px}.genFromComponent.el-form--label-top .genFromWidget_des{margin-bottom:4px;margin-top:-4px}.genFromComponent .el-checkbox,.genFromComponent .el-color-picker{vertical-align:top}.genFromComponent .formFooter_item .el-form-item__content{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}";
   styleInject(css_248z$1);
 
+  var _excluded$7 = ["setFormRef"];
   var globalOptions = {
     WIDGET_MAP: WIDGET_MAP,
     COMPONENT_MAP: {
@@ -12130,20 +11850,17 @@
         inheritAttrs: false,
         setup: function setup(props, _ref) {
           var attrs = _ref.attrs,
-              slots = _ref.slots;
+            slots = _ref.slots;
           var formRef = vue.ref(null);
-
           if (attrs.setFormRef) {
             vue.onMounted(function () {
               attrs.setFormRef(formRef.value);
             });
           }
-
           return function () {
             // eslint-disable-next-line no-unused-vars
             attrs.setFormRef;
-                var otherAttrs = _objectWithoutProperties(attrs, ["setFormRef"]);
-
+              var otherAttrs = _objectWithoutProperties(attrs, _excluded$7);
             return vue.h(resolveComponent('el-form'), _objectSpread2({
               ref: formRef
             }, otherAttrs), slots);

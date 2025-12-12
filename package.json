@@ -4,15 +4,25 @@
     "repository": "https://github.com/lljj-x/vue-json-schema-form",
     "homepage": "https://github.com/lljj-x/vue-json-schema-form",
     "author": "Liu.Jun",
-    "workspaces": [
-        "packages/lib/**",
-        "packages/docs",
-        "packages/demo/**"
-    ],
+    "workspaces": {
+        "packages": [
+            "packages/lib/**",
+            "packages/docs",
+            "packages/demo/**"
+        ],
+        "nohoist": [
+            "**/vue",
+            "**/vue/**",
+            "**/@vue/**",
+            "**/vue-template-compiler",
+            "**/vue-template-compiler/**",
+            "docs/**"
+        ]
+    },
     "scripts": {
         "docs:dev": "yarn workspace docs dev",
         "docs:build": "yarn workspace docs build",
-        "lib:build": "yarn lib-element:build && yarn lib-iview3:build && yarn lib3-element:build && yarn lib3-ant:build && yarn lib3-naive:build",
+        "lib:build": "yarn lib-element:build && yarn lib-iview3:build && yarn lib3-element:build && yarn lib3-ant:build && yarn lib3-naive:build && yarn lib3-vuetify:build",
         "lib-element:watch": "yarn workspace @lljj/vue-json-schema-form watch",
         "lib-element:build": "yarn workspace @lljj/vue-json-schema-form build",
         "lib-iview3:watch": "yarn workspace @lljj/vue2-form-iview3 watch",
@@ -22,6 +32,8 @@
         "lib3-ant:watch": "yarn workspace @lljj/vue3-form-ant watch",
         "lib3-ant:build": "yarn workspace @lljj/vue3-form-ant build",
         "lib3-naive:build": "yarn workspace @lljj/vue3-form-naive build",
+        "lib3-vuetify:watch": "yarn workspace @lljj/vue3-form-vuetify watch",
+        "lib3-vuetify:build": "yarn workspace @lljj/vue3-form-vuetify build",
         "demo:dev": "yarn workspace demo dev",
         "demo:build": "yarn workspace demo build",
         "demo3:dev": "yarn workspace demo-v3 dev",
@@ -50,13 +62,13 @@
     "devDependencies": {
         "@commitlint/cli": "^8.3.5",
         "@commitlint/config-conventional": "^8.3.4",
-        "@vue/compiler-sfc": "^3.0.0",
-        "naive-ui": "^2.26.1",
+        "@vue/component-compiler-utils": "^3.3.0",
         "commitizen": "^4.1.2",
         "conventional-changelog-cli": "^2.0.34",
         "cz-conventional-changelog": "^3.2.0",
         "husky": "^4.2.5",
-        "lerna": "^3.22.1"
+        "lerna": "^3.22.1",
+        "vue-template-compiler": "^2.6.14"
     },
     "version": "0.0.0"
 }

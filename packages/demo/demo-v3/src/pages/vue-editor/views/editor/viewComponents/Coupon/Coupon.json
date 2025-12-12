@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "show": {
+            "title": "Display Status",
+            "description": "Coupon module is not editable, the system will automatically fetch coupons you have created and sort them by coupon value from high to low.",
+            "type": "boolean",
+            "default": true,
+            "ui:disabled": true
+        }
+    },
+    "required": [
+        "show"
+    ]
+}

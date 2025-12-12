@@ -10,12 +10,17 @@
     },
     "dependencies": {
         "@lljj/vue-json-schema-form": "1.19.0",
+        "core-js": "^2.6.12",
         "element-ui": "^2.13.2",
-        "v-distpicker": "^1.2.7"
+        "v-distpicker": "^1.2.7",
+        "vue": "2.6.12",
+        "vue-server-renderer": "2.6.12"
     },
     "devDependencies": {
+        "@vue/component-compiler-utils": "^3.3.0",
         "@vuepress/plugin-medium-zoom": "^1.5.2",
         "@vuepress/plugin-pwa": "^1.5.2",
+        "vue-template-compiler": "2.6.12",
         "vuepress": "^1.5.4"
     }
 }

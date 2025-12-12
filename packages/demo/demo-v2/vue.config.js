@@ -3,7 +3,7 @@
  */
 
 const path = require('path');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const chalk = require('chalk');
 
 const log = require('./scripts/log');
@@ -57,6 +57,8 @@ module.exports = {
     productionSourceMap: false,
 
     configureWebpack: (config) => {
+        config.mode = process.env.NODE_ENV;
+        config.devtool = 'source-map';
         config.externals = {
             vue: 'Vue',
             ELEMENT: 'ELEMENT',
@@ -100,12 +102,12 @@ module.exports = {
         // JS filename adjustment
         if (isProduction) {
             // Asset manifest
-            config.plugin('manifest').use(ManifestPlugin, [{
+            config.plugin('manifest').use(WebpackManifestPlugin, [{
                 fileName: 'manifest.json',
-                filter: (obj) => {
-                    const ext = path.extname(obj.name);
+                filter: (file) => {
+                    const ext = path.extname(file.name);
                     const includeExts = ['.js', '.css'];
-                    return includeExts.includes(ext) && !obj.name.includes('chunk-');
+                    return includeExts.includes(ext) && !file.name.includes('chunk-');
                 }
             }]);
         }
@@ -124,7 +126,6 @@ module.exports = {
     },
 
     css: {
-        requireModuleExtension: true,
         sourceMap: !isProduction,
         extract: isProduction
     },
@@ -132,23 +133,19 @@ module.exports = {
     // All options for webpack-dev-server are supported
     // https://webpack.js.org/configuration/dev-server/
     devServer: {
-        clientLogLevel: 'info',
-        open: true,
-        openPage,
-        port: 8800,
-        host: 'localhost',
-        overlay: {
-            warnings: false,
-            errors: true
+        client: {
+            logging: 'info',
+            overlay: {
+                warnings: false,
+                errors: true
+            }
         },
-        publicPath: '/',
+        open: [openPage],
+        port: 8802,
+        host: 'localhost',
         proxy: {
             '/api-dev': {
                 target: 'http://www.api.com',
-                hot: true,
-                open: true,
-                contentBase: false,
-                historyApiFallback: false,
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api-dev': ''

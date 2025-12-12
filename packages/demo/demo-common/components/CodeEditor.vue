@@ -1,13 +1,12 @@
 <template>
-    <el-card
-        shadow="hover"
-        body-style="padding: 0;"
+    <v-card
+        elevation="2"
         :class="$style.card"
         :style="{
             width
         }"
     >
-        <template #header>
+        <template #title>
             <div class="clearfix">
                 <span>{{ title }}</span>
             </div>
@@ -20,8 +19,9 @@
                 width,
                 height
             }"
-        ></div>
-    </el-card>
+        >
+        </div>
+    </v-card>
 </template>
 
 <script>
@@ -166,7 +166,7 @@ export default {
 <style module>
     .card {
         :global {
-            .el-card__header {
+            .v-card-title {
                 padding: 10px 20px;
                 font-size: 14px;
                 font-weight: bold;

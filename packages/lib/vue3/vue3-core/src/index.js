@@ -123,15 +123,39 @@ export default function createForm(globalOptions = {}) {
                         onCancel() {
                             emit('cancel');
                         },
-                        onSubmit() {
-                            // Prioritize getting component $$validate method for easier validate method conversion
-                            (formRef.$$validate || formRef.validate)((isValid, resData) => {
-                                if (isValid) {
-                                    return emit('submit', rootFormData);
+                        async onSubmit() {
+                            const validateFn = formRef.$$validate || formRef.validate;
+
+                            if (!validateFn) {
+                                console.error('No validate function found on form');
+                                return;
+                            }
+
+                            try {
+                                // Check if validateFn returns a Promise (Vuetify 3) or uses callback (old style)
+                                const result = validateFn((isValid, resData) => {
+                                    // Callback style (old)
+                                    if (isValid) {
+                                        return emit('submit', rootFormData);
+                                    }
+                                    console.warn(resData);
+                                    return emit('validation-failed', resData);
+                                });
+
+                                // If it's a Promise (Vuetify 3)
+                                if (result && typeof result.then === 'function') {
+                                    const isValid = await result;
+
+                                    if (isValid) {
+                                        emit('submit', rootFormData);
+                                    } else {
+                                        emit('validation-failed', { valid: false });
+                                    }
                                 }
-                                console.warn(resData);
-                                return emit('validation-failed', resData);
-                            });
+                            } catch (error) {
+                                console.error('Validation error:', error);
+                                emit('validation-failed', error);
+                            }
                         }
                     });
                 }

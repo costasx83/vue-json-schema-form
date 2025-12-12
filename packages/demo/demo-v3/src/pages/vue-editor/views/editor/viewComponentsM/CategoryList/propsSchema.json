@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "Configure Category Bar",
+    "description": "Configure each category's name and image link separately, maximum 10 groups, minimum 3 groups",
+    "properties": {
+        "imgList": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 5,
+            "items": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                    "name": {
+                        "title": "Configure Category Name",
+                        "type": "string",
+                        "default": "JD",
+                        "ui:options": {
+                            "placeholder": "Please enter category name"
+                        }
+                    },
+                    "img": {
+                        "type": "object",
+                        "title": "Configure Image and Link",
+                        "required": [
+                            "imgUrl",
+                            "imgLink"
+                        ],
+                        "ui:field": "LinkImgField",
+                        "properties": {
+                            "imgUrl": {
+                                "type": "string",
+                                "format": "uri",
+                                "default": "https://gw.alicdn.com/tfs/TB1ISdWSFXXXXbFXXXXXXXXXXXX-146-147.png_110x10000.jpg_.webp",
+                                "err:format": "Please enter the correct image address"
+                            },
+                            "imgLink": {
+                                "type": "string",
+                                "format": "uri",
+                                "default": "https://www.tmall.com",
+                                "err:format": "Please enter the correct link address"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

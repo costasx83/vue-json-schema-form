@@ -1,268 +1,199 @@
 /** @license @lljj/vue-json-schema-form (c) 2020-2025 Liu.Jun License: Apache-2.0 */
 import Vue from 'vue';
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
 }
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
 }
-
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
+}
+function _defineProperty(e, r, t) {
+  return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+    value: t,
+    enumerable: !0,
+    configurable: !0,
+    writable: !0
+  }) : e[r] = t, e;
+}
 function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
+  return _extends = Object.assign ? Object.assign.bind() : function (n) {
+    for (var e = 1; e < arguments.length; e++) {
+      var t = arguments[e];
+      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+    }
+    return n;
+  }, _extends.apply(null, arguments);
+}
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
+}
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
       }
     }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
+    return a;
   }
-
-  return keys;
 }
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _objectDestructuringEmpty(t) {
+  if (null == t) throw new TypeError("Cannot destructure " + t);
+}
+function ownKeys(e, r) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function (r) {
+      return Object.getOwnPropertyDescriptor(e, r).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread2(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys(Object(t), !0).forEach(function (r) {
+      _defineProperty(e, r, t[r]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) {
+      Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+    });
+  }
+  return e;
+}
+function _objectWithoutProperties(e, t) {
+  if (null == e) return {};
+  var o,
+    r,
+    i = _objectWithoutPropertiesLoose(e, t);
+  if (Object.getOwnPropertySymbols) {
+    var n = Object.getOwnPropertySymbols(e);
+    for (r = 0; r < n.length; r++) o = n[r], -1 === t.indexOf(o) && {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+  }
+  return i;
+}
+function _objectWithoutPropertiesLoose(r, e) {
+  if (null == r) return {};
+  var t = {};
+  for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+    if (-1 !== e.indexOf(n)) continue;
+    t[n] = r[n];
+  }
+  return t;
+}
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
+}
+function _toPrimitive(t, r) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != typeof i) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-
-  return (hint === "string" ? String : Number)(input);
+  return ("string" === r ? String : Number)(t);
 }
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _typeof(o) {
+  "@babel/helpers - typeof";
 
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-
-  return typeof key === "symbol" ? key : String(key);
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
+}
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
 }
 
 /**
  * Created by Liu.Jun on 2020/4/17 17:05.
  */
+
 // is object
 function isObject(object) {
   return Object.prototype.toString.call(object) === '[object Object]';
-} // is arguments
+}
 
+// is arguments
 function isArguments(object) {
   return Object.prototype.toString.call(object) === '[object Arguments]';
-} // Infer schema type from defined data
+}
 
-
+// Infer schema type from defined data
 var guessType = function guessType(value) {
   if (Array.isArray(value)) {
     return 'array';
   }
-
   if (typeof value === 'string') {
     return 'string';
   }
-
   if (value == null) {
     return 'null';
   }
-
   if (typeof value === 'boolean') {
-    return 'boolean'; // eslint-disable-next-line no-restricted-globals
+    return 'boolean';
+    // eslint-disable-next-line no-restricted-globals
   }
-
   if (!isNaN(value)) {
     return 'number';
   }
-
   if (_typeof(value) === 'object') {
     return 'object';
-  } // Default to string if we can't figure it out
-
-
+  }
+  // Default to string if we can't figure it out
   return 'string';
 };
 
+// Merge object data
 function mergeObjects(obj1, obj2) {
   var concatArrays = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   // Recursively merge deeply nested objects.
   var preAcc = Object.assign({}, obj1); // Prevent mutation of source object.
-
   if (!isObject(obj2)) return preAcc;
   return Object.keys(obj2).reduce(function (acc, key) {
     var left = obj1 ? obj1[key] : {};
     var right = obj2[key];
-
     if (obj1 && obj1.hasOwnProperty(key) && isObject(right)) {
       acc[key] = mergeObjects(left, right, concatArrays);
     } else if (concatArrays && Array.isArray(left) && Array.isArray(right)) {
@@ -270,195 +201,179 @@ function mergeObjects(obj1, obj2) {
     } else {
       acc[key] = right;
     }
-
     return acc;
   }, preAcc);
-} // Get given schema type
+}
 
+// Get given schema type
 function getSchemaType(schema) {
-  var type = schema.type; // Type inference through const declared constant
+  var type = schema.type;
 
+  // Type inference through const declared constant
   if (!type && schema.const) {
     return guessType(schema.const);
-  } // Enum defaults to string
+  }
 
-
+  // Enum defaults to string
   if (!type && schema.enum) {
     return 'string';
-  } // Items inferred as array type
+  }
 
-
+  // Items inferred as array type
   if (!type && schema.items) {
     return 'array';
-  } // anyOf oneOf do not declare type field
+  }
 
-
+  // anyOf oneOf do not declare type field
   if (!type && (schema.properties || schema.additionalProperties)) {
     return 'object';
   }
-
   if (type instanceof Array && type.length === 2 && type.includes('null')) {
     return type.find(function (curType) {
       return curType !== 'null';
     });
   }
-
   return type;
-} // Deep equality comparison
+}
 
+// Deep equality comparison
 function deepEquals(a, b) {
   var ca = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-
   // Partially extracted from node-deeper and adapted to exclude comparison
   // checks for functions.
   // https://github.com/othiym23/node-deeper
   if (a === b) {
     return true;
   }
-
   if (typeof a === 'function' || typeof b === 'function') {
     // Assume all functions are equivalent
     // see https://github.com/mozilla-services/react-jsonschema-form/issues/255
     return true;
   }
-
   if (_typeof(a) !== 'object' || _typeof(b) !== 'object') {
     return false;
   }
-
   if (a === null || b === null) {
     return false;
   }
-
   if (a instanceof Date && b instanceof Date) {
     return a.getTime() === b.getTime();
   }
-
   if (a instanceof RegExp && b instanceof RegExp) {
     return a.source === b.source && a.global === b.global && a.multiline === b.multiline && a.lastIndex === b.lastIndex && a.ignoreCase === b.ignoreCase;
   }
-
   if (isArguments(a) || isArguments(b)) {
     if (!(isArguments(a) && isArguments(b))) {
       return false;
     }
-
     var slice = Array.prototype.slice;
     return deepEquals(slice.call(a), slice.call(b), ca, cb);
   }
-
   if (a.constructor !== b.constructor) {
     return false;
   }
-
   var ka = Object.keys(a);
-  var kb = Object.keys(b); // don't bother with stack acrobatics if there's nothing there
-
+  var kb = Object.keys(b);
+  // don't bother with stack acrobatics if there's nothing there
   if (ka.length === 0 && kb.length === 0) {
     return true;
   }
-
   if (ka.length !== kb.length) {
     return false;
   }
-
-  var cal = ca.length; // eslint-disable-next-line no-plusplus
-
+  var cal = ca.length;
+  // eslint-disable-next-line no-plusplus
   while (cal--) {
     if (ca[cal] === a) {
       return cb[cal] === b;
     }
   }
-
   ca.push(a);
   cb.push(b);
   ka.sort();
-  kb.sort(); // eslint-disable-next-line no-plusplus
-
+  kb.sort();
+  // eslint-disable-next-line no-plusplus
   for (var j = ka.length - 1; j >= 0; j--) {
     if (ka[j] !== kb[j]) {
       return false;
     }
   }
-
-  var key; // eslint-disable-next-line no-plusplus
-
+  var key;
+  // eslint-disable-next-line no-plusplus
   for (var k = ka.length - 1; k >= 0; k--) {
     key = ka[k];
-
     if (!deepEquals(a[key], b[key], ca, cb)) {
       return false;
     }
   }
-
   ca.pop();
   cb.pop();
   return true;
-} // Only guarantee non-duplicate simultaneous generation
+}
 
+// Only guarantee non-duplicate simultaneous generation
 var genId = function genIdFn() {
   var preKey = "".concat(+new Date());
   var key = 0;
   return function () {
     var curTimestamp = "".concat(+new Date());
-
     if (curTimestamp === preKey) {
       key += 1;
     } else {
       // Reset key
       key = 0;
     }
-
     preKey = curTimestamp;
     return "".concat(preKey, "x").concat(key);
   };
-}(); // Empty object
+}();
 
+// Empty object
 function isEmptyObject(obj) {
   if (!obj) return true;
-
   for (var key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       return false;
     }
   }
-
   return true;
-} // Filter and transform object keys
+}
 
+// Filter and transform object keys
 function filterObject(obj, filterFn) {
   return Object.entries(obj).reduce(function (preVal, _ref) {
     var _ref2 = _slicedToArray(_ref, 2),
-        key = _ref2[0],
-        value = _ref2[1];
-
+      key = _ref2[0],
+      value = _ref2[1];
     var newKey = filterFn(key, value);
-
     if (undefined !== newKey) {
       preVal[newKey] = value;
     }
-
     return preVal;
   }, {});
 }
 
+// Lowercase first letter of string
 function lowerCase(str) {
   if (undefined === str) return str;
   return String(str).replace(/^./, function (s) {
     return s.toLocaleLowerCase();
   });
-} // Greatest common divisor
+}
 
+// Greatest common divisor
 function gcd(a, b) {
   if (b === 0) return a;
   return gcd(b, a % b);
-} // Least common multiple
+}
 
+// Least common multiple
 function scm(a, b) {
   return a * b / gcd(a, b);
-} // Open new page
+}
 
+// Open new page
 function openNewPage(url) {
   var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '_blank';
   var a = document.createElement('a');
@@ -473,37 +388,30 @@ function openNewPage(url) {
 // $ref reference
 function getPathVal(obj, pathStr) {
   var pathArr = pathStr.split('/');
-
   for (var i = 0; i < pathArr.length; i += 1) {
     if (obj === undefined) return undefined;
     obj = pathArr[i] === '' ? obj : obj[pathArr[i]];
   }
-
   return obj;
-} // Find schema referenced by ref
+}
 
-
+// Find schema referenced by ref
 function findSchemaDefinition($ref) {
   var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var origRef = $ref;
-
   if ($ref.startsWith('#')) {
     // Decode URI fragment representation.
     $ref = decodeURIComponent($ref.substring(1));
   } else {
     throw new Error("Could not find a definition for ".concat(origRef, "."));
   }
-
   var current = getPathVal(rootSchema, $ref);
-
   if (current === undefined) {
     throw new Error("Could not find a definition for ".concat(origRef, "."));
   }
-
   if (current.hasOwnProperty('$ref')) {
     return findSchemaDefinition(current.$ref, rootSchema);
   }
-
   return current;
 }
 
@@ -7651,191 +7559,152 @@ function noop() {}
 // https://github.com/epoberezkin/ajv-i18n
 function localizeEn(errors) {
   if (!(errors && errors.length)) return;
-
   for (var i = 0; i < errors.length; i += 1) {
     var e = errors[i];
     var out = void 0;
     var n = void 0;
     var cond = void 0;
-
     switch (e.keyword) {
       case '$ref':
         out = "can't resolve reference ".concat(e.params.ref);
         break;
-
       case 'additionalItems':
         out = '';
         n = e.params.limit;
         out += "should NOT have more than ".concat(n, " items");
         break;
-
       case 'additionalProperties':
         out = 'should NOT have additional properties';
         break;
-
       case 'anyOf':
         out = 'should match some schema in anyOf';
         break;
-
       case 'const':
         out = 'should be equal to constant';
         break;
-
       case 'contains':
         out = 'should contain a valid item';
         break;
-
       case 'custom':
         out = "should pass \"".concat(e.keyword, "\" keyword validation");
         break;
-
       case 'dependencies':
         out = '';
         n = e.params.depsCount;
         out += "should have property ".concat(e.params.deps, " when property ").concat(e.params.property, " is present");
         break;
-
       case 'enum':
         out = 'should be equal to one of the allowed values';
         break;
-
       case 'exclusiveMaximum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'exclusiveMinimum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'false schema':
         out = 'boolean schema is false';
         break;
-
       case 'format':
         out = "should match format \"".concat(e.params.format, "\"");
         break;
-
       case 'formatExclusiveMaximum':
         out = 'formatExclusiveMaximum should be boolean';
         break;
-
       case 'formatExclusiveMinimum':
         out = 'formatExclusiveMinimum should be boolean';
         break;
-
       case 'formatMaximum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'formatMinimum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'if':
         out = "should match \"".concat(e.params.failingKeyword, "\" schema");
         break;
-
       case 'maximum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'maxItems':
         out = '';
         n = e.params.limit;
         out += "should NOT have more than ".concat(n, " items");
         break;
-
       case 'maxLength':
         out = '';
         n = e.params.limit;
         out += "should NOT be longer than ".concat(n, " characters");
         break;
-
       case 'maxProperties':
         out = '';
         n = e.params.limit;
         out += "should NOT have more than ".concat(n, " properties");
         break;
-
       case 'minimum':
         out = '';
         cond = "".concat(e.params.comparison, " ").concat(e.params.limit);
         out += "should be ".concat(cond);
         break;
-
       case 'minItems':
         out = '';
         n = e.params.limit;
         out += "should NOT have fewer than ".concat(n, " items");
         break;
-
       case 'minLength':
         out = '';
         n = e.params.limit;
         out += "should NOT be shorter than ".concat(n, " characters");
         break;
-
       case 'minProperties':
         out = '';
         n = e.params.limit;
         out += "should NOT have fewer than ".concat(n, " properties");
         break;
-
       case 'multipleOf':
         out = "should be multiple of ".concat(e.params.multipleOf);
         break;
-
       case 'not':
         out = 'should NOT be valid according to schema in "not"';
         break;
-
       case 'oneOf':
         out = 'should match exactly one schema in "oneOf"';
         break;
-
       case 'pattern':
         out = "should match pattern \"".concat(e.params.pattern, "\"");
         break;
-
       case 'patternRequired':
         out = "should have property matching pattern ".concat(e.params.missingPattern);
         break;
-
       case 'propertyNames':
         out = "property name '".concat(e.params.propertyName, "' is invalid");
         break;
-
       case 'required':
         out = "should have required property ".concat(e.params.missingProperty);
         break;
-
       case 'switch':
         out = "should pass \"switch\" keyword validation, case ".concat(e.params.caseIndex, " fails");
         break;
-
       case 'type':
         out = "should be ".concat(e.params.type);
         break;
-
       case 'uniqueItems':
         out = "should NOT have duplicate items (items ## ".concat(e.params.j, " and ").concat(e.params.i, " are identical)");
         break;
-
       default:
         // eslint-disable-next-line no-continue
         continue;
     }
-
     e.message = out;
   }
 }
@@ -7856,26 +7725,30 @@ var i18n = {
 /**
  * Created by Liu.Jun on 2020/4/25 10:53.
  */
+
 // Move up by index
 function moveUpAt(target, index) {
   if (index === 0) return false;
   var item = target[index];
   var newItems = [item, target[index - 1]];
   return target.splice.apply(target, [index - 1, 2].concat(newItems));
-} // Move down by index
+}
 
+// Move down by index
 function moveDownAt(target, index) {
   if (index === target.length - 1) return false;
   var item = target[index];
   var newItems = [target[index + 1], item];
   return target.splice.apply(target, [index, 2].concat(newItems));
-} // Remove
+}
 
+// Remove
 function removeAt(target, index) {
   // Remove element at specified position in array, return boolean indicating success
   return !!target.splice(index, 1).length;
-} // Fill array with objects
+}
 
+// Fill array with objects
 function fillObj(target, data) {
   // Simple copy, throw error on exception
   try {
@@ -7884,31 +7757,41 @@ function fillObj(target, data) {
         return JSON.parse(JSON.stringify(data));
       });
     }
-  } catch (e) {// nothing ...
-  } // Default return undefined
+  } catch (e) {
+    // nothing ...
+  }
 
-
+  // Default return undefined
   return undefined;
-} // Split into multiple arrays
+}
 
+// Split into multiple arrays
 function cutOff(target, cutOffPointIndex) {
   return target.reduce(function (preVal, curVal, curIndex) {
     preVal[curIndex > cutOffPointIndex ? 1 : 0].push(curVal);
     return preVal;
   }, [[], []]);
-} // Array intersection
+}
 
+// Array intersection
 function intersection(arr1, arr2) {
   return arr1.filter(function (item) {
     return arr2.includes(item);
   });
 }
 
+var _excluded = ["$ref"],
+  _excluded2 = ["allOf"],
+  _excluded3 = ["allOf"];
+
+// import { getMatchingOption, isValid } from './validate';
+
 // Auto add divider
+
 // export const ADDITIONAL_PROPERTY_FLAG = '__additional_property';
+
 // resolve Schema - dependencies
 // https://json-schema.org/understanding-json-schema/reference/object.html#dependencies
-
 /*
 export function resolveDependencies(schema, rootSchema, formData) {
     // 从源模式中删除依赖项。
@@ -7931,9 +7814,9 @@ export function resolveDependencies(schema, rootSchema, formData) {
     );
 }
 */
+
 // 处理依赖关系 dependencies
 // https://json-schema.org/understanding-json-schema/reference/object.html#dependencies
-
 /*
 
 function processDependencies(
@@ -7982,6 +7865,7 @@ function processDependencies(
     return resolvedSchema;
 }
 */
+
 // 属性依赖
 // https://json-schema.org/understanding-json-schema/reference/object.html#property-dependencies
 
@@ -7996,9 +7880,9 @@ function withDependentProperties(schema, additionallyRequired) {
     return { ...schema, required };
 }
 */
+
 // schema 依赖
 // https://json-schema.org/understanding-json-schema/reference/object.html#schema-dependencies
-
 /*
 function withDependentSchema(
     schema,
@@ -8075,39 +7959,37 @@ function withExactlyOneSubschema(
     );
 }
 */
+
 // resolve Schema - $ref
 // https://json-schema.org/understanding-json-schema/structuring.html#using-id-with-ref
-
 function resolveReference(schema, rootSchema, formData) {
   // Retrieve the referenced schema definition.
-  var $refSchema = findSchemaDefinition(schema.$ref, rootSchema); // Drop the $ref property of the source schema.
+  var $refSchema = findSchemaDefinition(schema.$ref, rootSchema);
+  // Drop the $ref property of the source schema.
   // eslint-disable-next-line no-unused-vars
-
   schema.$ref;
-      var localSchema = _objectWithoutProperties(schema, ["$ref"]); // Update referenced schema definition with local schema properties.
-
-
+    var localSchema = _objectWithoutProperties(schema, _excluded);
+  // Update referenced schema definition with local schema properties.
   return retrieveSchema(_objectSpread2(_objectSpread2({}, $refSchema), localSchema), rootSchema, formData);
-} // Deep recursive merge, merge every 2 items of allOf
+}
 
-
+// Deep recursive merge, merge every 2 items of allOf
 function mergeSchemaAllOf() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-
   if (args.length < 2) return args[0];
   var preVal = {};
   var copyArgs = [].concat(args);
-
   var _loop = function _loop() {
     var obj1 = isObject(copyArgs[0]) ? copyArgs[0] : {};
     var obj2 = isObject(copyArgs[1]) ? copyArgs[1] : {};
     preVal = Object.assign({}, obj1);
     Object.keys(obj2).reduce(function (acc, key) {
       var left = obj1[key];
-      var right = obj2[key]; // Left or right one side is object
+      var right = obj2[key];
 
+      // Left or right one side is object
       if (isObject(left) || isObject(right)) {
         // Both sides are objects
         if (isObject(left) && isObject(right)) {
@@ -8115,10 +7997,9 @@ function mergeSchemaAllOf() {
         } else {
           // One side is object
           var _ref = isObject(left) ? [left, right] : [right, left],
-              _ref2 = _slicedToArray(_ref, 2),
-              objTypeData = _ref2[0],
-              baseTypeData = _ref2[1];
-
+            _ref2 = _slicedToArray(_ref, 2),
+            objTypeData = _ref2[0],
+            baseTypeData = _ref2[1];
           if (key === 'additionalProperties') {
             // Adapt type: one side configured object, other side not configured or true/false
             // {
@@ -8131,23 +8012,23 @@ function mergeSchemaAllOf() {
           } else {
             acc[key] = objTypeData;
           }
-        } // One side is array
-
+        }
+        // One side is array
       } else if (Array.isArray(left) || Array.isArray(right)) {
         // Both are arrays, take intersection
         if (Array.isArray(left) && Array.isArray(right)) {
           // 数组里面嵌套对象不支持 因为我不知道该怎么合并
           if (isObject(left[0]) || isObject(right[0])) {
             throw new Error('暂不支持如上数组对象元素合并');
-          } // 交集
+          }
 
+          // 交集
+          var intersectionArray = intersection([].concat(left), [].concat(right));
 
-          var intersectionArray = intersection([].concat(left), [].concat(right)); // 没有交集
-
+          // 没有交集
           if (intersectionArray.length <= 0) {
             throw new Error('无法合并如上数据');
           }
-
           if (intersectionArray.length === 0 && key === 'type') {
             // 自己取出值
             acc[key] = intersectionArray[0];
@@ -8158,18 +8039,16 @@ function mergeSchemaAllOf() {
           // 其中一边为 Array
           // 查找包含关系
           var _ref3 = Array.isArray(left) ? [left, right] : [right, left],
-              _ref4 = _slicedToArray(_ref3, 2),
-              arrayTypeData = _ref4[0],
-              _baseTypeData = _ref4[1]; // 空值直接合并另一边
-
-
+            _ref4 = _slicedToArray(_ref3, 2),
+            arrayTypeData = _ref4[0],
+            _baseTypeData = _ref4[1];
+          // 空值直接合并另一边
           if (_baseTypeData === undefined) {
             acc[key] = arrayTypeData;
           } else {
             if (!arrayTypeData.includes(_baseTypeData)) {
               throw new Error('无法合并如下数据');
             }
-
             acc[key] = _baseTypeData;
           }
         }
@@ -8192,21 +8071,19 @@ function mergeSchemaAllOf() {
         // 一边为undefined
         acc[key] = left === undefined ? right : left;
       }
-
       return acc;
-    }, preVal); // First in first out
+    }, preVal);
 
+    // First in first out
     copyArgs.splice(0, 2, preVal);
   };
-
   while (copyArgs.length >= 2) {
     _loop();
   }
-
   return preVal;
-} // resolve Schema - allOf
+}
 
-
+// resolve Schema - allOf
 function resolveAllOf(schema, rootSchema, formData) {
   // allOf item中可能存在 $ref
   var resolvedAllOfRefSchema = _objectSpread2(_objectSpread2({}, schema), {}, {
@@ -8214,45 +8091,44 @@ function resolveAllOf(schema, rootSchema, formData) {
       return retrieveSchema(allOfItem, rootSchema, formData);
     })
   });
-
   try {
     var allOf = resolvedAllOfRefSchema.allOf,
-        originProperties = _objectWithoutProperties(resolvedAllOfRefSchema, ["allOf"]);
-
+      originProperties = _objectWithoutProperties(resolvedAllOfRefSchema, _excluded2);
     return mergeSchemaAllOf.apply(void 0, [originProperties].concat(_toConsumableArray(allOf)));
   } catch (e) {
-    console.error("Cannot merge allOf, discarding allOf config and continuing to render: \n".concat(e)); // eslint-disable-next-line no-unused-vars
-
+    console.error("Cannot merge allOf, discarding allOf config and continuing to render: \n".concat(e));
+    // eslint-disable-next-line no-unused-vars
     resolvedAllOfRefSchema.allOf;
-        var resolvedSchemaWithoutAllOf = _objectWithoutProperties(resolvedAllOfRefSchema, ["allOf"]);
-
+      var resolvedSchemaWithoutAllOf = _objectWithoutProperties(resolvedAllOfRefSchema, _excluded3);
     return resolvedSchemaWithoutAllOf;
   }
-} // resolve Schema
+}
 
+// resolve Schema
 function resolveSchema$1(schema) {
   var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var formData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
   // allOf 、$ref、dependencies 可能被同时配置
+
   // allOf
   if (schema.hasOwnProperty('allOf')) {
     schema = resolveAllOf(schema, rootSchema, formData);
-  } // $ref
+  }
 
-
+  // $ref
   if (schema.hasOwnProperty('$ref')) {
     schema = resolveReference(schema, rootSchema, formData);
-  } // dependencies
+  }
 
+  // dependencies
   /*
   if (schema.hasOwnProperty('dependencies')) {
       const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
       schema = retrieveSchema(resolvedSchema, rootSchema, formData);
   }
   */
-  // additionalProperties
 
+  // additionalProperties
   /*
   const hasAdditionalProperties = schema.hasOwnProperty('additionalProperties') && schema.additionalProperties !== false;
   if (hasAdditionalProperties) {
@@ -8264,11 +8140,11 @@ function resolveSchema$1(schema) {
   }
   */
 
-
   return schema;
-} // 这个函数将为formData中的每个键创建新的“属性”项
-// 查找到附加属性统一到properties[key]格式 并且打上标准
+}
 
+// 这个函数将为formData中的每个键创建新的“属性”项
+// 查找到附加属性统一到properties[key]格式 并且打上标准
 /* function stubExistingAdditionalProperties(
     schema,
     rootSchema = {},
@@ -8308,83 +8184,82 @@ function resolveSchema$1(schema) {
 
     return schema;
 } */
+
 // Index current node
-
-
 function retrieveSchema(schema) {
   var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var formData = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
   if (!isObject(schema)) {
     return {};
   }
-
   return resolveSchema$1(schema, rootSchema, formData);
 }
 
 // 内部使用 . ，配置数据key不能出现.
-var pathSeparator = '.'; // Convert nodePath to css class name
+var pathSeparator = '.';
 
+// Convert nodePath to css class name
 function nodePath2ClassName(path) {
   var rootPathName = '__pathRoot';
   return path ? "".concat(rootPathName, ".").concat(path).replace(/\./g, '_') : rootPathName;
-} // Is root node
+}
 
+// Is root node
 function isRootNodePath(path) {
   return path === '';
-} // Calculate current node path
+}
 
+// Calculate current node path
 function computedCurPath(prePath, curKey) {
   return prePath === '' ? curKey : [prePath, curKey].join(pathSeparator);
-} // Get current path value
+}
 
+// Get current path value
 function getPathVal$1(obj, path) {
   var leftDeviation = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
   var pathArr = path.split(pathSeparator);
-
   for (var i = 0; i < pathArr.length - leftDeviation; i += 1) {
     // Error path or undefined interrupts search
     if (obj === undefined) return undefined;
     obj = pathArr[i] === '' ? obj : obj[pathArr[i]];
   }
-
   return obj;
-} // Path equals props
+}
 
+// Path equals props
 function path2prop(path) {
   return path;
 }
 
+var _excluded$1 = ["widget", "title", "labelWidth", "description", "attrs", "class", "style", "widgetListeners", "fieldAttrs", "fieldStyle", "fieldClass", "emptyValue", "width", "getWidget", "renderScopedSlots", "renderChildren", "onChange", "required"];
+
+// General expression handling method
 // This breaks the JSON Schema specification
-
 var regExpression = /{{(.*)}}/;
-
 function handleExpression(rootFormData, curNodePath, expression, fallBack) {
   // Not configured
   if (undefined === expression) {
     return undefined;
-  } // Configured mustache expression
+  }
 
-
+  // Configured mustache expression
   var matchExpression = regExpression.exec(expression);
   regExpression.lastIndex = 0; // Reset index
-
   if (matchExpression) {
-    var code = matchExpression[1].trim(); // eslint-disable-next-line no-new-func
+    var code = matchExpression[1].trim();
 
+    // eslint-disable-next-line no-new-func
     var fn = new Function('parentFormData', 'rootFormData', "return ".concat(code));
     return fn(getPathVal$1(rootFormData, curNodePath, 1), rootFormData);
-  } // Fallback
+  }
 
-
+  // Fallback
   return fallBack();
 }
-
 function replaceArrayIndex() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      schema = _ref.schema,
-      uiSchema = _ref.uiSchema;
-
+    schema = _ref.schema,
+    uiSchema = _ref.uiSchema;
   var index = arguments.length > 1 ? arguments[1] : undefined;
   var itemUiOptions = getUiOptions({
     schema: schema,
@@ -8395,91 +8270,93 @@ function replaceArrayIndex() {
     if (itemUiOptions[curItem]) {
       preVal["ui:".concat(curItem)] = String(itemUiOptions[curItem]).replace(/\$index/g, index + 1);
     }
-
     return preVal;
   }, {});
-} // Is hidden Widget
+}
 
+// Is hidden Widget
 function isHiddenWidget(_ref2) {
   var _ref2$schema = _ref2.schema,
-      schema = _ref2$schema === void 0 ? {} : _ref2$schema,
-      _ref2$uiSchema = _ref2.uiSchema,
-      uiSchema = _ref2$uiSchema === void 0 ? {} : _ref2$uiSchema,
-      _ref2$curNodePath = _ref2.curNodePath,
-      curNodePath = _ref2$curNodePath === void 0 ? '' : _ref2$curNodePath,
-      _ref2$rootFormData = _ref2.rootFormData,
-      rootFormData = _ref2$rootFormData === void 0 ? {} : _ref2$rootFormData;
+    schema = _ref2$schema === void 0 ? {} : _ref2$schema,
+    _ref2$uiSchema = _ref2.uiSchema,
+    uiSchema = _ref2$uiSchema === void 0 ? {} : _ref2$uiSchema,
+    _ref2$curNodePath = _ref2.curNodePath,
+    curNodePath = _ref2$curNodePath === void 0 ? '' : _ref2$curNodePath,
+    _ref2$rootFormData = _ref2.rootFormData,
+    rootFormData = _ref2$rootFormData === void 0 ? {} : _ref2$rootFormData;
   var widget = uiSchema['ui:widget'] || schema['ui:widget'];
-  var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden']; // Support configuring ui:hidden expression
+  var hiddenExpression = uiSchema['ui:hidden'] || schema['ui:hidden'];
 
+  // Support configuring ui:hidden expression
   return widget === 'HiddenWidget' || widget === 'hidden' || !!handleExpression(rootFormData, curNodePath, hiddenExpression, function () {
     // Configured function
     if (typeof hiddenExpression === 'function') {
       return hiddenExpression(getPathVal$1(rootFormData, curNodePath, 1), rootFormData);
-    } // Configured constant ??
+    }
 
-
+    // Configured constant ??
     return hiddenExpression;
   });
-} // Resolve current node ui field
+}
 
+// Resolve current node ui field
 function getUiField(FIELDS_MAP, _ref3) {
   var _ref3$schema = _ref3.schema,
-      schema = _ref3$schema === void 0 ? {} : _ref3$schema,
-      _ref3$uiSchema = _ref3.uiSchema,
-      uiSchema = _ref3$uiSchema === void 0 ? {} : _ref3$uiSchema;
-  var field = schema['ui:field'] || uiSchema['ui:field']; // Vue component, or registered component name
+    schema = _ref3$schema === void 0 ? {} : _ref3$schema,
+    _ref3$uiSchema = _ref3.uiSchema,
+    uiSchema = _ref3$uiSchema === void 0 ? {} : _ref3$uiSchema;
+  var field = schema['ui:field'] || uiSchema['ui:field'];
 
+  // Vue component, or registered component name
   if (typeof field === 'function' || _typeof(field) === 'object' || typeof field === 'string') {
     return {
       field: field,
       fieldProps: uiSchema['ui:fieldProps'] || schema['ui:fieldProps'] // Custom field, support passing additional props
-
     };
-  } // Type default field
+  }
 
-
+  // Type default field
   var fieldCtor = FIELDS_MAP[getSchemaType(schema)];
-
   if (fieldCtor) {
     return {
       field: fieldCtor
     };
-  } // If contains oneOf anyOf return empty without error
+  }
+
+  // If contains oneOf anyOf return empty without error
   // SchemaField will append oneOf anyOf information
-
-
   if (!fieldCtor && (schema.anyOf || schema.oneOf)) {
     return {
       field: null
     };
-  } // Unsupported type
+  }
 
-
+  // Unsupported type
   console.error('Current schema:', schema);
   throw new Error("Unsupported field type, type: ".concat(schema.type));
-} // Resolve user configured uiSchema options
+}
 
+// Resolve user configured uiSchema options
 function getUserUiOptions(_ref4) {
   var _ref4$schema = _ref4.schema,
-      schema = _ref4$schema === void 0 ? {} : _ref4$schema,
-      _ref4$uiSchema = _ref4.uiSchema,
-      uiSchema = _ref4$uiSchema === void 0 ? {} : _ref4$uiSchema,
-      curNodePath = _ref4.curNodePath,
-      _ref4$rootFormData = _ref4.rootFormData,
-      rootFormData = _ref4$rootFormData === void 0 ? {} : _ref4$rootFormData;
+    schema = _ref4$schema === void 0 ? {} : _ref4$schema,
+    _ref4$uiSchema = _ref4.uiSchema,
+    uiSchema = _ref4$uiSchema === void 0 ? {} : _ref4$uiSchema,
+    curNodePath = _ref4.curNodePath,
+    _ref4$rootFormData = _ref4.rootFormData,
+    rootFormData = _ref4$rootFormData === void 0 ? {} : _ref4$rootFormData;
   // Support uiSchema configured in schema file
   return Object.assign.apply(Object, [{}].concat(_toConsumableArray([schema, uiSchema].map(function (itemSchema) {
     return Object.keys(itemSchema).reduce(function (options, key) {
-      var value = itemSchema[key]; // Merge options inside and outside
-
+      var value = itemSchema[key];
+      // Merge options inside and outside
       if (key === 'ui:options' && isObject(value)) {
         return _objectSpread2(_objectSpread2({}, options), value);
-      } // https://github.com/lljj-x/vue-json-schema-form/issues/170
+      }
+
+      // https://github.com/lljj-x/vue-json-schema-form/issues/170
       // ui:hidden needs to be used as a built-in property and cannot be directly passed to widget component.
       //  If component needs it, it can only be passed using hidden in ui:options
-
-
       if (key !== 'ui:hidden') {
         // Handle ui:xxx parameters
         if (key.indexOf('ui:') === 0) {
@@ -8487,54 +8364,47 @@ function getUserUiOptions(_ref4) {
           return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(3), curNodePath === undefined ? value : handleExpression(rootFormData, curNodePath, value, function () {
             return value;
           })));
-        } // Handle fui:xxx parameters, support all options configured through function
+        }
 
-
+        // Handle fui:xxx parameters, support all options configured through function
         if (key.indexOf('fui:') === 0) {
           return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(4), value.call(null, getPathVal$1(rootFormData, curNodePath, 1), rootFormData, curNodePath)));
         }
       }
-
       return options;
     }, {});
   }))));
-} // Resolve ui options parameters of current node
+}
 
+// Resolve ui options parameters of current node
 function getUiOptions(_ref5) {
   var _ref5$schema = _ref5.schema,
-      schema = _ref5$schema === void 0 ? {} : _ref5$schema,
-      _ref5$uiSchema = _ref5.uiSchema,
-      uiSchema = _ref5$uiSchema === void 0 ? {} : _ref5$uiSchema,
-      _ref5$containsSpec = _ref5.containsSpec,
-      containsSpec = _ref5$containsSpec === void 0 ? true : _ref5$containsSpec,
-      curNodePath = _ref5.curNodePath,
-      rootFormData = _ref5.rootFormData;
+    schema = _ref5$schema === void 0 ? {} : _ref5$schema,
+    _ref5$uiSchema = _ref5.uiSchema,
+    uiSchema = _ref5$uiSchema === void 0 ? {} : _ref5$uiSchema,
+    _ref5$containsSpec = _ref5.containsSpec,
+    containsSpec = _ref5$containsSpec === void 0 ? true : _ref5$containsSpec,
+    curNodePath = _ref5.curNodePath,
+    rootFormData = _ref5.rootFormData;
   var spec = {};
-
   if (containsSpec) {
     spec.readonly = !!schema.readOnly;
-
     if (undefined !== schema.multipleOf) {
       // Component counter step
       spec.step = schema.multipleOf;
     }
-
     if (schema.minimum || schema.minimum === 0) {
       spec.min = schema.minimum;
     }
-
     if (schema.maximum || schema.maximum === 0) {
       spec.max = schema.maximum;
     }
-
     if (schema.minLength || schema.minLength === 0) {
       spec.minlength = schema.minLength;
     }
-
     if (schema.maxLength || schema.maxLength === 0) {
       spec.maxlength = schema.maxLength;
     }
-
     if (schema.format === 'date-time' || schema.format === 'date') {
       // Array type time range
       // Breaks schema specification, type array configured with format
@@ -8547,61 +8417,61 @@ function getUiOptions(_ref5) {
       }
     }
   }
-
   if (schema.title) spec.title = schema.title;
-  if (schema.description) spec.description = schema.description; // Calculate ui configuration
+  if (schema.description) spec.description = schema.description;
 
+  // Calculate ui configuration
   return _objectSpread2(_objectSpread2({}, spec), getUserUiOptions({
     schema: schema,
     uiSchema: uiSchema,
     curNodePath: curNodePath,
     rootFormData: rootFormData
   }));
-} // Get ui configuration of current node (options + widget)
-// Process into format needed by Widget component
+}
 
+// Get ui configuration of current node (options + widget)
+// Process into format needed by Widget component
 function getWidgetConfig(_ref6) {
   var _ref6$schema = _ref6.schema,
-      schema = _ref6$schema === void 0 ? {} : _ref6$schema,
-      _ref6$uiSchema = _ref6.uiSchema,
-      uiSchema = _ref6$uiSchema === void 0 ? {} : _ref6$uiSchema,
-      curNodePath = _ref6.curNodePath,
-      rootFormData = _ref6.rootFormData;
+    schema = _ref6$schema === void 0 ? {} : _ref6$schema,
+    _ref6$uiSchema = _ref6.uiSchema,
+    uiSchema = _ref6$uiSchema === void 0 ? {} : _ref6$uiSchema,
+    curNodePath = _ref6.curNodePath,
+    rootFormData = _ref6.rootFormData;
   var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var uiOptions = getUiOptions({
     schema: schema,
     uiSchema: uiSchema,
     curNodePath: curNodePath,
     rootFormData: rootFormData
-  }); // No Widget configured, each Field component judges by type
+  });
 
+  // No Widget configured, each Field component judges by type
   if (!uiOptions.widget && fallback) {
     Object.assign(uiOptions, fallback({
       schema: schema,
       uiSchema: uiSchema
     }));
   }
-
   var widget = uiOptions.widget,
-      label = uiOptions.title,
-      labelWidth = uiOptions.labelWidth,
-      description = uiOptions.description,
-      widgetAttrs = uiOptions.attrs,
-      widgetClass = uiOptions.class,
-      widgetStyle = uiOptions.style,
-      widgetListeners = uiOptions.widgetListeners,
-      fieldAttrs = uiOptions.fieldAttrs,
-      fieldStyle = uiOptions.fieldStyle,
-      fieldClass = uiOptions.fieldClass,
-      emptyValue = uiOptions.emptyValue,
-      width = uiOptions.width,
-      getWidget = uiOptions.getWidget,
-      renderScopedSlots = uiOptions.renderScopedSlots,
-      renderChildren = uiOptions.renderChildren,
-      onChange = uiOptions.onChange,
-      uiRequired = uiOptions.required,
-      uiProps = _objectWithoutProperties(uiOptions, ["widget", "title", "labelWidth", "description", "attrs", "class", "style", "widgetListeners", "fieldAttrs", "fieldStyle", "fieldClass", "emptyValue", "width", "getWidget", "renderScopedSlots", "renderChildren", "onChange", "required"]);
-
+    label = uiOptions.title,
+    labelWidth = uiOptions.labelWidth,
+    description = uiOptions.description,
+    widgetAttrs = uiOptions.attrs,
+    widgetClass = uiOptions.class,
+    widgetStyle = uiOptions.style,
+    widgetListeners = uiOptions.widgetListeners,
+    fieldAttrs = uiOptions.fieldAttrs,
+    fieldStyle = uiOptions.fieldStyle,
+    fieldClass = uiOptions.fieldClass,
+    emptyValue = uiOptions.emptyValue,
+    width = uiOptions.width,
+    getWidget = uiOptions.getWidget,
+    renderScopedSlots = uiOptions.renderScopedSlots,
+    renderChildren = uiOptions.renderChildren,
+    onChange = uiOptions.onChange,
+    uiRequired = uiOptions.required,
+    uiProps = _objectWithoutProperties(uiOptions, _excluded$1);
   return {
     widget: widget,
     label: label,
@@ -8623,48 +8493,45 @@ function getWidgetConfig(_ref6) {
     uiProps: uiProps,
     uiRequired: uiRequired
   };
-} // Resolve user configured errorSchema options
+}
 
+// Resolve user configured errorSchema options
 function getUserErrOptions(_ref7) {
   var _ref7$schema = _ref7.schema,
-      schema = _ref7$schema === void 0 ? {} : _ref7$schema,
-      _ref7$uiSchema = _ref7.uiSchema,
-      uiSchema = _ref7$uiSchema === void 0 ? {} : _ref7$uiSchema,
-      _ref7$errorSchema = _ref7.errorSchema,
-      errorSchema = _ref7$errorSchema === void 0 ? {} : _ref7$errorSchema;
+    schema = _ref7$schema === void 0 ? {} : _ref7$schema,
+    _ref7$uiSchema = _ref7.uiSchema,
+    uiSchema = _ref7$uiSchema === void 0 ? {} : _ref7$uiSchema,
+    _ref7$errorSchema = _ref7.errorSchema,
+    errorSchema = _ref7$errorSchema === void 0 ? {} : _ref7$errorSchema;
   return Object.assign.apply(Object, [{}].concat(_toConsumableArray([schema, uiSchema, errorSchema].map(function (itemSchema) {
     return Object.keys(itemSchema).reduce(function (options, key) {
-      var value = itemSchema[key]; // options 内外合并
-
+      var value = itemSchema[key];
+      // options 内外合并
       if (key === 'err:options' && isObject(value)) {
         return _objectSpread2(_objectSpread2({}, options), value);
       }
-
       if (key.indexOf('err:') === 0) {
         return _objectSpread2(_objectSpread2({}, options), {}, _defineProperty({}, key.substring(4), value));
       }
-
       return options;
     }, {});
   }))));
-} // ui:order object-> properties sorting
+}
 
+// ui:order object-> properties sorting
 function orderProperties(properties, order) {
   if (!Array.isArray(order)) {
     return properties;
   }
-
   var arrayToHash = function arrayToHash(arr) {
     return arr.reduce(function (prev, curr) {
       prev[curr] = true;
       return prev;
     }, {});
   };
-
   var errorPropList = function errorPropList(arr) {
     return arr.length > 1 ? "properties '".concat(arr.join("', '"), "'") : "property '".concat(arr[0], "'");
   };
-
   var propertyHash = arrayToHash(properties);
   var orderFiltered = order.filter(function (prop) {
     return prop === '*' || propertyHash[prop];
@@ -8674,29 +8541,24 @@ function orderProperties(properties, order) {
     return !orderHash[prop];
   });
   var restIndex = orderFiltered.indexOf('*');
-
   if (restIndex === -1) {
     if (rest.length) {
       throw new Error("uiSchema order list does not contain ".concat(errorPropList(rest)));
     }
-
     return orderFiltered;
   }
-
   if (restIndex !== orderFiltered.lastIndexOf('*')) {
     throw new Error('uiSchema order list contains more than one wildcard item');
   }
-
   var complete = _toConsumableArray(orderFiltered);
-
   complete.splice.apply(complete, [restIndex, 1].concat(_toConsumableArray(rest)));
   return complete;
 }
+
 /**
  * Single match
  * Constant, or only one enum
  */
-
 function isConstant(schema) {
   return Array.isArray(schema.enum) && schema.enum.length === 1 || schema.hasOwnProperty('const');
 }
@@ -8704,13 +8566,12 @@ function toConstant(schema) {
   if (Array.isArray(schema.enum) && schema.enum.length === 1) {
     return schema.enum[0];
   }
-
   if (schema.hasOwnProperty('const')) {
     return schema.const;
   }
-
   throw new Error('schema cannot be inferred as a constant');
 }
+
 /**
  * Is select list
  * Enum or oneOf anyOf where each item has only one fixed constant value
@@ -8718,50 +8579,47 @@ function toConstant(schema) {
  * @param rootSchema
  * @returns {boolean|*}
  */
-
 function isSelect(_schema) {
   var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var schema = retrieveSchema(_schema, rootSchema);
   var altSchemas = schema.oneOf || schema.anyOf;
-
   if (Array.isArray(schema.enum)) {
     return true;
   }
-
   if (Array.isArray(altSchemas)) {
     return altSchemas.every(function (altSchemasItem) {
       return isConstant(altSchemasItem);
     });
   }
-
   return false;
-} // Items are all objects
+}
 
+// Items are all objects
 function isFixedItems(schema) {
   return Array.isArray(schema.items) && schema.items.length > 0 && schema.items.every(function (item) {
     return isObject(item);
   });
-} // Is multi-select
+}
 
+// Is multi-select
 function isMultiSelect(schema) {
   var rootSchema = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
   if (!schema.uniqueItems || !schema.items) {
     return false;
   }
-
   return isSelect(schema.items, rootSchema);
-} // array additionalItems
-// https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
+}
 
+// array additionalItems
+// https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
 function allowAdditionalItems(schema) {
   if (schema.additionalItems === true) {
     console.warn('additionalItems=true is currently not supported');
   }
-
   return isObject(schema.additionalItems);
-} // Dropdown options
+}
 
+// Dropdown options
 function optionsList(schema, uiSchema, curNodePath, rootFormData) {
   // enum
   if (schema.enum) {
@@ -8770,8 +8628,9 @@ function optionsList(schema, uiSchema, curNodePath, rootFormData) {
       uiSchema: uiSchema,
       curNodePath: curNodePath,
       rootFormData: rootFormData
-    }); // ui configured enumNames has priority
+    });
 
+    // ui configured enumNames has priority
     var enumNames = uiOptions.enumNames || schema.enumNames;
     return schema.enum.map(function (value, i) {
       var label = enumNames && enumNames[i] || String(value);
@@ -8780,9 +8639,9 @@ function optionsList(schema, uiSchema, curNodePath, rootFormData) {
         value: value
       };
     });
-  } // oneOf | anyOf
+  }
 
-
+  // oneOf | anyOf
   var altSchemas = schema.oneOf || schema.anyOf;
   var altUiSchemas = uiSchema.oneOf || uiSchema.anyOf;
   return altSchemas.map(function (curSchema, i) {
@@ -8802,13 +8661,12 @@ function optionsList(schema, uiSchema, curNodePath, rootFormData) {
 }
 function fallbackLabel(oriLabel, isFallback, curNodePath) {
   if (oriLabel) return oriLabel;
-
   if (isFallback) {
-    var backLabel = curNodePath.split('.').pop(); // Filter pure numeric strings
+    var backLabel = curNodePath.split('.').pop();
 
+    // Filter pure numeric strings
     if (backLabel && backLabel !== "".concat(Number(backLabel))) return backLabel;
   }
-
   return '';
 }
 
@@ -8834,8 +8692,9 @@ var formUtils = /*#__PURE__*/Object.freeze({
 
 var ajv$1 = createAjvInstance();
 var formerCustomFormats = null;
-var formerMetaSchema = null; // Create instance
+var formerMetaSchema = null;
 
+// Create instance
 function createAjvInstance() {
   var ajvInstance = new ajv({
     errorDataPath: 'property',
@@ -8843,35 +8702,36 @@ function createAjvInstance() {
     multipleOfPrecision: 8,
     schemaId: 'auto',
     unknownFormats: 'ignore'
-  }); // 添加base-64 format
+  });
 
-  ajvInstance.addFormat('data-url', /^data:([a-z]+\/[a-z0-9-+.]+)?;(?:name=(.*);)?base64,(.*)$/); // 添加color format
+  // 添加base-64 format
+  ajvInstance.addFormat('data-url', /^data:([a-z]+\/[a-z0-9-+.]+)?;(?:name=(.*);)?base64,(.*)$/);
 
-  ajvInstance.addFormat('color', // eslint-disable-next-line max-len
+  // 添加color format
+  ajvInstance.addFormat('color',
+  // eslint-disable-next-line max-len
   /^(#?([0-9A-Fa-f]{3,4}){1,2}\b|aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow|(rgba?|hsla?)\(.*\))$/);
   return ajvInstance;
 }
+
 /**
  * Transform error output from ajv to the format used by jsonschema
  * At some point, components should be updated to support ajv.
  */
-
-
 function transformAjvErrors() {
   var errors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
   if (errors === null) {
     return [];
   }
-
   return errors.map(function (e) {
     var dataPath = e.dataPath,
-        keyword = e.keyword,
-        message = e.message,
-        params = e.params,
-        schemaPath = e.schemaPath;
-    var property = "".concat(dataPath); // put data in expected format
+      keyword = e.keyword,
+      message = e.message,
+      params = e.params,
+      schemaPath = e.schemaPath;
+    var property = "".concat(dataPath);
 
+    // put data in expected format
     return {
       name: keyword,
       property: property,
@@ -8883,6 +8743,7 @@ function transformAjvErrors() {
     };
   });
 }
+
 /**
  * Validate formData through schema and return error information
  * @param formData Data to validate
@@ -8892,94 +8753,91 @@ function transformAjvErrors() {
  * @param customFormats Add ajv custom formats
  * @returns {{errors: ([]|{stack: string, schemaPath: *, name: *, property: string, message: *, params: *}[])}}
  */
-
-
 function ajvValidateFormData() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      formData = _ref.formData,
-      schema = _ref.schema,
-      transformErrors = _ref.transformErrors,
-      _ref$additionalMetaSc = _ref.additionalMetaSchemas,
-      additionalMetaSchemas = _ref$additionalMetaSc === void 0 ? [] : _ref$additionalMetaSc,
-      _ref$customFormats = _ref.customFormats,
-      customFormats = _ref$customFormats === void 0 ? {} : _ref$customFormats;
-
+    formData = _ref.formData,
+    schema = _ref.schema,
+    transformErrors = _ref.transformErrors,
+    _ref$additionalMetaSc = _ref.additionalMetaSchemas,
+    additionalMetaSchemas = _ref$additionalMetaSc === void 0 ? [] : _ref$additionalMetaSc,
+    _ref$customFormats = _ref.customFormats,
+    customFormats = _ref$customFormats === void 0 ? {} : _ref$customFormats;
   var hasNewMetaSchemas = !deepEquals(formerMetaSchema, additionalMetaSchemas);
-  var hasNewFormats = !deepEquals(formerCustomFormats, customFormats); // Changed Meta or adjusted format config, reset new instance
+  var hasNewFormats = !deepEquals(formerCustomFormats, customFormats);
 
+  // Changed Meta or adjusted format config, reset new instance
   if (hasNewMetaSchemas || hasNewFormats) {
     ajv$1 = createAjvInstance();
-  } // Add more schemas to validate
+  }
 
-
+  // Add more schemas to validate
   if (additionalMetaSchemas && hasNewMetaSchemas && Array.isArray(additionalMetaSchemas)) {
     ajv$1.addMetaSchema(additionalMetaSchemas);
     formerMetaSchema = additionalMetaSchemas;
-  } // Register custom formats - unchanged, register only once - otherwise recreate instance
+  }
 
-
+  // Register custom formats - unchanged, register only once - otherwise recreate instance
   if (customFormats && hasNewFormats && isObject(customFormats)) {
     Object.keys(customFormats).forEach(function (formatName) {
       ajv$1.addFormat(formatName, customFormats[formatName]);
     });
     formerCustomFormats = customFormats;
   }
-
   var validationError = null;
-
   try {
     ajv$1.validate(schema, formData);
   } catch (err) {
     validationError = err;
-  } // ajv default multilingual processing
+  }
 
-
+  // ajv default multilingual processing
   i18n.getCurrentLocalize()(ajv$1.errors);
-  var errors = transformAjvErrors(ajv$1.errors); // Clear errors
+  var errors = transformAjvErrors(ajv$1.errors);
 
-  ajv$1.errors = null; // Handle exceptions
+  // Clear errors
+  ajv$1.errors = null;
 
+  // Handle exceptions
   var noProperMetaSchema = validationError && validationError.message && typeof validationError.message === 'string' && validationError.message.includes('no schema with key or ref ');
-
   if (noProperMetaSchema) {
     errors = [].concat(_toConsumableArray(errors), [{
       stack: validationError.message
     }]);
-  } // Transform errors, such as passing in custom errors
+  }
 
-
+  // Transform errors, such as passing in custom errors
   if (typeof transformErrors === 'function') {
     errors = transformErrors(errors);
   }
-
   return {
     errors: errors
   };
-} // Validate formData and transform error messages
+}
 
+// Validate formData and transform error messages
 function validateFormDataAndTransformMsg() {
   var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      formData = _ref2.formData,
-      schema = _ref2.schema,
-      uiSchema = _ref2.uiSchema,
-      transformErrors = _ref2.transformErrors,
-      _ref2$additionalMetaS = _ref2.additionalMetaSchemas,
-      additionalMetaSchemas = _ref2$additionalMetaS === void 0 ? [] : _ref2$additionalMetaS,
-      _ref2$customFormats = _ref2.customFormats,
-      customFormats = _ref2$customFormats === void 0 ? {} : _ref2$customFormats,
-      _ref2$errorSchema = _ref2.errorSchema,
-      errorSchema = _ref2$errorSchema === void 0 ? {} : _ref2$errorSchema,
-      _ref2$required = _ref2.required,
-      required = _ref2$required === void 0 ? false : _ref2$required,
-      _ref2$propPath = _ref2.propPath,
-      propPath = _ref2$propPath === void 0 ? '' : _ref2$propPath,
-      _ref2$isOnlyFirstErro = _ref2.isOnlyFirstError,
-      isOnlyFirstError = _ref2$isOnlyFirstErro === void 0 ? true : _ref2$isOnlyFirstErro;
-  // Special handling for array types configured with format
+    formData = _ref2.formData,
+    schema = _ref2.schema,
+    uiSchema = _ref2.uiSchema,
+    transformErrors = _ref2.transformErrors,
+    _ref2$additionalMetaS = _ref2.additionalMetaSchemas,
+    additionalMetaSchemas = _ref2$additionalMetaS === void 0 ? [] : _ref2$additionalMetaS,
+    _ref2$customFormats = _ref2.customFormats,
+    customFormats = _ref2$customFormats === void 0 ? {} : _ref2$customFormats,
+    _ref2$errorSchema = _ref2.errorSchema,
+    errorSchema = _ref2$errorSchema === void 0 ? {} : _ref2$errorSchema,
+    _ref2$required = _ref2.required,
+    required = _ref2$required === void 0 ? false : _ref2$required,
+    _ref2$propPath = _ref2.propPath,
+    propPath = _ref2$propPath === void 0 ? '' : _ref2$propPath,
+    _ref2$isOnlyFirstErro = _ref2.isOnlyFirstError,
+    isOnlyFirstError = _ref2$isOnlyFirstErro === void 0 ? true : _ref2$isOnlyFirstErro;
 
+  // Validate required information, isEmpty check
+  // Special handling for array types configured with format
   var emptyArray = schema.type === 'array' && Array.isArray(formData) && formData.length === 0;
   var isEmpty = formData === undefined || emptyArray;
-
   if (required) {
     if (isEmpty) {
       var requireErrObj = {
@@ -8987,43 +8845,42 @@ function validateFormDataAndTransformMsg() {
         params: {
           missingProperty: propPath
         }
-      }; // User set validation message
+      };
 
+      // User set validation message
       var errSchemaMsg = getUserErrOptions({
         schema: schema,
         uiSchema: uiSchema,
         errorSchema: errorSchema
       }).required;
-
       if (errSchemaMsg) {
         requireErrObj.message = errSchemaMsg;
       } else {
         // Process multilingual require message (ajv modifies original reference)
         i18n.getCurrentLocalize()([requireErrObj]);
       }
-
       return [requireErrObj];
     }
   } else if (isEmpty && !emptyArray) {
     // Non-required, empty, validation passes
     return [];
-  } // Validate ajv error messages
+  }
 
-
+  // Validate ajv error messages
   var ajvErrors = ajvValidateFormData({
     formData: formData,
     schema: schema,
     transformErrors: transformErrors,
     additionalMetaSchemas: additionalMetaSchemas,
     customFormats: customFormats
-  }).errors; // Filter top-level errors
+  }).errors;
 
+  // Filter top-level errors
   {
     ajvErrors = ajvErrors.filter(function (item) {
       return item.property === '' && !item.schemaPath.includes('#/anyOf/') && !item.schemaPath.includes('#/oneOf/') || item.name === 'additionalProperties';
     });
   }
-
   var userErrOptions = getUserErrOptions({
     schema: schema,
     uiSchema: uiSchema,
@@ -9036,39 +8893,41 @@ function validateFormDataAndTransformMsg() {
     return preErrors;
   }, []);
 }
+
 /**
  * Validate data according to schema, return true if data is valid, otherwise return false. If schema is invalid, this function will return false.
  * @param schema
  * @param data
  * @returns {boolean|PromiseLike<any>}
  */
-
 function isValid(schema, data) {
   try {
     return ajv$1.validate(schema, data);
   } catch (e) {
     return false;
   }
-} // ajv valida
+}
 
+// ajv valida
 function ajvValid(schema, data) {
   return ajv$1.validate(schema, data);
-} // If not found
-// return -1
+}
 
+// If not found
+// return -1
 function getMatchingIndex(formData, options, rootSchema) {
   var haveAllFields = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-
   // eslint-disable-next-line no-plusplus
   for (var i = 0; i < options.length; i++) {
-    var option = retrieveSchema(options[i], rootSchema, formData); // If the schema describes an object then we need to add slightly more
+    var option = retrieveSchema(options[i], rootSchema, formData);
+
+    // If the schema describes an object then we need to add slightly more
     // strict matching to the schema, because unless the schema uses the
     // "requires" keyword, an object will match the schema as long as it
     // doesn't have matching keys with a conflicting type. To do this we use an
     // "anyOf" with an array of requires. This augmentation expresses that the
     // schema should match if any of the keys in the schema are present on the
     // object and pass validation.
-
     if (option.properties) {
       // Create an "anyOf" schema that requires at least one of the keys in the
       // "properties" object
@@ -9081,45 +8940,42 @@ function getMatchingIndex(formData, options, rootSchema) {
           };
         })
       });
+      var augmentedSchema = void 0;
 
-      var augmentedSchema = void 0; // If the "anyOf" keyword already exists, wrap the augmentation in an "allOf"
-
+      // If the "anyOf" keyword already exists, wrap the augmentation in an "allOf"
       if (option.anyOf) {
         // Create a shallow clone of the option
-        var shallowClone = _extends({}, option);
-
+        var shallowClone = _extends({}, (_objectDestructuringEmpty(option), option));
         if (!shallowClone.allOf) {
           shallowClone.allOf = [];
         } else {
           // If "allOf" already exists, shallow clone the array
           shallowClone.allOf = shallowClone.allOf.slice();
         }
-
         shallowClone.allOf.push(requiresAnyOf);
         augmentedSchema = shallowClone;
       } else {
         augmentedSchema = Object.assign({}, option, requiresAnyOf);
-      } // Remove the "required" field as it's likely that not all fields have
+      }
+
+      // Remove the "required" field as it's likely that not all fields have
       // been filled in yet, which will mean that the schema is not valid
+
       // For edit backfill data scenarios, can directly use required for judgment
-
-
       if (!haveAllFields) delete augmentedSchema.required;
-
       if (isValid(augmentedSchema, formData)) {
         return i;
       }
     } else if (isValid(option, formData)) {
       return i;
     }
-  } // Try to find const config
+  }
 
-
+  // Try to find const config
   if (options[0] && options[0].properties) {
     var constProperty = Object.keys(options[0].properties).find(function (k) {
       return options[0].properties[k].const;
     });
-
     if (constProperty) {
       // eslint-disable-next-line no-plusplus
       for (var _i = 0; _i < options.length; _i++) {
@@ -9129,10 +8985,10 @@ function getMatchingIndex(formData, options, rootSchema) {
       }
     }
   }
-
   return -1;
-} // oneOf anyOf find current matching item index through formData value
+}
 
+// oneOf anyOf find current matching item index through formData value
 function getMatchingOption(formData, options, rootSchema) {
   var haveAllFields = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   var index = getMatchingIndex(formData, options, rootSchema, haveAllFields);
@@ -9154,6 +9010,7 @@ var validate$2 = /*#__PURE__*/Object.freeze({
  * Source code from: react-jsonschema-form with detail adjustments, rewrote allOf implementation logic
  * https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/utils.js#L283
  */
+
 /**
  * When merging defaults and form data, we want to merge in this specific way:
  * - objects are deeply merged
@@ -9163,49 +9020,42 @@ var validate$2 = /*#__PURE__*/Object.freeze({
  *   - when the array is not set in form data, the default is copied over
  * - scalars are overwritten/set by form data
  */
-
 function mergeDefaultsWithFormData(defaults, formData) {
   if (Array.isArray(formData)) {
     if (!Array.isArray(defaults)) {
       console.warn('Invalid formData, data has been overwritten', formData);
       return defaults;
     }
-
     return formData.map(function (value, idx) {
       if (defaults[idx]) {
         return mergeDefaultsWithFormData(defaults[idx], value);
       }
-
       return value;
     });
   }
-
   if (isObject(formData)) {
     var acc = Object.assign({}, defaults); // Prevent mutation of source object.
-
     return Object.keys(formData).reduce(function (preAcc, key) {
       preAcc[key] = mergeDefaultsWithFormData(defaults ? defaults[key] : {}, formData[key]);
       return preAcc;
     }, acc);
   }
-
   return formData;
 }
-
 function computeDefaults(_schema, parentDefaults, rootSchema) {
   var rawFormData = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var includeUndefinedValues = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   var haveAllFields = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
   var schema = isObject(_schema) ? _schema : {};
-  var formData = isObject(rawFormData) ? rawFormData : {}; // allOf processing and merging data
+  var formData = isObject(rawFormData) ? rawFormData : {};
 
+  // allOf processing and merging data
   if ('allOf' in schema) {
     schema = resolveAllOf(schema, rootSchema, formData);
-  } // Compute the defaults recursively: give highest priority to deepest nodes.
+  }
 
-
+  // Compute the defaults recursively: give highest priority to deepest nodes.
   var defaults = parentDefaults;
-
   if (isObject(defaults) && isObject(schema.default)) {
     // For object defaults, only override parent defaults that are defined in
     // schema.default.
@@ -9217,26 +9067,27 @@ function computeDefaults(_schema, parentDefaults, rootSchema) {
     // Use referenced schema defaults for this node.
     var refSchema = findSchemaDefinition(schema.$ref, rootSchema);
     return computeDefaults(refSchema, defaults, rootSchema, formData, includeUndefinedValues, haveAllFields);
-  } else if (
-  /* ('dependencies' in schema) {
-  const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
-  return computeDefaults(
-  resolvedSchema,
-  defaults,
-  rootSchema,
-  formData,
-  includeUndefinedValues,
-  haveAllFields
-  );
-  } else if */
-  isFixedItems(schema)) {
+  } else if /* ('dependencies' in schema) {
+            const resolvedSchema = resolveDependencies(schema, rootSchema, formData);
+            return computeDefaults(
+            resolvedSchema,
+            defaults,
+            rootSchema,
+            formData,
+            includeUndefinedValues,
+            haveAllFields
+            );
+            } else if */
+  (isFixedItems(schema)) {
     defaults = schema.items.map(function (itemSchema, idx) {
       return computeDefaults(itemSchema, Array.isArray(parentDefaults) ? parentDefaults[idx] : undefined, rootSchema, formData, includeUndefinedValues, haveAllFields);
     });
   } else if ('oneOf' in schema) {
     var matchSchema = retrieveSchema(schema.oneOf[getMatchingOption(formData, schema.oneOf, rootSchema, haveAllFields)], rootSchema, formData);
     schema = mergeObjects(schema, matchSchema);
-    delete schema.oneOf; // if (schema.properties && matchSchema.properties) {
+    delete schema.oneOf;
+
+    // if (schema.properties && matchSchema.properties) {
     //     // 对象 oneOf 需要合并原属性和 oneOf 属性
     //     const mergeSchema = mergeObjects(schema, matchSchema);
     //     delete mergeSchema.oneOf;
@@ -9246,9 +9097,10 @@ function computeDefaults(_schema, parentDefaults, rootSchema) {
     // }
   } else if ('anyOf' in schema) {
     var _matchSchema = retrieveSchema(schema.anyOf[getMatchingOption(formData, schema.anyOf, rootSchema, haveAllFields)], rootSchema, formData);
-
     schema = mergeObjects(schema, _matchSchema);
-    delete schema.anyOf; // if (schema.properties && matchSchema.properties) {
+    delete schema.anyOf;
+
+    // if (schema.properties && matchSchema.properties) {
     //     // 对象 anyOf 需要合并原属性和 anyOf 属性
     //     const mergeSchema = mergeObjects(schema, matchSchema);
     //     delete mergeSchema.anyOf;
@@ -9256,54 +9108,47 @@ function computeDefaults(_schema, parentDefaults, rootSchema) {
     // } else {
     //     schema = matchSchema;
     // }
-  } // Not defaults defined for this node, fallback to generic typed ones.
-
-
+  }
+  // Not defaults defined for this node, fallback to generic typed ones.
   if (typeof defaults === 'undefined') {
     defaults = schema.default;
-  } // eslint-disable-next-line default-case
-
-
+  }
+  // eslint-disable-next-line default-case
   switch (getSchemaType(schema)) {
     case 'null':
       return null;
-    // We need to recur for object schema inner default values.
 
+    // We need to recur for object schema inner default values.
     case 'object':
       return Object.keys(schema.properties || {}).reduce(function (acc, key) {
         // Compute the defaults for this node, with the parent defaults we might
         // have from a previous run: defaults[key].
         var computedDefault = computeDefaults(schema.properties[key], (defaults || {})[key], rootSchema, (formData || {})[key], includeUndefinedValues, haveAllFields);
-
         if (includeUndefinedValues || computedDefault !== undefined) {
           acc[key] = computedDefault;
         }
-
         return acc;
       }, {});
-
     case 'array':
       // Inject defaults into existing array defaults
       if (Array.isArray(defaults)) {
         defaults = defaults.map(function (item, idx) {
           return computeDefaults(schema.items[idx] || schema.additionalItems || {}, item, rootSchema, {}, includeUndefinedValues, haveAllFields);
         });
-      } // Deeply inject defaults into already existing form data
+      }
 
-
+      // Deeply inject defaults into already existing form data
       if (Array.isArray(rawFormData)) {
         defaults = rawFormData.map(function (item, idx) {
           return computeDefaults(schema.items, (defaults || {})[idx], rootSchema, item, {}, includeUndefinedValues, haveAllFields);
         });
       }
-
       if (schema.minItems) {
         if (!isMultiSelect(schema, rootSchema)) {
           var defaultsLength = defaults ? defaults.length : 0;
-
           if (schema.minItems > defaultsLength) {
-            var defaultEntries = defaults || []; // populate the array with the defaults
-
+            var defaultEntries = defaults || [];
+            // populate the array with the defaults
             var fillerSchema = Array.isArray(schema.items) ? schema.additionalItems : schema.items;
             var fillerEntries = fillObj(new Array(schema.minItems - defaultsLength), computeDefaults(fillerSchema, fillerSchema.defaults, rootSchema, {}, includeUndefinedValues, haveAllFields));
             return defaultEntries.concat(fillerEntries);
@@ -9311,42 +9156,36 @@ function computeDefaults(_schema, parentDefaults, rootSchema) {
         } else {
           return defaults || [];
         }
-      } // undefined defaults to empty array
+      }
 
-
+      // undefined defaults to empty array
       defaults = defaults === undefined ? [] : defaults;
   }
-
   return defaults;
-} // Get default form data
+}
 
-
+// Get default form data
 function getDefaultFormState(_schema, formData) {
   var rootSchema = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   var includeUndefinedValues = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
   var haveAllFields = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-
   if (!isObject(_schema)) {
     throw new Error("Invalid schema: ".concat(_schema));
   }
-
   var schema = retrieveSchema(_schema, rootSchema, formData);
   var defaults = computeDefaults(schema, _schema.default, rootSchema, formData, includeUndefinedValues, haveAllFields);
-
   if (typeof formData === 'undefined') {
     // No form data? Use schema defaults.
     return defaults;
-  } // When formData is passed in, merge the passed data
+  }
 
-
+  // When formData is passed in, merge the passed data
   if (isObject(formData) || Array.isArray(formData)) {
     return mergeDefaultsWithFormData(defaults, formData);
   }
-
   if (formData === 0 || formData === false || formData === '') {
     return formData;
   }
-
   return formData || defaults;
 }
 
@@ -9383,6 +9222,7 @@ styleInject(css_248z);
 /**
  * Created by Liu.Jun on 2020/4/16 10:47 下午.
  */
+
 var vueProps = {
   formFooter: {
     type: Object,
@@ -9453,6 +9293,7 @@ var vueProps = {
 /**
  * Created by Liu.Jun on 2020/12/27 9:53 下午.
  */
+
 var FormFooter = {
   name: 'FormFooter',
   props: {
@@ -9481,10 +9322,10 @@ var FormFooter = {
   render: function render(h) {
     var self = this;
     var _this$$props = this.$props,
-        okBtn = _this$$props.okBtn,
-        okBtnProps = _this$$props.okBtnProps,
-        cancelBtn = _this$$props.cancelBtn,
-        COMPONENT_MAP = _this$$props.globalOptions.COMPONENT_MAP;
+      okBtn = _this$$props.okBtn,
+      okBtnProps = _this$$props.okBtnProps,
+      cancelBtn = _this$$props.cancelBtn,
+      COMPONENT_MAP = _this$$props.globalOptions.COMPONENT_MAP;
     return h(COMPONENT_MAP.formItem, _objectSpread2({
       class: {
         formFooter_item: true
@@ -9515,14 +9356,15 @@ var FormFooter = {
  * Created by Liu.Jun on 2020/4/25 14:45.
  */
 
+// Delete current path value
 function deletePathVal(vueData, name) {
   Vue.delete(vueData, name);
-} // Set current path value
+}
 
+// Set current path value
 function setPathVal(obj, path, value) {
   // Vue.set ?
   var pathArr = path.split(pathSeparator);
-
   for (var i = 0; i < pathArr.length; i += 1) {
     if (pathArr.length - i < 2) {
       // Last data
@@ -9530,7 +9372,6 @@ function setPathVal(obj, path, value) {
       Vue.set(obj, pathArr[pathArr.length - 1], value);
       break;
     }
-
     obj = obj[pathArr[i]];
   }
 }
@@ -9567,6 +9408,7 @@ var vueUtils = /*#__PURE__*/Object.freeze({
 //
 //
 //
+
 var script = {
   name: 'FieldGroupWrap',
   inject: ['genFormProvide'],
@@ -9596,23 +9438,17 @@ var script = {
   computed: {
     trueTitle: function trueTitle() {
       var _this$genFormProvide$;
-
       var title = this.title;
-
       if (title) {
         return title;
       }
-
       var fallbackLabel;
-
       if (typeof ((_this$genFormProvide$ = this.genFormProvide.fallbackLabel) === null || _this$genFormProvide$ === void 0 ? void 0 : _this$genFormProvide$.value) === 'boolean') {
         var _this$genFormProvide$2;
-
         fallbackLabel = (_this$genFormProvide$2 = this.genFormProvide.fallbackLabel) === null || _this$genFormProvide$2 === void 0 ? void 0 : _this$genFormProvide$2.value;
       } else {
         fallbackLabel = this.genFormProvide.fallbackLabel;
       }
-
       var backTitle = fallbackLabel && this.curNodePath.split('.').pop();
       if (backTitle !== "".concat(Number(backTitle))) return backTitle;
       return '';
@@ -9707,15 +9543,12 @@ var normalizeComponent_1 = normalizeComponent;
 
 /* script */
 var __vue_script__ = script;
-/* template */
 
+/* template */
 var __vue_render__ = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("div", {
     staticClass: "fieldGroupWrap"
   }, [_vm.showTitle && _vm.trueTitle ? _c("h3", {
@@ -9729,20 +9562,16 @@ var __vue_render__ = function __vue_render__() {
     staticClass: "fieldGroupWrap_box"
   }, [_vm._t("default")], 2)]);
 };
-
 var __vue_staticRenderFns__ = [];
 __vue_render__._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__ = undefined;
 /* scoped */
-
 var __vue_scope_id__ = undefined;
 /* module identifier */
-
 var __vue_module_identifier__ = undefined;
 /* functional template */
-
 var __vue_is_functional_template__ = false;
 /* style inject */
 
@@ -9758,6 +9587,7 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent_1({
 /**
  * Created by Liu.Jun on 2020/4/22 18:58.
  */
+
 // 递归参数，统一props
 var vueProps$1 = {
   formProps: {
@@ -9837,11 +9667,8 @@ var vueProps$1 = {
 /* template */
 var __vue_render__$1 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("svg", {
     staticClass: "genFormIcon genFormIcon-down",
     attrs: {
@@ -9854,20 +9681,16 @@ var __vue_render__$1 = function __vue_render__() {
     }
   })]);
 };
-
 var __vue_staticRenderFns__$1 = [];
 __vue_render__$1._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$1 = undefined;
 /* scoped */
-
 var __vue_scope_id__$1 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$1 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$1 = false;
 /* style inject */
 
@@ -9885,11 +9708,8 @@ var __vue_component__$1 = /*#__PURE__*/normalizeComponent_1({
 /* template */
 var __vue_render__$2 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("svg", {
     staticClass: "genFormIcon genFormIcon-up",
     attrs: {
@@ -9902,20 +9722,16 @@ var __vue_render__$2 = function __vue_render__() {
     }
   })]);
 };
-
 var __vue_staticRenderFns__$2 = [];
 __vue_render__$2._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$2 = undefined;
 /* scoped */
-
 var __vue_scope_id__$2 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$2 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$2 = false;
 /* style inject */
 
@@ -9933,11 +9749,8 @@ var __vue_component__$2 = /*#__PURE__*/normalizeComponent_1({
 /* template */
 var __vue_render__$3 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("svg", {
     staticClass: "genFormIcon genFormIcon-close",
     attrs: {
@@ -9950,20 +9763,16 @@ var __vue_render__$3 = function __vue_render__() {
     }
   })]);
 };
-
 var __vue_staticRenderFns__$3 = [];
 __vue_render__$3._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$3 = undefined;
 /* scoped */
-
 var __vue_scope_id__$3 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$3 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$3 = false;
 /* style inject */
 
@@ -9981,11 +9790,8 @@ var __vue_component__$3 = /*#__PURE__*/normalizeComponent_1({
 /* template */
 var __vue_render__$4 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("svg", {
     staticClass: "genFormIcon genFormIcon-plus",
     attrs: {
@@ -10010,20 +9816,16 @@ var __vue_render__$4 = function __vue_render__() {
     }
   })]);
 };
-
 var __vue_staticRenderFns__$4 = [];
 __vue_render__$4._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$4 = undefined;
 /* scoped */
-
 var __vue_scope_id__$4 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$4 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$4 = false;
 /* style inject */
 
@@ -10041,11 +9843,8 @@ var __vue_component__$4 = /*#__PURE__*/normalizeComponent_1({
 /* template */
 var __vue_render__$5 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("svg", {
     staticClass: "genFormIcon genFormIcon-qs",
     attrs: {
@@ -10058,20 +9857,16 @@ var __vue_render__$5 = function __vue_render__() {
     }
   })]);
 };
-
 var __vue_staticRenderFns__$5 = [];
 __vue_render__$5._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$5 = undefined;
 /* scoped */
-
 var __vue_scope_id__$5 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$5 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$5 = false;
 /* style inject */
 
@@ -10248,13 +10043,11 @@ var Widget = {
         if (this.isFormData) {
           return getPathVal$1(this.rootFormData, this.curNodePath);
         }
-
         return this.curValue;
       },
       set: function set(value) {
         // 大多组件删除为空值会重置为null。
         var trueValue = value === '' || value === null ? this.emptyValue : value;
-
         if (this.isFormData) {
           setPathVal(this.rootFormData, this.curNodePath, trueValue);
         } else {
@@ -10264,7 +10057,6 @@ var Widget = {
     },
     realRequired: function realRequired() {
       var _this$uiRequired;
-
       return (_this$uiRequired = this.uiRequired) !== null && _this$uiRequired !== void 0 ? _this$uiRequired : this.required;
     }
   },
@@ -10281,10 +10073,10 @@ var Widget = {
   },
   render: function render(h) {
     var _self$formProps;
-
     var self = this;
-    var curNodePath = this.$props.curNodePath; // 判断是否为根节点
+    var curNodePath = this.$props.curNodePath;
 
+    // 判断是否为根节点
     var isRootNode = isRootNodePath(curNodePath);
     var isMiniDes = self.formProps && self.formProps.isMiniDes;
     var miniDesModel = isMiniDes !== null && isMiniDes !== void 0 ? isMiniDes : self.globalOptions.HELPERS.isMiniDes(self.formProps);
@@ -10310,15 +10102,16 @@ var Widget = {
       }, (_self$formProps = self.formProps) === null || _self$formProps === void 0 ? void 0 : _self$formProps.popover)
     }, [descriptionVNode, h(__vue_component__$5, {
       slot: 'reference'
-    })]) : null; // form-item style
+    })]) : null;
 
+    // form-item style
     var formItemStyle = _objectSpread2(_objectSpread2({}, self.fieldStyle), self.width ? {
       width: self.width,
       flexBasis: self.width,
       paddingRight: '10px'
-    } : {}); // 运行配置回退到 属性名
+    } : {});
 
-
+    // 运行配置回退到 属性名
     var label = fallbackLabel(self.label, self.widget && this.genFormProvide.fallbackLabel, curNodePath);
     return h(COMPONENT_MAP.formItem, {
       class: _objectSpread2(_objectSpread2({}, self.fieldClass), {}, {
@@ -10333,8 +10126,9 @@ var Widget = {
         prop: isRootNode ? '__$$root' : path2prop(curNodePath),
         rules: [{
           validator: function validator(rule, value, callback) {
-            if (isRootNode) value = self.rootFormData; // 校验是通过对schema逐级展开校验 这里只捕获根节点错误
+            if (isRootNode) value = self.rootFormData;
 
+            // 校验是通过对schema逐级展开校验 这里只捕获根节点错误
             var errors = validateFormDataAndTransformMsg({
               formData: value,
               schema: self.$props.schema,
@@ -10344,16 +10138,14 @@ var Widget = {
               required: self.realRequired,
               propPath: path2prop(curNodePath)
             });
-
             if (errors.length > 0) {
               var errMsg = errors[0].message;
               if (callback) callback(errMsg);
               return Promise.reject(errMsg);
-            } // customRule 如果存在自定义校验
+            }
 
-
+            // customRule 如果存在自定义校验
             var curCustomRule = self.$props.customRule;
-
             if (curCustomRule && typeof curCustomRule === 'function') {
               return curCustomRule({
                 field: curNodePath,
@@ -10362,7 +10154,6 @@ var Widget = {
                 callback: callback
               });
             }
-
             if (callback) return callback();
             return Promise.resolve();
           },
@@ -10388,15 +10179,16 @@ var Widget = {
         genFormLabel: true,
         genFormItemRequired: self.realRequired
       }
-    }, ["".concat(label), miniDescriptionVNode, "".concat(self.formProps && self.formProps.labelSuffix || '')]) : null, // description
+    }, ["".concat(label), miniDescriptionVNode, "".concat(self.formProps && self.formProps.labelSuffix || '')]) : null,
+    // description
     // 非mini模式显示 description
-    !miniDesModel ? descriptionVNode : null, h( // 关键输入组件
+    !miniDesModel ? descriptionVNode : null, h(
+    // 关键输入组件
     self.widget, _objectSpread2(_objectSpread2({
       style: self.widgetStyle,
       class: self.widgetClass,
       attrs: _objectSpread2(_objectSpread2(_objectSpread2({}, self.widgetAttrs), self.uiProps), {}, {
         value: this.value // v-model
-
       }),
       ref: 'widgetRef'
     }, self.renderScopedSlots ? {
@@ -10407,24 +10199,22 @@ var Widget = {
           if (self.widgetListeners && self.widgetListeners['hook:mounted']) {
             // eslint-disable-next-line prefer-rest-params
             self.widgetListeners['hook:mounted'].apply(this, Array.prototype.slice.call(arguments));
-          } // 提供一种特殊的配置 允许直接访问到 widget vm
+          }
 
-
+          // 提供一种特殊的配置 允许直接访问到 widget vm
           if (self.getWidget && typeof self.getWidget === 'function') {
             self.getWidget.call(null, self.$refs.widgetRef);
           }
         },
         input: function input(event) {
-          var formatValue = self.formatValue(event); // 默认用户输入变了都是需要更新form数据保持同步，唯一特例 input number
+          var formatValue = self.formatValue(event);
+          // 默认用户输入变了都是需要更新form数据保持同步，唯一特例 input number
           // 为了兼容 number 小数点后0结尾的数据场景
           // 比如 1. 1.010 这类特殊数据输入是不需要触发 新值的设置，否则会导致schema校验为非数字
           // 但由于element为了解另外的问题，会在nextTick时强制同步dom的值等于vm的值所以无法通过这种方式来hack，这里旧的这份逻辑依旧保留 不过update一直为true
-
           var preVal = self.value;
-
           if (formatValue.update && preVal !== formatValue.value) {
             self.value = formatValue.value;
-
             if (self.onChange) {
               self.onChange({
                 curVal: formatValue.value,
@@ -10434,7 +10224,6 @@ var Widget = {
               });
             }
           }
-
           if (self.widgetListeners && self.widgetListeners.input) {
             // eslint-disable-next-line prefer-rest-params
             self.widgetListeners.input.apply(this, Array.prototype.slice.call(arguments));
@@ -10451,74 +10240,72 @@ var ObjectField = {
   props: vueProps$1,
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        uiSchema = _context$props.uiSchema,
-        errorSchema = _context$props.errorSchema,
-        needValidFieldGroup = _context$props.needValidFieldGroup,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        globalOptions = _context$props.globalOptions; // required
+      schema = _context$props.schema,
+      uiSchema = _context$props.uiSchema,
+      errorSchema = _context$props.errorSchema,
+      needValidFieldGroup = _context$props.needValidFieldGroup,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      globalOptions = _context$props.globalOptions;
 
+    // required
     var isRequired = function isRequired(name) {
       return Array.isArray(schema.required) && !!~schema.required.indexOf(name);
-    }; // 存在 dependencies 配置，需要当前属性是否存在依赖关系 和当前属性是否正在被依赖
+    };
+
+    // 存在 dependencies 配置，需要当前属性是否存在依赖关系 和当前属性是否正在被依赖
     // tip: 判断依赖关系需要使用了 formData 的值来做判断，所以当用户输入的时候会触发整个对象树重新渲染
     // TODO: 每个属性都需要单独来遍历 dependencies 属性可以优化一点点点点点（可通过 key value 反转值加个缓存来计算）
-
-
     var isDependOn = function isDependOn(name) {
       var isDependency = false; // 是否是一个被依赖项
-
       var curDependent = false; // 当前是否触发依赖
 
       if (isObject(schema.dependencies)) {
         curDependent = Object.entries(schema.dependencies).some(function (_ref) {
           var _ref2 = _slicedToArray(_ref, 2),
-              key = _ref2[0],
-              value = _ref2[1];
-
+            key = _ref2[0],
+            value = _ref2[1];
           // 是否和当前属性存在依赖关系
-          var tempDependency = !!(Array.isArray(value) && ~value.indexOf(name)); // 是否是一个被依赖项
+          var tempDependency = !!(Array.isArray(value) && ~value.indexOf(name));
 
-          isDependency = isDependency || tempDependency; // 当前需要依赖
+          // 是否是一个被依赖项
+          isDependency = isDependency || tempDependency;
 
+          // 当前需要依赖
           return tempDependency && getPathVal$1(rootFormData, curNodePath)[key] !== undefined;
         });
       }
-
       return {
         isDependency: isDependency,
         curDependent: curDependent
       };
     };
-
     var _getUiOptions = getUiOptions({
-      schema: schema,
-      uiSchema: uiSchema,
-      curNodePath: curNodePath,
-      rootFormData: rootFormData
-    }),
-        title = _getUiOptions.title,
-        description = _getUiOptions.description,
-        showTitle = _getUiOptions.showTitle,
-        showDescription = _getUiOptions.showDescription,
-        order = _getUiOptions.order,
-        fieldClass = _getUiOptions.fieldClass,
-        fieldAttrs = _getUiOptions.fieldAttrs,
-        fieldStyle = _getUiOptions.fieldStyle,
-        onlyShowIfDependent = _getUiOptions.onlyShowIfDependent;
-
+        schema: schema,
+        uiSchema: uiSchema,
+        curNodePath: curNodePath,
+        rootFormData: rootFormData
+      }),
+      title = _getUiOptions.title,
+      description = _getUiOptions.description,
+      showTitle = _getUiOptions.showTitle,
+      showDescription = _getUiOptions.showDescription,
+      order = _getUiOptions.order,
+      fieldClass = _getUiOptions.fieldClass,
+      fieldAttrs = _getUiOptions.fieldAttrs,
+      fieldStyle = _getUiOptions.fieldStyle,
+      onlyShowIfDependent = _getUiOptions.onlyShowIfDependent;
     var properties = Object.keys(schema.properties || {});
-    var orderedProperties = orderProperties(properties, order); // 递归参数
+    var orderedProperties = orderProperties(properties, order);
 
+    // 递归参数
     var propertiesVNodeList = orderedProperties.map(function (name) {
       var required = isRequired(name);
-
       var _isDependOn = isDependOn(name),
-          isDependency = _isDependOn.isDependency,
-          curDependent = _isDependOn.curDependent; // onlyShowWhenDependent 只渲染被依赖的属性
+        isDependency = _isDependOn.isDependency,
+        curDependent = _isDependOn.curDependent;
 
-
+      // onlyShowWhenDependent 只渲染被依赖的属性
       return isDependency && onlyShowIfDependent && !curDependent ? null : h(SchemaField, {
         key: name,
         props: _objectSpread2(_objectSpread2({}, context.props), {}, {
@@ -10543,7 +10330,8 @@ var ObjectField = {
       style: fieldStyle
     }, [h('template', {
       slot: 'default'
-    }, [].concat(_toConsumableArray(propertiesVNodeList), [// 插入一个Widget，校验 object组 - minProperties. maxProperties. oneOf 等需要外层校验的数据
+    }, [].concat(_toConsumableArray(propertiesVNodeList), [
+    // 插入一个Widget，校验 object组 - minProperties. maxProperties. oneOf 等需要外层校验的数据
     needValidFieldGroup ? h(Widget, {
       key: 'validateWidget-object',
       class: {
@@ -10553,9 +10341,8 @@ var ObjectField = {
       props: {
         schema: Object.entries(schema).reduce(function (preVal, _ref3) {
           var _ref4 = _slicedToArray(_ref3, 2),
-              key = _ref4[0],
-              value = _ref4[1];
-
+            key = _ref4[0],
+            value = _ref4[1];
           if (schema.additionalProperties === false || !['properties', 'id', '$id'].includes(key)) preVal[key] = value;
           return preVal;
         }, {}),
@@ -10575,12 +10362,13 @@ var StringField = {
   functional: true,
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        uiSchema = _context$props.uiSchema,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        WIDGET_MAP = _context$props.globalOptions.WIDGET_MAP; // 可能是枚举数据使用select组件，否则使用 input
+      schema = _context$props.schema,
+      uiSchema = _context$props.uiSchema,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      WIDGET_MAP = _context$props.globalOptions.WIDGET_MAP;
 
+    // 可能是枚举数据使用select组件，否则使用 input
     var enumOptions = isSelect(schema) && optionsList(schema, uiSchema, curNodePath, rootFormData);
     var widgetConfig = getWidgetConfig({
       schema: schema,
@@ -10592,12 +10380,12 @@ var StringField = {
       return {
         widget: enumOptions ? WIDGET_MAP.common.select : WIDGET_MAP.formats[schema.format] || (isNumber ? WIDGET_MAP.types.number : WIDGET_MAP.types.string)
       };
-    }); // 存在枚举数据列表 传入 enumOptions
+    });
 
+    // 存在枚举数据列表 传入 enumOptions
     if (enumOptions && !widgetConfig.uiProps.enumOptions) {
       widgetConfig.uiProps.enumOptions = enumOptions;
     }
-
     return h(Widget, _objectSpread2(_objectSpread2({}, context.data), {}, {
       props: _objectSpread2(_objectSpread2({}, context.props), widgetConfig)
     }));
@@ -10636,12 +10424,13 @@ var BooleanField = {
   functional: true,
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        uiSchema = _context$props.uiSchema,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        globalOptions = _context$props.globalOptions; // Bool 会默认传入枚举类型选项 true false
+      schema = _context$props.schema,
+      uiSchema = _context$props.uiSchema,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      globalOptions = _context$props.globalOptions;
 
+    // Bool 会默认传入枚举类型选项 true false
     var enumOptions = optionsList({
       enumNames: schema.enumNames || ['true', 'false'],
       enum: schema.enum || [true, false]
@@ -10696,55 +10485,55 @@ var ArrayOrderList = {
       type: Boolean,
       default: true
     },
-    maxItems: {// 最多添加个数
+    maxItems: {
+      // 最多添加个数
     },
-    minItems: {// 最少添加个数
+    minItems: {
+      // 最少添加个数
     },
     globalOptions: null
   },
   computed: {
     canAdd: function canAdd() {
       var _this$$props = this.$props,
-          addable = _this$$props.addable,
-          maxItems = _this$$props.maxItems,
-          vNodeList = _this$$props.vNodeList; // 配置不可添加
+        addable = _this$$props.addable,
+        maxItems = _this$$props.maxItems,
+        vNodeList = _this$$props.vNodeList;
+      // 配置不可添加
+      if (!addable) return false;
 
-      if (!addable) return false; // 配置了最大个数
-
+      // 配置了最大个数
       if (maxItems !== undefined) {
         return vNodeList.length < maxItems;
       }
-
       return true;
     },
     canRemove: function canRemove() {
       var _this$$props2 = this.$props,
-          removable = _this$$props2.removable,
-          minItems = _this$$props2.minItems,
-          vNodeList = _this$$props2.vNodeList; // 配置不可添加
-
+        removable = _this$$props2.removable,
+        minItems = _this$$props2.minItems,
+        vNodeList = _this$$props2.vNodeList;
+      // 配置不可添加
       if (!removable) return false;
-
       if (minItems !== undefined) {
         return vNodeList.length > minItems;
       }
-
       return true;
     }
   },
   render: function render(h) {
     var _this = this;
-
     // 没有数据，且不能添加不渲染该组件
-    if (this.vNodeList.length <= 0 && !this.addable) return null; // 是否可继续添加元素
+    if (this.vNodeList.length <= 0 && !this.addable) return null;
 
+    // 是否可继续添加元素
     return h('div', {
       class: {
         arrayOrderList: true
       }
     }, this.vNodeList.map(function (_ref, index) {
       var key = _ref.key,
-          VnodeItem = _ref.vNode;
+        VnodeItem = _ref.vNode;
       var trueIndex = _this.tupleItemsLength + index;
       var indexNumber = index + 1;
       return h('div', {
@@ -10870,38 +10659,36 @@ var ArrayFieldNormal = {
   functional: true,
   props: _objectSpread2(_objectSpread2({}, vueProps$1), {}, {
     itemsFormData: {
-      type: Array // default: () => []
-
+      type: Array
+      // default: () => []
     }
   }),
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        uiSchema = _context$props.uiSchema,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        itemsFormData = _context$props.itemsFormData,
-        errorSchema = _context$props.errorSchema,
-        globalOptions = _context$props.globalOptions;
-
+      schema = _context$props.schema,
+      uiSchema = _context$props.uiSchema,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      itemsFormData = _context$props.itemsFormData,
+      errorSchema = _context$props.errorSchema,
+      globalOptions = _context$props.globalOptions;
     var _getUiOptions = getUiOptions({
-      schema: schema,
-      uiSchema: uiSchema,
-      curNodePath: curNodePath,
-      rootFormData: rootFormData
-    }),
-        title = _getUiOptions.title,
-        description = _getUiOptions.description,
-        addable = _getUiOptions.addable,
-        showIndexNumber = _getUiOptions.showIndexNumber,
-        sortable = _getUiOptions.sortable,
-        removable = _getUiOptions.removable,
-        showTitle = _getUiOptions.showTitle,
-        showDescription = _getUiOptions.showDescription,
-        fieldClass = _getUiOptions.fieldClass,
-        fieldAttrs = _getUiOptions.fieldAttrs,
-        fieldStyle = _getUiOptions.fieldStyle;
-
+        schema: schema,
+        uiSchema: uiSchema,
+        curNodePath: curNodePath,
+        rootFormData: rootFormData
+      }),
+      title = _getUiOptions.title,
+      description = _getUiOptions.description,
+      addable = _getUiOptions.addable,
+      showIndexNumber = _getUiOptions.showIndexNumber,
+      sortable = _getUiOptions.sortable,
+      removable = _getUiOptions.removable,
+      showTitle = _getUiOptions.showTitle,
+      showDescription = _getUiOptions.showDescription,
+      fieldClass = _getUiOptions.fieldClass,
+      fieldAttrs = _getUiOptions.fieldAttrs,
+      fieldStyle = _getUiOptions.fieldStyle;
     var arrayItemsVNodeList = itemsFormData.map(function (item, index) {
       var tempUiSchema = replaceArrayIndex({
         schema: schema.items,
@@ -10954,13 +10741,14 @@ var ArrayFieldMultiSelect = {
   props: _objectSpread2({}, vueProps$1),
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        rootSchema = _context$props.rootSchema,
-        uiSchema = _context$props.uiSchema,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        globalOptions = _context$props.globalOptions; // 这里需要索引当前节点，通过到schemaField组件的会统一处理
+      schema = _context$props.schema,
+      rootSchema = _context$props.rootSchema,
+      uiSchema = _context$props.uiSchema,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      globalOptions = _context$props.globalOptions;
 
+    // 这里需要索引当前节点，通过到schemaField组件的会统一处理
     var itemsSchema = retrieveSchema(schema.items, rootSchema);
     var enumOptions = optionsList(itemsSchema, uiSchema, curNodePath, rootFormData);
     var widgetConfig = getWidgetConfig({
@@ -10972,14 +10760,13 @@ var ArrayFieldMultiSelect = {
       return {
         widget: globalOptions.WIDGET_MAP.common.checkboxGroup
       };
-    }); // 存在枚举数据列表 传入 enumOptions
+    });
 
+    // 存在枚举数据列表 传入 enumOptions
     widgetConfig.uiProps.multiple = true;
-
     if (enumOptions && !widgetConfig.uiProps.enumOptions) {
       widgetConfig.uiProps.enumOptions = enumOptions;
     }
-
     return h(Widget, _objectSpread2(_objectSpread2({}, context.data), {}, {
       props: _objectSpread2(_objectSpread2({}, context.props), widgetConfig)
     }));
@@ -11003,11 +10790,9 @@ var ArrayFieldTuple = {
     // 兼容数据 长度不足的的场景
     fixItemsFormData: function fixItemsFormData() {
       var isNoArray = !Array.isArray(this.itemsFormData);
-
       if (isNoArray || this.itemsFormData.length < this.schema.items.length) {
         // 这里需要补齐默认数据，计算出需要的数据
         var curSchemaState = getDefaultFormState(this.schema, undefined, this.rootSchema);
-
         if (isNoArray) {
           // 数据修复 - 重置一个新的值
           this.$emit('onArrayOperate', {
@@ -11030,34 +10815,32 @@ var ArrayFieldTuple = {
   },
   render: function render(h) {
     var _this = this;
-
     if (!Array.isArray(this.itemsFormData)) return null;
     var _this$$props = this.$props,
-        schema = _this$$props.schema,
-        uiSchema = _this$$props.uiSchema,
-        errorSchema = _this$$props.errorSchema,
-        curNodePath = _this$$props.curNodePath,
-        globalOptions = _this$$props.globalOptions;
-
+      schema = _this$$props.schema,
+      uiSchema = _this$$props.uiSchema,
+      errorSchema = _this$$props.errorSchema,
+      curNodePath = _this$$props.curNodePath,
+      globalOptions = _this$$props.globalOptions;
     var _getUiOptions = getUiOptions({
-      schema: schema,
-      uiSchema: uiSchema,
-      curNodePath: curNodePath,
-      rootFormData: this.rootFormData
-    }),
-        title = _getUiOptions.title,
-        description = _getUiOptions.description,
-        addable = _getUiOptions.addable,
-        showIndexNumber = _getUiOptions.showIndexNumber,
-        sortable = _getUiOptions.sortable,
-        removable = _getUiOptions.removable,
-        showTitle = _getUiOptions.showTitle,
-        showDescription = _getUiOptions.showDescription,
-        fieldClass = _getUiOptions.fieldClass,
-        fieldAttrs = _getUiOptions.fieldAttrs,
-        fieldStyle = _getUiOptions.fieldStyle; // 拆分为 tuple 和 additional
+        schema: schema,
+        uiSchema: uiSchema,
+        curNodePath: curNodePath,
+        rootFormData: this.rootFormData
+      }),
+      title = _getUiOptions.title,
+      description = _getUiOptions.description,
+      addable = _getUiOptions.addable,
+      showIndexNumber = _getUiOptions.showIndexNumber,
+      sortable = _getUiOptions.sortable,
+      removable = _getUiOptions.removable,
+      showTitle = _getUiOptions.showTitle,
+      showDescription = _getUiOptions.showDescription,
+      fieldClass = _getUiOptions.fieldClass,
+      fieldAttrs = _getUiOptions.fieldAttrs,
+      fieldStyle = _getUiOptions.fieldStyle;
 
-
+    // 拆分为 tuple 和 additional
     var cutOfArr = cutOff(this.itemsFormData, this.schema.items.length - 1);
     var tupleVnodeArr = cutOfArr[0].map(function (item, index) {
       return h(SchemaField, {
@@ -11070,8 +10853,9 @@ var ArrayFieldTuple = {
           curNodePath: computedCurPath(curNodePath, index)
         })
       });
-    }); // 通过order组件做可排序处理
+    });
 
+    // 通过order组件做可排序处理
     var additionalVnodeArr = cutOfArr[1].map(function (item, index) {
       var tempUiSchema = replaceArrayIndex({
         schema: schema.additionalItems,
@@ -11090,10 +10874,12 @@ var ArrayFieldTuple = {
           })
         })
       };
-    }); // 是否可添加同时受限于 additionalItems 属性
+    });
 
-    var trueAddable = (addable === undefined ? true : addable) && allowAdditionalItems(this.schema); // 默认循环固定配置的数据 长度外的使用ArrayOrderList渲染
+    // 是否可添加同时受限于 additionalItems 属性
+    var trueAddable = (addable === undefined ? true : addable) && allowAdditionalItems(this.schema);
 
+    // 默认循环固定配置的数据 长度外的使用ArrayOrderList渲染
     return h(__vue_component__, {
       props: {
         title: title,
@@ -11105,7 +10891,8 @@ var ArrayFieldTuple = {
       class: fieldClass,
       attrs: fieldAttrs,
       style: fieldStyle
-    }, [].concat(_toConsumableArray(tupleVnodeArr), [// additional items
+    }, [].concat(_toConsumableArray(tupleVnodeArr), [
+    // additional items
     h(ArrayOrderList, {
       props: {
         vNodeList: additionalVnodeArr,
@@ -11129,11 +10916,11 @@ var ArrayFieldSpecialFormat = {
   functional: true,
   render: function render(h, context) {
     var _context$props = context.props,
-        schema = _context$props.schema,
-        uiSchema = _context$props.uiSchema,
-        curNodePath = _context$props.curNodePath,
-        rootFormData = _context$props.rootFormData,
-        globalOptions = _context$props.globalOptions;
+      schema = _context$props.schema,
+      uiSchema = _context$props.uiSchema,
+      curNodePath = _context$props.curNodePath,
+      rootFormData = _context$props.rootFormData,
+      globalOptions = _context$props.globalOptions;
     var widgetConfig = getWidgetConfig({
       schema: _objectSpread2({
         'ui:widget': globalOptions.WIDGET_MAP.formats[schema.format]
@@ -11162,10 +10949,10 @@ var ArrayField = {
   computed: {
     uiOptions: function uiOptions() {
       var _this$$props = this.$props,
-          schema = _this$$props.schema,
-          uiSchema = _this$$props.uiSchema,
-          rootFormData = _this$$props.rootFormData,
-          curNodePath = _this$$props.curNodePath;
+        schema = _this$$props.schema,
+        uiSchema = _this$$props.uiSchema,
+        rootFormData = _this$$props.rootFormData,
+        curNodePath = _this$$props.curNodePath;
       return getUserUiOptions({
         schema: schema,
         uiSchema: uiSchema,
@@ -11200,8 +10987,8 @@ var ArrayField = {
     // 获取当前的值
     getCuFormData: function getCuFormData() {
       var _this$$props2 = this.$props,
-          rootFormData = _this$$props2.rootFormData,
-          curNodePath = _this$$props2.curNodePath;
+        rootFormData = _this$$props2.rootFormData,
+        curNodePath = _this$$props2.curNodePath;
       var value = getPathVal$1(rootFormData, curNodePath);
       if (Array.isArray(value)) return value;
       console.error('error: type array，值必须为 array 类型');
@@ -11210,21 +10997,21 @@ var ArrayField = {
     // 获取一个新item
     getNewFormDataRow: function getNewFormDataRow() {
       var _this$$props3 = this.$props,
-          schema = _this$$props3.schema,
-          rootSchema = _this$$props3.rootSchema;
-      var itemSchema = schema.items; // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
-      // 数组为项的集合搭配additionalItems属性需要特殊处理
+        schema = _this$$props3.schema,
+        rootSchema = _this$$props3.rootSchema;
+      var itemSchema = schema.items;
 
+      // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
+      // 数组为项的集合搭配additionalItems属性需要特殊处理
       if (isFixedItems(this.schema) && allowAdditionalItems(this.schema)) {
         itemSchema = schema.additionalItems;
       }
-
       return getDefaultFormState(itemSchema, undefined, rootSchema);
     },
     // 数组排序相关操作
     handleArrayOperate: function handleArrayOperate(_ref) {
       var command = _ref.command,
-          data = _ref.data;
+        data = _ref.data;
       // 统一处理数组数据的 新增，删除，排序等变更
       var strategyMap = {
         moveUp: function moveUp(target, _ref2) {
@@ -11251,17 +11038,15 @@ var ArrayField = {
         },
         setNewTarget: function setNewTarget(target, _ref7) {
           var formData = _ref7.formData,
-              nodePath = _ref7.nodePath,
-              newTarget = _ref7.newTarget;
+            nodePath = _ref7.nodePath,
+            newTarget = _ref7.newTarget;
           setPathVal(formData, nodePath, newTarget);
         }
       };
       var curStrategy = strategyMap[command];
-
       if (curStrategy) {
         var formDataPrams = data;
         var keysParams = data;
-
         if (command === 'add') {
           // 单个添加
           formDataPrams = {
@@ -11291,13 +11076,15 @@ var ArrayField = {
               return genId();
             })
           };
-        } // 同步修改 formData keys
+        }
 
+        // 同步修改 formData keys
+        curStrategy.apply(this, [this.$data.formKeys, keysParams]);
 
-        curStrategy.apply(this, [this.$data.formKeys, keysParams]); // 修改formData数据
+        // 修改formData数据
+        curStrategy.apply(this, [this.curFormData, formDataPrams]);
 
-        curStrategy.apply(this, [this.curFormData, formDataPrams]); // onArrayOperate
-
+        // onArrayOperate
         if (this.uiOptions.afterArrayOperate) {
           this.uiOptions.afterArrayOperate.call(null, this.curFormData, command, data);
         }
@@ -11309,38 +11096,37 @@ var ArrayField = {
   render: function render(h) {
     var self = this;
     var _this$$props4 = this.$props,
-        schema = _this$$props4.schema,
-        uiSchema = _this$$props4.uiSchema,
-        rootSchema = _this$$props4.rootSchema,
-        rootFormData = _this$$props4.rootFormData,
-        curNodePath = _this$$props4.curNodePath,
-        globalOptions = _this$$props4.globalOptions;
-
+      schema = _this$$props4.schema,
+      uiSchema = _this$$props4.uiSchema,
+      rootSchema = _this$$props4.rootSchema,
+      rootFormData = _this$$props4.rootFormData,
+      curNodePath = _this$$props4.curNodePath,
+      globalOptions = _this$$props4.globalOptions;
     if (!schema.hasOwnProperty('items')) {
       throw new Error("[".concat(schema, "] \u8BF7\u5148\u5B9A\u4E49 items\u5C5E\u6027"));
-    } // 多选类型
+    }
 
-
+    // 多选类型
     if (isMultiSelect(schema, rootSchema)) {
       // item 为枚举固定值
       return h(ArrayFieldMultiSelect, {
         props: this.$props,
         class: _defineProperty({}, lowerCase(ArrayFieldMultiSelect.name), true)
       });
-    } // 特殊处理 date datetime time url-upload
+    }
+
+    // 特殊处理 date datetime time url-upload
     // array 支持配置 ui:widget
     // 时间日期区间 或者 ui:widget 特殊配置
-
-
     if (schema.format || schema['ui:widget'] || uiSchema['ui:widget']) {
       return h(ArrayFieldSpecialFormat, {
         props: this.$props,
         class: _defineProperty({}, lowerCase(ArrayFieldSpecialFormat.name), true)
       });
-    } // https://json-schema.org/understanding-json-schema/reference/array.html#list-validation
+    }
+
+    // https://json-schema.org/understanding-json-schema/reference/array.html#list-validation
     // https://json-schema.org/understanding-json-schema/reference/array.html#tuple-validation
-
-
     var CurrentField = isFixedItems(schema) ? ArrayFieldTuple : ArrayFieldNormal;
     return h('div', [h(CurrentField, {
       props: _objectSpread2({
@@ -11350,7 +11136,8 @@ var ArrayField = {
       on: {
         onArrayOperate: this.handleArrayOperate
       }
-    }), // 插入一个Widget，校验 array - maxItems. minItems. uniqueItems 等items外的属性校验
+    }),
+    // 插入一个Widget，校验 array - maxItems. minItems. uniqueItems 等items外的属性校验
     this.needValidFieldGroup ? h(Widget, {
       key: 'validateWidget-array',
       class: {
@@ -11360,9 +11147,8 @@ var ArrayField = {
       props: {
         schema: Object.entries(self.$props.schema).reduce(function (preVal, _ref8) {
           var _ref9 = _slicedToArray(_ref8, 2),
-              key = _ref9[0],
-              value = _ref9[1];
-
+            key = _ref9[0],
+            value = _ref9[1];
           if (key !== 'items') preVal[key] = value;
           return preVal;
         }, {}),
@@ -11376,13 +11162,13 @@ var ArrayField = {
   }
 };
 
+var _excluded$2 = ["title", "description", "properties"];
 var SelectLinkageField = {
   name: 'SelectLinkageField',
   props: _objectSpread2(_objectSpread2({}, vueProps$1), {}, {
     combiningType: {
       type: String,
       default: 'anyOf' // anyOf oneOf
-
     },
     selectList: {
       type: Array,
@@ -11402,7 +11188,6 @@ var SelectLinkageField = {
     // 下拉选项 VNode
     getSelectBoxVNode: function getSelectBoxVNode() {
       var _this = this;
-
       // 下拉选项参数
       var selectWidgetConfig = getWidgetConfig({
         schema: this.schema["".concat(this.combiningType, "Select")] || {},
@@ -11416,31 +11201,33 @@ var SelectLinkageField = {
           // 枚举参数
           widget: 'SelectWidget'
         };
-      }); // title description 回退到 schema 配置，但这里不使用 uiSchema配置
+      });
+
+      // title description 回退到 schema 配置，但这里不使用 uiSchema配置
       // select ui配置需要使用 (oneOf|anyOf)Select
-
       selectWidgetConfig.label = selectWidgetConfig.label || this.schema.title;
-      selectWidgetConfig.description = selectWidgetConfig.description || this.schema.description; // 下拉列表枚举值
+      selectWidgetConfig.description = selectWidgetConfig.description || this.schema.description;
 
+      // 下拉列表枚举值
       if (!selectWidgetConfig.uiProps.enumOptions) {
         var uiSchemaSelectList = this.uiSchema[this.combiningType] || [];
         selectWidgetConfig.uiProps.enumOptions = this.selectList.map(function (option, index) {
           var curUiOptions = getUiOptions({
             schema: option,
             uiSchema: uiSchemaSelectList[index],
-            containsSpec: false // curNodePath: this.curNodePath,
+            containsSpec: false
+            // curNodePath: this.curNodePath,
             // rootFormData: this.rootFormData,
-
           });
           return {
             label: curUiOptions.title || "\u9009\u9879 ".concat(index + 1),
             value: index
           };
         });
-      } // oneOf option 渲染
+      }
+
+      // oneOf option 渲染
       // 选择框 VNode
-
-
       return this.$createElement(Widget, {
         key: "fieldSelect_".concat(this.combiningType),
         class: _defineProperty({}, "fieldSelect_".concat(this.combiningType), true),
@@ -11465,36 +11252,34 @@ var SelectLinkageField = {
     // 对新option计算默认值
     curSelectIndex: function curSelectIndex(newVal, oldVal) {
       var _this2 = this;
+      var curFormData = getPathVal$1(this.rootFormData, this.curNodePath);
 
-      var curFormData = getPathVal$1(this.rootFormData, this.curNodePath); // 计算出 新选项默认值
-
+      // 计算出 新选项默认值
       var newOptionData = getDefaultFormState(this.selectList[newVal], undefined, this.rootSchema);
-      var hasOwn = Object.prototype.hasOwnProperty; // 移除旧key
+      var hasOwn = Object.prototype.hasOwnProperty;
 
+      // 移除旧key
       if (isObject(curFormData)) {
         var oldSelectSchema = retrieveSchema(this.selectList[oldVal], this.rootSchema);
-
         if (getSchemaType(oldSelectSchema) === 'object') {
           // 移除旧schema添加的属性
           // Object.keys(oldSelectSchema.properties)
           for (var key in oldSelectSchema.properties) {
             if (hasOwn.call(oldSelectSchema.properties, key) && !hasOwn.call(newOptionData, key)) {
-              deletePathVal(curFormData, key); // delete curFormData[key];
+              deletePathVal(curFormData, key);
+              // delete curFormData[key];
             }
           }
         }
-      } // 设置新值
+      }
 
-
+      // 设置新值
       if (isObject(newOptionData)) {
         Object.entries(newOptionData).forEach(function (_ref) {
           var _ref2 = _slicedToArray(_ref, 2),
-              key = _ref2[0],
-              value = _ref2[1];
-
-          if (value !== undefined && (curFormData[key] === undefined || isObject(value) || function () {
-            var _newSelectSchema$prop;
-
+            key = _ref2[0],
+            value = _ref2[1];
+          if (value !== undefined && (curFormData[key] === undefined || isObject(value) || function (_newSelectSchema$prop) {
             var newSelectSchema = retrieveSchema(_this2.selectList[newVal], _this2.rootSchema);
             return ((_newSelectSchema$prop = newSelectSchema.properties[key]) === null || _newSelectSchema$prop === void 0 ? void 0 : _newSelectSchema$prop.const) !== undefined;
           }())) {
@@ -11507,53 +11292,57 @@ var SelectLinkageField = {
         });
       } else {
         setPathVal(this.rootFormData, this.curNodePath, newOptionData === undefined && isValid(retrieveSchema(this.selectList[newVal], this.rootSchema), curFormData) ? curFormData : newOptionData);
-      } // 可添加一个配置通知外部这里变更
-      // todo: onChangeOption
+      }
 
+      // 可添加一个配置通知外部这里变更
+      // todo: onChangeOption
     }
   },
   render: function render(h) {
-    var _this3 = this,
-        _class4;
-
+    var _this3 = this;
     var curNodePath = this.$props.curNodePath;
-    var pathClassName = nodePath2ClassName(curNodePath); // is object
+    var pathClassName = nodePath2ClassName(curNodePath);
 
-    var isTypeObject = this.schema.type === 'object' || this.schema.properties; // 选择附加的节点
+    // is object
+    var isTypeObject = this.schema.type === 'object' || this.schema.properties;
 
-    var childrenVNodeList = [this.getSelectBoxVNode()]; // 当前option内容
+    // 选择附加的节点
+    var childrenVNodeList = [this.getSelectBoxVNode()];
 
-    var curSelectSchema = this.selectList[this.curSelectIndex]; // 当前选中节点合并schema
+    // 当前option内容
+    var curSelectSchema = this.selectList[this.curSelectIndex];
 
+    // 当前选中节点合并schema
     if (curSelectSchema) {
       var _this$schema = this.schema,
-          _this$combiningType = this.combiningType,
-          _ref3 = "".concat(this.combiningType, "Select");
-          _this$schema.properties;
-          _this$schema[_this$combiningType];
-          _this$schema[_ref3];
-          var parentSchema = _objectWithoutProperties(_this$schema, ["properties", _this$combiningType, _ref3].map(_toPropertyKey)); // 合并父级schema
+        _this$combiningType = this.combiningType,
+        _ref3 = "".concat(this.combiningType, "Select");
+        _this$schema.properties;
+        _this$schema[_this$combiningType];
+        _this$schema[_ref3];
+        var parentSchema = _objectWithoutProperties(_this$schema, ["properties", _this$combiningType, _ref3].map(_toPropertyKey));
 
-
+      // 合并父级schema
       curSelectSchema = Object.assign({}, parentSchema, curSelectSchema);
-    } // object类型但没有附加属性
+    }
 
+    // object类型但没有附加属性
+    var isObjectEmptyAttachProperties = isTypeObject && isEmptyObject(curSelectSchema && curSelectSchema.properties);
 
-    var isObjectEmptyAttachProperties = isTypeObject && isEmptyObject(curSelectSchema && curSelectSchema.properties); // 当前选中的 oneOf 附加节点 VNode
-
+    // 当前选中的 oneOf 附加节点 VNode
     if (curSelectSchema && !isObjectEmptyAttachProperties) {
       // 覆盖父级的属性
       var _this$schema2 = this.schema,
-          _this$combiningType2 = this.combiningType,
-          _ref4 = "".concat(this.combiningType, "Select");
-          _this$schema2.properties;
-          _this$schema2[_this$combiningType2];
-          _this$schema2[_ref4];
-          var _parentSchema = _objectWithoutProperties(_this$schema2, ["properties", _this$combiningType2, _ref4].map(_toPropertyKey));
+        _this$combiningType2 = this.combiningType,
+        _ref4 = "".concat(this.combiningType, "Select");
+        _this$schema2.properties;
+        _this$schema2[_this$combiningType2];
+        _this$schema2[_ref4];
+        var _parentSchema = _objectWithoutProperties(_this$schema2, ["properties", _this$combiningType2, _ref4].map(_toPropertyKey));
+      curSelectSchema = Object.assign({}, _parentSchema, curSelectSchema);
 
-      curSelectSchema = Object.assign({}, _parentSchema, curSelectSchema); // 当前节点的ui err配置，用来支持所有选项的统一配置
+      // 当前节点的ui err配置，用来支持所有选项的统一配置
       // 取出 oneOf anyOf 同级配置，然后再合并到 当前选中的schema中
-
       var userUiOptions = filterObject(getUiOptions({
         schema: {},
         uiSchema: this.uiSchema,
@@ -11580,38 +11369,35 @@ var SelectLinkageField = {
           }, curSelectSchema),
           required: this.required,
           uiSchema: _objectSpread2(_objectSpread2({}, userUiOptions), (this.uiSchema[this.combiningType] || [])[this.curSelectIndex]),
-          errorSchema: _objectSpread2(_objectSpread2({}, userErrOptions), (this.errorSchema[this.combiningType] || [])[this.curSelectIndex]) // needValidFieldGroup: false // 单独校验，这里无需处理
-
+          errorSchema: _objectSpread2(_objectSpread2({}, userErrOptions), (this.errorSchema[this.combiningType] || [])[this.curSelectIndex])
+          // needValidFieldGroup: false // 单独校验，这里无需处理
         })
       }));
-    } // object 需要保持原有属性，如果存在原有属性这里单独渲染
+    }
 
-
+    // object 需要保持原有属性，如果存在原有属性这里单独渲染
     var originVNode = null;
-
     if (isTypeObject && !isEmptyObject(this.schema.properties)) {
-      var _class2;
-
       var _curSelectSchema = curSelectSchema;
-          _curSelectSchema.title;
-          _curSelectSchema.description;
-          _curSelectSchema.properties;
-          var optionSchema = _objectWithoutProperties(_curSelectSchema, ["title", "description", "properties"]); // object 原始项渲染也需要合并anyOf的内容
+        _curSelectSchema.title;
+        _curSelectSchema.description;
+        _curSelectSchema.properties;
+        var optionSchema = _objectWithoutProperties(_curSelectSchema, _excluded$2);
 
-
+      // object 原始项渲染也需要合并anyOf的内容
       var origSchema = Object.assign({}, this.schema, optionSchema);
       delete origSchema[this.combiningType];
       originVNode = h(SchemaField, {
         key: "origin_".concat(this.combiningType),
-        class: (_class2 = {}, _defineProperty(_class2, "".concat(this.combiningType, "_originBox"), true), _defineProperty(_class2, "".concat(pathClassName, "-originBox"), true), _class2),
+        class: _defineProperty(_defineProperty({}, "".concat(this.combiningType, "_originBox"), true), "".concat(pathClassName, "-originBox"), true),
         props: _objectSpread2(_objectSpread2({}, this.$props), {}, {
-          schema: origSchema // needValidFieldGroup: false // 单独校验，这里无需处理
-
+          schema: origSchema
+          // needValidFieldGroup: false // 单独校验，这里无需处理
         })
       });
-    } // oneOf 校验 VNode
+    }
 
-
+    // oneOf 校验 VNode
     childrenVNodeList.push(h(Widget, {
       key: "validateWidget-".concat(this.combiningType),
       class: _defineProperty({
@@ -11628,21 +11414,21 @@ var SelectLinkageField = {
     }));
     return h('div', [originVNode, h('div', {
       key: "appendBox_".concat(this.combiningType),
-      class: (_class4 = {
+      class: _defineProperty(_defineProperty({
         appendCombining_box: true
-      }, _defineProperty(_class4, "".concat(this.combiningType, "_appendBox"), true), _defineProperty(_class4, "".concat(pathClassName, "-appendBox"), true), _class4)
+      }, "".concat(this.combiningType, "_appendBox"), true), "".concat(pathClassName, "-appendBox"), true)
     }, childrenVNodeList)]);
   }
 };
 
+var _excluded$3 = ["props"];
 var AnyOfField = {
   name: 'AnyOfField',
   functional: true,
   render: function render(h, context) {
     var _context$data = context.data,
-        props = _context$data.props,
-        otherData = _objectWithoutProperties(_context$data, ["props"]);
-
+      props = _context$data.props,
+      otherData = _objectWithoutProperties(_context$data, _excluded$3);
     return h(SelectLinkageField, _objectSpread2(_objectSpread2({}, otherData), {}, {
       props: _objectSpread2(_objectSpread2({}, props), {}, {
         combiningType: 'anyOf',
@@ -11652,14 +11438,14 @@ var AnyOfField = {
   }
 };
 
+var _excluded$4 = ["props"];
 var OneOfField = {
   name: 'oneOfField',
   functional: true,
   render: function render(h, context) {
     var _context$data = context.data,
-        props = _context$data.props,
-        otherData = _objectWithoutProperties(_context$data, ["props"]);
-
+      props = _context$data.props,
+      otherData = _objectWithoutProperties(_context$data, _excluded$4);
     return h(SelectLinkageField, _objectSpread2(_objectSpread2({}, otherData), {}, {
       props: _objectSpread2(_objectSpread2({}, props), {}, {
         combiningType: 'oneOf',
@@ -11673,6 +11459,7 @@ var OneOfField = {
  * Created by Liu.Jun on 2020/4/20 9:55 下午.
  */
 
+// 默认类型使用field映射关系
 var FIELDS_MAPS = {
   array: ArrayField,
   boolean: BooleanField,
@@ -11694,29 +11481,29 @@ var SchemaField = {
   props: vueProps$1,
   functional: true,
   render: function render(h, context) {
-    var _objectSpread2$1;
-
     var props = context.props;
-    var rootSchema = props.rootSchema; // 目前不支持schema依赖和additionalProperties 展示不需要传递formData
+    var rootSchema = props.rootSchema;
+
+    // 目前不支持schema依赖和additionalProperties 展示不需要传递formData
     // const schema = retrieveSchema(props.schema, rootSchema, formData);
+    var schema = retrieveSchema(props.schema, rootSchema);
 
-    var schema = retrieveSchema(props.schema, rootSchema); // 当前参数
-
+    // 当前参数
     var curProps = _objectSpread2(_objectSpread2({}, props), {}, {
       schema: schema
-    }); // 空数据
+    });
 
-
+    // 空数据
     if (Object.keys(schema).length === 0) {
       return null;
-    } // 获取节点Ui配置渲染field组件
+    }
 
-
+    // 获取节点Ui配置渲染field组件
     var _getUiField = getUiField(FIELDS_MAPS, curProps),
-        fieldComponent = _getUiField.field,
-        fieldProps = _getUiField.fieldProps; // hidden
+      fieldComponent = _getUiField.field,
+      fieldProps = _getUiField.fieldProps;
 
-
+    // hidden
     var hiddenWidget = isHiddenWidget({
       schema: schema,
       uiSchema: props.uiSchema,
@@ -11724,50 +11511,41 @@ var SchemaField = {
       rootFormData: props.rootFormData
     });
     var pathClassName = nodePath2ClassName(props.curNodePath);
-
     if (schema.anyOf && schema.anyOf.length > 0 && !isSelect(schema)) {
-      var _class;
-
       // anyOf
       return h(FIELDS_MAPS.anyOf, {
-        class: (_class = {}, _defineProperty(_class, "".concat(pathClassName, "-anyOf"), true), _defineProperty(_class, "fieldItem", true), _defineProperty(_class, "anyOfField", true), _class),
+        class: _defineProperty(_defineProperty(_defineProperty({}, "".concat(pathClassName, "-anyOf"), true), "fieldItem", true), "anyOfField", true),
         props: curProps
       });
     }
-
     if (schema.oneOf && schema.oneOf.length > 0 && !isSelect(schema)) {
-      var _class2;
-
       // oneOf
       return h(FIELDS_MAPS.oneOf, {
-        class: (_class2 = {}, _defineProperty(_class2, "".concat(pathClassName, "-oneOf"), true), _defineProperty(_class2, "fieldItem", true), _defineProperty(_class2, "oneOfField", true), _class2),
+        class: _defineProperty(_defineProperty(_defineProperty({}, "".concat(pathClassName, "-oneOf"), true), "fieldItem", true), "oneOfField", true),
         props: curProps
       });
     }
-
     return fieldComponent && !hiddenWidget ? h(fieldComponent, {
       props: _objectSpread2(_objectSpread2({}, curProps), {}, {
         fieldProps: fieldProps
       }),
-      class: _objectSpread2(_objectSpread2({}, context.data.class), {}, (_objectSpread2$1 = {}, _defineProperty(_objectSpread2$1, lowerCase(fieldComponent.name) || fieldComponent, true), _defineProperty(_objectSpread2$1, "hiddenWidget", hiddenWidget), _defineProperty(_objectSpread2$1, "fieldItem", true), _defineProperty(_objectSpread2$1, pathClassName, true), _objectSpread2$1))
+      class: _objectSpread2(_objectSpread2({}, context.data.class), {}, _defineProperty(_defineProperty(_defineProperty(_defineProperty({}, lowerCase(fieldComponent.name) || fieldComponent, true), "hiddenWidget", hiddenWidget), "fieldItem", true), pathClassName, true))
     }) : null;
   }
 };
 
+var _excluded$5 = ["layoutColumn", "inlineFooter", "labelSuffix", "isMiniDes", "defaultSelectFirstOption", "popover"];
 function createForm() {
   var globalOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
   // global components
   if (globalOptions.WIDGET_MAP.widgetComponents) {
     Object.entries(globalOptions.WIDGET_MAP.widgetComponents).forEach(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
-          key = _ref2[0],
-          value = _ref2[1];
-
+        key = _ref2[0],
+        value = _ref2[1];
       return Vue.component(key, value);
     });
   }
-
   return {
     name: 'VueForm',
     props: vueProps,
@@ -11777,8 +11555,9 @@ function createForm() {
       };
     },
     data: function data() {
-      var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode); // Keep v-model two-way data timely
+      var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode);
 
+      // Keep v-model two-way data timely
       this.emitFormDataChange(formData, this.value);
       return {
         formData: formData
@@ -11814,8 +11593,9 @@ function createForm() {
     methods: {
       emitFormDataChange: function emitFormDataChange(newValue, oldValue) {
         // Support v-model, reference type
-        this.$emit('input', newValue); // Change event, reference type modifies property newValue
+        this.$emit('input', newValue);
 
+        // Change event, reference type modifies property newValue
         this.$emit('on-change', {
           newValue: newValue,
           oldValue: oldValue
@@ -11825,7 +11605,6 @@ function createForm() {
       willReceiveProps: function willReceiveProps(newVal, oldVal) {
         if (!deepEquals(newVal, oldVal)) {
           var formData = getDefaultFormState(this.$props.schema, this.$props.value, this.$props.schema, this.$props.strictMode);
-
           if (!deepEquals(this.formData, formData)) {
             this.formData = formData;
           }
@@ -11839,10 +11618,8 @@ function createForm() {
       });
     },
     render: function render(h) {
-      var _class;
-
-      var self = this; // default scoped slot
-
+      var self = this;
+      // default scoped slot
       var defaultSlot = this.$scopedSlots.default ? this.$scopedSlots.default({
         formData: self.formData,
         formRefFn: function formRefFn() {
@@ -11865,28 +11642,25 @@ function createForm() {
               if (isValid) {
                 return self.$emit('on-submit', self.formData);
               }
-
               console.warn(resData);
               return self.$emit('on-validation-failed', resData);
             });
           }
         }
       }) : undefined;
-
       var _self$$props$formProp = self.$props.formProps,
-          _self$$props$formProp2 = _self$$props$formProp.layoutColumn,
-          layoutColumn = _self$$props$formProp2 === void 0 ? 1 : _self$$props$formProp2,
-          inlineFooter = _self$$props$formProp.inlineFooter;
-          _self$$props$formProp.labelSuffix;
-          _self$$props$formProp.isMiniDes;
-          _self$$props$formProp.defaultSelectFirstOption;
-          _self$$props$formProp.popover;
-          var uiFormProps = _objectWithoutProperties(_self$$props$formProp, ["layoutColumn", "inlineFooter", "labelSuffix", "isMiniDes", "defaultSelectFirstOption", "popover"]);
-
+        _self$$props$formProp2 = _self$$props$formProp.layoutColumn,
+        layoutColumn = _self$$props$formProp2 === void 0 ? 1 : _self$$props$formProp2,
+        inlineFooter = _self$$props$formProp.inlineFooter;
+        _self$$props$formProp.labelSuffix;
+        _self$$props$formProp.isMiniDes;
+        _self$$props$formProp.defaultSelectFirstOption;
+        _self$$props$formProp.popover;
+        var uiFormProps = _objectWithoutProperties(_self$$props$formProp, _excluded$5);
       var _uiFormProps$inline = uiFormProps.inline,
-          inline = _uiFormProps$inline === void 0 ? false : _uiFormProps$inline,
-          _uiFormProps$labelPos = uiFormProps.labelPosition,
-          labelPosition = _uiFormProps$labelPos === void 0 ? 'top' : _uiFormProps$labelPos;
+        inline = _uiFormProps$inline === void 0 ? false : _uiFormProps$inline,
+        _uiFormProps$labelPos = uiFormProps.labelPosition,
+        labelPosition = _uiFormProps$labelPos === void 0 ? 'top' : _uiFormProps$labelPos;
       var props = {
         schema: this.schema,
         uiSchema: this.uiSchema,
@@ -11908,11 +11682,11 @@ function createForm() {
         }, self.$props.formProps)
       };
       return h(globalOptions.COMPONENT_MAP.form, {
-        class: (_class = {
+        class: _defineProperty(_defineProperty(_defineProperty({
           genFromComponent: true,
           formInlineFooter: inlineFooter,
           formInline: inline
-        }, _defineProperty(_class, "genFromComponent_".concat(this.schema.id, "Form"), !!this.schema.id), _defineProperty(_class, "layoutColumn", !inline), _defineProperty(_class, "layoutColumn-".concat(layoutColumn), !inline), _class),
+        }, "genFromComponent_".concat(this.schema.id, "Form"), !!this.schema.id), "layoutColumn", !inline), "layoutColumn-".concat(layoutColumn), !inline),
         nativeOn: {
           submit: function submit(e) {
             e.preventDefault();
@@ -11946,6 +11720,7 @@ function createForm() {
 //
 //
 //
+
 var script$1 = {
   name: 'CheckboxesWidget',
   props: {
@@ -11960,15 +11735,12 @@ var script$1 = {
 
 /* script */
 var __vue_script__$1 = script$1;
-/* template */
 
+/* template */
 var __vue_render__$6 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("el-checkbox-group", _vm._g(_vm._b({}, "el-checkbox-group", _vm.$attrs, false), _vm.$listeners), _vm._l(_vm.enumOptions, function (item, index) {
     return _c("el-checkbox", {
       key: index,
@@ -11978,20 +11750,16 @@ var __vue_render__$6 = function __vue_render__() {
     }, [_vm._v("\n        " + _vm._s(item.label) + "\n    ")]);
   }), 1);
 };
-
 var __vue_staticRenderFns__$6 = [];
 __vue_render__$6._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$6 = undefined;
 /* scoped */
-
 var __vue_scope_id__$6 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$6 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$6 = false;
 /* style inject */
 
@@ -12019,6 +11787,7 @@ var __vue_component__$6 = /*#__PURE__*/normalizeComponent_1({
 //
 //
 //
+
 var script$2 = {
   name: 'RadioWidget',
   props: {
@@ -12033,15 +11802,12 @@ var script$2 = {
 
 /* script */
 var __vue_script__$2 = script$2;
-/* template */
 
+/* template */
 var __vue_render__$7 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("el-radio-group", _vm._g(_vm._b({}, "el-radio-group", _vm.$attrs, false), _vm.$listeners), _vm._l(_vm.enumOptions, function (item, index) {
     return _c("el-radio", {
       key: index,
@@ -12051,20 +11817,16 @@ var __vue_render__$7 = function __vue_render__() {
     }, [_vm._v("\n        " + _vm._s(item.label) + "\n    ")]);
   }), 1);
 };
-
 var __vue_staticRenderFns__$7 = [];
 __vue_render__$7._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$7 = undefined;
 /* scoped */
-
 var __vue_scope_id__$7 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$7 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$7 = false;
 /* style inject */
 
@@ -12091,6 +11853,7 @@ var __vue_component__$7 = /*#__PURE__*/normalizeComponent_1({
 //
 //
 //
+
 var script$3 = {
   name: 'SelectWidget',
   props: {
@@ -12105,15 +11868,12 @@ var script$3 = {
 
 /* script */
 var __vue_script__$3 = script$3;
-/* template */
 
+/* template */
 var __vue_render__$8 = function __vue_render__() {
   var _vm = this;
-
   var _h = _vm.$createElement;
-
   var _c = _vm._self._c || _h;
-
   return _c("el-select", _vm._g(_vm._b({}, "el-select", _vm.$attrs, false), _vm.$listeners), _vm._l(_vm.enumOptions, function (item, index) {
     return _c("el-option", {
       key: index,
@@ -12124,20 +11884,16 @@ var __vue_render__$8 = function __vue_render__() {
     });
   }), 1);
 };
-
 var __vue_staticRenderFns__$8 = [];
 __vue_render__$8._withStripped = true;
-/* style */
 
+/* style */
 var __vue_inject_styles__$8 = undefined;
 /* scoped */
-
 var __vue_scope_id__$8 = undefined;
 /* module identifier */
-
 var __vue_module_identifier__$8 = undefined;
 /* functional template */
-
 var __vue_is_functional_template__$8 = false;
 /* style inject */
 
@@ -12150,18 +11906,19 @@ var __vue_component__$8 = /*#__PURE__*/normalizeComponent_1({
   staticRenderFns: __vue_staticRenderFns__$8
 }, __vue_inject_styles__$8, __vue_script__$3, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, false, undefined, undefined, undefined);
 
+var _excluded$6 = ["isNumberValue", "isRange"];
 /**
  * Created by Liu.Jun on 2020/7/22 13:21.
  */
+
 var DatePickerWidget = {
   name: 'DatePickerWidget',
   functional: true,
   render: function render(h, context) {
     var _ref = context.data.attrs || {},
-        isNumberValue = _ref.isNumberValue,
-        isRange = _ref.isRange,
-        otherProps = _objectWithoutProperties(_ref, ["isNumberValue", "isRange"]);
-
+      isNumberValue = _ref.isNumberValue,
+      isRange = _ref.isRange,
+      otherProps = _objectWithoutProperties(_ref, _excluded$6);
     context.data.attrs = _objectSpread2({
       type: isRange ? 'daterange' : 'date',
       'value-format': isNumberValue ? 'timestamp' : 'yyyy-MM-dd'
@@ -12177,27 +11934,28 @@ var DatePickerWidget = {
   }
 };
 
+var _excluded$7 = ["isNumberValue", "isRange"];
 /**
  * Created by Liu.Jun on 2020/7/22 13:21.
  */
+
 var DateTimePickerWidget = {
   name: 'DateTimePickerWidget',
   functional: true,
   render: function render(h, context) {
     var _ref = context.data.attrs || {},
-        isNumberValue = _ref.isNumberValue,
-        isRange = _ref.isRange,
-        otherProps = _objectWithoutProperties(_ref, ["isNumberValue", "isRange"]);
-
+      isNumberValue = _ref.isNumberValue,
+      isRange = _ref.isRange,
+      otherProps = _objectWithoutProperties(_ref, _excluded$7);
     context.data.attrs = _objectSpread2({
       type: isRange ? 'datetimerange' : 'datetime'
-    }, otherProps); // 字符串为 0 时区ISO标准时间
+    }, otherProps);
 
+    // 字符串为 0 时区ISO标准时间
     var oldInputCall = context.data.on.input;
     context.data.on = _objectSpread2(_objectSpread2({}, context.data.on), {}, {
       input: function input(val) {
         var trueVal;
-
         if (isRange) {
           trueVal = val === null ? [] : val.map(function (item) {
             return new Date(item)[isNumberValue ? 'valueOf' : 'toISOString']();
@@ -12205,7 +11963,6 @@ var DateTimePickerWidget = {
         } else {
           trueVal = val === null ? undefined : new Date(val)[isNumberValue ? 'valueOf' : 'toISOString']();
         }
-
         oldInputCall.apply(context.data.on, [trueVal]);
       }
     });
@@ -12216,6 +11973,7 @@ var DateTimePickerWidget = {
 /**
  * Created by Liu.Jun on 2020/7/22 13:22.
  */
+
 var TimePickerWidget = {
   name: 'TimePickerWidget',
   functional: true,
@@ -12260,7 +12018,6 @@ var UploadWidget = {
     // 设置默认 fileList
     var value = this.value;
     var isArrayValue = Array.isArray(value);
-
     var fileList = this.$attrs.fileList || function () {
       if (isArrayValue) {
         return value.map(function (item, index) {
@@ -12270,17 +12027,14 @@ var UploadWidget = {
           };
         });
       }
-
       if (value) {
         return [{
           name: '已上传文件',
           url: value
         }];
       }
-
       return [];
     }();
-
     return {
       isArrayValue: isArrayValue,
       fileList: fileList
@@ -12292,14 +12046,11 @@ var UploadWidget = {
     },
     emitValue: function emitValue(fileList) {
       var _this = this;
-
       // v-model
       var value;
-
       if (this.isArrayValue) {
         value = fileList.length ? fileList.reduce(function (pre, item) {
           var url = _this.getUrl(item);
-
           if (url) pre.push(url);
           return pre;
         }, []) : [];
@@ -12307,13 +12058,11 @@ var UploadWidget = {
         var fileItem = fileList[fileList.length - 1];
         value = this.getUrl(fileItem);
       }
-
       this.$emit('input', value);
     }
   },
   render: function render() {
     var _this2 = this;
-
     var h = this.$createElement;
     var attrs = this.$attrs;
     var slots = this.$props.slots;
@@ -12332,21 +12081,19 @@ var UploadWidget = {
         },
         'on-preview': function onPreview(file) {
           var url = _this2.getUrl(file);
-
           if (url) openNewPage(url);
         }
       }, attrs), {}, {
         'on-remove': function onRemove(file, fileList) {
           _this2.emitValue(fileList);
-
           if (attrs['on-remove']) {
             attrs['on-remove'](file, fileList);
           }
         },
         'on-success': function onSuccess(response, file, fileList) {
-          _this2.emitValue(fileList); // 用户注册的 onSuccess
+          _this2.emitValue(fileList);
 
-
+          // 用户注册的 onSuccess
           if (attrs['on-success']) {
             attrs['on-success'](response, file, fileList);
           }
@@ -12355,7 +12102,6 @@ var UploadWidget = {
     };
     if (!this.isArrayValue) data.attrs.limit = 1;
     var childVNode = [];
-
     if (slots && slots.default) {
       childVNode.push(h('template', {
         slot: 'default'
@@ -12367,13 +12113,11 @@ var UploadWidget = {
         }
       }, [this.btnText]));
     }
-
     if (slots && slots.tip) {
       childVNode.push(h('template', {
         slot: 'tip'
       }, [typeof slots.tip === 'function' ? slots.tip(h) : slots.tip]));
     }
-
     return h('el-upload', data, childVNode);
   }
 };
@@ -12381,6 +12125,8 @@ var UploadWidget = {
 /**
  * Created by Liu.Jun on 2020/5/17 10:41 下午.
  */
+
+// webpack -> rollup
 // const files = require.context('.', true, /\.js|vue$/);
 // const widgetComponents = files.keys().reduce((preVal, curKey) => {
 //     if (curKey !== './index.js') {
@@ -12403,11 +12149,11 @@ var widgetComponents = {
  * Created by Liu.Jun on 2020/4/21 18:23.
  */
 var CheckboxesWidget = widgetComponents.CheckboxesWidget,
-    RadioWidget = widgetComponents.RadioWidget,
-    SelectWidget = widgetComponents.SelectWidget,
-    TimePickerWidget$1 = widgetComponents.TimePickerWidget,
-    DatePickerWidget$1 = widgetComponents.DatePickerWidget,
-    DateTimePickerWidget$1 = widgetComponents.DateTimePickerWidget;
+  RadioWidget = widgetComponents.RadioWidget,
+  SelectWidget = widgetComponents.SelectWidget,
+  TimePickerWidget$1 = widgetComponents.TimePickerWidget,
+  DatePickerWidget$1 = widgetComponents.DatePickerWidget,
+  DateTimePickerWidget$1 = widgetComponents.DateTimePickerWidget;
 var WIDGET_MAP = {
   types: {
     boolean: 'el-switch',
@@ -12422,7 +12168,6 @@ var WIDGET_MAP = {
     date: DatePickerWidget$1,
     // 2018-11-13
     'date-time': DateTimePickerWidget$1 // 2018-11-13T20:20:39+00:00
-
   },
   common: {
     select: SelectWidget,
@@ -12453,11 +12198,13 @@ var globalOptions = Object.freeze({
     }
   }
 });
-var JsonSchemaForm = createForm(globalOptions); // 存在Vue 全局变量默认注册 VueForm 组件
+var JsonSchemaForm = createForm(globalOptions);
 
+// 存在Vue 全局变量默认注册 VueForm 组件
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.component('VueForm', JsonSchemaForm);
 }
 
 export default JsonSchemaForm;
 export { SchemaField, vueProps$1 as fieldProps, formUtils, getDefaultFormState, globalOptions, i18n, validate$2 as schemaValidate, vueUtils };
+//# sourceMappingURL=vueJsonSchemaForm.esm.js.map

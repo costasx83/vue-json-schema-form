@@ -320,7 +320,16 @@ export default {
                                 {
                                     style: props.widgetStyle,
                                     class: props.widgetClass,
-
+                                    // Spread all props from Widget component to the widget
+                                    ...(props.widget.props
+                                        ? Object.keys(props.widget.props).reduce((acc, propKey) => {
+                                            if (props[propKey] !== undefined) {
+                                                acc[propKey] = props[propKey];
+                                            }
+                                            return acc;
+                                        }, {})
+                                        : { label: props.label }
+                                    ),
                                     ...props.widgetAttrs,
                                     ...props.uiProps,
                                     modelValue: widgetValue.value, // v-model

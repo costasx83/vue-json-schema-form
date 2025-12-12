@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "show": {
+            "title": "Add Recommended Products",
+            "description": "Recommended products module is not editable, the system automatically recommends products based on big data",
+            "type": "boolean",
+            "default": true,
+            "ui:label": true,
+            "ui:disabled": true
+        }
+    },
+    "required": [
+        "show"
+    ]
+}

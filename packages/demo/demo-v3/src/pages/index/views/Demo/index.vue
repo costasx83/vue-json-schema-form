@@ -1,102 +1,85 @@
 <template>
     <div :class="$style.container">
-        <EditorHeader
-            default-active="2"
+        <EditorHeaderVT
+            v-model="activeHeaderTab"
             version="vue3"
             :show-version="true"
         >
             <div :class="$style.btns">
                 <template v-if="isUseLabelWidth">
-                    <span style="font-size: 13px;">Label:</span>
-                    <el-slider
+                    <span style="font-size: 13px; margin-right: 8px;">Label:</span>
+                    <v-slider
                         v-model="formProps.labelWidth"
-                        style="width: 70px; margin-right: 6px;"
-                        size="small"
+                        style="width: 100px; margin-right: 16px;"
+                        density="compact"
                         :format-tooltip="sliderFormat"
-                    ></el-slider>
+                        hide-details
+                    ></v-slider>
                 </template>
 
                 <template v-else>
-                    <span style="font-size: 13px;">labelCol：</span>
-                    <el-slider
+                    <span style="font-size: 13px; margin-right: 8px;">labelCol：</span>
+                    <v-slider
                         v-model="formProps.labelColSpan"
                         :min="3"
                         :max="15"
-                        style="width: 70px; margin-right: 6px;"
-                        size="small"
-                    ></el-slider>
-                    <span style="font-size: 13px;">wrapperCol：</span>
-                    <el-slider
+                        style="width: 100px; margin-right: 16px;"
+                        density="compact"
+                        hide-details
+                    ></v-slider>
+                    <span style="font-size: 13px; margin-right: 8px;">wrapperCol：</span>
+                    <v-slider
                         v-model="formProps.wrapperColSpan"
                         :min="5"
                         :max="24"
-                        style="width: 70px; margin-right: 6px;"
-                        size="small"
-                    ></el-slider>
+                        style="width: 100px; margin-right: 16px;"
+                        density="compact"
+                        hide-details
+                    ></v-slider>
                 </template>
 
-                <el-checkbox
+                <v-checkbox
                     v-model="formProps.inline"
                     style="margin-right: 6px;"
-                    size="small"
-                >
-                    Inline
-                </el-checkbox>
-                <el-checkbox
+                    density="compact"
+                    label="Inline"
+                    hide-details
+                ></v-checkbox>
+                <v-checkbox
                     v-model="formFooter.show"
                     style="margin-right: 6px;"
-                    size="small"
-                >
-                    Footer
-                </el-checkbox>
-                <el-select
+                    density="compact"
+                    label="Footer"
+                    hide-details
+                ></v-checkbox>
+                <v-select
                     v-model="formProps.layoutColumn"
                     placeholder="Layout"
-                    size="small"
-                    style="margin-right: 6px;width: 100px;"
-                >
-                    <el-option
-                        :value="1"
-                        label="One Column"
-                    ></el-option>
-                    <el-option
-                        :value="2"
-                        label="Two Columns"
-                    ></el-option>
-                    <el-option
-                        :value="3"
-                        label="Three Columns"
-                    ></el-option>
-                </el-select>
-                <el-select
+                    density="compact"
+                    variant="outlined"
+                    :items="[{value: 1, title: 'One Column'}, {value: 2, title: 'Two Columns'}, {value: 3, title: 'Three Columns'}]"
+                    style="margin-right: 6px; width: 140px;"
+                    hide-details
+                ></v-select>
+                <v-select
                     v-model="formProps.labelPosition"
                     placeholder="Align"
-                    size="small"
-                    style="margin-right: 6px;width: 96px;"
-                >
-                    <el-option
-                        value="top"
-                        label="Label Top"
-                    ></el-option>
-                    <el-option
-                        value="left"
-                        label="Label Left"
-                    ></el-option>
-                    <el-option
-                        value="right"
-                        label="Label Right"
-                    ></el-option>
-                </el-select>
-                <el-button
-                    icon="el-icon-share"
-                    type="primary"
+                    density="compact"
+                    variant="outlined"
+                    :items="[{value: 'top', title: 'Label Top'}, {value: 'left', title: 'Label Left'}, {value: 'right', title: 'Label Right'}]"
+                    style="margin-right: 6px; width: 130px;"
+                    hide-details
+                ></v-select>
+                <v-btn
+                    prepend-icon="mdi-share"
+                    color="primary"
                     size="small"
                     @click="handlePreview"
                 >
                     Share
-                </el-button>
+                </v-btn>
             </div>
-        </EditorHeader>
+        </EditorHeaderVT>
         <div :class="$style.box">
             <div :class="$style.typeList">
                 <router-link
@@ -115,83 +98,71 @@
                         }
                     }"
                 >
-                    <el-button
-                        :type="item === curType ? 'primary' : 'default'"
+                    <v-btn
+                        :color="item === curType ? 'primary' : 'default'"
                         size="small"
                         @click="navigate"
                     >
                         {{ item }}
-                    </el-button>
+                    </v-btn>
                 </router-link>
             </div>
-            <el-row :gutter="25">
-                <el-col
+            <v-row>
+                <v-col
                     :class="$style.middleBox"
-                    :span="16"
+                    cols="12"
+                    md="8"
                 >
-                    <el-row :gutter="6">
-                        <el-col :span="10">
+                    <v-row>
+                        <v-col
+                            cols="12"
+                            md="5"
+                        >
                             <CodeEditor
                                 v-model="curFormDataCode"
                                 title="FormData"
                             ></CodeEditor>
-                        </el-col>
-                        <el-col :span="14">
+                        </v-col>
+                        <v-col
+                            cols="12"
+                            md="7"
+                        >
                             <CodeEditor
                                 v-model="curSchemaCode"
                                 title="Schema"
                             ></CodeEditor>
-                        </el-col>
-                    </el-row>
-                    <el-row
-                        :gutter="6"
-                        style="margin-top: 10px;"
-                    >
-                        <el-col :span="12">
+                        </v-col>
+                    </v-row>
+                    <v-row style="margin-top: 10px;">
+                        <v-col
+                            cols="12"
+                            md="6"
+                        >
                             <CodeEditor
                                 v-model="curUiSchemaCode"
                                 title="Ui Schema"
                             ></CodeEditor>
-                        </el-col>
-                        <el-col :span="12">
+                        </v-col>
+                        <v-col
+                            cols="12"
+                            md="6"
+                        >
                             <CodeEditor
                                 v-model="curErrorSchemaCode"
                                 title="Error Schema"
                             ></CodeEditor>
-                        </el-col>
-                    </el-row>
-                </el-col>
-                <el-col
+                        </v-col>
+                    </v-row>
+                </v-col>
+                <v-col
                     :class="[$style.middleBox]"
-                    :span="8"
+                    cols="12"
+                    md="4"
                 >
-                    <el-card
-                        shadow="hover"
+                    <v-card
+                        elevation="2"
                         :class="[$style.card, $style.middleBox_form, $style.formBox]"
                     >
-                        <template #header>
-                            <div
-                                class="clearfix"
-                            >
-                                <span>
-                                    Form UI Library:
-                                    <el-select
-                                        v-model="curVueForm"
-                                        placeholder="ui"
-                                        size="small"
-                                        style="margin-left: 10px;width: 130px;"
-                                        @change="handleUiChange"
-                                    >
-                                        <el-option
-                                            v-for="item in formComponents"
-                                            :key="item.name"
-                                            :value="item.component"
-                                            :label="item.name"
-                                        ></el-option>
-                                    </el-select>
-                                </span>
-                            </div>
-                        </template>
                         <component
                             :is="curVueForm"
                             ref="schemaForm"
@@ -212,79 +183,28 @@
                             @validation-failed="handleValidationFailed"
                         >
                         </component>
-                    </el-card>
-                </el-col>
-            </el-row>
+                    </v-card>
+                </v-col>
+            </v-row>
         </div>
+        <v-snackbar
+            v-model="snackbar"
+            :color="snackbarColor"
+            :timeout="3000"
+        >
+            {{ snackbarText }}
+        </v-snackbar>
     </div>
 </template>
 
 <script>
 import { defineAsyncComponent, getCurrentInstance, h } from 'vue';
-import EditorHeader from 'demo-common/components/EditorHeader.vue';
+import EditorHeaderVT from 'demo-common/components/Vuetify/EditorHeaderVT.vue';
 import CodeEditor from 'demo-common/components/CodeEditor';
 import schemaTypes from 'demo-common/schemaTypes';
 
-const VueElementForm = defineAsyncComponent(() => import('@lljj/vue3-form-element'));
+const VueDynamicForm = defineAsyncComponent(() => import('@lljj/vue3-form-vuetify'));
 
-let installedAntdv = false;
-
-const VueAntForms = (async () => {
-    // eslint-disable-next-line no-unused-vars
-    const [antdv, antForm] = await Promise.all([
-        import('demo-common/components/Antdv/index.js'),
-        import('@lljj/vue3-form-ant')
-    ]);
-
-    const antdFormGenerator = (formProperty = 'default') => ({
-        name: 'antFormWrap',
-        setup(props, { attrs, slots }) {
-            // hack: dynamically install antDv, because I don't know how to get the vue app elsewhere
-            if (!installedAntdv) {
-                const instance = getCurrentInstance();
-                instance.appContext.app.use(antdv.default);
-                installedAntdv = true;
-            }
-
-            return () => h(antForm[formProperty], {
-                ...attrs
-            }, slots);
-        }
-    });
-
-    return {
-        v3: antdFormGenerator('default'),
-        v4: antdFormGenerator('JsonSchemaFormAntdV4')
-    };
-})();
-
-const VueAntForm = defineAsyncComponent(() => VueAntForms.then(res => res.v3));
-const VueAntFormV4 = defineAsyncComponent(() => VueAntForms.then(res => res.v4));
-
-let installedNaive = false;
-const VueNaiveForm = defineAsyncComponent(async () => {
-    // eslint-disable-next-line no-unused-vars
-    const [naive, antForm] = await Promise.all([
-        import('demo-common/components/Naive/index.js'),
-        import('@lljj/vue3-form-naive')
-    ]);
-
-    return {
-        name: 'naiveFormWrap',
-        setup(props, { attrs, slots }) {
-            // hack: dynamically install naive, because I don't know how to get the vue app elsewhere
-            if (!installedNaive) {
-                const instance = getCurrentInstance();
-                instance.appContext.app.use(naive.default);
-                installedNaive = true;
-            }
-
-            return () => h(antForm.default, {
-                ...attrs
-            }, slots);
-        }
-    };
-});
 
 const typeItems = Object.keys(schemaTypes);
 
@@ -292,29 +212,21 @@ export default {
     name: 'Demo',
     components: {
         CodeEditor,
-        VueElementForm,
-        VueAntForm,
-        VueAntFormV4,
-        VueNaiveForm,
-        EditorHeader
+        VueDynamicForm,
+        EditorHeaderVT
     },
     data() {
         return {
             typeItems,
-            curVueForm: this.$route.query.ui || 'VueElementForm',
+            curVueForm: 'VueDynamicForm',
             ...this.getDefaultSchemaMap(),
+            snackbar: false,
+            snackbarText: '',
+            snackbarColor: 'info',
+            activeHeaderTab: 'playground',
             formComponents: [{
-                name: 'ElementPlus',
-                component: 'VueElementForm'
-            }, {
-                name: 'Antdv',
-                component: 'VueAntForm'
-            }, {
-                name: 'Antdv (Special adaptation for antd4, not fully tested)',
-                component: 'VueAntFormV4'
-            }, {
-                name: 'Naive',
-                component: 'VueNaiveForm'
+                name: 'Vuetify',
+                component: 'VueDynamicForm'
             }],
             customFormats: {
                 price(value) {
@@ -328,7 +240,7 @@ export default {
             return this.$route.query.type;
         },
         isUseLabelWidth() {
-            return this.curVueForm !== 'VueAntForm' && this.curVueForm !== 'VueAntFormV4';
+            return true;
         },
         trueFormProps() {
             if (!this.formProps) return {};
@@ -413,24 +325,6 @@ export default {
         this.initData();
     },
     methods: {
-        handleUiChange(value) {
-            const formatStr = jsonCode => JSON.stringify(JSON.parse(jsonCode));
-
-            this.$router.replace({
-                query: {
-                    ...this.$route.query,
-                    ui: value,
-                    schema: formatStr(this.curSchemaCode),
-                    formData: formatStr(this.curFormDataCode),
-                    uiSchema: formatStr(this.curUiSchemaCode),
-                    errorSchema: formatStr(this.curErrorSchemaCode),
-                    formFooter: formatStr(JSON.stringify(this.trueFormFooter)),
-                    formProps: formatStr(JSON.stringify(this.trueFormProps)),
-                }
-            }).then(() => {
-                window.location.reload();
-            });
-        },
         sliderFormat(value) {
             return value ? `${value * 4}px` : undefined;
         },
@@ -524,7 +418,9 @@ export default {
                 return true;
             }
 
-            this.$message.info(value);
+            this.snackbarText = value;
+            this.snackbarColor = 'info';
+            this.snackbar = true;
             return false;
         },
         handleCancel() {
@@ -551,7 +447,9 @@ export default {
             const url = `${window.location.origin}${window.location.pathname}${genRoute.href}`;
 
             if (this.clipboard(url)) {
-                this.$message.success('Preview URL copied successfully');
+                this.snackbarText = 'Preview URL copied successfully';
+                this.snackbarColor = 'success';
+                this.snackbar = true;
             }
         }
     }
@@ -559,6 +457,9 @@ export default {
 </script>
 
 <style module lang="postcss">
+.card{
+        padding: 20px;
+}
 .btns {
     display: flex;
     align-items: center;
@@ -579,12 +480,10 @@ export default {
 }
 .middleBox {
     :global {
-        .el-card {
-            border-top: none;
+        .v-card {
             overflow: visible;
         }
-        .el-card__header {
-            border-top: 1px solid #EBEEF5;
+        .v-card-title {
             padding: 10px 20px;
             font-size: 14px;
             font-weight: bold;
@@ -600,7 +499,7 @@ export default {
 .formBox {
     max-height: calc(100vh - 40px);
     overflow: auto !important;
-    :global .el-card__header{
+    :global .v-card-title {
         position: sticky;
         top: 0;
     }

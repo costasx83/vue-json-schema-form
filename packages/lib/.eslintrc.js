@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
     root: true,
     env: {
@@ -7,8 +5,9 @@ module.exports = {
         worker: true,
     },
     parserOptions: {
-        parser: 'babel-eslint',
-        sourceType: 'module'
+        parser: '@babel/eslint-parser',
+        sourceType: 'module',
+        requireConfigFile: false
     },
     plugins: ['vue'],
     extends: [
@@ -18,15 +17,17 @@ module.exports = {
     rules: {
         // 递归组件导致了循环依赖
         'import/no-cycle': 'off',
+        'no-unused-vars': 'off',
+        'vue/multi-word-component-names': 'off',
     },
     globals: {
-        'self': true
+        self: true
     },
     overrides: [
         {
-            files: ["*.vue"],
+            files: ['*.vue'],
             rules: {
-                "indent": "off",
+                indent: 'off',
             }
         }
     ]

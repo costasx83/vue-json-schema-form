@@ -1,3 +1,7 @@
 module.exports = {
-    presets: ['@lljj/babel-preset']
+    presets: [
+        ['@babel/preset-env', {
+            modules: false
+        }]
+    ]
 };

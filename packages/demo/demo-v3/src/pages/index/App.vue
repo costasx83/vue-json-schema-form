@@ -1,10 +1,12 @@
 <template>
-    <div :class="$style.wrap">
-        <router-view></router-view>
+    <v-app>
+        <v-main>
+            <router-view></router-view>
+        </v-main>
         <footer :class="$style.footer">
             <a href="https://github.com/lljj-x/vue-json-schema-form">vue-json-schema-form</a>
         </footer>
-    </div>
+    </v-app>
 </template>
 
 <script>
